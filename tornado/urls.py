@@ -7,7 +7,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 SETTINGS = {
     "template_path": os.path.join(BASE_DIR, "template_path"),
     "static_path": os.path.join(BASE_DIR, "static"),
-    "debug" : True
+    #"debug" : True
 
 }
 

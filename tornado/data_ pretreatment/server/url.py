@@ -14,7 +14,7 @@ class MyApplication(tornado.web.Application):
         }
 
         tornado.web.Application.__init__(self, handlers, **settings,debug = False)
-        # 使用多进程的时候，记得设置为false
+                #使用多进程的时候，记得设置为false
 
 
-
+#MyApplication = tornado.web.Application(handlers = handlers,**settings)

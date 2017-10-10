@@ -6,16 +6,20 @@ from orm import *
 import requests
 import time
 from datetime import datetime,timedelta
+from common.get_stu_basic_data_by_user_data import getBasicDataByUserName
 
 class GetAbnormalStu(get_abnormal_stu):
     def entry(self,response_self):
         try:
-
             body = eval(response_self.request.body)
             maxmoney = str(body["card"]['consume'])
             moneydays = str(body['card']["number"])
             sleepdays = str(body['days'])
             sbjNumber=str(body['sbjNumber'])
+            username=str(body['userId'])
+            isflag,canseeid=getBasicDataByUserName(username)
+            assert isflag==True
+
             if moneydays == '':
                 moneydays = 0
             if sleepdays == '':
@@ -24,13 +28,21 @@ class GetAbnormalStu(get_abnormal_stu):
                 maxmoney=0
             if sbjNumber=='':
                 sbjNumber=0
+
+            allStuId=[]
+            for stu in canseeid:
+                singlestu={"specialitiesid":stu['specialitiesid'],"collegeid":stu['collegeid'],
+                "state":stu['state'],"stuID":stu['stuID'],"stuName":stu['stuName'],"sex":stu['sex']}
+                allStuId.append(singlestu)
+            allStuId=str(allStuId)
+
             day = timedelta(days=1)
             enddate=datetime.today().date()
             startdate=(datetime.today()-day*364).date()
             request_data = {'startdate':str(startdate) , 'enddate':str(enddate), 'sleepdays': sleepdays,
-                            'moneydays': moneydays, 'failnum':sbjNumber,'maxmoney': maxmoney}
-            r = requests.post(url=myurl, data=request_data)
+                            'moneydays': moneydays, 'failnum':sbjNumber,'maxmoney': maxmoney,'allstuid':allStuId}
 
+            r = requests.post(url=myurl, data=request_data)
             result = eval(r.text)
             if result['status'] == 1:
                 abnormalStu=self.getData(result['data'])

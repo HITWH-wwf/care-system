@@ -30,6 +30,10 @@ class UpdateFocus(update_focus):
             for data in allData["data"]:
                 judge = stu_focus.select().where(stu_focus.stuID == data["stuID"]).aggregate(fn.Count(stu_focus.stuID))
                 data['createDate'] = str(data['createDate'])
+                if str(data['level']) == "重点关注":
+                    data['level'] = 2
+                else:                    
+                    data['level'] = 1
                 try:
                     if judge >= 1:
                         stu_focus.update(**data).where(stu_focus.stuID == data["stuID"]).execute()
@@ -38,6 +42,9 @@ class UpdateFocus(update_focus):
                         print (data)
                         stu_focus.create(**data)
                         success_create_count += 1
+                    stu = stu_basic_info.select().where(stu_basic_info.stuID == stu_id).get()
+                    stu.state = data['level']
+                    stu.save()
                 except:
                     error_info = traceback.format_exc()
                     print (error_info)
