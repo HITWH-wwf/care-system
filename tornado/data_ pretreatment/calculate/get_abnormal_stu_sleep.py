@@ -31,7 +31,6 @@ def judgeStuAbnormalSleep(startdate,enddate,days):
     endat=totaldays-disdays2     #这个不用减1
     for stu in stuRecord:
         everydays=stu.everyDaySleep.split('-')
-        print('everyday is ',len(everydays))
         counts=0
         for i in range(startat,endat):
             if everydays[i]=='1':
