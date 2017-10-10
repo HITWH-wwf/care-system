@@ -3,15 +3,17 @@
 from peewee import SelectQuery, CharField, IntegerField, fn, Model, FloatField, MySQLDatabase, TextField, \
     DateTimeField,TextField
 from playhouse.shortcuts import model_to_dict as to_dict
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 from api_define import users
-
 
 global my_database
 for user in users:
   try:
     global my_database
-    print(user['pwd'])
-    my_database = MySQLDatabase(host='127.0.0.1', user=user['name'], passwd=user['pwd'], database='school',charset = 'utf-8')
+    #print(user['pwd'])
+    my_database = MySQLDatabase(host='127.0.0.1', user=user['name'], passwd=user['pwd'], database='school')
     my_database.connect()
     break
   except:
@@ -159,11 +161,11 @@ class stu_basic_info(MyBaseModel):
     ifPoor = IntegerField()
     updateDate = DateTimeField(null=True)
     classNumberId = IntegerField(null=True)
-    # schoolStatus=CharField(null=True)   #学籍状态
-    # sleepInOrOut=CharField(null=True)   #校外住宿
-    # turnProfessional=CharField(null=True)   #转专业
-    # turnInProfessional=CharField(null=True) #转入专业
-    # downgrade=CharField(null=True)  #降级
+    schoolStatus=CharField(null=True)   #学籍状态
+    sleepInOrOut=CharField(null=True)   #校外住宿
+    turnProfessional=CharField(null=True)   #转专业
+    turnInProfessional=CharField(null=True) #转入专业
+    downgrade=CharField(null=True)  #降级
 
 class stu_scholarship_and_grant(MyBaseModel):
     stuID = CharField()
@@ -272,4 +274,6 @@ class stu_score_count(MyBaseModel):
         db_table = 'stu_score_count'
         primary_key = False
 
+
 my_database.create_tables([stu_cost_count, stu_sleep_count,stu_score_count], safe=True)
+

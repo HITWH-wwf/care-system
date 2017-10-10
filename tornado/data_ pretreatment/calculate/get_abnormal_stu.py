@@ -6,7 +6,7 @@ from calculate.get_abnormal_stu_score import getAbnormalStuScore
 def getAbnormalStu(startdate,enddate,sleepdays,moneydays,failnum,maxmoney,allStuId):
     result = []
     # allStuId = stu_basic_info.select(stu_basic_info.stuID,stu_basic_info.specialitiesid,stu_basic_info.collegeid,stu_basic_info.sex,
-                                     # stu_basic_info.stuName,stu_basic_info.state)
+                                     #stu_basic_info.stuName,stu_basic_info.state)
     if sleepdays>0:
 
         result.append(getAbnormalStuSleep(startdate,enddate,sleepdays))

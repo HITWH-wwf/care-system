@@ -9,6 +9,7 @@ users = [
   {'name':'root','pwd':'123456'},
   {'name':'root','pwd':'wf520..' },
   {'name':'root','pwd':'Huawei@123'},
+  {'name':'root','pwd':'nslab'},
 ]
 
 class grow_line():

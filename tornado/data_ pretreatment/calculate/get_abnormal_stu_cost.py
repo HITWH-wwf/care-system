@@ -23,7 +23,7 @@ def judgeStuAbnormalCost(startdate,enddate,maxMoney,days):
     if disdays2<0:
         disdays2=0
     startat=totaldays-disdays-disdays2-1
-    endat=totaldays-disdays     #这个不用减1
+    endat=totaldays-disdays2     #这个不用减1
     for stu in stuRecord:
         everydays=stu.everyDayCost.split('-')
         counts=0

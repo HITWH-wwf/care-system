@@ -5,6 +5,7 @@ from api_define import person_card
 from orm import *
 import datetime
 import json
+import traceback
 
 class PersonCard(person_card):
 
@@ -26,7 +27,8 @@ class PersonCard(person_card):
                 print("test in the behind of the card")
                 return result
         except:
-            print(e, "in the person_card")
+            error_info = traceback.format_exc()
+            print(error_info)
 
     def funAccountToName(self, account):
 
