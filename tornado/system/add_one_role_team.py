@@ -48,12 +48,15 @@ class AddOneRoleTeam(add_one_role_team):
         res, data = self.judgePara(data)
         if res == False:
             return {"status":0, "errorInfo":"返回的data不符合要求"}
-        judge = new_user_role.select().where(new_user_role.userrolename == data["name"]).aggregate(fn.Count(new_user_role.userrolename))
+        with db.execution_context():
+            judge = new_user_role.select().where(new_user_role.userrolename == data["name"]).aggregate(fn.Count(new_user_role.userrolename))
         if judge != 0:
             return {"status":0, "errorInfo":"已经存在相同名称的角色组，请重新命名"}
         try:
             permission = getTotalPage(mode = 1)
-            new_user_role.create(**{"userrolename":data["name"], "description":data["description"], "permission": str(permission)})
-        except:    
-            return {"status":0, "errorInfo":"数据库新增信息失败，请稍候重试"}
+            with db.execution_context():
+                new_user_role.create(**{"userrolename":data["name"], "description":data["description"], "permission": str(permission)})
+        except:
+            raise
+            # return {"status":0, "errorInfo":"数据库新增信息失败，请稍候重试"}
         return {"status":1, "errorInfo":""}

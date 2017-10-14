@@ -47,7 +47,9 @@ class SetOneRoleTeam(set_one_role_team):
         if not set(data) == set(getTotalPage()):
             return {"status":0, "errorInfo":"设置的角色组项与系统当前不符"}
         try:
-            new_user_role.update(**{"permission":str(data)}).where(new_user_role.userrolename == role_team_name).execute()
+            with db.execution_context():
+                new_user_role.update(**{"permission":str(data)}).where(new_user_role.userrolename == role_team_name).execute()
         except:
-            return {"status":0, "errorInfo":"更新数据库过程中出错，请稍候重试"}
+            raise
+            # return {"status":0, "errorInfo":"更新数据库过程中出错，请稍候重试"}
         return {"status":1, "errorInfo":""}

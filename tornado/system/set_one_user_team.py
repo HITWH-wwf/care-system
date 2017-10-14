@@ -42,14 +42,16 @@ class SetOneUserTeam(set_one_user_team):
             return {"status":0, "errorInfo":"不存在所要设置的用户组"}
         else:
             return self.updateMysql(user_team_name, data)
-        
+
     def updateMysql(self, user_team_name, data):
         """更改数据库内的数据"""
 
         if not set(data) == set(getTotalClass()):
             return {"status":0, "errorInfo":"设置的用户组项与系统当前不符"}
         try:
-            new_user_team.update(**{"permission":str(data)}).where(new_user_team.userteamname == user_team_name).execute()
+            with db.execution_context():
+                new_user_team.update(**{"permission":str(data)}).where(new_user_team.userteamname == user_team_name).execute()
         except:
-            return {"status":0, "errorInfo":"更新数据库过程中出错，请稍候重试"}
+            raise
+            # return {"status":0, "errorInfo":"更新数据库过程中出错，请稍候重试"}
         return {"status":1, "errorInfo":""}

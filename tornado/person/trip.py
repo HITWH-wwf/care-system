@@ -21,7 +21,8 @@ class PersonTrip(person_trip):
             else:
                 return self.getData(stu_id)
         except (Exception) as e:
-            print(e, "PersonTrip")
+            # print(e, "PersonTrip")
+            raise
 
     def getData(self, stu_id):
         """
@@ -75,7 +76,8 @@ class PersonTrip(person_trip):
             "data": []
         }
         #获取近7天的所有数据
-        max_date = entry_and_exit.select(entry_and_exit.entryDate).where(entry_and_exit.stuID == stu_id).aggregate(fn.Max(entry_and_exit.entryDate))
+        with db.execution_context():
+            max_date = entry_and_exit.select(entry_and_exit.entryDate).where(entry_and_exit.stuID == stu_id).aggregate(fn.Max(entry_and_exit.entryDate))
         if max_date == None:
             return {"status":0, "errorInfo":"没有数据", "data": data_res}
         the_time = str((pd.to_datetime(max_date) - datetime.timedelta(days = 179)))

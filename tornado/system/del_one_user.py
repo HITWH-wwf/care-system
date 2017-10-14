@@ -18,13 +18,15 @@ class DelOneUser(del_one_user):
         return self.delMysql(user_name_want)
 
     def delMysql(self, user_name):
-        
-        judge = new_users.select().where(new_users.username == user_name).aggregate(fn.Count(new_users.username))
+        with db.execution_context():
+            judge = new_users.select().where(new_users.username == user_name).aggregate(fn.Count(new_users.username))
         if judge == 0:
             return {"status":0, "errorInfo":"不存在所要删除用户"}
         try:
-            new_users.delete().where(new_users.username == user_name).execute()
+            with db.execution_context():
+                new_users.delete().where(new_users.username == user_name).execute()
         except:
-            return {"status":0, "errorInfo":"删除过程中出错，请稍候重试"}
-        
+            raise
+            # return {"status":0, "errorInfo":"删除过程中出错，请稍候重试"}
+
         return {"status":1, "errorInfo":""}

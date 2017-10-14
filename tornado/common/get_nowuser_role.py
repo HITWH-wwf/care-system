@@ -2,14 +2,14 @@
 
 import sys
 sys.path.append("..")
-from orm import *
+from tornado.orm import *
 
 def getNowUserRole(userId):
-    nowuser = new_users.select().where(new_users.username == userId)
+    nowuser =MyBaseModel.returnList(new_users.select().where(new_users.username == userId))
     assert len(nowuser)==1,'搜索不到该用户名'
-    nowRole=new_user_role.select().where(new_user_role.userrolename==nowuser[0].userrolename)
+    nowRole=MyBaseModel.returnList(new_user_role.select().where(new_user_role.userrolename==nowuser[0].userrolename))
     assert len(nowRole)==1,'搜索不到该用户对应的角色组'
-    roles=eval(nowRole[0].permission)
+    roles=nowRole[0]['permission']
     user_roles={}
     user_roles['indexMajor']=roles['indexmajor']
     user_roles['indexStudents']=roles['indexstudents']

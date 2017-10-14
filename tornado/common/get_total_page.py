@@ -1,6 +1,6 @@
 #coding=utf8
 
-import watch_redis
+# import watch_redis
 import os
 import configparser
 

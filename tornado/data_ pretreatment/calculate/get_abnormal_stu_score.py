@@ -10,12 +10,14 @@ def getAbnormalStuScore(nums):
         result = judgeStuAbnormalScore(nums)
         return {'status': 1, 'data': result}
     except (Exception) as e:
-        print(e)
-        return {'status': 0, 'errorInfo': "操作出错，请稍候再试", 'data': ''}
+        raise e
+        # print(e)
+        # return {'status': 0, 'errorInfo': "操作出错，请稍候再试", 'data': ''}
 
 
 def judgeStuAbnormalScore(nums):
-    stuRecord=stu_score_count.select(stu_score_count.stuID,stu_score_count.failNum)
+    with db_data.execution_context():
+        stuRecord=stu_score_count.select(stu_score_count.stuID,stu_score_count.failNum)
     result=[]
 
     for stu in stuRecord:

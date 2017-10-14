@@ -27,19 +27,18 @@ class UpdateBasic(update_basic):
             res = []
             success_create_count = 0
             success_update_count = 0
-            for data in allData["data"]:
-                judge = stu_basic_info.select().where(stu_basic_info.stuID == data["stuID"]).aggregate(fn.Count(stu_basic_info.stuID))
-                try:
-                    if judge >= 1:
-                        stu_basic_info.update(**data).where(stu_basic_info.stuID == data["stuID"]).execute()
-                        success_update_count += 1
-                    else:
-                        stu_basic_info.create(**data)
-                        success_create_count += 1
-                except:
-                    error_info = traceback.format_exc()
-                    print (error_info)
-                    res.append([data["stuID"]])
+            with db.execution_context():
+                for data in allData["data"]:
+                    judge = stu_basic_info.select().where(stu_basic_info.stuID == data["stuID"]).aggregate(fn.Count(stu_basic_info.stuID))
+                    try:
+                        if judge >= 1:
+                            stu_basic_info.update(**data).where(stu_basic_info.stuID == data["stuID"]).execute()
+                            success_update_count += 1
+                        else:
+                            stu_basic_info.create(**data)
+                            success_create_count += 1
+                    except:
+                        res.append([data["stuID"]])
             if len(res) == 0:
                 #表示本次全部都导入成功了
                 returndata["status"] = 1

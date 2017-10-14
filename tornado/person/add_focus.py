@@ -32,14 +32,17 @@ class AddFocus(add_focus):
         向数据库中插入数据
         """
         try:
-            stu_focus.create(**{"stuID": stu_id,"style":1, "reason": reason, "level": int(level), "createDate": str(datetime.datetime.now()),"sleepInOrOut":sleepInOrOut,"studyWithParent":studyWithParent})
-            if level == '0':
-                newstate=2
-            elif level == '1':
-                newstate=1
-            stu=stu_basic_info.select().where(stu_basic_info.stuID == stu_id).get()
-            stu.state=newstate
-            stu.save()
+            with db.execution_context():
+                stu_focus.create(**{"stuID": stu_id,"style":1, "reason": reason, "level": int(level), "createDate": str(datetime.datetime.now()),"sleepInOrOut":sleepInOrOut,"studyWithParent":studyWithParent})
+
+                if level == '2':
+                    newstate=2
+                elif level == '1':
+                    newstate=1
+                stu=stu_basic_info.select().where(stu_basic_info.stuID == stu_id).get()
+                stu.state=newstate
+                stu.save()
         except:
-            return {"status":0, "errorInfo":"数据库新增信息失败，请稍候重试"}
+            raise
+            # return {"status":0, "errorInfo":"数据库新增信息失败，请稍候重试"}
         return {"status":1, "errorInfo":""}

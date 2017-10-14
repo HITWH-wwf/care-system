@@ -19,8 +19,9 @@ class StaticInfo(static_info):
             else:
                 return self.getData(stu_id)
         except (Exception) as e:
-            print(e, "StaticInfo")
-        
+            # print(e, "StaticInfo")
+            raise
+
 
     def funToRecognition(self, mode, id):
         """
@@ -52,7 +53,7 @@ class StaticInfo(static_info):
             except:
                 return "没有查询到该专业名"
         else:
-            raise ("error mode in funToRecognition")
+            raise Exception("error mode in funToRecognition")
 
     def getData(self, stu_id):
         """
@@ -97,13 +98,13 @@ class StaticInfo(static_info):
             one_user["collegeid"] = self.funToRecognition(mode = 0, id = one_user["collegeid"])
             if one_user["state"] == 0:
                 one_user["state"] = "正常"
-            elif one_user["state"] == 1: 
+            elif one_user["state"] == 1:
                 one_user["state"] = "推介关注"
-            elif one_user["state"] == 2: 
+            elif one_user["state"] == 2:
                 one_user["state"] = "重点关注"
-            elif one_user["state"] == 3: 
+            elif one_user["state"] == 3:
                 one_user["state"] = "毕业"
-            else: 
+            else:
                 one_user["state"] = "未知状态"
             stu_basic_data[index] = one_user
 

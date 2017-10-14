@@ -126,7 +126,7 @@ export default {
             for (index in this.tableInfoTotal['data']) {
                 ifpush = false
                 for (indexProp in this.tableInfoTotal['propName']) {
-                    if (this.tableInfoTotal['data'][index][this.tableInfoTotal['propName'][indexProp]].match(this.inputDataForSearch) != null) {
+                    if (this.tableInfoTotal['data'][index][this.tableInfoTotal['propName'][indexProp]]!=null && this.tableInfoTotal['data'][index][this.tableInfoTotal['propName'][indexProp]].match(this.inputDataForSearch) != null) {
                         ifpush = true
                         break
                     }

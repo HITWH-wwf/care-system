@@ -18,31 +18,24 @@ class Session(object):
             session_value=False                     #没有对对应的session_id
         if not session_value:  # 如果没有说明是第一次请求，需要生成一个随机字符串当作cookie
             self._id = md5()
-            print("no have")
         else:
             self._id = session_value
 
     def __getitem__(self, key):
 
         r = redis.Redis(host='127.0.0.1', port=6379)
-        print("get",self._id)
         r.expire(self._id,1800)       #只要有操作，登陆状态就继续保持30分钟
         return r.get(self._id)
 
     def __setitem__(self,key,value):
         # user = chenchap   pwd = 123.com
         r = redis.Redis(host='127.0.0.1', port=6379)
-        print("session",value)
-        print("set",self._id)
-        print(value, "    ", key)
         middle = r.set(self._id, value, ex=1800)
-        print(middle)
         return middle    #登陆状态保持30分中
 
     def __delitem__(self, key):
         r = redis.Redis(host='127.0.0.1', port=6379)
-        print("del session")
         return r.delete(self._id)
-    
+
     def get_session_id(self):
         return self._id

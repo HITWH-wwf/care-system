@@ -11,7 +11,7 @@ SETTINGS = {
 
 }
 
-HANDLERS = [    
+HANDLERS = [
     (r"/", IndexHandler),
     (r"/index/grow-line", GrowLineHandler),
     (r"/index/grow-bar", GrowBarHandler),

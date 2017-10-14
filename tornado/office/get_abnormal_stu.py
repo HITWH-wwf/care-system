@@ -38,7 +38,7 @@ class GetAbnormalStu(get_abnormal_stu):
 
             day = timedelta(days=1)
             enddate=datetime.today().date()
-            startdate=(datetime.today()-day*364).date()
+            startdate=(datetime.today()-day*179).date()
             request_data = {'startdate':str(startdate) , 'enddate':str(enddate), 'sleepdays': sleepdays,
                             'moneydays': moneydays, 'failnum':sbjNumber,'maxmoney': maxmoney,'allstuid':allStuId}
 
@@ -50,8 +50,8 @@ class GetAbnormalStu(get_abnormal_stu):
             else:
                 return {"status": 0, "errorInfo": "操作失败", "data": ''}
         except (Exception) as e:
-            print(e)
-            return {"status": 0, "errorInfo": "操作失败", "data": ''}
+            raise e
+            # return {"status": 0, "errorInfo": "操作失败", "data": ''}
 
     def funToRecognition(self, mode, id):
         """
@@ -83,7 +83,7 @@ class GetAbnormalStu(get_abnormal_stu):
             except:
                 return "没有查询到该专业名"
         else:
-            raise ("error mode in funToRecognition")
+            raise Exception("error mode in funToRecognition")
 
     def getData(self, abnormalStus):
         """

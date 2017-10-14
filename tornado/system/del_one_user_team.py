@@ -12,7 +12,7 @@ class DelOneUserTeam(del_one_user_team):
         body = eval(response_self.request.body)
         user_id = str(body["userId"])
         user_team_name = str(body["userTeamName"])
-        
+
         if judgeIfPermiss(user_id=user_id, mode=1, page="systemUserTeam") == False:
             return {"status":0, "errorInfo":"用户没有权限设置"}
         elif len(MyBaseModel.returnList(new_user_team.select().where(new_user_team.userteamname == user_team_name).dicts())) == 0:
@@ -24,7 +24,9 @@ class DelOneUserTeam(del_one_user_team):
 
     def delMysql(self, user_team_name):
         try:
-            new_user_team.delete().where(new_user_team.userteamname == user_team_name).execute()
+            with db.execution_context():
+                new_user_team.delete().where(new_user_team.userteamname == user_team_name).execute()
         except:
-            return {"status":0, "errorInfo":"删除过程中出错，请稍候重试"}
+            raise
+            # return {"status":0, "errorInfo":"删除过程中出错，请稍候重试"}
         return {"status":1, "errorInfo":""}

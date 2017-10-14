@@ -8,25 +8,42 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 from api_define import users
 
-global my_database
-for user in users:
-  try:
-    global my_database
-    #print(user['pwd'])
-    my_database = MySQLDatabase(host='127.0.0.1', user=user['name'], passwd=user['pwd'], database='school')
-    my_database.connect()
-    break
-  except:
-    print("this mysql username is not "+user['name'])
+from playhouse.pool import PooledMySQLDatabase
+from logConfig import logger
 
+for user in users:
+    try:
+        db_data = PooledMySQLDatabase(
+        database='school',
+        max_connections=4,
+        stale_timeout=3600,  # 1 hour
+        timeout=0,
+        user=user['name'],
+        host='127.0.0.1',
+        passwd=user['pwd'],
+        )
+        with db_data.execution_context():
+            pass
+        break
+    except:
+        logger.warning("this mysql username is not "+user['name'])
+        print("this mysql username is not "+user['name'])
+
+
+def applyConnect(func):
+    def applyFunc(cls, *args, **kwargs):
+        with db_data.execution_context():
+        # print('lian jie is ok')
+            return func(cls, *args, **kwargs)
+    return applyFunc
 
 # Model是peewee的基类
 class MyBaseModel(Model):
     class Meta:
-        global my_database
-        database = my_database
+        database = db_data
 
     @classmethod
+    @applyConnect
     def getOne(cls, *query, **kwargs):
 
         """
@@ -36,9 +53,10 @@ class MyBaseModel(Model):
         try:
             return cls.get(*query, **kwargs)
         except:
-            return None
+            raise
 
     @classmethod
+    @applyConnect
     def returnList(cls, Model=None, key=None):
         """
         将结果返回成一个列表嵌套字典的结构返回
@@ -57,6 +75,7 @@ class MyBaseModel(Model):
         return list
 
     @classmethod
+    @applyConnect
     def returnList2(cls, Model=None, key=None):
         """
         将结果返回成一个列表嵌套字典的结构返回
@@ -86,17 +105,6 @@ class course_data(MyBaseModel):
     teacherName = CharField(null=True)
 
 
-# class exam_results(MyBaseModel):
-#     courseID = CharField()
-#     courseName = CharField()
-#     courseIndex = IntegerField(null=True)
-#     stuID = CharField()
-#     examScore = FloatField(null=True)
-#     credit = FloatField(null=True)
-#     examDate = DateTimeField(null=True)
-#     repairOrNot = IntegerField(null=True)
-#     makeupOrNot = IntegerField(null=True)
-#     courseKind = CharField(null=True)
 
 class exam_results(MyBaseModel):
     courseID = CharField()
@@ -275,5 +283,5 @@ class stu_score_count(MyBaseModel):
         primary_key = False
 
 
-my_database.create_tables([stu_cost_count, stu_sleep_count,stu_score_count], safe=True)
+db_data.create_tables([exam_results,stu_focus,stu_cost_count,stu_score_count,stu_sleep_count], safe=True)
 

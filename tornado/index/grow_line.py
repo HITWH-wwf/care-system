@@ -61,14 +61,14 @@ class GrowLine(grow_line):
             except:
                 return "没有查询到该学生的被关注时间", False
         else:
-            raise ("error mode in funToRecognition")
+            raise Exception("error mode in funToRecognition")
 
     def getData(self, user_name):
         """
         返回数据给前端
         """
         #一次获取所有state非0和3的学生,即：把除去正常和毕业的都拿出来
-        stu_basic_data = pd.DataFrame(MyBaseModel.returnList(stu_basic_info.select(stu_basic_info.stuID, 
+        stu_basic_data = pd.DataFrame(MyBaseModel.returnList(stu_basic_info.select(stu_basic_info.stuID,
         stu_basic_info.specialitiesid, stu_basic_info.collegeid, stu_basic_info.state, stu_basic_info.grade
         ).where(stu_basic_info.state != 0, stu_basic_info.state != 3).dicts())).to_dict("report")
 
@@ -96,6 +96,6 @@ class GrowLine(grow_line):
         for college_name in college_list:
             if college_name not in res:
                 res[college_name] = [0] * len(res["date"])
-        
+
         return eval(repr({"status":1, "errorInfo":"", "data":res}))
         #return {"status":1, "errorInfo":"", "data":res}

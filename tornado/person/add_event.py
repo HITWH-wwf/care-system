@@ -31,9 +31,10 @@ class AddEvent(add_event):
         向数据库中插入数据
         """
         try:
-            new_event_message.create(**{"createDate": time, "fromUserId": user_id, "messContent": content, "messTitle": theme, "stuId": stu_id})
-        except:    
-            return {"status":0, "errorInfo":"数据库新增信息失败，请稍候重试"}
+            with db.execution_context():
+                new_event_message.create(**{"createDate": time, "fromUserId": user_id, "messContent": content, "messTitle": theme, "stuId": stu_id})
+        except:
+            raise
+            # return {"status":0, "errorInfo":"数据库新增信息失败，请稍候重试"}
         return {"status":1, "errorInfo":""}
 
-        

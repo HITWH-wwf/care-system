@@ -1,33 +1,39 @@
 from calculate.orm import *
 from datetime import datetime,timedelta
 import numpy as np
+from logConfig import logger,errorMessage
 # from test_orm import *
 def updataStuSleepCount():
+    logger.info('updata stu_sleep_count')
     print('updata stu_sleep_count')
     day = timedelta(days=1)
     nowdate = datetime.today()-day
-    old_count = stu_sleep_count.select()
-    restart = 1  # 用于判断是否要重新更新表
+    with db_data.execution_context():
+        old_count = stu_sleep_count.select()
+    restart = 0  # 用于判断是否要重新更新表
 
     if len(old_count) > 0:
         if nowdate.date() != old_count[0].countDate.date():  # 新的一天
-            query = stu_sleep_count.delete().where(stu_sleep_count.countDate != nowdate)#清空表
-            query.execute()
+            with db_data.execution_context():
+                query = stu_sleep_count.delete().where(stu_sleep_count.countDate != nowdate)#清空表
+                query.execute()
             restart = 1  # 要重新更新
     if len(old_count) == 0 or restart == 1:  # 第一次运行或者新的一天
-        allStuId = stu_basic_info.select(stu_basic_info.stuID)
-        allstu=[]
-        for i in range(len(allStuId)):
-            stu=countSleepDays(allStuId[i].stuID)
-            allstu.append(stu)
-
-        with my_database.atomic():
-            stu_sleep_count.insert_many(allstu).execute()
+        with db_data.execution_context():
+            allStuId = stu_basic_info.select(stu_basic_info.stuID)
+            allstu=[]
+            for i in range(len(allStuId)):
+                stu=countSleepDays(allStuId[i].stuID)
+                allstu.append(stu)
+            with db_data.atomic():
+                stu_sleep_count.insert_many(allstu).execute()
     print('updata stu_sleep_count is ok')
+    logger.info('updata stu_sleep_count is ok')
     return {'status': 1}
 
 def countSleepDays(stuId):
-    nowStuRecord = entry_and_exit.select().where(entry_and_exit.stuID == stuId)
+    with db_data.execution_context():
+        nowStuRecord = entry_and_exit.select().where(entry_and_exit.stuID == stuId)
     disdays=365                 #只统计最近180天的归寝记录
     day=timedelta(days=1)
     endDate = datetime.today()-day  #今天的前一天

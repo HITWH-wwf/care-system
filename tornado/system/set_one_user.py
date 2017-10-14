@@ -49,12 +49,15 @@ class SetOneUser(set_one_user):
         向数据库中更新数据
         """
         data = eval(data)
-        judge = new_users.select().where(new_users.username == data["name"]).aggregate(fn.Count(new_users.username))
+        with db.execution_context():
+            judge = new_users.select().where(new_users.username == data["name"]).aggregate(fn.Count(new_users.username))
         if judge == 0:
             return {"status":0, "errorInfo":"不存在该用户"}
         try:
-            new_users.update(**{"username":data["name"], "description":data["description"], "userteamname":data["userTeamName"], "userrolename":data["roleTeamName"], "userpass":data["passWord"]}).where(new_users.username == data["name"]).execute()
+            with db.execution_context():
+                new_users.update(**{"username":data["name"], "description":data["description"], "userteamname":data["userTeamName"], "userrolename":data["roleTeamName"], "userpass":data["passWord"]}).where(new_users.username == data["name"]).execute()
         except:
-            return {"status":0, "errorInfo":"插入数据库过程中出现错误，请稍候重试"}
-       
+            raise
+            # return {"status":0, "errorInfo":"插入数据库过程中出现错误，请稍候重试"}
+
         return {"status":1, "errorInfo":""}

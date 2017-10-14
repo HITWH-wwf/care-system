@@ -1,25 +1,32 @@
 from calculate.orm import *
 from datetime import datetime,timedelta
 import numpy as np
+from logConfig import logger,errorMessage
+
 def updataStuCostCount():
+    logger.info('updata stu_cost_count')
     print('updata stu_cost_count')
     day = timedelta(days=1)
     nowdate = datetime.today()-day  #昨天
-    old_count = stu_cost_count.select()
+    with db_data.execution_context():
+        old_count = stu_cost_count.select()
     restart = 0  # 用于判断是否要重新更新表
     if len(old_count) > 0:
         if nowdate.date() != old_count[0].countDate.date():  # 判断表里的数据是否是最新的
-            query = stu_cost_count.delete().where(stu_cost_count.countDate != nowdate)#清空表
-            query.execute()
+            with db_data.execution_context():
+                query = stu_cost_count.delete().where(stu_cost_count.countDate != nowdate)#清空表
+                query.execute()
             restart = 1  # 要重新更新
     if len(old_count) == 0 or restart == 1:  # 第一次运行或者新的一天
-        allStuId = stu_basic_info.select(stu_basic_info.stuID)
-        allstu=[]
-        for i in range(len(allStuId)):
-            stu=countCostDays(allStuId[i].stuID)
-            allstu.append(stu)
-        with my_database.atomic():
-            stu_cost_count.insert_many(allstu).execute()
+        with db_data.execution_context():
+            allStuId = stu_basic_info.select(stu_basic_info.stuID)
+            allstu=[]
+            for i in range(len(allStuId)):
+                stu=countCostDays(allStuId[i].stuID)
+                allstu.append(stu)
+            with db_data.atomic():
+                stu_cost_count.insert_many(allstu).execute()
+    logger.info('updata stu_cost_count is ok')
     print('updata stu_cost_count is ok')
     return {'status': 1}
 

@@ -53,11 +53,14 @@ class AddOneUser(add_one_user):
         res, data = self.judgePara(data)
         if res == False:
             return {"status":0, "errorInfo":"返回的data不符合要求"}
-        judge = new_users.select().where(new_users.username == data["name"]).aggregate(fn.Count(new_users.username))
+        with db.execution_context():
+            judge = new_users.select().where(new_users.username == data["name"]).aggregate(fn.Count(new_users.username))
         if judge != 0:
             return {"status":0, "errorInfo":"已经存在相同用户名的用户，请重新命名"}
         try:
-            new_users.create(**{"username":data["name"], "userpass":data["passWord"], "description":data["description"], "userteamname":data["userTeamName"], "userrolename":data["roleTeamName"]})
-        except:    
-            return {"status":0, "errorInfo":"数据库新增信息失败，请稍候重试"}
+            with db.execution_context():
+                new_users.create(**{"username":data["name"], "userpass":data["passWord"], "description":data["description"], "userteamname":data["userTeamName"], "userrolename":data["roleTeamName"]})
+        except:
+            raise
+            # return {"status":0, "errorInfo":"数据库新增信息失败，请稍候重试"}
         return {"status":1, "errorInfo":""}

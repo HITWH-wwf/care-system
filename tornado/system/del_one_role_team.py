@@ -24,10 +24,11 @@ class DelOneRoleTeam(del_one_role_team):
 
     def delMysql(self, role_team_name):
         try:
-            new_user_role.delete().where(new_user_role.userrolename == role_team_name).execute()
+            with db.execution_context():
+                new_user_role.delete().where(new_user_role.userrolename == role_team_name).execute()
         except:
-            return {"status":0, "errorInfo":"删除过程中出错，请稍候重试"}
-        
+            raise
+            # return {"status":0, "errorInfo":"删除过程中出错，请稍候重试"}
+
         return {"status":1, "errorInfo":""}
 
-    

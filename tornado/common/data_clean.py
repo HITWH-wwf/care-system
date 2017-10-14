@@ -71,7 +71,8 @@ class DataClean():
             pd_data = pd.read_excel(io.BytesIO(content), engine='xlrd')
 
         except Exception as e:
-            print(e)
+            # print(e)
+            # raise Exception("文件无法识别，系统只接受excel文件，只录取第一个sheet，且不接受任何合并单元格的操作。请严格按照模板的格式填充")
             return self.set_bad_ans(ans, "文件无法识别，系统只接受excel文件，只录取第一个sheet，且不接受任何合并单元格的操作。请严格按照模板的格式填充")
 
         # 文件列名检测
@@ -103,7 +104,8 @@ class DataClean():
             pd_data = pd.read_excel(io.BytesIO(content), engine='xlrd')
 
         except Exception as e:
-            print(e)
+            # print(e)
+            # raise Exception("文件无法识别，系统只接受excel文件，只录取第一个sheet，且不接受任何合并单元格的操作。请严格按照模板的格式填充")
             return self.set_bad_ans(ans, "文件无法识别，系统只接受excel文件，只录取第一个sheet，且不接受任何合并单元格的操作。请严格按照模板的格式填充")
 
         # 文件列名检测
@@ -148,7 +150,7 @@ class DataClean():
             pd_data = pd.read_excel(io.BytesIO(content), engine='xlrd')
         except:
             return self.set_bad_ans(ans, "文件无法识别，系统只接受excel文件，只录取第一个sheet，且不接受任何合并单元格的操作。请严格按照模板的格式填充")
-
+            # raise Exception("文件无法识别，系统只接受excel文件，只录取第一个sheet，且不接受任何合并单元格的操作。请严格按照模板的格式填充")
         # 文件列名检测
         pd_data.rename(index=str, columns={"学号": "stuID", "姓名":"stuName","班级":"stuClass","考试学期":"examSemester","课程号": "courseID", "课序号": "courseIndex", "课程名": "courseName",
                                            "学分": "credit", "课程属性": "courseKind", "总成绩": "examScore","备注":"remarks","考试时间":"examDate","考查/考试":"examKind"}, inplace=True)
@@ -159,6 +161,7 @@ class DataClean():
         try:
             pd_data["examScore"] = pd_data["examScore"].astype(float)
         except:
+            # raise Exception("考试成绩无法转为数字，存在非法符号，请核对")
             return self.set_bad_ans(ans, "考试成绩无法转为数字，存在非法符号，请核对")
 
         # try:
@@ -173,6 +176,7 @@ class DataClean():
             pd_data["examDate"] = pd_data["examDate"].apply(
                 lambda x: str(x.date()))
         except:
+            # raise Exception("考试时间格式错误，存在非法符号或空，请核对")
             return self.set_bad_ans(ans, "考试时间格式错误，存在非法符号或空，请核对")
 
         # pd_data["repairOrNot"] = pd_data["repairOrNot"].apply(lambda x: str(x).strip())

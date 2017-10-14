@@ -11,8 +11,6 @@ class FocusTable(focus_table):
     def entry(self, response_self):
         body = eval(response_self.request.body)
         user_id = str(body["userId"])
-        print(body)
-        print(response_self.request.body)
         if judgeIfPermiss(user_id = user_id, mode = 1, page = "indexStudents") == False:
             return {"status":0, "errorInfo":"用户没有权限设置"}
         else:
@@ -48,7 +46,7 @@ class FocusTable(focus_table):
             except:
                 return "没有查询到该专业名"
         else:
-            raise ("error mode in funToRecognition")
+            raise Exception("error mode in funToRecognition")
 
     def getData(self, user_name):
         """
@@ -65,13 +63,13 @@ class FocusTable(focus_table):
             one_user["collegeid"] = self.funToRecognition(mode = 0, id = one_user["collegeid"])
             if one_user["state"] == 0:
                 one_user["state"] = "正常"
-            elif one_user["state"] == 1: 
+            elif one_user["state"] == 1:
                 one_user["state"] = "推介关注"
-            elif one_user["state"] == 2: 
+            elif one_user["state"] == 2:
                 one_user["state"] = "重点关注"
-            elif one_user["state"] == 3: 
+            elif one_user["state"] == 3:
                 one_user["state"] = "毕业"
-            else: 
+            else:
                 one_user["state"] = "未知状态"
             stu_basic_data[index] = one_user
         # print(len(stu_basic_data), "in the focus table")

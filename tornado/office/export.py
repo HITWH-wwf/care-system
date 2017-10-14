@@ -45,7 +45,7 @@ class Export(export):
             except:
                 return "没有查询到该专业名"
         else:
-            raise ("error mode in funToRecognition")
+            raise Exception("error mode in funToRecognition")
 
     def getData(self, user_name):
         """
@@ -62,13 +62,13 @@ class Export(export):
             one_user["collegeid"] = self.funToRecognition(mode = 0, id = one_user["collegeid"])
             if one_user["state"] == 0:
                 one_user["state"] = "正常"
-            elif one_user["state"] == 1: 
+            elif one_user["state"] == 1:
                 one_user["state"] = "推介关注"
             elif one_user["state"] == 2:
                 one_user["state"] = "重点关注"
-            elif one_user["state"] == 3: 
+            elif one_user["state"] == 3:
                 one_user["state"] = "毕业"
-            else: 
+            else:
                 one_user["state"] = "未知状态"
             stu_basic_data[index] = one_user
 

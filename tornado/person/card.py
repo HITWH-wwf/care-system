@@ -22,13 +22,12 @@ class PersonCard(person_card):
                 return {"status":0, "errorInfo":"用户没有权限设置"}
             else:
                 result = self.getData(stu_id)
-                print("test in the card")
                 result=json.dumps(result,ensure_ascii=False)
-                print("test in the behind of the card")
                 return result
         except:
             error_info = traceback.format_exc()
             print(error_info)
+            raise
 
     def funAccountToName(self, account):
 
@@ -58,10 +57,11 @@ class PersonCard(person_card):
         "data": [
         ]}
         #获取近7天的所有数据
-        max_date = stu_transaction_record.select(stu_transaction_record.tradingTime).where(stu_transaction_record.stuID == stu_id).aggregate(fn.Max(stu_transaction_record.tradingTime))
-        print(max_date, "in the card of person")
+        with db.execution_context():
+            max_date = stu_transaction_record.select(stu_transaction_record.tradingTime).where(stu_transaction_record.stuID == stu_id).aggregate(fn.Max(stu_transaction_record.tradingTime))
+        # print(max_date)
         if max_date == None:
-            return {"status":0, "errorInfo":"没有数据", "data": data_res}
+            return {"status":1, "errorInfo":"没有数据", "data": data_res}
         day=datetime.timedelta(days = 1)
         last_days=179
         the_time = (max_date.date() - day*last_days)
@@ -71,7 +71,7 @@ class PersonCard(person_card):
 
         data_res['date']=dates
         data_list = MyBaseModel.returnList(stu_transaction_record.select(stu_transaction_record.tradingTime, stu_transaction_record.merchantAccount, stu_transaction_record.turnover, stu_transaction_record.operationType).where(stu_transaction_record.stuID == stu_id, stu_transaction_record.tradingTime >= the_time).dicts())
-        
+
         sum_money=[]
 
         for i in range(last_days+1):

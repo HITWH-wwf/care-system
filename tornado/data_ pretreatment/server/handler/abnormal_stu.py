@@ -5,4 +5,4 @@ class AbnormalStu(object):
         try:
             return getAbnormalStu(startdate,enddate,sleepdays,moneydays,failnum,maxmoney,allstuid)
         except:
-            return {'status': 0, 'errorInfo': "操作出错，请稍候再试", 'data': ''}
+            raise

@@ -28,9 +28,11 @@ class CancelFocus(cancel_focus):
         向数据库中插入数据
         """
         try:
-            data = {"state": 0}
-            stu_focus.delete().where(stu_focus.stuID == stu_id).execute()
-            stu_basic_info.update(**data).where(stu_basic_info.stuID == stu_id).execute()
+            with db.execution_context():
+                data = {"state": 0}
+                stu_focus.delete().where(stu_focus.stuID == stu_id).execute()
+                stu_basic_info.update(**data).where(stu_basic_info.stuID == stu_id).execute()
         except:
-            return {"status":0, "errorInfo":"数据库新增信息失败，请稍候重试"}
+            raise
+            # return {"status":0, "errorInfo":"数据库新增信息失败，请稍候重试"}
         return {"status":1, "errorInfo":""}

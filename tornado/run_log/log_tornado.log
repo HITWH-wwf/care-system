@@ -1,0 +1,155 @@
+[2017-10-14 12:50:32] orm.py WARNING : this mysql username is not root
+[2017-10-14 12:51:17] orm.py WARNING : this mysql username is not root
+[2017-10-14 12:51:29] orm.py WARNING : this mysql username is not root
+[2017-10-14 12:52:33] orm.py WARNING : this mysql username is not root
+[2017-10-14 12:52:33] main.py CRITICAL : [Errno 98] Address already in use
+	file: /home/wwf/care-system-master/tornado/logConfig.py--line: 76--errorfunc: errorMessage()--errorsource: raise error 
+	file: /home/wwf/care-system-master/tornado/main.py--line: 62--errorfunc: <module>()--errorsource: main("duo", app, 6) 
+	file: /home/wwf/care-system-master/tornado/main.py--line: 23--errorfunc: main()--errorsource: http_server.bind(port) 
+	file: /usr/local/lib/python3.5/dist-packages/tornado/tcpserver.py--line: 192--errorfunc: bind()--errorsource: backlog=backlog, reuse_port=reuse_port) 
+	file: /usr/local/lib/python3.5/dist-packages/tornado/netutil.py--line: 197--errorfunc: bind_sockets()--errorsource: sock.bind(sockaddr) 
+
+[2017-10-14 12:54:00] orm.py WARNING : this mysql username is not root
+[2017-10-14 12:54:55] login_if_pass.py INFO : 用户：admin 登录
+[2017-10-14 12:56:11] orm.py WARNING : this mysql username is not root
+[2017-10-14 12:56:11] updata_stu_score_count.py INFO : updata stu_score_count
+[2017-10-14 12:56:23] updata_stu_score_count.py INFO : updata stu_score_count is ok
+[2017-10-14 13:03:36] connectionpool.py INFO : Starting new HTTP connection (1): 127.0.0.1
+[2017-10-14 13:03:51] orm.py WARNING : this mysql username is not root
+[2017-10-14 13:04:00] views.py ERROR : decoding str is not supported
+	file: /home/wwf/care-system-master/tornado/logConfig.py--line: 76--errorfunc: errorMessage()--errorsource: raise error 
+	file: /home/wwf/care-system-master/tornado/views.py--line: 65--errorfunc: diyPost()--errorsource: userID=str(body['userId'],'wu') 
+
+[2017-10-14 13:04:14] views.py ERROR : decoding str is not supported
+	file: /home/wwf/care-system-master/tornado/logConfig.py--line: 76--errorfunc: errorMessage()--errorsource: raise error 
+	file: /home/wwf/care-system-master/tornado/views.py--line: 65--errorfunc: diyPost()--errorsource: userID=str(body['userId'],'wu') 
+
+[2017-10-14 13:04:23] views.py ERROR : decoding str is not supported
+	file: /home/wwf/care-system-master/tornado/logConfig.py--line: 76--errorfunc: errorMessage()--errorsource: raise error 
+	file: /home/wwf/care-system-master/tornado/views.py--line: 65--errorfunc: diyPost()--errorsource: userID=str(body['userId'],'wu') 
+
+[2017-10-14 13:05:12] orm.py WARNING : this mysql username is not root
+[2017-10-14 13:05:15] login_if_pass.py INFO : 用户：admin 登录
+[2017-10-14 13:05:56] views.py ERROR : 'userId'
+	file: /home/wwf/care-system-master/tornado/logConfig.py--line: 76--errorfunc: errorMessage()--errorsource: raise error 
+	file: /home/wwf/care-system-master/tornado/views.py--line: 65--errorfunc: diyPost()--errorsource: userID=str(body['userId']) 
+
+[2017-10-14 13:06:19] views.py ERROR : 'userId'
+	file: /home/wwf/care-system-master/tornado/logConfig.py--line: 76--errorfunc: errorMessage()--errorsource: raise error 
+	file: /home/wwf/care-system-master/tornado/views.py--line: 65--errorfunc: diyPost()--errorsource: userID=str(body['userId']) 
+
+[2017-10-14 13:08:31] views.py ERROR : 'userId'
+	file: /home/wwf/care-system-master/tornado/logConfig.py--line: 76--errorfunc: errorMessage()--errorsource: raise error 
+	file: /home/wwf/care-system-master/tornado/views.py--line: 65--errorfunc: diyPost()--errorsource: userID=str(body['userId']) 
+
+[2017-10-14 13:13:20] views.py ERROR : 'userId'
+	file: /home/wwf/care-system-master/tornado/logConfig.py--line: 76--errorfunc: errorMessage()--errorsource: raise error 
+	file: /home/wwf/care-system-master/tornado/views.py--line: 65--errorfunc: diyPost()--errorsource: userID=str(body['userId']) 
+
+[2017-10-14 13:24:07] orm.py WARNING : this mysql username is not root
+[2017-10-14 13:25:18] views.py ERROR : eval() arg 1 must be a string, bytes or code object
+	file: /home/wwf/care-system-master/tornado/logConfig.py--line: 76--errorfunc: errorMessage()--errorsource: raise error 
+	file: /home/wwf/care-system-master/tornado/views.py--line: 64--errorfunc: diyPost()--errorsource: body = eval(self_request.request) 
+
+[2017-10-14 13:25:55] orm.py WARNING : this mysql username is not root
+[2017-10-14 13:29:41] orm.py WARNING : this mysql username is not root
+[2017-10-14 13:29:46] views.py ERROR : 'CancelFocusHandler' object has no attribute 'get_header'
+	file: /home/wwf/care-system-master/tornado/logConfig.py--line: 76--errorfunc: errorMessage()--errorsource: raise error 
+	file: /home/wwf/care-system-master/tornado/views.py--line: 64--errorfunc: diyPost()--errorsource: print(self_request.get_header('uri')) 
+
+[2017-10-14 13:33:24] orm.py WARNING : this mysql username is not root
+[2017-10-14 13:34:26] orm.py WARNING : this mysql username is not root
+[2017-10-14 13:37:35] orm.py WARNING : this mysql username is not root
+[2017-10-14 13:39:38] orm.py WARNING : this mysql username is not root
+[2017-10-14 13:47:48] login_if_pass.py INFO : 用户：admin 登录
+[2017-10-14 14:04:04] orm.py WARNING this mysql username is not root
+[2017-10-14 14:04:26] orm.py WARNING this mysql username is not root
+[2017-10-14 14:04:26] updata_stu_score_count.py INFO updata stu_score_count
+[2017-10-14 14:04:26] updata_stu_score_count.py INFO updata stu_score_count is ok
+[2017-10-14 14:04:34] views.py INFO user: admin request url: /index/focus-table is successful
+[2017-10-14 14:05:42] orm.py WARNING :this mysql username is not root
+[2017-10-14 14:05:42] updata_stu_score_count.py INFO :updata stu_score_count
+[2017-10-14 14:05:43] updata_stu_score_count.py INFO :updata stu_score_count is ok
+[2017-10-14 14:05:46] orm.py WARNING :this mysql username is not root
+[2017-10-14 14:05:50] views.py INFO :user: admin request url: /person/get-event is successful
+[2017-10-14 14:05:50] views.py INFO :user: admin request url: /person/score is successful
+[2017-10-14 14:05:50] views.py INFO :user: admin request url: /person/static-info is successful
+[2017-10-14 14:05:50] views.py INFO :user: admin request url: /person/trip is successful
+[2017-10-14 14:05:52] views.py INFO :user: admin request url: /person/card is successful
+[2017-10-14 14:06:33] views.py INFO :user: admin request url: /person/add-event is successful
+[2017-10-14 14:06:33] views.py INFO :user: admin request url: /person/get-event is successful
+[2017-10-14 14:06:47] views.py INFO :user: admin request url: /person/add-focus is successful
+[2017-10-14 14:06:47] views.py INFO :user: admin request url: /person/static-info is successful
+[2017-10-14 14:06:56] views.py INFO :user: admin request url: /person/cancel-focus is successful
+[2017-10-14 14:07:10] connectionpool.py INFO :Starting new HTTP connection (1): 127.0.0.1
+[2017-10-14 14:07:12] views.py INFO :user: admin request url: /office/get-abnormal-stu is successful
+[2017-10-14 14:08:39] views.py INFO :user: admin request url: /index/focus-table is successful
+[2017-10-14 14:08:43] views.py INFO :user: admin request url: /person/static-info is successful
+[2017-10-14 14:08:43] views.py INFO :user: admin request url: /person/score is successful
+[2017-10-14 14:08:43] views.py INFO :user: admin request url: /person/get-event is successful
+[2017-10-14 14:08:43] views.py INFO :user: admin request url: /person/trip is successful
+[2017-10-14 14:08:49] views.py ERROR : user: admin request url: /person/add-focus is fail
+	local variable 'newstate' referenced before assignment
+	file: /home/wwf/care-system-master/tornado/logConfig.py--line: 76--errorfunc: errorMessage()--errorsource: raise error 
+	file: /home/wwf/care-system-master/tornado/views.py--line: 75--errorfunc: diyPost()--errorsource: post(self_request) 
+	file: /home/wwf/care-system-master/tornado/views.py--line: 179--errorfunc: post()--errorsource: self.finish(AddFocus().entry(self)) 
+	file: /home/wwf/care-system-master/tornado/person/add_focus.py--line: 28--errorfunc: entry()--errorsource: return self.setData(stu_id, reason, level,sleepInOrOut,studyWithParent) 
+	file: /home/wwf/care-system-master/tornado/person/add_focus.py--line: 42--errorfunc: setData()--errorsource: stu.state=newstate 
+
+[2017-10-14 14:08:52] views.py INFO :user: admin request url: /person/card is successful
+[2017-10-14 14:10:43] views.py INFO :user: admin request url: /index/focus-table is successful
+[2017-10-14 14:13:22] login_if_pass.py INFO :用户：admin 登录
+[2017-10-14 14:13:22] views.py INFO :user: admin request url: /login/if-pass is successful
+[2017-10-14 14:13:27] views.py INFO :user: admin request url: /index/focus-table is successful
+[2017-10-14 14:26:24] orm.py WARNING :this mysql username is not root
+[2017-10-14 14:26:37] login_if_pass.py INFO :用户：admin 登录
+[2017-10-14 14:26:37] views.py INFO :user: admin request url: /login/if-pass is successful
+[2017-10-14 14:26:41] views.py INFO :user: admin request url: /index/focus-table is successful
+[2017-10-14 14:26:44] views.py INFO :user: admin request url: /person/static-info is successful
+[2017-10-14 14:26:44] views.py INFO :user: admin request url: /person/get-event is successful
+[2017-10-14 14:26:44] views.py INFO :user: admin request url: /person/score is successful
+[2017-10-14 14:26:44] views.py INFO :user: admin request url: /person/trip is successful
+[2017-10-14 14:26:56] views.py INFO :user: admin request url: /person/card is successful
+[2017-10-14 14:26:58] views.py ERROR : user: admin request url: /person/add-focus is fail
+	local variable 'newstate' referenced before assignment
+	file: /home/wwf/care-system-master/tornado/logConfig.py--line: 76--errorfunc: errorMessage()--errorsource: raise error 
+	file: /home/wwf/care-system-master/tornado/views.py--line: 75--errorfunc: diyPost()--errorsource: post(self_request) 
+	file: /home/wwf/care-system-master/tornado/views.py--line: 179--errorfunc: post()--errorsource: self.finish(AddFocus().entry(self)) 
+	file: /home/wwf/care-system-master/tornado/person/add_focus.py--line: 28--errorfunc: entry()--errorsource: return self.setData(stu_id, reason, level,sleepInOrOut,studyWithParent) 
+	file: /home/wwf/care-system-master/tornado/person/add_focus.py--line: 43--errorfunc: setData()--errorsource: stu.state=newstate 
+
+[2017-10-14 14:28:05] orm.py WARNING :this mysql username is not root
+[2017-10-14 14:28:30] views.py INFO :user: admin request url: /person/add-focus is successful
+[2017-10-14 14:28:30] views.py INFO :user: admin request url: /person/static-info is successful
+[2017-10-14 14:28:41] views.py INFO :user: admin request url: /index/focus-table is successful
+[2017-10-14 14:29:42] orm.py WARNING :this mysql username is not root
+[2017-10-14 14:30:30] login_if_pass.py INFO :用户：admin 登录
+[2017-10-14 14:30:30] views.py INFO :user: admin request url: /login/if-pass is successful
+[2017-10-14 14:30:34] views.py INFO :user: admin request url: /index/focus-table is successful
+[2017-10-14 14:35:18] orm.py WARNING :this mysql username is not root
+[2017-10-14 14:38:46] orm.py WARNING :this mysql username is not root
+[2017-10-14 14:38:46] updata_stu_score_count.py INFO :updata stu_score_count
+[2017-10-14 14:38:46] updata_stu_score_count.py INFO :updata stu_score_count is ok
+[2017-10-14 14:39:13] login_if_pass.py INFO :用户：admin 登录
+[2017-10-14 14:39:13] views.py INFO :user: admin request url: /login/if-pass is successful
+[2017-10-14 14:39:18] views.py INFO :user: admin request url: /index/focus-table is successful
+[2017-10-14 14:39:28] connectionpool.py INFO :Starting new HTTP connection (1): 127.0.0.1
+[2017-10-14 14:39:28] request.py ERROR : 	name 'getAbnormalStuSleep' is not defined
+	file: /home/wwf/care-system-master/tornado/logConfig.py--line: 76--errorfunc: errorMessage()--errorsource: raise error 
+	file: /home/wwf/care-system-master/tornado/data_ pretreatment/server/request.py--line: 24--errorfunc: diyPost()--errorsource: post(self_request) 
+	file: /home/wwf/care-system-master/tornado/data_ pretreatment/server/request.py--line: 17--errorfunc: is_open()--errorsource: return func(self_request) 
+	file: /home/wwf/care-system-master/tornado/data_ pretreatment/server/request.py--line: 54--errorfunc: post()--errorsource: result=AbnormalStu().entry(startdate,enddate,int(sleepdays),int(moneydays),int(failnum),float(maxmoney),allstuid) 
+	file: /home/wwf/care-system-master/tornado/data_ pretreatment/server/handler/abnormal_stu.py--line: 6--errorfunc: entry()--errorsource: return getAbnormalStu(startdate,enddate,sleepdays,moneydays,failnum,maxmoney,allstuid) 
+	file: /home/wwf/care-system-master/tornado/data_ pretreatment/calculate/get_abnormal_stu.py--line: 12--errorfunc: getAbnormalStu()--errorsource: result.append(getAbnormalStuSleep(startdate,enddate,sleepdays)) 
+
+[2017-10-14 14:39:28] views.py INFO :user: admin request url: /office/get-abnormal-stu is successful
+[2017-10-14 14:39:38] connectionpool.py INFO :Starting new HTTP connection (1): 127.0.0.1
+[2017-10-14 14:39:39] request.py ERROR : 	name 'getAbnormalStuSleep' is not defined
+	file: /home/wwf/care-system-master/tornado/logConfig.py--line: 76--errorfunc: errorMessage()--errorsource: raise error 
+	file: /home/wwf/care-system-master/tornado/data_ pretreatment/server/request.py--line: 24--errorfunc: diyPost()--errorsource: post(self_request) 
+	file: /home/wwf/care-system-master/tornado/data_ pretreatment/server/request.py--line: 17--errorfunc: is_open()--errorsource: return func(self_request) 
+	file: /home/wwf/care-system-master/tornado/data_ pretreatment/server/request.py--line: 54--errorfunc: post()--errorsource: result=AbnormalStu().entry(startdate,enddate,int(sleepdays),int(moneydays),int(failnum),float(maxmoney),allstuid) 
+	file: /home/wwf/care-system-master/tornado/data_ pretreatment/server/handler/abnormal_stu.py--line: 6--errorfunc: entry()--errorsource: return getAbnormalStu(startdate,enddate,sleepdays,moneydays,failnum,maxmoney,allstuid) 
+	file: /home/wwf/care-system-master/tornado/data_ pretreatment/calculate/get_abnormal_stu.py--line: 12--errorfunc: getAbnormalStu()--errorsource: result.append(getAbnormalStuSleep(startdate,enddate,sleepdays)) 
+
+[2017-10-14 14:39:39] views.py INFO :user: admin request url: /office/get-abnormal-stu is successful

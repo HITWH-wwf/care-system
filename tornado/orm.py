@@ -5,27 +5,44 @@ from peewee import SelectQuery, CharField, IntegerField, fn, Model, FloatField, 
 from playhouse.shortcuts import model_to_dict as to_dict
 import playhouse as ph
 from api_define import users
-global my_database
 
+from playhouse.pool import PooledMySQLDatabase
+from logConfig import logger
 
 
 for user in users:
   try:
-    global my_database
-    my_database = MySQLDatabase(host='127.0.0.1', user=user['name'], passwd=user['pwd'], database='school')
-    my_database.connect()
-    break
+      db = PooledMySQLDatabase(
+      database='school',
+      max_connections=4,
+      stale_timeout=3600,  # 1 hour
+      timeout=0,
+      user=user['name'],
+      host='127.0.0.1',
+      passwd=user['pwd'],
+      )
+      with db.execution_context():
+          pass
+      break
   except:
-    print("this mysql username is not "+user['name'])
+      logger.warning("this mysql username is not "+user['name'])
+      print("this mysql username is not "+user['name'])
 
+
+def applyConnect(func):
+    def applyFunc(cls, *args, **kwargs):
+      with db.execution_context():
+        # print('lian jie is ok')
+        return func(cls, *args, **kwargs)
+    return applyFunc
 
 # Model是peewee的基类
 class MyBaseModel(Model):
     class Meta:
-        global my_database
-        database = my_database
+        database = db
 
     @classmethod
+    @applyConnect
     def getOne(cls, *query, **kwargs):
 
         """
@@ -35,9 +52,10 @@ class MyBaseModel(Model):
         try:
             return cls.get(*query, **kwargs)
         except:
-            return None
+            raise
 
     @classmethod
+    @applyConnect
     def returnList(cls, Model=None, key=None):
         """
         将结果返回成一个列表嵌套字典的结构返回
@@ -56,6 +74,7 @@ class MyBaseModel(Model):
         return list
 
     @classmethod
+    @applyConnect
     def returnList2(cls, Model=None, key=None):
         """
         将结果返回成一个列表嵌套字典的结构返回
@@ -263,5 +282,5 @@ class stu_score_count(MyBaseModel):
         db_table = 'stu_score_count'
         primary_key = False
 
-my_database.create_tables([exam_results,stu_focus], safe=True)
+db.create_tables([exam_results,stu_focus,stu_cost_count,stu_score_count,stu_sleep_count], safe=True)
 

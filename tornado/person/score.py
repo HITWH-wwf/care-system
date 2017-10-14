@@ -19,7 +19,8 @@ class PersonScore(person_score):
             else:
                 return self.getData(stu_id)
         except (Exception) as e:
-            print(e, "PersonScore")
+            # print(e, "PersonScore")
+            raise
 
     def getData(self, stu_id):
         """
@@ -46,7 +47,7 @@ class PersonScore(person_score):
                 repairOrNot: "是"//是否重修
             }
         ]
-    } 
+    }
         """
         data_res = {
         "colName": ["课程号", "课序号","课程名" ,"考试成绩","考试时间","备注","学分","课程类型","考试/考察"],
@@ -56,7 +57,7 @@ class PersonScore(person_score):
         #一次获取所有的成绩数据分析并返回结果
 
         exam_data_temp = MyBaseModel.returnList(exam_results.select().where(exam_results.stuID ==stu_id).dicts())
-        print(exam_data_temp)
+        # print(exam_data_temp)
         for recode in exam_data_temp:
             if recode['remarks'] == "":
                 recode['remarks'] = '无'

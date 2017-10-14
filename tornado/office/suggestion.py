@@ -28,7 +28,9 @@ class Suggestion(suggestion):
         """
 
         try:
-            new_feedback.create(**{"createDate":str(datetime.datetime.now()), "info":content, "start": float(start), "userId":user_id})
-        except:    
-            return {"status":0, "errorInfo":"数据库新增信息失败，请稍候重试"}
+            with db.execution_context():
+                new_feedback.create(**{"createDate":str(datetime.datetime.now()), "info":content, "start": float(start), "userId":user_id})
+        except:
+            raise
+            # return {"status":0, "errorInfo":"数据库新增信息失败，请稍候重试"}
         return {"status":1, "errorInfo":""}

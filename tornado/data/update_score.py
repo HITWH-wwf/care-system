@@ -8,7 +8,6 @@ from orm import *
 from common.data_clean import DataClean
 import json
 import datetime
-import traceback
 
 class UpdateScore(update_score):
     """分数更新"""
@@ -27,19 +26,18 @@ class UpdateScore(update_score):
             res = []
             success_create_count = 0
             success_update_count = 0
-            for data in allData["data"]:
-                judge = exam_results.select().where(exam_results.courseIndex == data["courseIndex"], exam_results.courseID == data["courseID"]).aggregate(fn.Count(exam_results.courseID))
-                try:
-                    if judge >= 1:
-                        exam_results.update(**data).where(exam_results.courseIndex == data["courseIndex"], exam_results.courseID == data["courseID"]).execute()
-                        success_update_count += 1
-                    else:
-                        exam_results.create(**data)
-                        success_create_count += 1
-                except:
-                    error_info = traceback.format_exc()
-                    print (error_info)
-                    res.append([data["courseID"], data["courseIndex"]])
+            with db.execution_context():
+                for data in allData["data"]:
+                    judge = exam_results.select().where(exam_results.courseIndex == data["courseIndex"], exam_results.courseID == data["courseID"]).aggregate(fn.Count(exam_results.courseID))
+                    try:
+                        if judge >= 1:
+                            exam_results.update(**data).where(exam_results.courseIndex == data["courseIndex"], exam_results.courseID == data["courseID"]).execute()
+                            success_update_count += 1
+                        else:
+                            exam_results.create(**data)
+                            success_create_count += 1
+                    except:
+                        res.append([data["courseID"], data["courseIndex"]])
             if len(res) == 0:
                 #表示本次全部都导入成功了
                 returndata["status"] = 1

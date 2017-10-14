@@ -1,6 +1,6 @@
 #coding=utf8
 
-import watch_redis
+# import watch_redis
 import orm
 import os
 
@@ -28,4 +28,4 @@ def getTotalClass(mode = 0):
             class_dict[str(class_name)] = 0
         return class_dict
     else:
-        raise ("wrong mode")
+        raise Exception("wrong mode")

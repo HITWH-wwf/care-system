@@ -10,7 +10,7 @@ from index.grow_line import GrowLine
 from login.login_if_pass import LoginIfPass
 from login.login_session import LoginSession
 
-from office.export import Export 
+from office.export import Export
 from office.suggestion import Suggestion
 from office.get_abnormal_stu import GetAbnormalStu
 
@@ -39,19 +39,51 @@ from system.set_one_user_team import SetOneUserTeam
 from system.add_one_user_team import AddOneUserTeam
 from system.add_one_role_team import AddOneRoleTeam
 import tornado.web
-import tornado.ioloop  
+import tornado.ioloop
 import json
 import io
 from data.update_focus import UpdateFocus
 
-from datetime import datetime 
-import json 
-  
-class DateEncoder(json.JSONEncoder): 
-  def default(self, obj): 
-    if isinstance(obj, datetime): 
-      return obj.__str__() 
-    return json.JSONEncoder.default(self, obj) 
+from datetime import datetime
+import json
+import sys
+import traceback
+from logConfig import logger,errorMessage
+
+class DateEncoder(json.JSONEncoder):
+  def default(self, obj):
+    if isinstance(obj, datetime):
+      return obj.__str__()
+    return json.JSONEncoder.default(self, obj)
+
+
+
+def getErrorMessage(post):
+    def diyPost(self_request):
+        try:
+            urlPath = self_request.request.uri
+            body = eval(self_request.request.body)
+            user_id = str(body['data']["userId"])
+        except:
+            try:
+                body = eval(self_request.request.body)
+                user_id = str(body["userId"])
+            except:
+                logger.critical('\n\trequest:%s is not contain userId\n'%urlPath)
+                user_id='null'
+        try:
+            post(self_request)
+            logger.info('user: %s request url: %s is successful'%(user_id,urlPath))
+        except Exception as e:
+            # _, reason, exc_tb = sys.exc_info()
+            # error = traceback.extract_tb(exc_tb)
+            # result = error[len(error) - 1]
+            # message=("file: %s--line: %s--errorfunc: %s()--reason: %s" % (result[0], result[1], result[2], reason))
+            logger.error(errorMessage(e,user_id,urlPath))
+            self_request.finish({"status":0, "errorInfo":"服务器出错，请稍后再试"})
+    return diyPost
+
+
 
 class BaseHandler(tornado.web.RequestHandler):
     def initialize(self):
@@ -63,6 +95,7 @@ class BaseHandler(tornado.web.RequestHandler):
         # self.my_session = Session(self)
 
 class GrowLineHandler(BaseHandler):
+    @getErrorMessage
     def post(self):
         self.finish(GrowLine().entry(self))
 
@@ -75,7 +108,7 @@ class IndexHandler(tornado.web.RequestHandler):
         self.render("index.html")
 
 class GrowBarHandler(BaseHandler):
-
+    @getErrorMessage
     def post(self):
         self.finish(GrowBar().entry(self))
 
@@ -84,31 +117,24 @@ class GrowBarHandler(BaseHandler):
         self.finish()
 
 class FocusTableHandler(BaseHandler):
-
+    @getErrorMessage
     def post(self):
-        try:
-            middledata = FocusTable().entry(self)
+        middledata = FocusTable().entry(self)
             # print(len(middledata["data"]["data"]), len(middledata))
-            middletest = json.dumps(middledata, cls=DateEncoder, ensure_ascii=False)
+        middletest = json.dumps(middledata, cls=DateEncoder, ensure_ascii=False)
             # print(len(middletest))
-            self.finish(middletest)
-        except (Exception) as e:
-            print(e)
+        self.finish(middletest)
 
     def options(self):
         self.set_status(204)
         self.finish()
 
 class StaticInfoHandler(BaseHandler):
-
-    
+    @getErrorMessage
     def post(self):
-        try:
-            middledata = StaticInfo().entry(self)
-            middletest = json.dumps(middledata, cls=DateEncoder, ensure_ascii=False)
-            self.finish(middletest)
-        except (Exception) as e:
-            print(e, " in the StaticInfo")
+        middledata = StaticInfo().entry(self)
+        middletest = json.dumps(middledata, cls=DateEncoder, ensure_ascii=False)
+        self.finish(middletest)
 
     def options(self):
         self.set_status(204)
@@ -116,8 +142,7 @@ class StaticInfoHandler(BaseHandler):
 
 
 class TripHandler(BaseHandler):
-
-
+    @getErrorMessage
     def post(self):
         self.finish(PersonTrip().entry(self))
 
@@ -127,12 +152,9 @@ class TripHandler(BaseHandler):
 
 
 class CardHandler(BaseHandler):
-
+    @getErrorMessage
     def post(self):
-        try:
-            self.finish(PersonCard().entry(self,))
-        except (Exception) as e:
-            print(e, "in the card")
+        self.finish(PersonCard().entry(self,))
 
     def options(self):
         self.set_status(204)
@@ -140,7 +162,7 @@ class CardHandler(BaseHandler):
 
 
 class CancelFocusHandler(BaseHandler):
-
+    @getErrorMessage
     def post(self):
         # userID = self.get_argument("userId")
         # stuID = self.get_argument("stuId")
@@ -152,7 +174,7 @@ class CancelFocusHandler(BaseHandler):
 
 
 class AddFocusHandler(BaseHandler):
-
+    @getErrorMessage
     def post(self):
         self.finish(AddFocus().entry(self))
 
@@ -161,7 +183,7 @@ class AddFocusHandler(BaseHandler):
         self.finish()
 
 class GetEventHandler(BaseHandler):
-
+    @getErrorMessage
     def post(self):
         self.finish(GetEvent().entry(self))
 
@@ -170,7 +192,7 @@ class GetEventHandler(BaseHandler):
         self.finish()
 
 class ScoreHandler(BaseHandler):
-
+    @getErrorMessage
     def post(self):
         self.finish(PersonScore().entry(self))
 
@@ -180,8 +202,7 @@ class ScoreHandler(BaseHandler):
 
 
 class AddEventHandler(BaseHandler):
-
-
+    @getErrorMessage
     def post(self):
         self.finish(AddEvent().entry(self))
 
@@ -190,7 +211,7 @@ class AddEventHandler(BaseHandler):
         self.finish()
 
 class ExportHandler(BaseHandler):
-
+    @getErrorMessage
     def post(self):
         self.finish(Export().entry(self))
 
@@ -200,8 +221,7 @@ class ExportHandler(BaseHandler):
 
 
 class SuggestionHandler(BaseHandler):
-
-
+    @getErrorMessage
     def post(self):
         self.finish(Suggestion().entry(self))
 
@@ -211,7 +231,7 @@ class SuggestionHandler(BaseHandler):
 
 
 class GetTotalUserTeamHandler(BaseHandler):
-
+    @getErrorMessage
     def post(self):
         get_total = GetTotalUserTeam()
         self.finish(get_total.entry(self))
@@ -221,7 +241,7 @@ class GetTotalUserTeamHandler(BaseHandler):
         self.finish()
 
 class GetOneUserTeamHandler(BaseHandler):
-
+    @getErrorMessage
     def post(self):
         self.finish(GetOneUserTeam().entry(self))
 
@@ -230,7 +250,7 @@ class GetOneUserTeamHandler(BaseHandler):
         self.finish()
 
 class SetOneUserTeamHandler(BaseHandler):
-
+    @getErrorMessage
     def post(self):
         self.finish(SetOneUserTeam().entry(self))
 
@@ -239,7 +259,7 @@ class SetOneUserTeamHandler(BaseHandler):
         self.finish()
 
 class DelOneUserTeamHandler(BaseHandler):
-
+    @getErrorMessage
     def post(self):
         self.finish(DelOneUserTeam().entry(self))
 
@@ -248,7 +268,7 @@ class DelOneUserTeamHandler(BaseHandler):
         self.finish()
 
 class GetTotalRoleTeamHandler(BaseHandler):
-
+    @getErrorMessage
     def post(self):
         get_total = GetTotalRoleTeam()
         self.finish(get_total.entry(self))
@@ -258,7 +278,7 @@ class GetTotalRoleTeamHandler(BaseHandler):
         self.finish()
 
 class GetOneRoleTeamHandler(BaseHandler):
-
+    @getErrorMessage
     def post(self):
         self.finish(GetOneRoleTeam().entry(self))
 
@@ -267,8 +287,8 @@ class GetOneRoleTeamHandler(BaseHandler):
         self.finish()
 
 class SetOneRoleTeamHandler(BaseHandler):
-
-    def post(self,):
+    @getErrorMessage
+    def post(self):
         self.finish(SetOneRoleTeam().entry(self))
 
     def options(self):
@@ -276,17 +296,17 @@ class SetOneRoleTeamHandler(BaseHandler):
         self.finish()
 
 class DelOneRoleTeamHandler(BaseHandler):
-
-    def post(self,):
+    @getErrorMessage
+    def post(self):
         self.finish(DelOneRoleTeam().entry(self))
 
     def options(self):
         self.set_status(204)
         self.finish()
-        
-class GetTotalUserHandler(BaseHandler):
 
-    def post(self,):
+class GetTotalUserHandler(BaseHandler):
+    @getErrorMessage
+    def post(self):
         get_total = GetTotalUser()
         self.finish(get_total.entry(self))
 
@@ -295,8 +315,8 @@ class GetTotalUserHandler(BaseHandler):
         self.finish()
 
 class GetOneUserHandler(BaseHandler):
-
-    def post(self,):
+    @getErrorMessage
+    def post(self):
         self.finish(GetOneUser().entry(self))
 
     def options(self):
@@ -304,8 +324,8 @@ class GetOneUserHandler(BaseHandler):
         self.finish()
 
 class SetOneUserHandler(BaseHandler):
-
-    def post(self,):
+    @getErrorMessage
+    def post(self):
         self.finish(SetOneUser().entry(self))
 
     def options(self):
@@ -313,8 +333,8 @@ class SetOneUserHandler(BaseHandler):
         self.finish()
 
 class DelOneUserHandler(BaseHandler):
-
-    def post(self,):
+    @getErrorMessage
+    def post(self):
         self.finish(DelOneUser().entry(self))
 
     def options(self):
@@ -322,7 +342,7 @@ class DelOneUserHandler(BaseHandler):
         self.finish()
 
 class AddOneUserTeamHandler(BaseHandler):
-
+    @getErrorMessage
     def post(self):
         self.finish(AddOneUserTeam().entry(self))
 
@@ -331,7 +351,7 @@ class AddOneUserTeamHandler(BaseHandler):
         self.finish()
 
 class AddOneRoleTeamHandler(BaseHandler):
-
+    @getErrorMessage
     def post(self):
         self.finish(AddOneRoleTeam().entry(self))
 
@@ -340,7 +360,7 @@ class AddOneRoleTeamHandler(BaseHandler):
         self.finish()
 
 class AddOneUserHandler(BaseHandler):
-
+    @getErrorMessage
     def post(self):
         self.finish(AddOneUser().entry(self))
 
@@ -349,7 +369,7 @@ class AddOneUserHandler(BaseHandler):
         self.finish()
 
 class UpdateBasicHandler(BaseHandler):
-
+    @getErrorMessage
     def post(self):
         file = self.request.files['file'][0]
         update = UpdateBasic()
@@ -360,7 +380,7 @@ class UpdateBasicHandler(BaseHandler):
         self.finish()
 
 class UpdateFocusHandler(BaseHandler):
-
+    @getErrorMessage
     def post(self):
         file = self.request.files['file'][0]
         update = UpdateFocus()
@@ -371,7 +391,7 @@ class UpdateFocusHandler(BaseHandler):
         self.finish()
 
 class UpdateScoreHandler(BaseHandler):
-
+    @getErrorMessage
     def post(self):
         file = self.request.files['file'][0]
         update = UpdateScore()
@@ -382,18 +402,16 @@ class UpdateScoreHandler(BaseHandler):
         self.finish()
 
 class LoginIfPassHandler(BaseHandler):
+    @getErrorMessage
     def post(self):
         self.finish(LoginIfPass().entry(self))
 
 class LoginSessionHandler(BaseHandler):
+    @getErrorMessage
     def post(self):
         self.finish(LoginSession().entry(self))
 
 class GetAbnormalStuHandler(BaseHandler):
+    @getErrorMessage
     def post(self):
-        try:
-
-            self.finish(GetAbnormalStu().entry(self))
-        except (Exception) as e:
-            print(e)
-    
+        self.finish(GetAbnormalStu().entry(self))

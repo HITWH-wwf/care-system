@@ -4,6 +4,7 @@ import pandas as pd
 from judge_permission import judgeIfPermiss
 from api_define import grow_bar
 from orm import *
+from logConfig import logger
 
 class GrowBar(grow_bar):
 
@@ -60,14 +61,14 @@ class GrowBar(grow_bar):
             except:
                 return "没有查询到该学生的被关注时间", False
         else:
-            raise ("error mode in funToRecognition")
+            raise Exception("error mode in funToRecognition")
 
     def getData(self, user_name):
         """
         返回数据给前端
         """
         #一次获取所有state非0和3的学生,即：把除去正常和毕业的都拿出来
-        stu_basic_data = pd.DataFrame(MyBaseModel.returnList(stu_basic_info.select(stu_basic_info.stuID, 
+        stu_basic_data = pd.DataFrame(MyBaseModel.returnList(stu_basic_info.select(stu_basic_info.stuID,
         stu_basic_info.specialitiesid, stu_basic_info.collegeid, stu_basic_info.state, stu_basic_info.grade
         ).where(stu_basic_info.state != 0, stu_basic_info.state != 3).dicts())).to_dict("report")
         ifOk = False
@@ -82,7 +83,7 @@ class GrowBar(grow_bar):
                     continue
                 stu_basic_data[index] = one_user
             except:
-                print(one_user, "fail")
+                logger.warning(one_user['stuID'], "GrowBarfail")
 
         res = {}
         data_pd = pd.DataFrame(stu_basic_data)

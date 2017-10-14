@@ -7,7 +7,6 @@ from api_define import update_focus
 from orm import *
 from common.data_clean import DataClean
 import json
-import traceback
 import datetime
 
 class UpdateFocus(update_focus):
@@ -27,28 +26,26 @@ class UpdateFocus(update_focus):
             res = []
             success_create_count = 0
             success_update_count = 0
-            for data in allData["data"]:
-                judge = stu_focus.select().where(stu_focus.stuID == data["stuID"]).aggregate(fn.Count(stu_focus.stuID))
-                data['createDate'] = str(data['createDate'])
-                if str(data['level']) == "重点关注":
-                    data['level'] = 2
-                else:                    
-                    data['level'] = 1
-                try:
-                    if judge >= 1:
-                        stu_focus.update(**data).where(stu_focus.stuID == data["stuID"]).execute()
-                        success_update_count += 1
+            with db.execution_context():
+                for data in allData["data"]:
+                    judge = stu_focus.select().where(stu_focus.stuID == data["stuID"]).aggregate(fn.Count(stu_focus.stuID))
+                    data['createDate'] = str(data['createDate'])
+                    if str(data['level']) == "重点关注":
+                        data['level'] = 2
                     else:
-                        print (data)
-                        stu_focus.create(**data)
-                        success_create_count += 1
-                    stu = stu_basic_info.select().where(stu_basic_info.stuID == stu_id).get()
-                    stu.state = data['level']
-                    stu.save()
-                except:
-                    error_info = traceback.format_exc()
-                    print (error_info)
-                    res.append([data["stuID"]])
+                        data['level'] = 1
+                    try:
+                        if judge >= 1:
+                            stu_focus.update(**data).where(stu_focus.stuID == data["stuID"]).execute()
+                            success_update_count += 1
+                        else:
+                            stu_focus.create(**data)
+                            success_create_count += 1
+                        stu = stu_basic_info.select().where(stu_basic_info.stuID == data["stuID"]).get()
+                        stu.state = data['level']
+                        stu.save()
+                    except:
+                        res.append([data["stuID"]])
             if len(res) == 0:
                 #表示本次全部都导入成功了
                 returndata["status"] = 1

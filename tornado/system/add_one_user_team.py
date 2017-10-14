@@ -48,14 +48,17 @@ class AddOneUserTeam(add_one_user_team):
         res, data = self.judgePara(data)
         if res == False:
             return {"status":0, "errorInfo":"返回的data不符合要求"}
-        judge = new_user_team.select().where(new_user_team.userteamname == data["name"]).aggregate(fn.Count(new_user_team.userteamname))
+        with db.execution_context():
+            judge = new_user_team.select().where(new_user_team.userteamname == data["name"]).aggregate(fn.Count(new_user_team.userteamname))
         if judge != 0:
             return {"status":0, "errorInfo":"已经存在相同名称的用户组，请重新命名"}
         if res == False:
             return {"status":0, "errorInfo":"返回的data不符合要求"}
         try:
-            permission = getTotalClass(mode = 1)
-            new_user_team.create(**{"userteamname":data["name"], "description":data["description"], "permission": str(permission)})
-        except:    
-            return {"status":0, "errorInfo":"数据库新增信息失败，请稍候重试"}
+            with db.execution_context():
+                permission = getTotalClass(mode = 1)
+                new_user_team.create(**{"userteamname":data["name"], "description":data["description"], "permission": str(permission)})
+        except:
+            raise
+            # return {"status":0, "errorInfo":"数据库新增信息失败，请稍候重试"}
         return {"status":1, "errorInfo":""}

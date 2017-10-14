@@ -5,8 +5,8 @@ sys.path.append("..")
 
 import redis
 import orm
-import watch_redis
-m_redis = watch_redis.m_redis
+# import watch_redis
+# m_redis = watch_redis.m_redis
 from get_total_class import getTotalClass
 
 def getIdFromRoleTeam(page):

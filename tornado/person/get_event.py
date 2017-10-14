@@ -18,7 +18,8 @@ class GetEvent(get_event):
             else:
                 return self.getData(stu_id)
         except (Exception) as e:
-            print(e, "GetEvent")
+            # print(e, "GetEvent")
+            raise
 
     def getData(self, stu_id):
         """
@@ -61,6 +62,6 @@ class GetEvent(get_event):
             "propName": ["createDate", "messTitle", "messContent", "fromUserId"],
             "data":stu_basic_data
         }
-        
+
         return {"status":1, "errorInfo":"", "data":data_res}
 
