@@ -1,8 +1,13 @@
 import logging
 import sys,traceback
 import logging.config
+import cloghandler
+import platform
 import os
-
+if 'Windows' in platform.system():
+    class_str  = 'logging.handlers.RotatingFileHandler'
+else:
+    class_str  = 'cloghandler.ConcurrentRotatingFileHandler'
 """
 使用前需先安装：ConcurrentLogHandler
         pip install ConcurrentLogHandler
@@ -48,7 +53,7 @@ logging.config.dictConfig({
         'file': {
             'level': 'INFO',
             # 如果没有使用并发的日志处理类，在多实例的情况下日志会出现缺失
-            'class': 'cloghandler.ConcurrentRotatingFileHandler',
+            'class': class_str,
             # 当达到10MB时分割日志
             'maxBytes': 1024 * 1024 * 10,
             'backupCount': 5,

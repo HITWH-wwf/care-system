@@ -10,11 +10,16 @@ import views
 import urls
 import subprocess
 import time
+import platform
+if 'Windows' in platform.system():
+    start_mathod  = 'dan'
+else:
+    start_mathod  = 'duo'
 from multiprocessing import Manager, freeze_support
 from logConfig import logger,errorMessage
 port = 8006
 
-def main(first, app, num = 1):
+def main(first, app, num = 10):
     if str(first) == 'duo':
         freeze_support()
         print ("duo")
@@ -24,6 +29,8 @@ def main(first, app, num = 1):
         http_server.start(num_processes = num) # tornado将按照cpu核数来fork进程
         tornado.ioloop.IOLoop.instance().start()
     elif str(first) == 'dan':
+        #http_server = tornado.httpserver.HTTPServer(app)
+        #http_server.listen(port)
         app.listen(port)
         print ("dan")
         print ("Starting development server at http://127.0.0.1:" + str(port) )
@@ -56,16 +63,16 @@ def kill_port_used(port):
 
 if __name__ == "__main__":
     app = urls.application
-    #kill_port_used(port)
-    try:
-        # main("dan", app)
-        main("duo", app, 6)
-    except Exception as e:
-        # _, reason, exc_tb = sys.exc_info()
-        # error = traceback.extract_tb(exc_tb)
-        # result = error[len(error) - 1]
-        # message = ("file: %s--line: %s--errorfunc: %s()--reason: %s" % (result[0], result[1], result[2], reason))
-        logger.critical(errorMessage(e))
-        kill_port_used(port)
-        time.sleep(1)
-        main("dan", app)
+    kill_port_used(port)
+    #try:
+    main(start_mathod, app)
+        # main("duo", app, 6)
+    # except Exception as e:
+    #     # _, reason, exc_tb = sys.exc_info()
+    #     # error = traceback.extract_tb(exc_tb)
+    #     # result = error[len(error) - 1]
+    #     # message = ("file: %s--line: %s--errorfunc: %s()--reason: %s" % (result[0], result[1], result[2], reason))
+    #     logger.critical(errorMessage(e))
+    #     kill_port_used(port)
+    #     time.sleep(1)
+    #     main("dan", app)
