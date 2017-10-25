@@ -29,7 +29,7 @@
                 </div>
             </div> -->
             
-        <footer>版权所有&copy;哈工大威海</footer>    
+        <footer>《版权所有&copy;哈工大威海</footer>    
     </div>
 
 </template>

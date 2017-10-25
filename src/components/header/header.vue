@@ -16,9 +16,11 @@
           <el-dropdown-item command="indexStudents" v-if="$store.state.pagePower['indexStudents']">
             {{$store.state.pageName['indexStudents']}}
           </el-dropdown-item>
+          <!--
           <el-dropdown-item command="person" v-if="$store.state.pagePower['person']">
             {{$store.state.pageName['person']}}
           </el-dropdown-item>
+          -->
         </el-dropdown-menu>
       </el-dropdown>
     </el-col>
@@ -70,7 +72,7 @@
           </el-dropdown-item>
           <el-dropdown-item command="dataUpdateFocus" v-if="$store.state.pagePower['dataUpdateFocus']">重点关注数据增量导入
           </el-dropdown-item>
-          
+
         </el-dropdown-menu>
       </el-dropdown>
     </el-col>
@@ -126,6 +128,7 @@
       },
       handleCommand1() {
         this.$store.commit('delUserId')
+        localStorage.clear()
         location.reload()
       },
       getElDropdownSpan(mode) {

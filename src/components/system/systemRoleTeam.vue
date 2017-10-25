@@ -25,7 +25,7 @@
                         </el-table-column>
                     </template>
                     <el-table-column label="操作" align='center'>
-                        <template scope="scope">
+                        <template slot-scope="scope">
                             <el-row>
                                 <el-col :span="2" :offset="2">
                                     <el-tooltip content="更改权限" placement="left-start" effect="light" :enterable="false" :open-delay="400" transition="el-zoom-in-center">
@@ -76,7 +76,7 @@
                         </el-row>
                     </span>
                 </el-dialog>
-    
+
                 <el-dialog title="添加一个角色组" :visible.sync="addEventDialogFormVisible" size='tiny'>
                     <el-row>
                         <el-col :span="20" :offset="2">
@@ -101,7 +101,7 @@
                         </el-row>
                     </div>
                 </el-dialog>
-    
+
             </el-col>
         </el-row>
     </div>

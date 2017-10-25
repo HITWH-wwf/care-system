@@ -25,7 +25,7 @@
             </el-table-column>
             <el-table-column :prop="tableInfoShow['propName'][index]" :label="item" :key="item.key" v-else
                              align='center'>
-              <template scope="scope">
+              <template slot-scope="scope">
                 <el-tag :color="tableRowStyle(scope.row)" close-transition>{{scope.row.state}}</el-tag>
               </template>
             </el-table-column>

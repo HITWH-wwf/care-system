@@ -31,19 +31,20 @@ let routes = [
     path: '/home',
     name: 'Home',
     component: Home,
+    meta: {requiresAuth: true},
     children: [
-            { path: '/indexMajor', component: IndexMajor, name: store['indexMajor'] },
-            { path: '/indexStudents', component: indexStudents, name: store['indexStudents'] },
-            { path: '/person', component: person, name: store['person'] },
-            { path: '/officeDataExpore', component: officeDataExpore, name: store['officeDataExpore'] },
-            { path: '/systemUserTeam', component: systemUserTeam, name: store['systemUserTeam'] },
-            { path: '/systemRoleTeam', component: systemRoleTeam, name: store['systemRoleTeam'] },
-            { path: '/systemUsers', component: systemUsers, name: store['systemUsers'] },
-            { path: '/officeSuggestions', component: officeSuggestions, name: store['officeSuggestions'] },
-            { path: '/dataUpdateBasic', component: dataUpdateBasic, name: store['dataUpdateBasic'] },
-            { path: '/dataUpdateScore', component: dataUpdateScore, name: store['dataUpdateScore'] },
-            { path: '/dataFilter', component: dataFilter, name: store['dataFilter'] },
-            { path: '/dataUpdateFocus', component: dataUpdateFocus, name: store['dataUpdateFocus'] }
+            { path: '/indexMajor', component: IndexMajor, name: store['indexMajor'], meta: { requiresAuth: true } },
+            { path: '/indexStudents', component: indexStudents, name: store['indexStudents'], meta: { requiresAuth: true } },
+            { path: '/person', component: person, name: store['person'], meta: { requiresAuth: true } },
+            { path: '/officeDataExpore', component: officeDataExpore, name: store['officeDataExpore'], meta: { requiresAuth: true } },
+            { path: '/systemUserTeam', component: systemUserTeam, name: store['systemUserTeam'], meta: { requiresAuth: true } },
+            { path: '/systemRoleTeam', component: systemRoleTeam, name: store['systemRoleTeam'], meta: { requiresAuth: true } },
+            { path: '/systemUsers', component: systemUsers, name: store['systemUsers'], meta: { requiresAuth: true } },
+            { path: '/officeSuggestions', component: officeSuggestions, name: store['officeSuggestions'], meta: { requiresAuth: true } },
+            { path: '/dataUpdateBasic', component: dataUpdateBasic, name: store['dataUpdateBasic'], meta: { requiresAuth: true } },
+            { path: '/dataUpdateScore', component: dataUpdateScore, name: store['dataUpdateScore'], meta: { requiresAuth: true } },
+            { path: '/dataFilter', component: dataFilter, name: store['dataFilter'], meta: { requiresAuth: true } },
+            { path: '/dataUpdateFocus', component: dataUpdateFocus, name: store['dataUpdateFocus'], meta: { requiresAuth: true } }
         ]
   }
 ]

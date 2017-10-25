@@ -32,85 +32,49 @@ router.beforeEach((to, from, next) => {
     store.commit("delUserId");
   }
   let user = store.state.userid
-  if (user == "" && to.path != '/login') {
-    next({ path: '/login' })
-  } else {
-    switch(to.path){
-      case '/indexMajor':
-        if(store.state.pagePower['indexMajor'] != true){
-          next({path: '/login'});
-        }
-        break;
-
-      case '/indexStudents':
-        if(store.state.pagePower['indexStudents'] != true){
-          next({path: '/login'});
-        }
-        break;
-
-      case '/person':
-        if(store.state.pagePower['person'] != true){
-          next({path: '/login'});
-        }
-        break;
-
-      case '/officeDataExpore':
-        if(store.state.pagePower['officeDataExpore'] != true){
-          next({path: '/login'});
-        }
-        break;
-
-      case '/officeSuggestions':
-        if(store.state.pagePower['officeSuggestions'] != true){
-          next({path: '/login'});
-        }
-        break;
-
-      case '/systemUserTeam':
-        if(store.state.pagePower['systemUserTeam'] != true){
-          next({path: '/login'});
-        }
-        break;
-
-      case '/systemUsers':
-        if(store.state.pagePower['systemUsers'] != true){
-          next({path: '/login'});
-        }
-        break;
-
-      case '/systemRoleTeam':
-        if(store.state.pagePower['systemRoleTeam'] != true){
-          next({path: '/login'});
-        }
-        break;
-
-      case '/dataUpdateBasic':
-        if(store.state.pagePower['dataUpdateBasic'] != true){
-          next({path: '/login'});
-        }
-        break;
-
-      case '/dataUpdateScore':
-        if(store.state.pagePower['dataUpdateScore'] != true){
-          next({path: '/login'});
-        }
-        break;
-
-      case '/dataFilter':
-        if(store.state.pagePower['dataFilter'] != true){
-          next({path: '/login'});
-        }
-        break;
-    
-      case '/dataUpdateFocus':
-        if(store.state.pagePower['dataUpdateFocus'] != true){
-          next({path: '/login'});
-        }
-        break;
+  if (to.meta.requiresAuth) {
+    if (!isLogin(localStorage.userid)) {
+      next({
+        path: '/login',
+        query: {redirect: to.fullPath}
+      })
+    } else {
+      next()
     }
-     next()
+  }
+  else {
+    next()
   }
 })
+
+function isLogin(userid) {
+  if (store.state.userid != '') {
+    return true
+  }
+  else {
+    if (!localStorage.userid) {
+      return false
+    }
+    else {
+      store.commit('setUserId', {"userid": userid})
+      store.commit('setPagePower', {
+        datafilter: 1,
+        dataupdatebasic: 1,
+        dataupdatefocus: 1,
+        dataupdatescore: 1,
+        indexmajor: 1,
+        indexstudents: 1,
+        officedataexpore: 1,
+        officesuggestions: 1,
+        person: 1,
+        systemroleteam: 1,
+        systemusers: 1,
+        systemuserteam: 1,
+      })
+      return true
+    }
+  }
+}
 
 /* eslint-disable no-new */
 new Vue({
@@ -118,5 +82,5 @@ new Vue({
   router,
   store,
   template: '<App/>',
-  components: { App }
+  components: {App}
 })

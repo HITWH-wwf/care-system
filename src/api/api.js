@@ -416,22 +416,22 @@ export const officeDataExpore = (userid) => {
 
 //json转成excel导出的函数
 export const JSONToExcelConvertor = (JSONData, FileName, ShowLabel) => {
-    //先转化json  
+    //先转化json
     var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
 
     var excel = '<table>';
 
-    //设置表头  
+    //设置表头
     var row = "<tr>";
     for (var i = 0, l = ShowLabel.length; i < l; i++) {
         row += "<td>" + ShowLabel[i] + '</td>';
     }
 
 
-    //换行  
+    //换行
     excel += row + "</tr>";
 
-    //设置数据  
+    //设置数据
     for (var i = 0; i < arrData.length; i++) {
         var row = "<tr>";
 
@@ -736,7 +736,7 @@ export const systemSetOneRoleTeam = (userid, roleTeamName, data) => {
         "systemUserTeam": 0, //用户组权限设定页
         "systemRoleTeam": 0, //角色组权限设定页
         "systemUsers": 0 //用户设定页
-    } 
+    }
     */
     var p = new Promise(function (resolve, reject) {
         myAxios.post(systemSetOneRoleTeamUrl, { userId: userid, roleTeamName: roleTeamName, data: data }, { headers: { 'Content-Type': 'application/json' } }).then(
@@ -850,7 +850,7 @@ export const systemDelOneUser = (userid, userName) => {
         )
     })
     return p
-    /*     
+    /*
         return {
             status: 1,//1表示成功，0表示失败
             errorInfo: "用户没有权限删除"//status为0时，前端展示errorinfo
@@ -878,7 +878,7 @@ export const systemSetOneUser = (userid, name, data) => {
         )
     })
     return p
-    /* 
+    /*
         return {
             status: 1,//1表示成功，0表示失败
             errorInfo: "该用户没有权限"//status为0时，前端展示errorinfo
@@ -928,7 +928,7 @@ export const officeSuggestions = (userid, content, start) => {
     return p
     /* return {
         status: 1,//1表示成功，0表示失败
-        errorInfo: "该用户没有权限"//status为0时，前端展示errorinfo     
+        errorInfo: "该用户没有权限"//status为0时，前端展示errorinfo
     } */
 }
 
@@ -950,14 +950,14 @@ export const dataGetModeScore = () => {
 
 //函数获得学生成绩信息导入后，系统返回的无法插入的数据，转成excel下载
 export const dataGetScoreFailed = (data) => {
-    JSONToExcelConvertor(data, "学生关怀系统--成绩导入失败的课程号与课序号", ["导入失败的课程号", "导入失败的课序号"])
+    JSONToExcelConvertor(data, "学生关怀系统--成绩导入失败的课程号与课序号", ["学号","导入失败的课程号", "导入失败的课序号"])
 }
 
 //获得重点关注数据模板下载
 export const dataGetModeFocus = () => {
         return { "学号": "stuID", "班号": "stuClassNumber", "姓名": "stuName", "性别": "sex", "民族": "nationality", "政治面貌": "politicalLandscape", "学历": "stuEducation", "身份证号": "idNumber", "公寓号": "apartmentNumber", "寝室号": "dormitoryNumber", "毕业高中": "graduatedHighSchool", "学生手机号": "stuMobileNumber", "家庭地址": "homeAddress", "父亲姓名": "fatherName", "父亲工作单位": "fatherWorkUnit", "父亲联系方式": "fatherMobileNumber", "母亲姓名": "motherName", "母亲工作单位": "motherWorkUnit", "母亲联系方式": "motherMobileNumber" }
     }
-    
+
 //函数获得煮点关注信息导入后，系统返回的无法插入的数据，转成excel下载
 export const dataGetFocusFailed = (data) => {
     JSONToExcelConvertor(data, "学生关怀系统--重点关注信息导入失败的学号", ["导入失败的学号"])

@@ -24,7 +24,7 @@
                   <i :class="cancelFocusClass" @click="cancelFocusDialogVisible = true" @mousemove="changeIcon(0, 'cancelFocusClass')" @mouseout="changeIcon(1, 'cancelFocusClass')" style="padding-top: 6px;"></i>
                 </el-tooltip>
                 <div style="margin-left:30px"></div>
-                <el-tooltip effect="light" content="添加关注" :enterable="false" :open-delay="300" placement="top">
+                <el-tooltip effect="light" v-if="!((this.stuFocusInfo['focusLevel']!='正常')&&(this.stuFocusInfo['focusLevel']!='毕业'))" content="添加关注" :enterable="false" :open-delay="300" placement="top">
                   <i :class="addFocusClass" @click="addFocusDialogVisible = true" @mousemove="changeIcon(0, 'addFocusClass')" @mouseout="changeIcon(1, 'addFocusClass')" style="padding-top: 6px;"></i>
                 </el-tooltip>
               </div>
@@ -483,6 +483,12 @@ export default {
               type: 'success'
             })
             this.cancelFocusDialogVisible = false
+            let that = this
+            getPersonBasicInfo(this.$store.state.userid, this.$store.state.stuid).then((data) => {
+              that.stuBicTotalData = data
+              that.stuBicData = that.stuBicTotalData['basicInfo']
+              that.stuFocusInfo = that.stuBicTotalData['focusInfo']
+            })
           } else {
             this.$notify({
               title: '操作失败',
@@ -648,6 +654,9 @@ export default {
         that.myChartScorePie.resize()
       }
     }
+    if (this.$store.state.stuid=='') {
+      this.$store.state.stuid = localStorage.stuID
+    }
     getPersonBasicInfo(this.$store.state.userid, this.$store.state.stuid).then((data) => {
       that.stuBicTotalData = data
       that.stuBicData = that.stuBicTotalData['basicInfo']
@@ -681,7 +690,7 @@ export default {
       }
       that.myChartTripPie = that.drawPersonalTripPie(that.stuTrip)
     })
-
+    
     //画一卡通消费统计部分
     getPersonCardInfo(this.$store.state.userid, this.$store.state.stuid).then((data) => {
       that.stuCard = data['data']

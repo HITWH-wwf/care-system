@@ -25,7 +25,7 @@
                         </el-table-column>
                     </template>
                     <el-table-column label="操作" align='center'>
-                        <template scope="scope">
+                        <template slot-scope="scope">
                             <el-row>
                                 <el-col :span="2" :offset="2">
                                     <el-tooltip content="更改内容" placement="left-start" effect="light" :enterable="false" :open-delay="400" transition="el-zoom-in-center">

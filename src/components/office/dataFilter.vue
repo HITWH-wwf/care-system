@@ -4,7 +4,7 @@
 		<el-col style="margin-top:50px" :span="18" :offset="3">
 		  <h1>选择筛选条件</h1>
 		  <el-checkbox-group v-model="checkList" @change="changeOptions">
-		  	<el-checkbox v-for="item in events" :label="item.value">{{item.name}}</el-checkbox>
+		  	<el-checkbox v-for="item in events" :key="item.key" :label="item.value">{{item.name}}</el-checkbox>
 		  </el-checkbox-group>
 		</el-col>
 	</el-row>
@@ -22,10 +22,10 @@
 							一卡通消费
 						</div>
 						<div class="opt-right">
-							<span style="width:20%; display: inline-block;">日消费额</span> >= 
+							<span style="width:20%; display: inline-block;">日消费额</span> >=
 							<el-input v-model="selectData.card.consume"style="width:60px;margin-left: 10px;" size="mini"></el-input>
 
-							<span style="width:20%; display: inline-block; margin-left:60px;">超额次数</span> >= 
+							<span style="width:20%; display: inline-block; margin-left:60px;">超额次数</span> >=
 							<el-input v-model="selectData.card.number"style="width:60px;margin-left: 10px;" size="mini"></el-input>
 
 						</div>
@@ -35,7 +35,7 @@
 							归寝统计
 						</div>
 						<div class="opt-right">
-							<span style="width:20%; display: inline-block;">异常归寝次数</span> >= 
+							<span style="width:20%; display: inline-block;">异常归寝次数</span> >=
 							<el-input v-model="selectData.days" style="width:60px;margin-left: 10px;" size="mini"></el-input>
 						</div>
 					</div>
@@ -44,7 +44,7 @@
 							不及格科目
 						</div>
 						<div class="opt-right">
-							<span style="width:20%; display: inline-block;">补考不及格科目数量</span> >= 
+							<span style="width:20%; display: inline-block;">补考不及格科目数量</span> >=
 							<el-input v-model="selectData.sbjNumber" style="width:60px;margin-left: 10px;" size="mini"></el-input>
 						</div>
 					</div>
@@ -53,7 +53,7 @@
 					<el-button type="primary" class="btn" @click="sub">提 交</el-button>
 				</div>
 			</div>
-		</el-col>	
+		</el-col>
 	</el-row>
     <el-row style="margin-top:30px">
         <el-col :span="22" :offset="1">
@@ -62,13 +62,13 @@
                     <el-table-column :prop="tableInfoShow['propName'][index]" :label="item" :key="item.key" v-if="tableInfoShow['propName'][index]!='state'" align='center'>
                     </el-table-column>
                     <el-table-column :prop="tableInfoShow['propName'][index]" :label="item" :key="item.key" v-else align='center'>
-                        <template scope="scope">
+                        <template slot-scope="scope">
                             <el-tag :color="tableRowStyle(scope.row)" close-transition>{{scope.row.state}}</el-tag>
                         </template>
                     </el-table-column>
                 </template>
                 <el-table-column label="操作" align='center'>
-                    <template scope="scope">
+                    <template slot-scope="scope">
                         <i class="hoverPoint" v-run="register(scope.$index)" :class="iconClassMouseOut" @click="handleEdit(scope.$index, scope.row)" @mousemove="changeIcon(0, scope.$index)" @mouseout="changeIcon(1, scope.$index)"></i>
                     </template>
                 </el-table-column>
@@ -129,7 +129,7 @@
 						sbjNumber:''
 					}
 				};
-			}, 
+			},
 			register:function(index) {
 	            return (el) => {
 	                this.elements["icon" + index] = el;
@@ -225,7 +225,7 @@
 		float: right;
 		font-size: 16px;
 		margin:5px 40px 5px auto;
-	}	
+	}
 	.hoverPoint{
 	    cursor: pointer;
 	}
