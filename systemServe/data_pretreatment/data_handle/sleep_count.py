@@ -108,12 +108,12 @@ def sleepCount(stuId):
 
         if entryMaxRecord['entryDate']>exitMaxRecord['exitDate'] and compareTime(entryMaxRecord['entryDate'],fixedReturnStart):
             oneFixedRecord['fixed3']=1
-            oneFixedRecord['inMaxId3']=entryMaxRecord['entryDate']
-            oneFixedRecord['outMaxId3']=exitMaxRecord['exitDate']
+            oneFixedRecord['inMaxId3']=entryMaxRecord['id']
+            oneFixedRecord['outMaxId3']=exitMaxRecord['id']
         elif exitMaxRecord['exitDate']>entryMaxRecord['entryDate'] and compareTime(nextEntryMinRecord['entryDate'],fixedReturnEnd)==0:
             oneFixedRecord['fixed3'] = 1
-            oneFixedRecord['inMaxId3'] = nextEntryMinRecord['entryDate']
-            oneFixedRecord['outMaxId3'] = exitMaxRecord['exitDate']
+            oneFixedRecord['inMaxId3'] = nextEntryMinRecord['id']
+            oneFixedRecord['outMaxId3'] = exitMaxRecord['id']
 
         freeQueryCount.append(oneFreeRecord)
         fixedQueryCount.append(oneFixedRecord)

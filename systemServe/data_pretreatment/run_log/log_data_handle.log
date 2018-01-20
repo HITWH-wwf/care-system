@@ -1,22 +1,248 @@
-[2018-01-17 15:36:00] data_orm.py WARNING :this mysql username is not root
-[2018-01-17 15:39:18] data_orm.py WARNING :this mysql username is not root
-[2018-01-17 15:39:18] Main.py INFO :开始第一次初始化数据统计
-[2018-01-17 15:39:18] updata_all_count.py INFO :start updata all count table
-[2018-01-17 15:39:18] updata_all_count.py INFO :start delete data
-[2018-01-17 15:39:24] updata_all_count.py INFO :finish delete data
-[2018-01-17 15:39:24] updata_stu_sleep_count.py INFO :start updata stu_sleep_count
-[2018-01-17 15:39:24] updata_stu_sleep_count.py INFO :updata stu_sleep_count is ok
-[2018-01-17 15:39:24] updata_stu_cost_count.py INFO :start updata stu_cost_count
-[2018-01-17 15:39:25] updata_stu_cost_count.py INFO :updata stu_cost_count is ok
-[2018-01-17 15:39:25] updata_stu_score_count.py INFO :start updata stu_score_count
-[2018-01-17 15:39:25] updata_stu_score_count.py INFO :updata stu_score_count is ok
-[2018-01-17 15:39:25] updata_all_count.py INFO :finish updata all count table
-[2018-01-17 15:39:25] Main.py INFO :第一次初始化数据统计完成
-[2018-01-17 15:40:43] data_orm.py WARNING :this mysql username is not root
-[2018-01-17 15:40:43] Main.py INFO :开始第一次初始化数据统计
-[2018-01-17 15:40:43] updata_all_count.py INFO :start updata all count table
-[2018-01-17 15:40:43] updata_all_count.py INFO :start delete data
-[2018-01-17 15:40:56] data_orm.py WARNING :this mysql username is not root
-[2018-01-17 15:41:01] data_orm.py WARNING :this mysql username is not root
-[2018-01-17 15:41:06] data_orm.py WARNING :this mysql username is not root
-[2018-01-17 15:41:23] data_orm.py WARNING :this mysql username is not root
+[2018-01-17 19:59:07] data_orm.py WARNING :this mysql username is not root
+[2018-01-17 19:59:07] Main.py INFO :开始第一次初始化数据统计
+[2018-01-17 19:59:07] updata_all_count.py INFO :start updata all count table
+[2018-01-17 19:59:07] updata_all_count.py INFO :start delete data
+[2018-01-17 20:01:03] updata_all_count.py INFO :finish delete data
+[2018-01-17 20:01:03] updata_stu_sleep_count.py INFO :start updata stu_sleep_count
+[2018-01-17 20:01:03] updata_stu_sleep_count.py INFO :0
+[2018-01-17 20:01:05] updata_all_count.py INFO :updata stu_sleep_count fail
+[2018-01-17 20:01:05] updata_all_count.py CRITICAL : 	float() argument must be a string or a number, not 'datetime.datetime'
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/logConfig.py--line: 81--errorfunc: errorMessage()--errorsource: raise error 
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/data_handle/updata_all_count.py--line: 29--errorfunc: updataAllCount()--errorsource: updataStuSleepCount() 
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/data_handle/updata_stu_sleep_count.py--line: 34--errorfunc: updataStuSleepCount()--errorsource: stu=sleepCount(allStuId[i].stuID) 
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/data_handle/sleep_count.py--line: 46--errorfunc: sleepCount()--errorsource: exitMax = stuDf.loc[stuExit.idxmax()].to_dict() 
+	file: /usr/local/lib/python3.5/dist-packages/pandas/core/series.py--line: 1274--errorfunc: idxmax()--errorsource: i = nanops.nanargmax(_values_from_object(self), skipna=skipna) 
+	file: /usr/local/lib/python3.5/dist-packages/pandas/core/nanops.py--line: 458--errorfunc: nanargmax()--errorsource: isfinite=True) 
+	file: /usr/local/lib/python3.5/dist-packages/pandas/core/nanops.py--line: 177--errorfunc: _get_values()--errorsource: mask = _isfinite(values) 
+	file: /usr/local/lib/python3.5/dist-packages/pandas/core/nanops.py--line: 220--errorfunc: _isfinite()--errorsource: return ~np.isfinite(values.astype('float64')) 
+
+[2018-01-17 20:01:05] updata_stu_cost_count.py INFO :start updata stu_cost_count
+[2018-01-17 20:01:12] updata_stu_cost_count.py INFO :updata stu_cost_count is ok
+[2018-01-17 20:01:12] updata_stu_score_count.py INFO :start updata stu_score_count
+[2018-01-17 20:01:13] updata_stu_score_count.py INFO :updata stu_score_count is ok
+[2018-01-17 20:01:13] updata_all_count.py INFO :finish updata all count table
+[2018-01-17 20:01:13] Main.py INFO :第一次初始化数据统计完成
+[2018-01-17 20:03:14] data_orm.py WARNING :this mysql username is not root
+[2018-01-18 14:28:26] data_orm.py WARNING :this mysql username is not root
+[2018-01-18 14:28:26] Main.py INFO :开始第一次初始化数据统计
+[2018-01-18 14:28:26] updata_all_count.py INFO :start updata all count table
+[2018-01-18 14:28:26] updata_all_count.py INFO :start delete data
+[2018-01-18 14:29:34] updata_all_count.py INFO :finish delete data
+[2018-01-18 14:29:34] updata_stu_sleep_count.py INFO :start updata stu_sleep_count
+[2018-01-18 14:29:35] updata_stu_sleep_count.py INFO :0
+[2018-01-18 14:29:46] updata_stu_sleep_count.py INFO :500
+[2018-01-18 14:30:05] updata_stu_sleep_count.py INFO :1000
+[2018-01-18 14:30:15] updata_stu_sleep_count.py INFO :1500
+[2018-01-18 14:30:22] updata_stu_sleep_count.py INFO :2000
+[2018-01-18 14:30:30] updata_stu_sleep_count.py INFO :2500
+[2018-01-18 14:33:11] updata_stu_sleep_count.py INFO :3000
+[2018-01-18 14:35:56] updata_stu_sleep_count.py INFO :3500
+[2018-01-18 14:38:04] updata_stu_sleep_count.py INFO :4000
+[2018-01-18 14:40:39] updata_stu_sleep_count.py INFO :4500
+[2018-01-18 14:42:53] updata_stu_sleep_count.py INFO :5000
+[2018-01-18 14:45:18] updata_stu_sleep_count.py INFO :5500
+[2018-01-18 14:48:01] updata_stu_sleep_count.py INFO :6000
+[2018-01-18 14:50:31] updata_stu_sleep_count.py INFO :6500
+[2018-01-18 14:52:49] updata_stu_sleep_count.py INFO :7000
+[2018-01-18 14:55:17] updata_stu_sleep_count.py INFO :7500
+[2018-01-18 14:57:54] updata_stu_sleep_count.py INFO :8000
+[2018-01-18 15:00:14] updata_stu_sleep_count.py INFO :8500
+[2018-01-18 15:02:44] updata_stu_sleep_count.py INFO :9000
+[2018-01-18 15:05:19] updata_stu_sleep_count.py INFO :9500
+[2018-01-18 15:07:54] updata_stu_sleep_count.py INFO :10000
+[2018-01-18 15:10:35] updata_stu_sleep_count.py INFO :10500
+[2018-01-18 15:13:19] updata_stu_sleep_count.py INFO :11000
+[2018-01-18 15:16:03] updata_stu_sleep_count.py INFO :11500
+[2018-01-18 15:18:43] updata_stu_sleep_count.py INFO :12000
+[2018-01-18 15:21:22] updata_stu_sleep_count.py INFO :12500
+[2018-01-18 15:24:11] updata_stu_sleep_count.py INFO :13000
+[2018-01-18 15:24:56] updata_stu_sleep_count.py INFO :13143
+[2018-01-18 15:24:56] updata_stu_sleep_count.py INFO :updata stu_sleep_count is ok
+[2018-01-18 15:24:56] updata_stu_cost_count.py INFO :start updata stu_cost_count
+[2018-01-18 15:25:13] updata_stu_cost_count.py INFO :0
+[2018-01-18 15:25:56] updata_stu_cost_count.py INFO :500
+[2018-01-18 15:26:41] updata_stu_cost_count.py INFO :1000
+[2018-01-18 15:26:49] updata_stu_cost_count.py INFO :1500
+[2018-01-18 15:26:54] updata_stu_cost_count.py INFO :2000
+[2018-01-18 15:26:59] updata_stu_cost_count.py INFO :2500
+[2018-01-18 15:29:14] updata_stu_cost_count.py INFO :3000
+[2018-01-18 15:31:40] updata_stu_cost_count.py INFO :3500
+[2018-01-18 15:33:52] updata_stu_cost_count.py INFO :4000
+[2018-01-18 15:36:12] updata_stu_cost_count.py INFO :4500
+[2018-01-18 15:38:17] updata_stu_cost_count.py INFO :5000
+[2018-01-18 15:40:41] updata_stu_cost_count.py INFO :5500
+[2018-01-18 15:43:13] updata_stu_cost_count.py INFO :6000
+[2018-01-18 15:45:50] updata_stu_cost_count.py INFO :6500
+[2018-01-18 15:48:16] updata_stu_cost_count.py INFO :7000
+[2018-01-18 15:50:52] updata_stu_cost_count.py INFO :7500
+[2018-01-18 15:53:25] updata_stu_cost_count.py INFO :8000
+[2018-01-18 15:56:01] updata_stu_cost_count.py INFO :8500
+[2018-01-18 15:58:35] updata_stu_cost_count.py INFO :9000
+[2018-01-18 16:01:04] updata_stu_cost_count.py INFO :9500
+[2018-01-18 16:03:56] updata_stu_cost_count.py INFO :10000
+[2018-01-18 16:06:35] updata_stu_cost_count.py INFO :10500
+[2018-01-18 16:09:19] updata_stu_cost_count.py INFO :11000
+[2018-01-18 16:12:08] updata_stu_cost_count.py INFO :11500
+[2018-01-18 16:14:55] updata_stu_cost_count.py INFO :12000
+[2018-01-18 16:17:39] updata_stu_cost_count.py INFO :12500
+[2018-01-18 16:20:22] updata_stu_cost_count.py INFO :13000
+[2018-01-18 16:21:11] updata_stu_cost_count.py INFO :13143
+[2018-01-18 16:21:12] updata_stu_cost_count.py INFO :updata stu_cost_count is ok
+[2018-01-18 16:21:12] updata_stu_score_count.py INFO :start updata stu_score_count
+[2018-01-18 16:21:13] updata_stu_score_count.py INFO :0
+[2018-01-18 16:21:14] updata_stu_score_count.py INFO :1000
+[2018-01-18 16:21:14] updata_stu_score_count.py INFO :2000
+[2018-01-18 16:21:15] updata_stu_score_count.py INFO :3000
+[2018-01-18 16:21:16] updata_stu_score_count.py INFO :4000
+[2018-01-18 16:21:17] updata_stu_score_count.py INFO :5000
+[2018-01-18 16:21:18] updata_stu_score_count.py INFO :6000
+[2018-01-18 16:21:19] updata_stu_score_count.py INFO :7000
+[2018-01-18 16:21:20] updata_stu_score_count.py INFO :8000
+[2018-01-18 16:21:21] updata_stu_score_count.py INFO :9000
+[2018-01-18 16:21:22] updata_stu_score_count.py INFO :10000
+[2018-01-18 16:21:22] updata_stu_score_count.py INFO :11000
+[2018-01-18 16:21:23] updata_stu_score_count.py INFO :12000
+[2018-01-18 16:21:24] updata_stu_score_count.py INFO :13000
+[2018-01-18 16:21:25] updata_stu_score_count.py INFO :13143
+[2018-01-18 16:21:25] updata_stu_score_count.py INFO :updata stu_score_count is ok
+[2018-01-18 16:21:25] updata_all_count.py INFO :finish updata all count table
+[2018-01-18 16:21:25] Main.py INFO :第一次初始化数据统计完成
+[2018-01-18 16:57:18] data_orm.py WARNING :this mysql username is not root
+[2018-01-18 16:57:19] Main.py INFO :开始第一次初始化数据统计
+[2018-01-18 16:57:19] updata_all_count.py INFO :start updata all count table
+[2018-01-18 16:57:19] updata_all_count.py INFO :start delete data
+[2018-01-18 16:57:23] updata_all_count.py INFO :finish delete data
+[2018-01-18 16:57:23] updata_stu_sleep_count.py INFO :start updata stu_sleep_count
+[2018-01-18 16:57:24] updata_stu_sleep_count.py INFO :updata stu_sleep_count is ok
+[2018-01-18 16:57:24] updata_stu_cost_count.py INFO :start updata stu_cost_count
+[2018-01-18 16:57:24] updata_stu_cost_count.py INFO :updata stu_cost_count is ok
+[2018-01-18 16:57:24] updata_stu_score_count.py INFO :start updata stu_score_count
+[2018-01-18 16:57:25] updata_stu_score_count.py INFO :updata stu_score_count is ok
+[2018-01-18 16:57:25] updata_all_count.py INFO :finish updata all count table
+[2018-01-18 16:57:25] Main.py INFO :第一次初始化数据统计完成
+[2018-01-19 16:27:37] data_orm.py WARNING :this mysql username is not root
+[2018-01-19 16:27:40] Main.py INFO :开始第一次初始化数据统计
+[2018-01-19 16:27:40] updata_all_count.py INFO :start updata all count table
+[2018-01-19 16:27:40] updata_all_count.py INFO :start delete data
+[2018-01-19 16:28:43] updata_all_count.py INFO :finish delete data
+[2018-01-19 16:28:43] updata_stu_score_count.py INFO :start updata stu_score_count
+[2018-01-19 16:28:48] updata_stu_score_count.py INFO :0
+[2018-01-19 16:28:50] updata_stu_score_count.py INFO :1000
+[2018-01-19 16:28:51] updata_stu_score_count.py INFO :2000
+[2018-01-19 16:28:56] updata_stu_score_count.py INFO :3000
+[2018-01-19 16:28:57] updata_stu_score_count.py INFO :4000
+[2018-01-19 16:28:58] updata_stu_score_count.py INFO :5000
+[2018-01-19 16:29:00] updata_stu_score_count.py INFO :6000
+[2018-01-19 16:29:02] updata_stu_score_count.py INFO :7000
+[2018-01-19 16:29:04] updata_stu_score_count.py INFO :8000
+[2018-01-19 16:29:05] updata_stu_score_count.py INFO :9000
+[2018-01-19 16:29:06] updata_stu_score_count.py INFO :10000
+[2018-01-19 16:29:07] updata_stu_score_count.py INFO :11000
+[2018-01-19 16:29:08] updata_stu_score_count.py INFO :12000
+[2018-01-19 16:29:09] updata_stu_score_count.py INFO :13000
+[2018-01-19 16:29:09] updata_stu_score_count.py INFO :13143
+[2018-01-19 16:29:09] updata_stu_score_count.py INFO :updata stu_score_count is ok
+[2018-01-19 16:29:09] updata_all_count.py INFO :finish updata all count table
+[2018-01-19 16:29:09] Main.py INFO :第一次初始化数据统计完成
+[2018-01-20 14:38:08] data_orm.py WARNING :this mysql username is not root
+[2018-01-20 14:38:08] Main.py INFO :开始第一次初始化数据统计
+[2018-01-20 14:38:08] updata_all_count.py INFO :start updata all count table
+[2018-01-20 14:38:08] updata_all_count.py INFO :start delete data
+[2018-01-20 14:39:13] updata_all_count.py INFO :finish delete data
+[2018-01-20 14:39:13] updata_stu_sleep_count.py INFO :start updata stu_sleep_count
+[2018-01-20 14:40:53] updata_stu_sleep_count.py INFO :0
+[2018-01-20 14:40:59] updata_stu_sleep_count.py INFO :500
+[2018-01-20 14:42:11] updata_stu_sleep_count.py INFO :1000
+[2018-01-20 14:42:55] updata_stu_sleep_count.py INFO :1500
+[2018-01-20 14:43:02] updata_stu_sleep_count.py INFO :2000
+[2018-01-20 14:43:07] updata_stu_sleep_count.py INFO :2500
+[2018-01-20 14:45:29] updata_stu_sleep_count.py INFO :3000
+[2018-01-20 14:48:00] updata_stu_sleep_count.py INFO :3500
+[2018-01-20 14:50:10] updata_stu_sleep_count.py INFO :4000
+[2018-01-20 14:52:41] updata_stu_sleep_count.py INFO :4500
+[2018-01-20 14:54:46] updata_stu_sleep_count.py INFO :5000
+[2018-01-20 14:56:59] updata_stu_sleep_count.py INFO :5500
+[2018-01-20 14:59:37] updata_stu_sleep_count.py INFO :6000
+[2018-01-20 15:02:03] updata_stu_sleep_count.py INFO :6500
+[2018-01-20 15:04:23] updata_stu_sleep_count.py INFO :7000
+[2018-01-20 15:06:58] updata_stu_sleep_count.py INFO :7500
+[2018-01-20 15:09:46] updata_stu_sleep_count.py INFO :8000
+[2018-01-20 15:12:17] updata_stu_sleep_count.py INFO :8500
+[2018-01-20 15:14:42] updata_stu_sleep_count.py INFO :9000
+[2018-01-20 15:17:11] updata_stu_sleep_count.py INFO :9500
+[2018-01-20 15:19:43] updata_stu_sleep_count.py INFO :10000
+[2018-01-20 15:22:20] updata_stu_sleep_count.py INFO :10500
+[2018-01-20 15:25:00] updata_stu_sleep_count.py INFO :11000
+[2018-01-20 15:27:42] updata_stu_sleep_count.py INFO :11500
+[2018-01-20 15:30:33] updata_stu_sleep_count.py INFO :12000
+[2018-01-20 15:33:16] updata_stu_sleep_count.py INFO :12500
+[2018-01-20 15:36:16] updata_stu_sleep_count.py INFO :13000
+[2018-01-20 15:37:05] updata_stu_sleep_count.py INFO :13143
+[2018-01-20 15:37:05] updata_stu_sleep_count.py INFO :updata stu_sleep_count is ok
+[2018-01-20 15:37:05] updata_all_count.py INFO :finish updata all count table
+[2018-01-20 15:37:05] Main.py INFO :第一次初始化数据统计完成
+[2018-01-20 16:36:54] data_orm.py WARNING :this mysql username is not root
+[2018-01-20 16:36:59] Main.py INFO :开始第一次初始化数据统计
+[2018-01-20 16:36:59] updata_all_count.py INFO :start updata all count table
+[2018-01-20 16:36:59] updata_all_count.py INFO :start delete data
+[2018-01-20 16:37:12] updata_all_count.py INFO :finish delete data
+[2018-01-20 16:37:12] updata_stu_sleep_count.py INFO :start updata stu_sleep_count
+[2018-01-20 16:37:20] updata_stu_sleep_count.py INFO :updata stu_sleep_count is ok
+[2018-01-20 16:37:20] updata_all_count.py INFO :finish updata all count table
+[2018-01-20 16:37:20] Main.py INFO :第一次初始化数据统计完成
+[2018-01-20 16:38:12] data_orm.py WARNING :this mysql username is not root
+[2018-01-20 16:38:13] Main.py INFO :开始第一次初始化数据统计
+[2018-01-20 16:38:13] updata_all_count.py INFO :start updata all count table
+[2018-01-20 16:38:13] updata_all_count.py INFO :start delete data
+[2018-01-20 16:38:17] updata_all_count.py INFO :finish delete data
+[2018-01-20 16:38:17] updata_stu_sleep_count.py INFO :start updata stu_sleep_count
+[2018-01-20 16:38:18] updata_stu_sleep_count.py INFO :updata stu_sleep_count is ok
+[2018-01-20 16:38:18] updata_stu_cost_count.py INFO :start updata stu_cost_count
+[2018-01-20 16:38:42] updata_stu_cost_count.py INFO :0
+[2018-01-20 16:39:34] updata_stu_cost_count.py INFO :500
+[2018-01-20 16:40:05] updata_stu_cost_count.py INFO :1000
+[2018-01-20 16:40:12] updata_stu_cost_count.py INFO :1500
+[2018-01-20 16:40:17] updata_stu_cost_count.py INFO :2000
+[2018-01-20 16:40:23] updata_stu_cost_count.py INFO :2500
+[2018-01-20 16:42:34] updata_stu_cost_count.py INFO :3000
+[2018-01-20 16:44:49] updata_stu_cost_count.py INFO :3500
+[2018-01-20 16:46:51] updata_stu_cost_count.py INFO :4000
+[2018-01-20 16:49:04] updata_stu_cost_count.py INFO :4500
+[2018-01-20 16:50:58] updata_stu_cost_count.py INFO :5000
+[2018-01-20 16:53:14] updata_stu_cost_count.py INFO :5500
+[2018-01-20 16:55:37] updata_stu_cost_count.py INFO :6000
+[2018-01-20 16:58:02] updata_stu_cost_count.py INFO :6500
+[2018-01-20 17:00:22] updata_stu_cost_count.py INFO :7000
+[2018-01-20 17:02:43] updata_stu_cost_count.py INFO :7500
+[2018-01-20 17:05:03] updata_stu_cost_count.py INFO :8000
+[2018-01-20 17:07:28] updata_stu_cost_count.py INFO :8500
+[2018-01-20 17:09:51] updata_stu_cost_count.py INFO :9000
+[2018-01-20 17:12:16] updata_stu_cost_count.py INFO :9500
+[2018-01-20 17:14:40] updata_stu_cost_count.py INFO :10000
+[2018-01-20 17:17:04] updata_stu_cost_count.py INFO :10500
+[2018-01-20 17:19:34] updata_stu_cost_count.py INFO :11000
+[2018-01-20 17:22:05] updata_stu_cost_count.py INFO :11500
+[2018-01-20 17:24:32] updata_stu_cost_count.py INFO :12000
+[2018-01-20 17:26:58] updata_stu_cost_count.py INFO :12500
+[2018-01-20 17:29:24] updata_stu_cost_count.py INFO :13000
+[2018-01-20 17:30:07] updata_stu_cost_count.py INFO :13143
+[2018-01-20 17:30:08] updata_stu_cost_count.py INFO :updata stu_cost_count is ok
+[2018-01-20 17:30:08] updata_stu_score_count.py INFO :start updata stu_score_count
+[2018-01-20 17:30:08] updata_stu_score_count.py INFO :0
+[2018-01-20 17:30:09] updata_stu_score_count.py INFO :1000
+[2018-01-20 17:30:10] updata_stu_score_count.py INFO :2000
+[2018-01-20 17:30:11] updata_stu_score_count.py INFO :3000
+[2018-01-20 17:30:11] updata_stu_score_count.py INFO :4000
+[2018-01-20 17:30:12] updata_stu_score_count.py INFO :5000
+[2018-01-20 17:30:13] updata_stu_score_count.py INFO :6000
+[2018-01-20 17:30:14] updata_stu_score_count.py INFO :7000
+[2018-01-20 17:30:15] updata_stu_score_count.py INFO :8000
+[2018-01-20 17:30:15] updata_stu_score_count.py INFO :9000
+[2018-01-20 17:30:16] updata_stu_score_count.py INFO :10000
+[2018-01-20 17:30:17] updata_stu_score_count.py INFO :11000
+[2018-01-20 17:30:18] updata_stu_score_count.py INFO :12000
+[2018-01-20 17:30:19] updata_stu_score_count.py INFO :13000
+[2018-01-20 17:30:19] updata_stu_score_count.py INFO :13143
+[2018-01-20 17:30:19] updata_stu_score_count.py INFO :updata stu_score_count is ok
+[2018-01-20 17:30:19] updata_all_count.py INFO :finish updata all count table
+[2018-01-20 17:30:19] Main.py INFO :第一次初始化数据统计完成

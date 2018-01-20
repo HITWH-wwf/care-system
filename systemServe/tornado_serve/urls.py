@@ -1,7 +1,7 @@
 #coding=utf8
 import os
 import tornado.web
-from views import *
+from tornado_serve.views import *
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 SETTINGS = {
@@ -48,7 +48,16 @@ HANDLERS = [
     (r"/login/session", LoginSessionHandler),
     (r"/office/get-abnormal-stu",GetAbnormalStuHandler),
     (r"/login/get-user-role",GetUserRoleHandler),
-    (r"/login/change-user-pwd",ChangeUserPwdHandler)
+    (r"/login/change-user-pwd",ChangeUserPwdHandler),
+
+    (r"/office/get-manager-class",GetManageClassHandler),
+    (r"/office/get-stu-by-cost-fixed",GetStuByCostFixedHandler),
+    (r"/office/get-stu-by-cost-free",GetStuByCostFreeHandler),
+    (r"/office/get-stu-by-sleep-fixed",GetStuBySleepFixedHandler),
+    (r"/office/get-stu-by-sleep-free",GetStuBySleepFreeHandler),
+    (r"/office/get-stu-by-score-fixed",GetStuBySleepFixedHandler),
+    (r"/office/get-stu-by-score-free",GetStuByScoreFreeHandler),
+    (r"/office/get-exam-result",GetExamResultHandler)
 ]
 
 application = tornado.web.Application(

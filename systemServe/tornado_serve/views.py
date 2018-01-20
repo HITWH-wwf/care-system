@@ -8,7 +8,7 @@ from index.grow_bar import GrowBar
 from index.grow_line import GrowLine
 
 from login.login_if_pass import LoginIfPass
-from login.login_session import LoginSession
+
 from login.change_user_pwd import ChangeUserPwd
 from tornado_serve.login.exit_login import ExitLogin
 
@@ -48,10 +48,19 @@ from concurrent.futures import ThreadPoolExecutor
 from tornado.concurrent import run_on_executor
 import tornado.ioloop
 from data.update_focus import UpdateFocus
+from tornado_serve.office.stu_data_filter.get_exam_result import GetExamResult
+from tornado_serve.office.stu_data_filter.get_stu_by_sleep_fixed import GetStuBySleepFixed
+from tornado_serve.office.stu_data_filter.get_stu_by_sleep_free import GetStuBySleepFree
+from tornado_serve.office.stu_data_filter.get_stu_by_cost_fixed import GetStuByCostFixed
+from tornado_serve.office.stu_data_filter.get_stu_by_cost_free import GetStuByCostFree
+from tornado_serve.office.stu_data_filter.get_stu_by_score_fixed import GetStuByScoreFixed
+from tornado_serve.office.stu_data_filter.get_stu_by_score_free import GetStuByScoreFree
+
 
 from datetime import datetime
 import json
-from logConfig import logger,errorMessage
+from tornado_serve.logConfig import logger,errorMessage
+from tornado_serve.common.deal_data_by_redis import getFlagValue
 
 class DateEncoder(json.JSONEncoder):
   def default(self, obj):
@@ -89,6 +98,8 @@ def getErrorMessage(post):
 def isClose(request_self):
     request_self.finish({'status': 0, 'errorInfo': "功能关闭时间00：30-04：30", 'data': ''})
 
+def isUpdata(request_self):
+    request_self.finish({'status': 0, 'errorInfo': "数据正在更新中，请稍后再试", 'data': ''})
 
 def judgeIsOpen(func):      #用于检测服务器是否关闭
     def is_open(self_request):
@@ -98,6 +109,16 @@ def judgeIsOpen(func):      #用于检测服务器是否关闭
         else:
             return func(self_request)
     return is_open
+
+def judgeIsUpdataFinish(key):   #key:[isDeleteFlag,isUpdataScoreFlag,isUpdataCostFlag,isUpdataSleepFlag]
+    def receiveFunc(func):
+        def judgeResult(self_request):
+            if getFlagValue(key)=='0' and getFlagValue('isDeleteFlag')==0:      #当前没有在更新
+                return func(self_request)
+            else:
+                return isUpdata(self_request)
+        return judgeResult
+    return receiveFunc
 
 
 class BaseHandler(tornado.web.RequestHandler):
@@ -451,7 +472,55 @@ class GetManageClassHandler(BaseHandler):
     @getErrorMessage
     def post(self, *args, **kwargs):
         self.finish(GetManageClass().entry(self))
-        
+
+class GetStuByCostFreeHandler(BaseHandler):
+    @getErrorMessage
+    def post(self, *args, **kwargs):
+        self.finish(GetStuByCostFree().entry(self))
+
+class GetStuByCostFixedHandler(BaseHandler):
+    @getErrorMessage
+    def post(self, *args, **kwargs):
+        self.finish(GetStuByCostFixed().entry(self))
+
+class GetStuBySleepFixedHandler(BaseHandler):
+    @getErrorMessage
+    def post(self, *args, **kwargs):
+        self.finish(GetStuBySleepFixed().entry(self))
+
+class GetStuBySleepFreeHandler(BaseHandler):
+    @getErrorMessage
+    def post(self, *args, **kwargs):
+        self.finish(GetStuBySleepFree().entry(self))
+
+class GetStuByScoreFixedHandler(BaseHandler):
+    @getErrorMessage
+    def post(self, *args, **kwargs):
+        self.finish(GetStuByScoreFixed().entry(self))
+
+class GetStuByScoreFreeHandler(BaseHandler):
+    @getErrorMessage
+    def post(self, *args, **kwargs):
+        self.finish(GetStuByScoreFree().entry(self))
+
+class GetExamResultHandler(BaseHandler):
+    @getErrorMessage
+    def post(self, *args, **kwargs):
+        self.finish(GetExamResult().entry(self))
+
+# class GetStuByCostFreeHandler(BaseHandler):
+#     executor = ThreadPoolExecutor(4)
+#     @gen.coroutine
+#     def post(self, *args, **kwargs):
+#         self.result=None
+#         yield self.sleeptest()
+#         self.finish(self.result)
+#
+#     @run_on_executor
+#     def sleeptest(self):
+#         self.result=GetStuByCostFree().entry(self)
+
+
 class TestssHandler(BaseHandler):
     executor = ThreadPoolExecutor(2)
     @gen.coroutine
@@ -463,3 +532,4 @@ class TestssHandler(BaseHandler):
     @run_on_executor
     def sleeptest(self):
         time.sleep(10)
+

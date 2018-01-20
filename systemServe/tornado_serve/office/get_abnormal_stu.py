@@ -99,17 +99,7 @@ class GetAbnormalStu(get_abnormal_stu):
         for one_user in abnormalStus:
             one_user["specialitiesid"] = self.funToRecognition(mode=1, id=one_user["specialitiesid"])
             one_user["collegeid"] = self.funToRecognition(mode=0, id=one_user["collegeid"])
-            if one_user["state"] == 0:
-                one_user["state"] = "正常"
-            elif one_user["state"] == 1:
-                one_user["state"] = "推介关注"
-            elif one_user["state"] == 2:
-                one_user["state"] = "重点关注"
-            elif one_user["state"] == 3:
-                one_user["state"] = "毕业"
-            else:
-                one_user["state"] = "未知状态"
-            stu_basic_data.append(one_user)
+
 
         data_res = {
             "colName": ["学号","姓名", "性别", "专业", "状态"],

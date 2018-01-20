@@ -3,20 +3,24 @@ from data_pretreatment.common_func.deal_dateortime_func import *
 from data_pretreatment.logConfig import logger,errorMessage
 
 def scoreCount(stuId):
-    nowStuRecord = MyBaseModel.returnList2(exam_results.select(exam_results.examScore,exam_results.credit).where(exam_results.stuID==stuId))
+    nowStuRecord = MyBaseModel.returnList2(exam_results.select(exam_results.id,exam_results.examScore,exam_results.credit).where(exam_results.stuID==stuId))
     yesterday = getBeforeDateTime(1)
     strYesterday=str(yesterday.date())
     failNum=0
     failCredit=0
     gainTotalCredit=0
+    failId=[]
+    successId=[]
     for record in nowStuRecord:
         if record.examScore<60:
             failNum=failNum+1
             failCredit=failCredit+record.credit
+            failId.append(record.id)
         else:
+            successId.append(record.id)
             gainTotalCredit=gainTotalCredit+record.credit
 
-    stu={'stuID':stuId,'scoreCountInfo':{'failNum':failNum,'failCredit':failCredit,'gainTotalCredit':gainTotalCredit},'lastTimeCountDate':strYesterday}
+    stu={'stuID':stuId,'scoreCountInfo':{'failNum':failNum,'failId':failId,'failCredit':failCredit,'gainTotalCredit':gainTotalCredit,'successId':successId},'lastTimeCountDate':strYesterday}
     return stu
 
 
@@ -33,14 +37,11 @@ def updataStuScoreCount():
 
     if len(allStuId)!=len(scoreAllStuId):   #初次运行或数据不完整
         restart=1
-        print('I am in 1')
     elif len(lastTimeCountDate) > 1:  #数据存在错误
         restart=1
-        print('I am in 2')
     elif len(lastTimeCountDate)>0:
         if yesterday.date() != strChangeToDateTime(lastTimeCountDate[0].lastTimeCountDate).date():  # 判断表里的数据不是最新的
             restart = 1     #要重新更新
-            print('I am in 3')
     if restart == 1:  # 第一次运行或者新的一天
         with db_data.execution_context():
             query = stu_score_count.delete()  # 清空表

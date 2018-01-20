@@ -1,9 +1,19 @@
-from data_pretreatment.data_orm import *
 import pandas as pd
-from data_pretreatment.common_func.deal_dateortime_func import *
-import numpy as np
-import time
-from data_pretreatment.common_func.deal_data_by_redis import getValue
+
+print('pandas: ',pd.__version__)
+import peewee
+print('peewee: ',peewee.__version__)
+import tornado
+print('tornado: ',tornado.version)
+import redis
+print('redis: ',redis.__version__)
+
+'''
+pandas:  0.20.3
+peewee:  2.10.1
+tornado:  4.5.2
+redis:  2.10.6
+'''
 
 # s=[{'name':'wwf','id':{'one':{'w':1,'z':2},'two':2,'three':-3}},{'name':'zyz','id':{'one':31,'two':32,'three':33}},{'name':'sss','id':{'one':11,'two':21,'three':13}}]
 # df=pd.DataFrame(s)

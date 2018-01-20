@@ -22,6 +22,16 @@ def intChangeToDateTime(inputInt):
     resultDateTime=datetime(inputInt//10000,(inputInt%10000)//100,inputInt%100)
     return resultDateTime
 
+def intChangeToDateStr(inputInt):
+    resultDateTime=datetime(inputInt//10000,(inputInt%10000)//100,inputInt%100)
+    return str(resultDateTime.date())
+
+def strDateTimeChangeToInt(inputStr):
+    dateList = inputStr.split('-')
+    resultInt = int(dateList[0]) * 10000 + int(dateList[1]) * 100 + int(dateList[2])
+    return resultInt
+
+
 def getBeforeDateTime(distanceDay,nowDate=None):     #默认是求今天的前几天的日期
     if nowDate==None:
         nowDate=strChangeToDateTime(str(datetime.today().date()))

@@ -259,25 +259,28 @@ class new_event_message(MyBaseModel):  # 新建事件表
 
 class stu_cost_count(MyBaseModel):
     stuID = CharField(null=True)
-    everyDayCost = TextField(null=True)
-    countDate = DateTimeField(null=True)
+    everyDayDetailRecord = TextField(null=True)
+    everyDayCount=TextField(null=True)
+    lastTimeCountDate = CharField(null=True)
     class Meta:
         db_table = 'stu_cost_count'
         primary_key = False
 
 
+
 class stu_sleep_count(MyBaseModel):
     stuID = CharField(null=True)
-    everyDaySleep = TextField(null=True)
-    countDate = DateTimeField(null=True)
+    freeQueryCountInfo=TextField(null=True)
+    fixedQueryCountInfo= TextField(null=True)
+    lastTimeCountDate = CharField(null=True)
     class Meta:
         db_table = 'stu_sleep_count'
         primary_key = False
 
 class stu_score_count(MyBaseModel):
     stuID = CharField(null=True)
-    failNum = IntegerField(null=True)
-    countDate = DateTimeField(null=True)
+    scoreCountInfo=TextField(null=True)
+    lastTimeCountDate = CharField(null=True)
     class Meta:
         db_table = 'stu_score_count'
         primary_key = False

@@ -12,5 +12,4 @@ if __name__=='__main__':
         logger.info('第一次初始化数据统计完成')
         updataMysql()
     except Exception as e:
-        print(e)
         logger.critical(errorMessage(e))

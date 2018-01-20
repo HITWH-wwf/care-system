@@ -11,39 +11,39 @@ def updataAllCount():
         saveDateStartDate=getBeforeDateTime(saveDataDays)
         logger.info('start updata all count table')
         try:
-            saveData('startDelete', 1)  # 设置开始删除数据标识
+            saveData('isDeleteFlag', 1)  # 设置开始删除数据标识
             logger.info('start delete data')
             querySleep = entry_and_exit.delete().where(
                 (entry_and_exit.exitDate < saveDateStartDate) | (entry_and_exit.entryDate < saveDateStartDate))
             querySleep.execute()
             queryCost = stu_transaction_record.delete().where(stu_transaction_record.tradingTime < saveDateStartDate)
             queryCost.execute()
-            saveData('startDelete', 0)
+            saveData('isDeleteFlag', 0)
             logger.info('finish delete data')
         except  Exception as e:
-            saveData('startDelete', 0)
+            saveData('isDeleteFlag', 0)
             logger.critical(errorMessage(e))
 
         try:
-            saveData('updataSleep',1)   #开始更新
+            saveData('isUpdataSleepFlag',1)   #开始更新
             updataStuSleepCount()
-            saveData('updataSleep',0)   #结束更新
+            saveData('isUpdataSleepFlag',0)   #结束更新
         except Exception as e:
             logger.info('updata stu_sleep_count fail')
             logger.critical(errorMessage(e))
 
         try:
-            saveData('updataCost',1)
+            saveData('isUpdataCostFlag',1)
             updataStuCostCount()
-            saveData('updataCost',0)
+            saveData('isUpdataCostFlag',0)
         except Exception as e:
             logger.info('updata stu_cost_count fail')
             logger.critical(errorMessage(e))
 
         try:
-            saveData('updataScore',1)
+            saveData('isUpdataScoreFlag',1)
             updataStuScoreCount()
-            saveData('updataScore',0)
+            saveData('isUpdataScoreFlag',0)
         except Exception as e:
             logger.info('updata stu_score_count fail')
             logger.critical(errorMessage(e))
@@ -53,3 +53,6 @@ def updataAllCount():
     except Exception as e:
         logger.info('updata all count table fail')
         logger.critical(errorMessage(e))
+
+
+
