@@ -7,9 +7,10 @@ import numpy as np
 
 class GetStuByCostFree():
     def entry(self,receiveRequest):
-        self.requestData = eval(receiveRequest.request.body)
         # self.requestData=receiveRequest
+        self.requestData = eval(receiveRequest.request.body)
         stuRange = self.requestData['stuRange']
+
         dateRange = self.requestData['dateRange']
         moneyRange = self.requestData['moneyRange']
         self.costCountResult = None
@@ -59,7 +60,8 @@ class GetStuByCostFree():
             if countKind=='total':
                 stuCountDf=stuCountDf[(stuCountDf['todayCostSum']>=minMoney)&(stuCountDf['todayCostSum']<=maxMoney)]
                 resultStuTotalTimes[stu] = len(stuCountDf)
-                resultStuDetail[stu]=stuCountDf['today','todayCostSum'].to_dict('record')
+                resultStuDetail[stu]=stuCountDf[['today','todayCostSum']].to_dict('report')
+
             else:
                 stuCountDf.index=stuCountDf['today']
                 stuCountDict=stuCountDf['everyRecord'].to_dict()
@@ -80,9 +82,10 @@ class GetStuByCostFree():
         if returnKind== 'stuList':
             resultData=[]
             for stu in resultStuTotalTimes.keys():
-                oneStu=stuBasicInfo[stu]
-                oneStu['times']=resultStuTotalTimes[stu]
-                resultData.append(oneStu)
+                if resultStuTotalTimes[stu]>0:
+                    oneStu=stuBasicInfo[stu]
+                    oneStu['times']=resultStuTotalTimes[stu]
+                    resultData.append(oneStu)
         else:
             resultData = []
             if len(resultStuDetail.keys())==0:
@@ -90,16 +93,17 @@ class GetStuByCostFree():
             if countKind=='single':
                 for stu in resultStuDetail.keys():
                     for line in resultStuDetail[stu]:
-                        oneStu=stuBasicInfo[stu]
+                        oneStu=stuBasicInfo[stu].copy()
                         oneStu['date']=intChangeToDateStr(line['today'])
                         oneStu['times']=line['times']
                         resultData.append(oneStu)
             else:
                 for stu in resultStuDetail.keys():
                     for line in resultStuDetail[stu]:
-                        oneStu=stuBasicInfo[stu]
+                        oneStu=stuBasicInfo[stu].copy()
                         oneStu['date']=intChangeToDateStr(line['today'])
                         oneStu['todayCostSum']=line['todayCostSum']
                         resultData.append(oneStu)
+
 
         return costModel(returnKind,countKind,resultData)

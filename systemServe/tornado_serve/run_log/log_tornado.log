@@ -1,2 +1,6 @@
-[2018-01-20 20:07:48] orm.py WARNING :this mysql username is not root
-[2018-01-20 20:07:48] orm.py WARNING :this mysql username is not root
+[2018-01-21 13:51:01] orm.py WARNING :this mysql username is not root
+[2018-01-21 13:51:01] connectionpool.py INFO :Starting new HTTP connection (1): localhost
+[2018-01-21 13:51:05] orm.py WARNING :this mysql username is not root
+[2018-01-21 13:51:05] orm.py WARNING :this mysql username is not root
+[2018-01-21 13:51:13] orm.py WARNING :this mysql username is not root
+[2018-01-21 13:51:14] orm.py WARNING :this mysql username is not root

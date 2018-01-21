@@ -96,7 +96,7 @@ def getErrorMessage(post):
     return diyPost
 
 def isClose(request_self):
-    request_self.finish({'status': 0, 'errorInfo': "功能关闭时间00：30-04：30", 'data': ''})
+    request_self.finish({'status': 0, 'errorInfo': "此功能关闭时间00：30-04：30", 'data': ''})
 
 def isUpdata(request_self):
     request_self.finish({'status': 0, 'errorInfo': "数据正在更新中，请稍后再试", 'data': ''})
@@ -113,7 +113,7 @@ def judgeIsOpen(func):      #用于检测服务器是否关闭
 def judgeIsUpdataFinish(key):   #key:[isDeleteFlag,isUpdataScoreFlag,isUpdataCostFlag,isUpdataSleepFlag]
     def receiveFunc(func):
         def judgeResult(self_request):
-            if getFlagValue(key)=='0' and getFlagValue('isDeleteFlag')==0:      #当前没有在更新
+            if getFlagValue(key)=='0' and getFlagValue('isDeleteFlag')=='0':      #当前没有在更新
                 return func(self_request)
             else:
                 return isUpdata(self_request)
@@ -474,39 +474,107 @@ class GetManageClassHandler(BaseHandler):
         self.finish(GetManageClass().entry(self))
 
 class GetStuByCostFreeHandler(BaseHandler):
-    @getErrorMessage
+    executor = ThreadPoolExecutor(4)
+    @gen.coroutine
     def post(self, *args, **kwargs):
-        self.finish(GetStuByCostFree().entry(self))
+        self.result=None
+        yield self.tempPost()  #不能带self
+        self.finish(self.result)
+
+    @run_on_executor
+    @getErrorMessage
+    @judgeIsOpen
+    @judgeIsUpdataFinish('isUpdataCostFlag')
+    def tempPost(self):
+        self.result=GetStuByCostFree().entry(self)
 
 class GetStuByCostFixedHandler(BaseHandler):
-    @getErrorMessage
+    executor = ThreadPoolExecutor(4)
+    @gen.coroutine
     def post(self, *args, **kwargs):
-        self.finish(GetStuByCostFixed().entry(self))
+        self.result=None
+        yield self.tempPost()  #不能带self
+        self.finish(self.result)
+
+    @run_on_executor
+    @getErrorMessage
+    @judgeIsOpen
+    @judgeIsUpdataFinish('isUpdataCostFlag')
+    def tempPost(self):
+        self.result=GetStuByCostFixed().entry(self)
 
 class GetStuBySleepFixedHandler(BaseHandler):
-    @getErrorMessage
+    executor = ThreadPoolExecutor(4)
+    @gen.coroutine
     def post(self, *args, **kwargs):
-        self.finish(GetStuBySleepFixed().entry(self))
+        self.result=None
+        yield self.tempPost()  #不能带self
+        self.finish(self.result)
+
+    @run_on_executor
+    @getErrorMessage
+    @judgeIsOpen
+    @judgeIsUpdataFinish('isUpdataSleepFlag')
+    def tempPost(self):
+        self.result=GetStuBySleepFixed().entry(self)
 
 class GetStuBySleepFreeHandler(BaseHandler):
-    @getErrorMessage
+    executor = ThreadPoolExecutor(4)
+    @gen.coroutine
     def post(self, *args, **kwargs):
-        self.finish(GetStuBySleepFree().entry(self))
+        self.result=None
+        yield self.tempPost()  #不能带self
+        self.finish(self.result)
+
+    @run_on_executor
+    @getErrorMessage
+    @judgeIsOpen
+    @judgeIsUpdataFinish('isUpdataSleepFlag')
+    def tempPost(self):
+        self.result=GetStuBySleepFree().entry(self)
 
 class GetStuByScoreFixedHandler(BaseHandler):
-    @getErrorMessage
+    executor = ThreadPoolExecutor(4)
+    @gen.coroutine
     def post(self, *args, **kwargs):
-        self.finish(GetStuByScoreFixed().entry(self))
+        self.result=None
+        yield self.tempPost()  #不能带self
+        self.finish(self.result)
+
+    @run_on_executor
+    @getErrorMessage
+    @judgeIsOpen
+    @judgeIsUpdataFinish('isUpdataScoreFlag')
+    def tempPost(self):
+        self.result=GetStuByScoreFixed().entry(self)
 
 class GetStuByScoreFreeHandler(BaseHandler):
-    @getErrorMessage
+    executor = ThreadPoolExecutor(4)
+    @gen.coroutine
     def post(self, *args, **kwargs):
-        self.finish(GetStuByScoreFree().entry(self))
+        self.result=None
+        yield self.tempPost()  #不能带self
+        self.finish(self.result)
+
+    @run_on_executor
+    @getErrorMessage
+    @judgeIsOpen
+    @judgeIsUpdataFinish('isUpdataScoreFlag')
+    def tempPost(self):
+        self.result=GetStuByScoreFree().entry(self)
 
 class GetExamResultHandler(BaseHandler):
-    @getErrorMessage
+    executor = ThreadPoolExecutor(4)
+    @gen.coroutine
     def post(self, *args, **kwargs):
-        self.finish(GetExamResult().entry(self))
+        self.result=None
+        yield self.tempPost()
+        self.finish(self.result)
+
+    @run_on_executor
+    @getErrorMessage
+    def tempPost(self):
+        self.result=GetExamResult().entry(self)
 
 # class GetStuByCostFreeHandler(BaseHandler):
 #     executor = ThreadPoolExecutor(4)
@@ -521,15 +589,26 @@ class GetExamResultHandler(BaseHandler):
 #         self.result=GetStuByCostFree().entry(self)
 
 
-class TestssHandler(BaseHandler):
-    executor = ThreadPoolExecutor(2)
-    @gen.coroutine
-    def post(self, *args, **kwargs):
-        print('i am receive')
-        yield self.sleeptest()
-        self.finish('i am ok')
-
-    @run_on_executor
-    def sleeptest(self):
-        time.sleep(10)
-
+# class TestssHandler(BaseHandler):
+#     executor = ThreadPoolExecutor(2)
+#     @gen.coroutine
+#     def post(self, *args, **kwargs):
+#         print('i am receive')
+#         self.result=None
+#         yield self.sleeptest()  #不能带self
+#         self.finish(self.result)
+#
+#
+#     @run_on_executor
+#     @getErrorMessage
+#     @judgeIsOpen
+#     @judgeIsUpdataFinish('isUpdataSleepFlag')
+#     def sleeptest(self):
+#         time.sleep(5)
+#         self.result=testclass().entry(self)
+#
+#
+# class testclass():
+#     def entry(self,getrequest):
+#         name=getrequest.get_argument('name')
+#         return {'status':1,'info':'ok'}

@@ -79,6 +79,7 @@ class GetStuBySleepFree():
         else:
             if len(recordIdList)==0:
                 return sleepModel(returnKind, countKind, [])
+            recordIdList=set(recordIdList)
             stuSleepRecord=pd.DataFrame(MyBaseModel.returnList(entry_and_exit.select().where(entry_and_exit.id.in_(recordIdList)).group_by(entry_and_exit.stuID,entry_and_exit.id).order_by(
                 entry_and_exit.stuID.asc(), entry_and_exit.id.asc()
             )

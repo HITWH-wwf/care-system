@@ -23,6 +23,7 @@ def intChangeToDateTime(inputInt):
     return resultDateTime
 
 def intChangeToDateStr(inputInt):
+    inputInt=int(inputInt)
     resultDateTime=datetime(inputInt//10000,(inputInt%10000)//100,inputInt%100)
     return str(resultDateTime.date())
 

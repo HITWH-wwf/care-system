@@ -44,6 +44,7 @@ class GetStuByCostFixed():
             if returnKind == 'stuRecord':
                 if queryKind == 'fixed1':
                     happenDateList=list(stuCountDf['today'])
+                    # print(happenDateList)
                     happenDateList=[intChangeToDateStr(x) for x in happenDateList]
                     resultStu[stu]=happenDateList
                 else:
@@ -68,6 +69,7 @@ class GetStuByCostFixed():
             if queryKind=='fixed2':
                 totalRecordInfoDf=pd.DataFrame(self.getRecordInfo(recordIdList))
                 totalRecordInfoDf.dropna(axis=1,inplace=True)
+                totalRecordInfoDf.drop(['id'],axis=1,inplace=True)
                 totalRecordInfoDf['stuName'] = '未记录'
                 for stu in resultStu.keys():
                     totalRecordInfoDf.loc[totalRecordInfoDf[totalRecordInfoDf['stuID']==stu].index,('stuName')]=stuBasicInfo[stu]['stuName']
@@ -76,16 +78,15 @@ class GetStuByCostFixed():
                 resultData = []
                 for stu in resultStu.keys():
                     for oneDay in resultStu[stu]:
-                        oneRecord = stuBasicInfo[stu]
+                        oneRecord = stuBasicInfo[stu].copy()
                         oneRecord['happenDate'] = oneDay
                         resultData.append(oneRecord)
 
         return costModel(returnKind,queryKind,resultData)
 
     def getRecordInfo(self,recordIdList):
-        totalRecordInfo=MyBaseModel.returnList(stu_transaction_record.select(
-           stu_transaction_record.stuID,stu_transaction_record.tradingTime, stu_transaction_record.merchantAccount, stu_transaction_record.turnover
-        ).where(stu_transaction_record.id.in_(recordIdList)))
+        totalRecordInfo=MyBaseModel.returnList(stu_transaction_record.select().where(stu_transaction_record.id.in_(recordIdList
+            )).group_by(stu_transaction_record.stuID,stu_transaction_record.id))
         for i in range(len(totalRecordInfo)):
             if totalRecordInfo[i]['merchantAccount'] == None or len(totalRecordInfo[i]['merchantAccount']) == 0:
                 totalRecordInfo[i]['merchantAccount'] = "未知"

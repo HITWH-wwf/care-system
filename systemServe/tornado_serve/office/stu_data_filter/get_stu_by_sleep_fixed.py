@@ -54,7 +54,9 @@ class GetStuBySleepFixed():
                 else:
                     resultStu[stu] = times
                     appearDateList=list(stuCountDf['today'])
-                    self.appearDateDict=[intChangeToDateStr(x) for x in appearDateList]
+                    self.appearDateDict[stu]=[intChangeToDateStr(x) for x in appearDateList]
+            else:
+                resultStu[stu] = times
 
         recordIdList=[x for x in recordIdList if x!='' and x>=0]
         recordIdList=set(recordIdList)
@@ -71,12 +73,13 @@ class GetStuBySleepFixed():
                 resultData=[]
                 for stu in resultStu.keys():
                     for oneDay in self.appearDateDict[stu]:
-                        oneRecord = stuBasicInfo[stu]
+                        oneRecord = stuBasicInfo[stu].copy()
                         oneRecord['happenDate']=oneDay
                         resultData.append(oneRecord)
             else:
                 if len(recordIdList) == 0:
                     return sleepModel(returnKind, queryKind, [])
+                recordIdList=set(recordIdList)
                 stuSleepRecord = pd.DataFrame(MyBaseModel.returnList(
                     entry_and_exit.select().where(entry_and_exit.id.in_(recordIdList)).group_by(entry_and_exit.stuID,
                     entry_and_exit.id).order_by(entry_and_exit.stuID.asc(), entry_and_exit.id.asc())))
@@ -89,5 +92,6 @@ class GetStuBySleepFixed():
                     # oneStu=stuSleepRecord[stuSleepRecord['stuID']==stu]
                     # oneStu['stuName']=stuBasicInfo[stu]['stuName']
                     # stuBasicInfo[stu]['stuName']
+                stuSleepRecord.drop(['id'],axis=1,inplace=True)
                 resultData = stuSleepRecord.to_dict("report")
         return sleepModel(returnKind, queryKind, resultData)
