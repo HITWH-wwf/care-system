@@ -5,10 +5,8 @@ from peewee import SelectQuery, CharField, IntegerField, fn, Model, FloatField, 
 from playhouse.shortcuts import model_to_dict as to_dict
 import playhouse as ph
 from tornado_serve.api_define import users
-
 from playhouse.pool import PooledMySQLDatabase
 from tornado_serve.logConfig import logger
-
 
 for user in users:
   try:

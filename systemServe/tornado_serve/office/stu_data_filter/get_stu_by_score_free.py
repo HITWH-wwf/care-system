@@ -73,21 +73,21 @@ class GetStuByScoreFree():
                 resultData=[]
                 for stu in tempResult.keys():
                     oneStu=inRoleStuList[stu]
-                    oneStu['gainTotalCredit']=tempResult[stu]
+                    oneStu['gainTotalCredit']=float(tempResult[stu])
                     resultData.append(oneStu)
             elif countKind=='failCourse':
                 tempResult = self.resultDf['failNum'].to_dict()
                 resultData = []
                 for stu in tempResult.keys():
                     oneStu = inRoleStuList[stu]
-                    oneStu['failNum'] = tempResult[stu]
+                    oneStu['failNum'] = int(tempResult[stu])
                     resultData.append(oneStu)
             else:
                 tempResult = self.resultDf['failCredit'].to_dict()
                 resultData = []
                 for stu in tempResult.keys():
                     oneStu = inRoleStuList[stu]
-                    oneStu['failCredit'] = tempResult[stu]
+                    oneStu['failCredit'] = float(tempResult[stu])
                     resultData.append(oneStu)
 
             return scoreModel('stuList', countKind, resultData)

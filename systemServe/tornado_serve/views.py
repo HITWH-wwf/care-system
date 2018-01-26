@@ -503,6 +503,7 @@ class GetStuByCostFixedHandler(BaseHandler):
     def tempPost(self):
         self.result=GetStuByCostFixed().entry(self)
 
+
 class GetStuBySleepFixedHandler(BaseHandler):
     executor = ThreadPoolExecutor(4)
     @gen.coroutine

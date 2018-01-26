@@ -1,7 +1,8 @@
 from tornado_serve.common.get_class_or_stu_by_user import getClassOrStuByUser
 from tornado_serve.office.stu_data_filter.return_model import costModel
-from tornado_serve.common.deal_dateortime_func import strDateTimeChangeToInt,intChangeToDateStr
+from tornado_serve.common.deal_dateortime_func import strDateTimeChangeToInt,intChangeToDateStr,getBeforeDateTime
 from tornado_serve.orm import *
+from datetime import datetime
 import pandas as pd
 import numpy as np
 
@@ -12,6 +13,11 @@ class GetStuByCostFree():
         stuRange = self.requestData['stuRange']
 
         dateRange = self.requestData['dateRange']
+        if dateRange=='threeMonth':
+            dateRange={}
+            start=getBeforeDateTime(93)
+            dateRange['startDate']=str(start.date())
+            dateRange['endDate']=str(datetime.today().date())
         moneyRange = self.requestData['moneyRange']
         self.costCountResult = None
         self.selectStuIds = None
@@ -56,6 +62,7 @@ class GetStuByCostFree():
         resultStuTotalTimes={}
         for stu in self.selectStuIds:
             stuCountDf=pd.DataFrame(self.costCountResult[stu])
+            stuCountDf=stuCountDf.round(2)
             stuCountDf=stuCountDf[(stuCountDf['today']>=startDate)&(stuCountDf['today']<=endDate)]
             if countKind=='total':
                 stuCountDf=stuCountDf[(stuCountDf['todayCostSum']>=minMoney)&(stuCountDf['todayCostSum']<=maxMoney)]

@@ -63,8 +63,9 @@ class PersonCard(person_card):
         if max_date == None:
             return {"status":1, "errorInfo":"没有数据", "data": data_res}
         day=datetime.timedelta(days = 1)
-        last_days=365
-        the_time = (max_date.date() - day*last_days)
+        last_days=93
+        #the_time = (max_date.date() - day*last_days)
+        the_time = (datetime.datetime.today().date() - day*last_days)
         dates=[]
         for i in range((last_days+1)):
             dates.append(str(the_time+day*i))

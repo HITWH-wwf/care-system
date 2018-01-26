@@ -66,7 +66,7 @@ class GetStuBySleepFixed():
             resultData = []
             for stu in resultStu.keys():
                 oneStu = stuBasicInfo[stu]
-                oneStu['times'] = resultStu[stu]
+                oneStu['times'] = int(resultStu[stu])
                 resultData.append(oneStu)
         else:
             if queryKind=='fixed2':

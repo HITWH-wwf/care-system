@@ -80,7 +80,7 @@ class PersonTrip(person_trip):
             max_date = entry_and_exit.select(entry_and_exit.entryDate).where(entry_and_exit.stuID == stu_id).aggregate(fn.Max(entry_and_exit.entryDate))
         if max_date == None:
             return {"status":0, "errorInfo":"没有数据", "data": data_res}
-        the_time = str((pd.to_datetime(max_date) - datetime.timedelta(days = 179)))
+        the_time = str((pd.to_datetime(max_date) - datetime.timedelta(days =93)))
 
         data_pd = pd.DataFrame(MyBaseModel.returnList(entry_and_exit.select(entry_and_exit.apartmentNumber, entry_and_exit.exitDate, entry_and_exit.entryDate).where(entry_and_exit.stuID == stu_id, entry_and_exit.entryDate >= the_time).dicts()))
 

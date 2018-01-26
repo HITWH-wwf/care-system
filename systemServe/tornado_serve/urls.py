@@ -7,6 +7,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 SETTINGS = {
     "template_path": os.path.join(BASE_DIR, "template_path"),
     "static_path": os.path.join(BASE_DIR, "static"),
+    # 'debug':True
     #"debug" : True
 
 }
@@ -49,13 +50,14 @@ HANDLERS = [
     (r"/office/get-abnormal-stu",GetAbnormalStuHandler),
     (r"/login/get-user-role",GetUserRoleHandler),
     (r"/login/change-user-pwd",ChangeUserPwdHandler),
+    (r"/login/exit-login",ExitLoginHandler),
 
     (r"/office/get-manager-class",GetManageClassHandler),
     (r"/office/get-stu-by-cost-fixed",GetStuByCostFixedHandler),
     (r"/office/get-stu-by-cost-free",GetStuByCostFreeHandler),
     (r"/office/get-stu-by-sleep-fixed",GetStuBySleepFixedHandler),
     (r"/office/get-stu-by-sleep-free",GetStuBySleepFreeHandler),
-    (r"/office/get-stu-by-score-fixed",GetStuBySleepFixedHandler),
+    (r"/office/get-stu-by-score-fixed",GetStuByScoreFixedHandler),
     (r"/office/get-stu-by-score-free",GetStuByScoreFreeHandler),
     (r"/office/get-exam-result",GetExamResultHandler)
 ]

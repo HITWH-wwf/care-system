@@ -1,8 +1,9 @@
 from tornado_serve.orm import *
 from tornado_serve.common.get_class_or_stu_by_user import getClassOrStuByUser
 import pandas as pd
+from datetime import datetime
 from tornado_serve.office.stu_data_filter.return_model import sleepModel
-from tornado_serve.common.deal_dateortime_func import strDateTimeChangeToInt
+from tornado_serve.common.deal_dateortime_func import strDateTimeChangeToInt,getBeforeDateTime
 class GetStuBySleepFree():
     def entry(self,receiveRequest):
         self.requestData = eval(receiveRequest.request.body)
@@ -10,6 +11,11 @@ class GetStuBySleepFree():
         stuRange = self.requestData['stuRange']
         dateRange=self.requestData['dateRange']
         appearTimes=self.requestData['appearTimes']
+        if dateRange=='threeMonth':
+            dateRange={}
+            start=getBeforeDateTime(93)
+            dateRange['startDate']=str(start.date())
+            dateRange['endDate']=str(datetime.today().date())
         self.sleepCountResult=None
         self.selectStuIds=None
         self.inRoleStuDf=None                   #stuRange['rangeData']
@@ -74,7 +80,7 @@ class GetStuBySleepFree():
             resultData=[]
             for stu in resultStu.keys():
                 oneStu=stuBasicInfo[stu]
-                oneStu['times']=resultStu[stu]
+                oneStu['times']=int(resultStu[stu])
                 resultData.append(oneStu)
         else:
             if len(recordIdList)==0:

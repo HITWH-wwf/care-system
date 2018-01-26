@@ -1,0 +1,96 @@
+[2018-01-21 14:03:36] data_orm.py WARNING :this mysql username is not root
+[2018-01-21 14:03:36] data_orm.py WARNING :this mysql username is not root
+[2018-01-21 14:03:36] data_orm.py WARNING :this mysql username is not root
+[2018-01-21 14:03:37] Main.py INFO :开始第一次初始化数据统计
+[2018-01-21 14:03:37] updata_all_count.py INFO :start updata all count table
+[2018-01-21 14:03:37] updata_all_count.py INFO :start delete data
+[2018-01-21 14:03:42] updata_all_count.py INFO :finish delete data
+[2018-01-21 14:03:42] updata_stu_sleep_count.py INFO :start updata stu_sleep_count
+[2018-01-21 14:03:44] updata_stu_sleep_count.py INFO :updata stu_sleep_count is ok
+[2018-01-21 14:03:44] updata_stu_cost_count.py INFO :start updata stu_cost_count
+[2018-01-21 14:03:45] updata_stu_cost_count.py INFO :updata stu_cost_count is ok
+[2018-01-21 14:03:45] updata_stu_score_count.py INFO :start updata stu_score_count
+[2018-01-21 14:03:46] updata_stu_score_count.py INFO :updata stu_score_count is ok
+[2018-01-21 14:03:46] updata_all_count.py INFO :finish updata all count table
+[2018-01-21 14:03:46] Main.py INFO :第一次初始化数据统计完成
+[2018-01-22 01:03:48] updata_all_count.py INFO :start updata all count table
+[2018-01-22 01:03:48] updata_all_count.py INFO :start delete data
+[2018-01-22 01:03:55] updata_all_count.py INFO :finish delete data
+[2018-01-22 01:03:55] updata_stu_sleep_count.py INFO :start updata stu_sleep_count
+[2018-01-22 01:04:02] updata_stu_sleep_count.py INFO :0
+[2018-01-22 01:04:12] updata_stu_sleep_count.py INFO :500
+[2018-01-22 01:04:31] updata_stu_sleep_count.py INFO :1000
+[2018-01-22 01:04:47] updata_stu_sleep_count.py INFO :1500
+[2018-01-22 01:04:56] updata_stu_sleep_count.py INFO :2000
+[2018-01-22 01:05:07] updata_stu_sleep_count.py INFO :2500
+[2018-01-22 01:09:39] updata_stu_sleep_count.py INFO :3000
+[2018-01-22 01:14:13] updata_stu_sleep_count.py INFO :3500
+[2018-01-22 01:17:59] updata_stu_sleep_count.py INFO :4000
+[2018-01-22 01:22:14] updata_stu_sleep_count.py INFO :4500
+[2018-01-22 01:26:04] updata_stu_sleep_count.py INFO :5000
+[2018-01-22 01:30:16] updata_stu_sleep_count.py INFO :5500
+[2018-01-22 01:35:05] updata_stu_sleep_count.py INFO :6000
+[2018-01-22 01:39:27] updata_stu_sleep_count.py INFO :6500
+[2018-01-22 01:43:20] updata_stu_sleep_count.py INFO :7000
+[2018-01-22 01:47:47] updata_stu_sleep_count.py INFO :7500
+[2018-01-22 01:52:27] updata_stu_sleep_count.py INFO :8000
+[2018-01-22 01:56:46] updata_stu_sleep_count.py INFO :8500
+[2018-01-22 02:01:09] updata_stu_sleep_count.py INFO :9000
+[2018-01-22 02:05:48] updata_stu_sleep_count.py INFO :9500
+[2018-01-22 02:10:34] updata_stu_sleep_count.py INFO :10000
+[2018-01-22 02:15:20] updata_stu_sleep_count.py INFO :10500
+[2018-01-22 02:20:17] updata_stu_sleep_count.py INFO :11000
+[2018-01-22 02:25:23] updata_stu_sleep_count.py INFO :11500
+[2018-01-22 02:30:35] updata_stu_sleep_count.py INFO :12000
+[2018-01-22 02:35:37] updata_stu_sleep_count.py INFO :12500
+[2018-01-22 02:40:49] updata_stu_sleep_count.py INFO :13000
+[2018-01-22 02:42:16] updata_stu_sleep_count.py INFO :13143
+[2018-01-22 02:42:17] updata_stu_sleep_count.py INFO :updata stu_sleep_count is ok
+[2018-01-22 02:42:17] updata_stu_cost_count.py INFO :start updata stu_cost_count
+[2018-01-22 02:42:22] updata_stu_cost_count.py INFO :0
+[2018-01-22 02:42:34] updata_stu_cost_count.py INFO :500
+[2018-01-22 02:42:50] updata_stu_cost_count.py INFO :1000
+[2018-01-22 02:43:04] updata_stu_cost_count.py INFO :1500
+[2018-01-22 02:43:12] updata_stu_cost_count.py INFO :2000
+[2018-01-22 02:43:21] updata_stu_cost_count.py INFO :2500
+[2018-01-22 02:47:12] updata_stu_cost_count.py INFO :3000
+[2018-01-22 02:51:06] updata_stu_cost_count.py INFO :3500
+[2018-01-22 02:54:40] updata_stu_cost_count.py INFO :4000
+[2018-01-22 02:58:34] updata_stu_cost_count.py INFO :4500
+[2018-01-22 03:01:56] updata_stu_cost_count.py INFO :5000
+[2018-01-22 03:05:58] updata_stu_cost_count.py INFO :5500
+[2018-01-22 03:10:12] updata_stu_cost_count.py INFO :6000
+[2018-01-22 03:14:29] updata_stu_cost_count.py INFO :6500
+[2018-01-22 03:18:32] updata_stu_cost_count.py INFO :7000
+[2018-01-22 03:22:41] updata_stu_cost_count.py INFO :7500
+[2018-01-22 03:26:47] updata_stu_cost_count.py INFO :8000
+[2018-01-22 03:31:00] updata_stu_cost_count.py INFO :8500
+[2018-01-22 03:35:14] updata_stu_cost_count.py INFO :9000
+[2018-01-22 03:39:29] updata_stu_cost_count.py INFO :9500
+[2018-01-22 03:43:46] updata_stu_cost_count.py INFO :10000
+[2018-01-22 03:48:04] updata_stu_cost_count.py INFO :10500
+[2018-01-22 03:52:30] updata_stu_cost_count.py INFO :11000
+[2018-01-22 03:56:57] updata_stu_cost_count.py INFO :11500
+[2018-01-22 04:01:22] updata_stu_cost_count.py INFO :12000
+[2018-01-22 04:05:46] updata_stu_cost_count.py INFO :12500
+[2018-01-22 04:10:13] updata_stu_cost_count.py INFO :13000
+[2018-01-22 04:11:30] updata_stu_cost_count.py INFO :13143
+[2018-01-22 04:11:30] updata_stu_cost_count.py INFO :updata stu_cost_count is ok
+[2018-01-22 04:11:30] updata_stu_score_count.py INFO :start updata stu_score_count
+[2018-01-22 04:11:31] updata_stu_score_count.py INFO :0
+[2018-01-22 04:11:32] updata_stu_score_count.py INFO :1000
+[2018-01-22 04:11:34] updata_stu_score_count.py INFO :2000
+[2018-01-22 04:11:35] updata_stu_score_count.py INFO :3000
+[2018-01-22 04:11:36] updata_stu_score_count.py INFO :4000
+[2018-01-22 04:11:38] updata_stu_score_count.py INFO :5000
+[2018-01-22 04:11:39] updata_stu_score_count.py INFO :6000
+[2018-01-22 04:11:41] updata_stu_score_count.py INFO :7000
+[2018-01-22 04:11:42] updata_stu_score_count.py INFO :8000
+[2018-01-22 04:11:43] updata_stu_score_count.py INFO :9000
+[2018-01-22 04:11:45] updata_stu_score_count.py INFO :10000
+[2018-01-22 04:11:46] updata_stu_score_count.py INFO :11000
+[2018-01-22 04:11:47] updata_stu_score_count.py INFO :12000
+[2018-01-22 04:11:49] updata_stu_score_count.py INFO :13000
+[2018-01-22 04:11:49] updata_stu_score_count.py INFO :13143
+[2018-01-22 04:11:49] updata_stu_score_count.py INFO :updata stu_score_count is ok
+[2018-01-22 04:11:49] updata_all_count.py INFO :finish updata all count table

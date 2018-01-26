@@ -5,8 +5,8 @@ import json
 
 class GetUserRole(get_user_role):
     def entry(self, response_self):
-        body = eval(response_self.request.body)
-        sessionId = str(body["sessionId"])
+        body = response_self.request.body
+        sessionId = body.decode('utf-8')
         username=getValue(sessionId)
         if username!=None:
             userRole=getUserRole(username)

@@ -1,5 +1,5 @@
 
-from tornado_serve.orm import *
+from orm import *
 # stuList=['150410218','150410219']
 # print(MyBaseModel.returnList(stu_basic_info.select(stu_basic_info.stuName).where(stu_basic_info.stuID.in_(stuList))))
 
@@ -120,7 +120,7 @@ import pandas as pd
 # s=pd.DataFrame(s['tableData'])
 # print(s)
 # print(s[s['stuID']=='150410219'])
-
-import requests
-r=requests.post(url='http://localhost:8000/test',data={'name':'wwf'})
-print(r.text)
+a=pd.DataFrame([{'id':3,'flag':0},{'id':5,'flag':1}])
+a=a[a['flag']==2]
+print(len(a))
+print(sum(a['flag']))

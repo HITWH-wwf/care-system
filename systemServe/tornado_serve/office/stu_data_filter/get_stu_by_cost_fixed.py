@@ -25,13 +25,15 @@ class GetStuByCostFixed():
         for key in self.costCountResult.keys():
             self.costCountResult[key] = eval(self.costCountResult[key])  # {学号：全部记录,....}
 
-        return self.getStuResultByCondition(self.requestData['returnKind'], self.requestData['queryKind'])
+        result=self.getStuResultByCondition(self.requestData['returnKind'], self.requestData['queryKind'])
+        return result
 
     def getStuResultByCondition(self, returnKind, queryKind):
         resultStu = {}
         recordIdList = []
         for stu in self.selectStuIds:
             stuCountDf = pd.DataFrame(self.costCountResult[stu])
+            stuCountDf=stuCountDf.round(2)
             if queryKind=='fixed1':
                 stuCountDf = stuCountDf[stuCountDf['smallerMinFlag'] == 1]
                 times = sum(stuCountDf['smallerMinFlag'])
@@ -57,12 +59,15 @@ class GetStuByCostFixed():
 
         self.inRoleStuDf.index = self.inRoleStuDf['stuID']
         stuBasicInfo = self.inRoleStuDf.to_dict('index')
-        if returnKind=='stuList':
-            resultData = []
+        resultData = []
+        result=[{'major': '计算机科学与技术', 'specialitiesid': '041', 'times': 12, 'stuClassNumber': '1504102', 'stuName': '金宏昱', 'stuID': '150410201'}, {'major': '计算机科学与技术', 'specialitiesid': '041', 'times': 6, 'stuClassNumber': '1504102', 'stuName': '张雪彬', 'stuID': '150410206'}, {'major': '计算机科学与技术', 'specialitiesid': '041', 'times': 19, 'stuClassNumber': '1504102', 'stuName': '许程健', 'stuID': '150410217'}, {'major': '计算机科学与技术', 'specialitiesid': '041', 'times': 13, 'stuClassNumber': '1504102', 'stuName': '陈思远', 'stuID': '150410228'}, {'major': '计算机科学与技术', 'specialitiesid': '041', 'times': 12, 'stuClassNumber': '1504102', 'stuName': '张楠', 'stuID': '150410224'}]
+        if returnKind== 'stuList':
             for stu in resultStu.keys():
                 oneStu = stuBasicInfo[stu]
-                oneStu['times'] = resultStu[stu]
+                oneStu['times'] = int(resultStu[stu])
                 resultData.append(oneStu)
+            # for stu in result:
+            #     resultData.append(result)
         else:
             recordIdList = [x for x in recordIdList if x != '' and x >= 0]
             recordIdList = set(recordIdList)
@@ -75,13 +80,11 @@ class GetStuByCostFixed():
                     totalRecordInfoDf.loc[totalRecordInfoDf[totalRecordInfoDf['stuID']==stu].index,('stuName')]=stuBasicInfo[stu]['stuName']
                 resultData = totalRecordInfoDf.to_dict("report")
             else:
-                resultData = []
                 for stu in resultStu.keys():
                     for oneDay in resultStu[stu]:
                         oneRecord = stuBasicInfo[stu].copy()
                         oneRecord['happenDate'] = oneDay
                         resultData.append(oneRecord)
-
         return costModel(returnKind,queryKind,resultData)
 
     def getRecordInfo(self,recordIdList):

@@ -9,6 +9,7 @@ class GetStuByScoreFixed():
         self.failNum=3
         self.failCreditMin=16
         self.failCreditMax=20
+        #3,16,20
         # self.requestData = receiveRequest
         self.resultDf = None
         userName=getValue(self.requestData['sessionId'])
@@ -68,14 +69,14 @@ class GetStuByScoreFixed():
                 resultData = []
                 for stu in tempResult.keys():
                     oneStu = inRoleStuList[stu]
-                    oneStu['failNum'] = tempResult[stu]
+                    oneStu['failNum'] = int(tempResult[stu])
                     resultData.append(oneStu)
             else:
                 tempResult = self.resultDf['failCredit'].to_dict()
                 resultData = []
                 for stu in tempResult.keys():
                     oneStu = inRoleStuList[stu]
-                    oneStu['failCredit'] = tempResult[stu]
+                    oneStu['failCredit'] = float(tempResult[stu])
                     resultData.append(oneStu)
 
             return scoreModel('stuList', queryKind, resultData)
