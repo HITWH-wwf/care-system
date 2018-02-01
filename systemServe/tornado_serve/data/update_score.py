@@ -32,6 +32,7 @@ class UpdateScore(update_score):
                         # res.append(data.values())
                         res.append([data['stuID'], data["courseID"], data["courseIndex"]])
                         continue
+                    data['stuClass']=int(data['stuClass'])
                     judge = exam_results.select().where(exam_results.stuID==data['stuID'], exam_results.courseIndex == data["courseIndex"], exam_results.courseID == data["courseID"]).aggregate(fn.Count(exam_results.courseID))
                     try:
                         if judge >= 1:
