@@ -116,6 +116,7 @@
               this.tableInfoTemp.data[i].state
             ])
           }
+          console.log(b)
           const ws = X.utils.aoa_to_sheet(b)
           const wb = X.utils.book_new()
           X.utils.book_append_sheet(wb, ws, "SheetJS")

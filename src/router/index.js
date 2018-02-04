@@ -1,5 +1,6 @@
 import Home from '@/home'
 import Login from '@/components/login/login'
+import Index from '@/components/index/index'
 import IndexMajor from '@/components/index/indexMajor'
 import indexStudents from '@/components/index/indexStudents'
 import person from '@/components/index/personal'
@@ -33,6 +34,7 @@ let routes = [
     component: Home,
     meta: {requiresAuth: true},
     children: [
+            { path: '/home', component: Index, name: store['index'], meta: { requiresAuth: true } },
             { path: '/indexMajor', component: IndexMajor, name: store['indexMajor'], meta: { requiresAuth: true } },
             { path: '/indexStudents', component: indexStudents, name: store['indexStudents'], meta: { requiresAuth: true } },
             { path: '/person', component: person, name: store['person'], meta: { requiresAuth: true } },

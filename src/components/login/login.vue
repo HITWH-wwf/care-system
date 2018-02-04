@@ -43,9 +43,9 @@
             this.$store.commit('setPagePower', res.data)
             this.$router.push({'path': '/home'})
             localStorage.userid = this.username
+            localStorage.sessionid = res.session_id
           }
           else {
-            //console.log("Error")
             this.$notify({
               title: '操作失败',
               message: res['errorInfo'],

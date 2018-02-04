@@ -25,7 +25,7 @@
             <el-table-column :prop="tableInfoShow['propName'][index]" :label="item" :key="item.key" v-else
                              align='center'>
               <template slot-scope="scope">
-                <el-tag :color="tableRowStyle(scope.row)" close-transition>{{scope.row.state}}</el-tag>
+                <el-tag :type="tableRowStyle(scope.row)" close-transition>{{scope.row.state}}</el-tag>
               </template>
             </el-table-column>
           </template>
@@ -91,13 +91,13 @@
       },
       tableRowStyle(row) {
         if (row['state'] == '推介关注') {
-          return '#F7BA2A'
+          return 'warning'
         } else if (row['state'] == '重点关注') {
-          return '#FF4949'
+          return 'danger'
         } else if (row['state'] == '毕业') {
-          return '#13CE66'
+          return 'success'
         }
-        return '#1D8CE0'
+        return ''
       },
       changeIcon(mode, index) {
         let refValue = 'icon' + index
@@ -112,7 +112,8 @@
       handleEdit(index, row) {
         this.$store.commit("setStuId", {stuid: row['stuID']})
         localStorage.stuID = row['stuID']
-        window.open("http://localhost:8080/#/person")
+        //window.open("http://localhost:8080/#/person")
+        window.open("/#/person")
       },
       register(index) {
         return (el) => {

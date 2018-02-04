@@ -1,10 +1,10 @@
 <template>
   <el-row class="top-header">
-    <el-col :span="3" class="logo-basic">
+    <el-col :span="4" class="logo-basic">
       <i class="fa fa-home fa-fw fa-lg cur-icon" @click="routerLink('home')"></i>
       <span class="cur-icon" @click="routerLink('home')">{{sysName}}</span>
     </el-col>
-    <el-col :span="2" :offset="7">
+    <el-col :span="2" :offset="6">
       <el-dropdown @command="handleCommand">
                 <span :class="indexState=='0'?elDropdownSpanSelect:elDropdownSpan">
                     <i class="fa fa-area-chart fa-lg"></i> 首 页
@@ -82,21 +82,45 @@
           {{ this.$store.state.userid }}
         </span>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item>注销</el-dropdown-item>
+          <el-dropdown-item command="a">注销</el-dropdown-item>
+          <el-dropdown-item command="b">修改密码</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </el-col>
+    <el-dialog title="修改密码" :visible.sync="dialogTableVisible">
+      <el-form :model="changePwd" label-width="100px">
+        <el-form-item label="旧密码" prop="oldpwd">
+          <el-input type="password" v-model="changePwd.oldpwd" auto-complete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="新密码" prop="newpwd1">
+          <el-input type="password" v-model="changePwd.newpwd1" auto-complete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="确认密码" prop="newpwd2">
+          <el-input type="password" v-model="changePwd.newpwd2" auto-complete="off"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="submitForm()">提交</el-button>
+        </el-form-item>
+      </el-form>
+    </el-dialog>
   </el-row>
 </template>
 
 <script>
 
-  import ElCol from "element-ui/packages/col/src/col";
+  import ElCol from "element-ui/packages/col/src/col"
+  import { ChangeUserPwd, Exit } from '@/api/api'
 
   export default {
     components: {ElCol},
     data() {
       return {
+        changePwd:{
+          oldpwd: '',
+          newpwd1: '',
+          newpwd2: ''
+        },
+        dialogTableVisible: false,
         sysName: "学生关怀系统",
         elDropdownSpan: this.getElDropdownSpan(0),
         elDropdownSpanSelect: this.getElDropdownSpan(1),
@@ -114,6 +138,23 @@
             } */
     },
     methods: {
+      submitForm() {
+        let userid = this.$store.state.userid
+        let oldpwd = this.changePwd.oldpwd
+        let newpwd1 = this.changePwd.newpwd1
+        let newpwd2 = this.changePwd.newpwd2
+        ChangeUserPwd(userid, oldpwd, newpwd1, newpwd2).then((res) => {
+          if(res.status == 1)
+          {
+            this.$message.success(res.info)
+            this.dialogTableVisible = false
+          }
+          else
+          {
+            this.$message.error(res.errorInfo)
+          }
+        })
+      },
       handleCommand(command) {
         if (command == 'indexMajor' | command == 'indexStudents' | command == 'person') {
           this.$store.commit('setIndexState', {'index': 0})
@@ -126,10 +167,20 @@
         }
         this.routerLink(command)
       },
-      handleCommand1() {
-        this.$store.commit('delUserId')
-        localStorage.clear()
-        location.reload()
+      handleCommand1(command) {
+        if(command == "a")
+        {
+          Exit(localStorage.sessionid).then((res)=>{
+            console.log(res)
+          })
+          this.$store.commit('delUserId')
+          localStorage.clear()
+          location.reload()
+        }
+        if(command == "b")
+        {
+          this.dialogTableVisible = true
+        }
       },
       getElDropdownSpan(mode) {
         if (mode == 0) {
@@ -194,7 +245,7 @@
   }
 
   .el-dropdown-menu {
-    background: #3399FF;
+    background: #ffffff;
   }
 </style>
 

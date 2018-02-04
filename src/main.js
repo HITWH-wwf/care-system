@@ -8,7 +8,7 @@ import store from './vuex/store'
 import ElementUI from 'element-ui'
 import VueResource from 'vue-resource'
 import Vuex from 'vuex'
-import 'element-ui/lib/theme-default/index.css'
+import 'element-ui/lib/theme-chalk/index.css'
 import 'font-awesome/css/font-awesome.min.css'
 import axios from 'axios'
 import $ from 'jquery'
@@ -69,7 +69,7 @@ function isLogin(userid) {
     }
     xhttp.open("POST", loginGetUserRoleUrl, false)
     xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded")
-    xhttp.send(userid)
+    xhttp.send(localStorage.sessionid)
   }
   console.log(flag)
   return flag
