@@ -94,3 +94,27 @@
 [2018-01-22 04:11:49] updata_stu_score_count.py INFO :13143
 [2018-01-22 04:11:49] updata_stu_score_count.py INFO :updata stu_score_count is ok
 [2018-01-22 04:11:49] updata_all_count.py INFO :finish updata all count table
+[2018-02-20 12:28:29] data_orm.py WARNING :this mysql username is not root
+[2018-02-20 12:28:30] Main.py INFO :开始第一次初始化数据统计
+[2018-02-20 12:28:30] updata_all_count.py INFO :start updata all count table
+[2018-02-20 12:28:30] updata_all_count.py INFO :start delete data
+[2018-02-20 12:28:30] updata_all_count.py INFO :finish delete data
+[2018-02-20 12:28:30] updata_stu_score_count.py INFO :start updata stu_score_count
+[2018-02-20 12:28:30] updata_stu_score_count.py INFO :0
+[2018-02-20 12:28:31] updata_stu_score_count.py INFO :1000
+[2018-02-20 12:28:32] updata_stu_score_count.py INFO :2000
+[2018-02-20 12:28:33] updata_stu_score_count.py INFO :3000
+[2018-02-20 12:28:34] updata_stu_score_count.py INFO :4000
+[2018-02-20 12:28:35] updata_stu_score_count.py INFO :5000
+[2018-02-20 12:28:36] updata_stu_score_count.py INFO :6000
+[2018-02-20 12:28:37] updata_stu_score_count.py INFO :7000
+[2018-02-20 12:28:38] updata_stu_score_count.py INFO :8000
+[2018-02-20 12:28:39] updata_stu_score_count.py INFO :9000
+[2018-02-20 12:28:39] updata_stu_score_count.py INFO :10000
+[2018-02-20 12:28:40] updata_stu_score_count.py INFO :11000
+[2018-02-20 12:28:41] updata_stu_score_count.py INFO :12000
+[2018-02-20 12:28:42] updata_stu_score_count.py INFO :13000
+[2018-02-20 12:28:42] updata_stu_score_count.py INFO :13143
+[2018-02-20 12:28:42] updata_stu_score_count.py INFO :updata stu_score_count is ok
+[2018-02-20 12:28:42] updata_all_count.py INFO :finish updata all count table
+[2018-02-20 12:28:42] Main.py INFO :第一次初始化数据统计完成

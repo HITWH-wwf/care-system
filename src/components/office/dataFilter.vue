@@ -553,11 +553,6 @@
         })
       },
       sub3: function () {
-        if(this.range3 === '' || this.range4 === '')
-        {
-          this.$message.error('请输入科目数或学分')
-          return
-        }
         let returnKind = this.listchecked ? 'stuList' : 'stuRecord'
         let stuRange
         if (this.namechecked)
@@ -602,6 +597,11 @@
         })
       },
       sub4: function () {
+        if(this.range3 === '' || this.range4 === '')
+        {
+          this.$message.error('请输入科目数或学分')
+          return
+        }
         let returnKind = this.listchecked ? 'stuList' : 'stuRecord'
         let stuRange
         if (this.namechecked)
