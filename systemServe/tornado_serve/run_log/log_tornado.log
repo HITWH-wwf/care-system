@@ -2222,3 +2222,104 @@
 	request:/data/update-score is not contain userId
 
 [2018-02-01 12:02:00] views.py INFO :user: null request url: /data/update-score is successful
+[2018-02-20 11:56:56] orm.py WARNING :this mysql username is not root
+[2018-02-20 11:57:01] orm.py WARNING :this mysql username is not root
+[2018-02-20 11:57:28] login_if_pass.py INFO :用户：wangjianting 登录
+[2018-02-20 11:57:28] views.py INFO :user: wangjianting request url: /login/if-pass is successful
+[2018-02-20 11:57:32] views.py INFO :user: wangjianting request url: /office/get-manager-class is successful
+[2018-02-20 11:57:41] views.py INFO :user: wangjianting request url: /office/get-exam-result is successful
+[2018-02-20 11:58:01] views.py INFO :user: wangjianting request url: /office/get-stu-by-score-free is successful
+[2018-02-20 11:58:15] views.py INFO :user: wangjianting request url: /office/get-stu-by-score-free is successful
+[2018-02-20 11:58:34] views.py INFO :user: wangjianting request url: /office/get-stu-by-score-free is successful
+[2018-02-20 11:58:53] views.py INFO :user: wangjianting request url: /office/get-stu-by-score-free is successful
+[2018-02-20 11:59:04] views.py INFO :user: wangjianting request url: /office/get-stu-by-score-free is successful
+[2018-02-20 11:59:24] views.py CRITICAL :
+	request:/login/exit-login is not contain userId
+
+[2018-02-20 11:59:24] views.py INFO :user: null request url: /login/exit-login is successful
+[2018-02-20 11:59:25] views.py CRITICAL :
+	request:/login/get-user-role is not contain userId
+
+[2018-02-20 11:59:25] views.py INFO :user: null request url: /login/get-user-role is successful
+[2018-02-20 11:59:30] login_if_pass.py INFO :用户：admin 登录
+[2018-02-20 11:59:30] views.py INFO :user: admin request url: /login/if-pass is successful
+[2018-02-20 11:59:33] views.py INFO :user: admin request url: /office/get-manager-class is successful
+[2018-02-20 11:59:41] views.py INFO :user: admin request url: /office/get-exam-result is successful
+[2018-02-20 11:59:56] views.py INFO :user: admin request url: /office/get-stu-by-score-free is successful
+[2018-02-20 12:00:17] views.py INFO :user: admin request url: /office/get-stu-by-score-free is successful
+[2018-02-20 12:00:22] views.py INFO :user: admin request url: /office/get-stu-by-score-free is successful
+[2018-02-20 12:00:26] views.py INFO :user: admin request url: /office/get-stu-by-score-free is successful
+[2018-02-20 12:00:37] views.py INFO :user: admin request url: /office/get-stu-by-score-free is successful
+[2018-02-20 12:00:57] views.py INFO :user: admin request url: /office/get-exam-result is successful
+[2018-02-20 12:01:18] views.py INFO :user: admin request url: /office/get-exam-result is successful
+[2018-02-20 12:01:25] views.py INFO :user: admin request url: /office/get-stu-by-score-free is successful
+[2018-02-20 12:01:36] views.py INFO :user: admin request url: /office/get-stu-by-score-free is successful
+[2018-02-20 12:01:44] views.py INFO :user: admin request url: /office/get-stu-by-score-free is successful
+[2018-02-20 12:01:57] views.py INFO :user: admin request url: /office/get-stu-by-score-free is successful
+[2018-02-20 12:11:33] orm.py WARNING :this mysql username is not root
+[2018-02-20 12:11:33] orm.py WARNING :this mysql username is not root
+[2018-02-20 12:11:42] login_if_pass.py INFO :用户：wangjianting 登录
+[2018-02-20 12:11:42] views.py INFO :user: wangjianting request url: /login/if-pass is successful
+[2018-02-20 12:11:44] views.py INFO :user: wangjianting request url: /office/get-manager-class is successful
+[2018-02-20 12:11:58] views.py INFO :user: wangjianting request url: /office/get-stu-by-score-free is successful
+[2018-02-20 12:12:08] views.py INFO :user: wangjianting request url: /office/get-stu-by-score-free is successful
+[2018-02-20 12:12:13] views.py INFO :user: wangjianting request url: /office/get-stu-by-score-free is successful
+[2018-02-20 12:12:17] views.py INFO :user: wangjianting request url: /office/get-stu-by-score-free is successful
+[2018-02-20 12:13:11] views.py INFO :user: wangjianting request url: /office/get-stu-by-sleep-free is successful
+[2018-02-20 12:13:21] views.py INFO :user: wangjianting request url: /office/get-stu-by-sleep-free is successful
+[2018-02-20 12:13:51] views.py INFO :user: wangjianting request url: /office/get-stu-by-cost-free is successful
+[2018-02-20 12:14:28] views.py INFO :user: wangjianting request url: /office/get-stu-by-cost-free is successful
+[2018-02-20 12:14:56] views.py INFO :user: wangjianting request url: /office/get-stu-by-score-free is successful
+[2018-02-20 12:15:49] orm.py WARNING :this mysql username is not root
+[2018-02-20 12:15:50] orm.py WARNING :this mysql username is not root
+[2018-02-20 12:15:53] views.py INFO :user: wangjianting request url: /office/get-stu-by-score-free is successful
+[2018-02-20 12:16:51] orm.py WARNING :this mysql username is not root
+[2018-02-20 12:16:52] orm.py WARNING :this mysql username is not root
+[2018-02-20 12:16:55] views.py INFO :user: wangjianting request url: /office/get-stu-by-score-free is successful
+[2018-02-20 12:24:43] orm.py WARNING :this mysql username is not root
+[2018-02-20 12:24:44] orm.py WARNING :this mysql username is not root
+[2018-02-20 12:24:46] views.py INFO :user: wangjianting request url: /office/get-stu-by-score-free is successful
+[2018-02-20 12:25:07] orm.py WARNING :this mysql username is not root
+[2018-02-20 12:25:07] orm.py WARNING :this mysql username is not root
+[2018-02-20 12:25:10] views.py INFO :user: wangjianting request url: /office/get-stu-by-score-free is successful
+[2018-02-20 12:25:52] orm.py WARNING :this mysql username is not root
+[2018-02-20 12:25:52] orm.py WARNING :this mysql username is not root
+[2018-02-20 12:25:55] views.py INFO :user: wangjianting request url: /office/get-stu-by-score-free is successful
+[2018-02-20 12:26:20] orm.py WARNING :this mysql username is not root
+[2018-02-20 12:26:20] orm.py WARNING :this mysql username is not root
+[2018-02-20 12:26:23] views.py INFO :user: wangjianting request url: /office/get-stu-by-score-free is successful
+[2018-02-20 12:26:52] views.py CRITICAL :
+	request:/login/exit-login is not contain userId
+
+[2018-02-20 12:26:52] views.py INFO :user: null request url: /login/exit-login is successful
+[2018-02-20 12:26:53] views.py CRITICAL :
+	request:/login/get-user-role is not contain userId
+
+[2018-02-20 12:26:53] views.py INFO :user: null request url: /login/get-user-role is successful
+[2018-02-20 12:26:57] login_if_pass.py INFO :用户：admin 登录
+[2018-02-20 12:26:57] views.py INFO :user: admin request url: /login/if-pass is successful
+[2018-02-20 12:28:58] views.py CRITICAL :
+	request:/login/exit-login is not contain userId
+
+[2018-02-20 12:28:58] views.py INFO :user: null request url: /login/exit-login is successful
+[2018-02-20 12:28:58] views.py CRITICAL :
+	request:/login/get-user-role is not contain userId
+
+[2018-02-20 12:28:58] views.py INFO :user: null request url: /login/get-user-role is successful
+[2018-02-20 12:29:01] login_if_pass.py INFO :用户：admin 登录
+[2018-02-20 12:29:01] views.py INFO :user: admin request url: /login/if-pass is successful
+[2018-02-20 12:29:03] views.py CRITICAL :
+	request:/login/exit-login is not contain userId
+
+[2018-02-20 12:29:03] views.py INFO :user: null request url: /login/exit-login is successful
+[2018-02-20 12:29:04] views.py CRITICAL :
+	request:/login/get-user-role is not contain userId
+
+[2018-02-20 12:29:04] views.py INFO :user: null request url: /login/get-user-role is successful
+[2018-02-20 12:29:06] login_if_pass.py INFO :用户：wangjianting 登录
+[2018-02-20 12:29:06] views.py INFO :user: wangjianting request url: /login/if-pass is successful
+[2018-02-20 12:29:08] views.py INFO :user: wangjianting request url: /office/get-manager-class is successful
+[2018-02-20 12:29:26] views.py INFO :user: wangjianting request url: /office/get-stu-by-score-free is successful
+[2018-02-20 12:29:42] orm.py WARNING :this mysql username is not root
+[2018-02-20 12:29:42] orm.py WARNING :this mysql username is not root
+[2018-02-20 12:29:45] views.py INFO :user: wangjianting request url: /office/get-stu-by-score-free is successful

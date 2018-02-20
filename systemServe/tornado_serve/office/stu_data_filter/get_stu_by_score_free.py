@@ -41,7 +41,6 @@ class GetStuByScoreFree():
                 allSuccessId=[]
                 for line in allSuccessIdList:
                     allSuccessId=allSuccessId+line
-
                 self.resultDf = pd.DataFrame(MyBaseModel.returnList(
                     exam_results.select(exam_results.stuID, exam_results.stuName, exam_results.courseName,
                                         exam_results.credit, exam_results.examKind, exam_results.examScore,
@@ -56,7 +55,6 @@ class GetStuByScoreFree():
                     exam_results.select(exam_results.stuID, exam_results.stuName, exam_results.courseName,
                                         exam_results.credit, exam_results.examKind, exam_results.examScore,
                                         exam_results.courseID).where(exam_results.id.in_(allFailId))))
-
             self.resultDf.dropna(axis=1, inplace=True)
             resultData = self.resultDf.to_dict("report")
             return scoreModel('stuRecord', 'queryScore', resultData)

@@ -14,7 +14,7 @@ def updataAllCount():
             saveData('isDeleteFlag', 1)  # 设置开始删除数据标识
             logger.info('start delete data')
             querySleep = entry_and_exit.delete().where(
-                (entry_and_exit.exitDate < saveDateStartDate) | (entry_and_exit.entryDate < saveDateStartDate))
+               (entry_and_exit.exitDate < saveDateStartDate) | (entry_and_exit.entryDate < saveDateStartDate))
             querySleep.execute()
             queryCost = stu_transaction_record.delete().where(stu_transaction_record.tradingTime < saveDateStartDate)
             queryCost.execute()
