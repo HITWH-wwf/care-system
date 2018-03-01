@@ -24,9 +24,9 @@ def scoreCount(stuId):
     return stu
 
 
-def updataStuScoreCount():
-    logger.info('start updata stu_score_count')
-    print('updata stu_score_count')
+def updateStuScoreCount():
+    logger.info('start update stu_score_count')
+    print('update stu_score_count')
     yesterday = getBeforeDateTime(1)
     allStuId = MyBaseModel.returnList2(stu_basic_info.select(stu_basic_info.stuID))
     scoreAllStuId=MyBaseModel.returnList2(stu_score_count.select(stu_score_count.stuID))
@@ -39,6 +39,7 @@ def updataStuScoreCount():
         restart=1
     elif len(lastTimeCountDate) > 1:  #数据存在错误
         restart=1
+
     elif len(lastTimeCountDate)>0:
         if yesterday.date() != strChangeToDateTime(lastTimeCountDate[0].lastTimeCountDate).date():  # 判断表里的数据不是最新的
             restart = 1     #要重新更新
@@ -51,11 +52,12 @@ def updataStuScoreCount():
             allstu.append(scoreCount(allStuId[i].stuID))
             if i%1000 ==0 or i==(len(allStuId)-1):
                 logger.info(str(i))
-                with db_data.atomic():
-                    stu_score_count.insert_many(allstu).execute()
-                allstu=[]
+                with db_data.execution_context():
+                    with db_data.atomic():
+                        stu_score_count.insert_many(allstu).execute()
+                    allstu=[]
 
-    logger.info('updata stu_score_count is ok')
-    print('updata stu_score_count is ok')
+    logger.info('update stu_score_count is ok')
+    print('update stu_score_count is ok')
     return {'status': 1}
 

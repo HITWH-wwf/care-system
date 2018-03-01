@@ -171,6 +171,7 @@ class stu_basic_info(MyBaseModel):
     turnProfessional=CharField(null=True)   #转专业
     turnInProfessional=CharField(null=True) #转入专业
     downgrade=CharField(null=True)  #降级
+    studyWithParent = CharField(null=True)  # 是否家长陪读
 
 
 class stu_scholarship_and_grant(MyBaseModel):
@@ -213,7 +214,7 @@ class entry_and_exit(MyBaseModel):
 class stu_focus(MyBaseModel):
     stuID = CharField()
     style = IntegerField(null=True)
-    reason = CharField(null=True)
+    reason = TextField(null=True)
     level = IntegerField(null=True)
     createDate = DateTimeField(null=True)
     sleepInOrOut=CharField(null=True)
@@ -250,7 +251,7 @@ class new_feedback(MyBaseModel):
 class new_event_message(MyBaseModel):  # 新建事件表
     createDate = DateTimeField(null=True)
     fromUserId = CharField(null=True)
-    messContent = CharField(null=True)
+    messContent = TextField(null=True)
     messTitle = CharField(null=True)
     stuId = CharField(null=True)
 
@@ -282,6 +283,17 @@ class stu_score_count(MyBaseModel):
     class Meta:
         db_table = 'stu_score_count'
         primary_key = False
+class stu_some_state(MyBaseModel):
+    stuID=CharField(null=True)
+    lastTimeCountDate = CharField(null=True)
+    earlyWarningInfo=TextField(null=True)
+    vacationStayflag=CharField(null=True)
+    stayDate=TextField(null=True)
+    warningHistory = TextField(null=True)
+    scoreWarningLevel=IntegerField(null=True)
+    class Meta:
+        db_table='stu_some_state'
+        primary_key=False
 
-db.create_tables([exam_results,stu_focus,stu_cost_count,stu_score_count,stu_sleep_count], safe=True)
+db.create_tables([stu_some_state,exam_results,stu_focus,stu_cost_count,stu_score_count,stu_sleep_count], safe=True)
 

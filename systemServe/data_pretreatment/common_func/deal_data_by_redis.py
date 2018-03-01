@@ -22,4 +22,8 @@ def delData(key):
     return True
 
 
-
+def getFlagValue(key):
+    result = r.get(key)
+    if result != None:
+        result = result.decode('utf-8')
+    return result

@@ -484,7 +484,7 @@ class GetStuByCostFreeHandler(BaseHandler):
     @run_on_executor
     @getErrorMessage
     @judgeIsOpen
-    @judgeIsUpdataFinish('isUpdataCostFlag')
+    @judgeIsUpdataFinish('isUpdateCostFlag')
     def tempPost(self):
         self.result=GetStuByCostFree().entry(self)
 
@@ -499,7 +499,7 @@ class GetStuByCostFixedHandler(BaseHandler):
     @run_on_executor
     @getErrorMessage
     @judgeIsOpen
-    @judgeIsUpdataFinish('isUpdataCostFlag')
+    @judgeIsUpdataFinish('isUpdateCostFlag')
     def tempPost(self):
         self.result=GetStuByCostFixed().entry(self)
 
@@ -515,7 +515,7 @@ class GetStuBySleepFixedHandler(BaseHandler):
     @run_on_executor
     @getErrorMessage
     @judgeIsOpen
-    @judgeIsUpdataFinish('isUpdataSleepFlag')
+    @judgeIsUpdataFinish('isUpdateSleepFlag')
     def tempPost(self):
         self.result=GetStuBySleepFixed().entry(self)
 
@@ -530,7 +530,7 @@ class GetStuBySleepFreeHandler(BaseHandler):
     @run_on_executor
     @getErrorMessage
     @judgeIsOpen
-    @judgeIsUpdataFinish('isUpdataSleepFlag')
+    @judgeIsUpdataFinish('isUpdateSleepFlag')
     def tempPost(self):
         self.result=GetStuBySleepFree().entry(self)
 
@@ -545,7 +545,7 @@ class GetStuByScoreFixedHandler(BaseHandler):
     @run_on_executor
     @getErrorMessage
     @judgeIsOpen
-    @judgeIsUpdataFinish('isUpdataScoreFlag')
+    @judgeIsUpdataFinish('isUpdateScoreFlag')
     def tempPost(self):
         self.result=GetStuByScoreFixed().entry(self)
 
@@ -560,7 +560,7 @@ class GetStuByScoreFreeHandler(BaseHandler):
     @run_on_executor
     @getErrorMessage
     @judgeIsOpen
-    @judgeIsUpdataFinish('isUpdataScoreFlag')
+    @judgeIsUpdataFinish('isUpdateScoreFlag')
     def tempPost(self):
         self.result=GetStuByScoreFree().entry(self)
 

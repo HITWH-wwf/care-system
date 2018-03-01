@@ -2323,3 +2323,74 @@
 [2018-02-20 12:29:42] orm.py WARNING :this mysql username is not root
 [2018-02-20 12:29:42] orm.py WARNING :this mysql username is not root
 [2018-02-20 12:29:45] views.py INFO :user: wangjianting request url: /office/get-stu-by-score-free is successful
+[2018-02-24 13:14:42] orm.py WARNING :this mysql username is not root
+[2018-02-24 13:14:45] orm.py WARNING :this mysql username is not root
+[2018-02-24 13:15:10] login_if_pass.py INFO :用户：admin 登录
+[2018-02-24 13:15:10] views.py INFO :user: admin request url: /login/if-pass is successful
+[2018-02-24 13:15:19] views.py INFO :user: admin request url: /index/focus-table is successful
+[2018-02-24 13:15:27] views.py CRITICAL :
+	request:/login/get-user-role is not contain userId
+
+[2018-02-24 13:15:27] views.py INFO :user: null request url: /login/get-user-role is successful
+[2018-02-24 13:15:27] views.py INFO :user: admin request url: /person/get-event is successful
+[2018-02-24 13:15:27] views.py INFO :user: admin request url: /person/static-info is successful
+[2018-02-24 13:15:27] views.py INFO :user: admin request url: /person/score is successful
+[2018-02-24 13:15:29] views.py INFO :user: admin request url: /person/trip is successful
+[2018-02-24 13:15:30] views.py INFO :user: admin request url: /person/card is successful
+[2018-02-24 13:16:08] views.py CRITICAL :
+	request:/login/get-user-role is not contain userId
+
+[2018-02-24 13:16:08] views.py INFO :user: null request url: /login/get-user-role is successful
+[2018-02-24 13:16:08] views.py INFO :user: admin request url: /person/get-event is successful
+[2018-02-24 13:16:08] views.py INFO :user: admin request url: /person/score is successful
+[2018-02-24 13:16:08] views.py INFO :user: admin request url: /person/static-info is successful
+[2018-02-24 13:16:10] views.py INFO :user: admin request url: /person/trip is successful
+[2018-02-24 13:16:11] views.py INFO :user: admin request url: /person/card is successful
+[2018-02-24 13:16:38] views.py CRITICAL :
+	request:/login/get-user-role is not contain userId
+
+[2018-02-24 13:16:38] views.py INFO :user: null request url: /login/get-user-role is successful
+[2018-02-24 13:16:38] views.py INFO :user: admin request url: /person/get-event is successful
+[2018-02-24 13:16:38] views.py INFO :user: admin request url: /person/score is successful
+[2018-02-24 13:16:38] views.py INFO :user: admin request url: /person/static-info is successful
+[2018-02-24 13:16:39] views.py INFO :user: admin request url: /person/trip is successful
+[2018-02-24 13:16:40] views.py INFO :user: admin request url: /person/card is successful
+[2018-02-24 13:17:25] views.py CRITICAL :
+	request:/login/get-user-role is not contain userId
+
+[2018-02-24 13:17:25] views.py INFO :user: null request url: /login/get-user-role is successful
+[2018-02-24 13:17:25] views.py INFO :user: admin request url: /person/get-event is successful
+[2018-02-24 13:17:25] views.py INFO :user: admin request url: /person/score is successful
+[2018-02-24 13:17:25] views.py INFO :user: admin request url: /person/static-info is successful
+[2018-02-24 13:17:27] views.py INFO :user: admin request url: /person/trip is successful
+[2018-02-24 13:17:27] views.py INFO :user: admin request url: /person/card is successful
+[2018-03-01 14:49:58] orm.py WARNING :this mysql username is not root
+[2018-03-01 14:50:01] orm.py WARNING :this mysql username is not root
+[2018-03-01 14:50:12] login_if_pass.py INFO :用户：wangjianting 登录
+[2018-03-01 14:50:12] views.py INFO :user: wangjianting request url: /login/if-pass is successful
+[2018-03-01 14:50:15] views.py INFO :user: wangjianting request url: /index/focus-table is successful
+[2018-03-01 14:50:18] views.py CRITICAL :
+	request:/login/get-user-role is not contain userId
+
+[2018-03-01 14:50:18] views.py INFO :user: null request url: /login/get-user-role is successful
+[2018-03-01 14:50:18] views.py INFO :user: wangjianting request url: /person/get-event is successful
+[2018-03-01 14:50:18] views.py INFO :user: wangjianting request url: /person/static-info is successful
+[2018-03-01 14:50:18] views.py INFO :user: wangjianting request url: /person/score is successful
+[2018-03-01 14:50:18] views.py INFO :user: wangjianting request url: /person/trip is successful
+[2018-03-01 14:50:20] views.py INFO :user: wangjianting request url: /person/card is successful
+[2018-03-01 16:36:15] orm.py WARNING :this mysql username is not root
+[2018-03-01 16:36:15] orm.py WARNING :this mysql username is not root
+[2018-03-01 16:36:26] login_if_pass.py INFO :用户：wangjianting 登录
+[2018-03-01 16:36:26] views.py INFO :user: wangjianting request url: /login/if-pass is successful
+[2018-03-01 16:36:31] views.py INFO :user: wangjianting request url: /index/focus-table is successful
+[2018-03-01 16:36:33] views.py CRITICAL :
+	request:/login/get-user-role is not contain userId
+
+[2018-03-01 16:36:33] views.py INFO :user: null request url: /login/get-user-role is successful
+[2018-03-01 16:36:33] views.py INFO :user: wangjianting request url: /person/get-event is successful
+[2018-03-01 16:36:33] views.py INFO :user: wangjianting request url: /person/static-info is successful
+[2018-03-01 16:36:33] views.py INFO :user: wangjianting request url: /person/score is successful
+[2018-03-01 16:36:33] views.py INFO :user: wangjianting request url: /person/trip is successful
+[2018-03-01 16:36:35] views.py INFO :user: wangjianting request url: /person/card is successful
+[2018-03-01 16:36:53] views.py INFO :user: wangjianting request url: /person/add-focus is successful
+[2018-03-01 16:36:53] views.py INFO :user: wangjianting request url: /person/static-info is successful
