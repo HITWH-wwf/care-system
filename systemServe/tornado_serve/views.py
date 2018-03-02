@@ -55,6 +55,15 @@ from tornado_serve.office.stu_data_filter.get_stu_by_cost_fixed import GetStuByC
 from tornado_serve.office.stu_data_filter.get_stu_by_cost_free import GetStuByCostFree
 from tornado_serve.office.stu_data_filter.get_stu_by_score_fixed import GetStuByScoreFixed
 from tornado_serve.office.stu_data_filter.get_stu_by_score_free import GetStuByScoreFree
+from tornado_serve.index.early_warning.change_early_warning_state import ChangeEarlyWarningState
+from tornado_serve.index.early_warning.get_early_warning_stu import GetEarlyWarningStu
+from tornado_serve.index.early_warning.get_stu_warning_history import GetStuWarningHistory
+from tornado_serve.person.change_live_status import ChangeLiveStatus
+from tornado_serve.person.change_school_status import ChangeSchoolStatus
+from tornado_serve.person.stay_vacation import StayVacation
+from tornado_serve.person.set_focus_color import SetFocusColor
+from tornado_serve.system.early_warning_system_set import EarlyWarningSystemSet
+
 
 
 from datetime import datetime
@@ -119,6 +128,7 @@ def judgeIsUpdataFinish(key):   #key:[isDeleteFlag,isUpdataScoreFlag,isUpdataCos
                 return isUpdata(self_request)
         return judgeResult
     return receiveFunc
+
 
 
 class BaseHandler(tornado.web.RequestHandler):
@@ -577,38 +587,35 @@ class GetExamResultHandler(BaseHandler):
     def tempPost(self):
         self.result=GetExamResult().entry(self)
 
-# class GetStuByCostFreeHandler(BaseHandler):
-#     executor = ThreadPoolExecutor(4)
-#     @gen.coroutine
-#     def post(self, *args, **kwargs):
-#         self.result=None
-#         yield self.sleeptest()
-#         self.finish(self.result)
-#
-#     @run_on_executor
-#     def sleeptest(self):
-#         self.result=GetStuByCostFree().entry(self)
+class EarlyWarningSystemSetHandler(BaseHandler):
+    def post(self, *args, **kwargs):
+        pass
+class StayVacationHandler(BaseHandler):
+    def post(self, *args, **kwargs):
+        pass
+class SetFocusColorHandler(BaseHandler):
+    def post(self, *args, **kwargs):
+        pass
+
+class ChangeSchoolStatusHandler(BaseHandler):
+    def post(self, *args, **kwargs):
+        pass
+class ChangeLiveStatusHandler(BaseHandler):
+    def post(self, *args, **kwargs):
+        pass
 
 
-# class TestssHandler(BaseHandler):
-#     executor = ThreadPoolExecutor(2)
-#     @gen.coroutine
-#     def post(self, *args, **kwargs):
-#         print('i am receive')
-#         self.result=None
-#         yield self.sleeptest()  #不能带self
-#         self.finish(self.result)
-#
-#
-#     @run_on_executor
-#     @getErrorMessage
-#     @judgeIsOpen
-#     @judgeIsUpdataFinish('isUpdataSleepFlag')
-#     def sleeptest(self):
-#         time.sleep(5)
-#         self.result=testclass().entry(self)
-#
-#
+class GetStuWarningHistoryHandler(BaseHandler):
+    def post(self, *args, **kwargs):
+        pass
+
+class GetEarlyWarningStuHandler(BaseHandler):
+    def post(self, *args, **kwargs):
+        pass
+
+class ChangeEarlyWarningStateHandler(BaseHandler):
+    def post(self, *args, **kwargs):
+        pass
 # class testclass():
 #     def entry(self,getrequest):
 #         name=getrequest.get_argument('name')

@@ -24,7 +24,7 @@ def getBasicDataByUserName(username):
         # return False, "用户获取出错，请稍候重试"
 
     #一次获取所有学生数据,通过学生的班号来逐个判断是False还是True
-    data_total = pd.DataFrame(orm.MyBaseModel.returnList(orm.stu_basic_info.select(orm.stu_basic_info.stuName, orm.stu_basic_info.sex, orm.stu_basic_info.stuID, orm.stu_basic_info.specialitiesid, orm.stu_basic_info.nationality, orm.stu_basic_info.apartmentNumber, orm.stu_basic_info.dormitoryNumber, orm.stu_basic_info.idNumber, orm.stu_basic_info.politicalLandscape, orm.stu_basic_info.stuEducation, orm.stu_basic_info.graduatedHighSchool, orm.stu_basic_info.stuMobileNumber, orm.stu_basic_info.homeMobileNumber, orm.stu_basic_info.state, orm.stu_basic_info.stuClassNumber, orm.stu_basic_info.collegeid, orm.stu_basic_info.homeAddress).dicts()))
+    data_total = pd.DataFrame(orm.MyBaseModel.returnList(orm.stu_basic_info.select(orm.stu_basic_info.stuName, orm.stu_basic_info.sex, orm.stu_basic_info.stuID, orm.stu_basic_info.specialitiesid, orm.stu_basic_info.nationality, orm.stu_basic_info.apartmentNumber, orm.stu_basic_info.dormitoryNumber, orm.stu_basic_info.idNumber, orm.stu_basic_info.politicalLandscape, orm.stu_basic_info.stuEducation, orm.stu_basic_info.graduatedHighSchool, orm.stu_basic_info.stuMobileNumber, orm.stu_basic_info.homeMobileNumber, orm.stu_basic_info.state, orm.stu_basic_info.stuClassNumber, orm.stu_basic_info.collegeid, orm.stu_basic_info.homeAddress,orm.stu_basic_info.focusColor).dicts()))
     class_num_list = data_total["stuClassNumber"].tolist()
 
     compare_index = [False] * len(data_total.index)

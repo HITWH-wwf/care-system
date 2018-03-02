@@ -11,7 +11,7 @@ def cleanStuBasicInfo():
             stu.save()
     print('end')
 
-def cleanStuBasicInfoWithStuFocus():
+def cleanStuBasicInfoWithStuFocus1():   #规范校外住宿与家长陪读字段
     print('start')
     focusStu=MyBaseModel.returnList2(stu_focus.select())
     for stu in focusStu:
@@ -29,5 +29,37 @@ def cleanStuBasicInfoWithStuFocus():
                     thisStu = thisStu[0]
                     thisStu.studyWithParent = '是'
                     thisStu.save()
+
+    print('end')
+
+def cleanStuBasicInfoWithStuFocus2():   #规范关注颜色等级字段，关注等级
+    print('start')
+    with db_data.execution_context():
+        allStu = stu_basic_info.select()
+        for stu in allStu:
+            if stu.state == 1:  # 推介关注
+                stu.state=2
+                stu.focusColor = 'orange'
+            elif stu.state == 2:    #重点关注
+                stu.state = 4
+                stu.focusColor = 'red'
+            else:
+                stu.focusColor = 'blue'
+            stu.save()
+
+    print('end')
+
+
+def cleanStuFocus():    #更新关注等级
+    print('start')
+    with db_data.execution_context():
+        focusStu=stu_focus.select()
+        for stu in focusStu:
+            if stu.level==1:    #推介关注
+                stu.level=2
+            elif stu.level==2:
+                stu.level=4
+
+            stu.save()
 
     print('end')

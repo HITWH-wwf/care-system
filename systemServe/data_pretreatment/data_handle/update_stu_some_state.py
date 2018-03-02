@@ -156,6 +156,8 @@ def startUpdateState():
             oneStuState=oneStuState[0]
             warningHistory = eval(oneStuState.warningHistory)
             earlyWarningInfo = eval(oneStuState.earlyWarningInfo)
+            if oneStuState.lastTimeCountDate == yesterdayToStr: #该学生最新的预警信息已经统计过
+                continue
             oneStuState.lastTimeCountDate = yesterdayToStr
             if stu.sleepInOrOut=='是' or stu.studyWithParent=='是':   #对于校外住宿的学生，只关注是否发生学情预警
                 if oneStuState.scoreWarningLevel<scoreWarningLevel:

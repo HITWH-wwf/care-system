@@ -17,6 +17,10 @@ HANDLERS = [
     (r"/index/grow-line", GrowLineHandler),
     (r"/index/grow-bar", GrowBarHandler),
     (r"/index/focus-table", FocusTableHandler),
+    (r"/index/change-early-warning-state",ChangeEarlyWarningStateHandler),
+    (r"/index/get-early-warning-stu",GetEarlyWarningStuHandler),
+    (r"/index/get-stu-warning-history",GetStuWarningHistoryHandler),
+
     (r"/person/static-info", StaticInfoHandler),
     (r"/person/trip", TripHandler),
     (r"/person/card", CardHandler),
@@ -25,6 +29,11 @@ HANDLERS = [
     (r"/person/add-focus", AddFocusHandler),
     (r"/person/add-event", AddEventHandler),
     (r"/person/get-event", GetEventHandler),
+    (r"/person/change-live-status",ChangeLiveStatusHandler),
+    (r"/person/change-school-status",ChangeSchoolStatusHandler),
+    (r"/person/set-focus-color",SetFocusColorHandler),
+    (r"/person/stay-vacation",StayVacationHandler),
+
     (r"/office/export", ExportHandler),
     (r"/office/suggestion", SuggestionHandler),
     (r"/system/get-total-user-team", GetTotalUserTeamHandler),
@@ -42,6 +51,8 @@ HANDLERS = [
     (r"/system/add-one-user", AddOneUserHandler),
     (r"/system/add-one-user-team", AddOneUserTeamHandler),
     (r"/system/add-one-role-team", AddOneRoleTeamHandler),
+    (r"/system/early-warning-system-set",EarlyWarningSystemSetHandler),
+
     (r"/data/update-basic", UpdateBasicHandler),
     (r"/data/update-score", UpdateScoreHandler),
     (r"/data/update-focus",UpdateFocusHandler),

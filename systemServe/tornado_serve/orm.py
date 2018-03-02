@@ -161,7 +161,7 @@ class stu_basic_info(MyBaseModel):
     motherName = CharField(null=True)
     motherWorkUnit = CharField(null=True)
     motherMobileNumber = CharField(null=True)
-    state = IntegerField(null=True)
+    state = IntegerField(null=True)     #是否被关注，及关注类型
     ifSingleParent = IntegerField()
     ifPoor = IntegerField()
     updateDate = DateTimeField(null=True)
@@ -172,6 +172,7 @@ class stu_basic_info(MyBaseModel):
     turnInProfessional=CharField(null=True) #转入专业
     downgrade=CharField(null=True)  #降级
     studyWithParent = CharField(null=True)  # 是否家长陪读
+    focusColor = CharField(null=True)
 
 
 class stu_scholarship_and_grant(MyBaseModel):
@@ -217,8 +218,6 @@ class stu_focus(MyBaseModel):
     reason = TextField(null=True)
     level = IntegerField(null=True)
     createDate = DateTimeField(null=True)
-    sleepInOrOut=CharField(null=True)
-    studyWithParent=CharField(null=True)
 
 
 class new_users(MyBaseModel):

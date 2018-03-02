@@ -14,10 +14,19 @@ peewee:  2.10.1
 tornado:  4.5.2
 redis:  2.10.6
 '''
-from data_pretreatment.data_handle.update_stu_some_state import initializeTable,updateEarlyWarning
-initializeTable()
-updateEarlyWarning()
+# from data_pretreatment.data_handle.update_stu_some_state import initializeTable,updateEarlyWarning
+# initializeTable()
+# updateEarlyWarning()
+#
+# from data_pretreatment.data_handle.data_Clean import cleanStuBasicInfoWithStuFocus2,cleanStuFocus
+# cleanStuBasicInfoWithStuFocus2()
+# cleanStuFocus()
 
+# a=[{'name':'wwf','age':11},{'name':'zyz','age':12},{'name':'lyh','age':13}]
+# b=pd.DataFrame(a)
+# b.sort_values(['age'],ascending=False,inplace=True)
+# b=b.to_dict('record')
+# print(b)
 
 # s=[{'name':'wwf','id':{'one':{'w':1,'z':2},'two':2,'three':-3}},{'name':'zyz','id':{'one':31,'two':32,'three':33}},{'name':'sss','id':{'one':11,'two':21,'three':13}}]
 # df=pd.DataFrame(s)
