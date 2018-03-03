@@ -5,7 +5,7 @@ from data_pretreatment.data_handle.update_stu_sleep_count import updateStuSleepC
 from data_pretreatment.data_handle.update_stu_some_state import initializeTable,updateState
 from data_pretreatment.common_func.deal_dateortime_func import *
 from data_pretreatment.data_orm import *
-from data_pretreatment.common_func.deal_data_by_redis import saveData,getValue
+from data_pretreatment.common_func.deal_data_by_redis import saveData,getValue,getFlagValueInt
 saveDataDays=131
 def updateAllCount():
     try:
@@ -51,6 +51,13 @@ def updateAllCount():
             logger.critical(errorMessage(e))
 
         try:
+            isUpdateSleepFlagInt = getFlagValueInt('isUpdateSleepFlag')
+            isUpdateCostFlagInt=getFlagValueInt('isUpdateCostFlag')
+            isUpdateScoreFlagInt=getFlagValueInt('isUpdateScoreFlag')
+            sumFlagInt=isUpdateCostFlagInt+isUpdateScoreFlagInt+isUpdateSleepFlagInt
+            if sumFlagInt!=0:
+                saveData('isUpdateStateFlag',2)     #前面的数据统计阶段出错，或未完成
+                b=int('a')
             saveData('isUpdateStateFlag',1)   #开始更新
             initializeTable()
             updateState()

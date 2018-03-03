@@ -27,3 +27,12 @@ def getFlagValue(key):
     if result != None:
         result = result.decode('utf-8')
     return result
+
+def getFlagValueInt(key):
+    result = r.get(key)
+    if result != None:
+        result = result.decode('utf-8')
+    else:
+        result='0'
+    return int(result)
+

@@ -6,7 +6,7 @@ from tornado_serve.common.judge_permission import judgeIfPermiss
 "userId":用户名,
 'stuId':....,
 'operation':'set/cancel',
-'kind':'sleepOutSchool'/'studyWihtParent'
+'kind':'sleepOutSchool'/'studyWithParent'
 
 }
 '''

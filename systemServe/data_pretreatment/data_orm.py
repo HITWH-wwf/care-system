@@ -288,16 +288,14 @@ class stu_score_count(MyBaseModel):
         primary_key = False
 
 class stu_some_state(MyBaseModel):
-    stuID=CharField(null=True)
+    stuID=CharField(null=False,primary_key=True)
     lastTimeCountDate = CharField(null=True)
     earlyWarningInfo=TextField(null=True)
     vacationStayflag=CharField(null=True)
     stayDate=TextField(null=True)
     warningHistory=TextField(null=True)
     scoreWarningLevel = IntegerField(null=True)
-    class Meta:
-        db_table='stu_some_state'
-        primary_key=False
+
 
 db_data.create_tables([stu_some_state,exam_results,stu_focus,stu_cost_count,stu_score_count,stu_sleep_count], safe=True)
 

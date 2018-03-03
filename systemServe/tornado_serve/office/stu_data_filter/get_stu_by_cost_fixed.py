@@ -60,7 +60,6 @@ class GetStuByCostFixed():
         self.inRoleStuDf.index = self.inRoleStuDf['stuID']
         stuBasicInfo = self.inRoleStuDf.to_dict('index')
         resultData = []
-        result=[{'major': '计算机科学与技术', 'specialitiesid': '041', 'times': 12, 'stuClassNumber': '1504102', 'stuName': '金宏昱', 'stuID': '150410201'}, {'major': '计算机科学与技术', 'specialitiesid': '041', 'times': 6, 'stuClassNumber': '1504102', 'stuName': '张雪彬', 'stuID': '150410206'}, {'major': '计算机科学与技术', 'specialitiesid': '041', 'times': 19, 'stuClassNumber': '1504102', 'stuName': '许程健', 'stuID': '150410217'}, {'major': '计算机科学与技术', 'specialitiesid': '041', 'times': 13, 'stuClassNumber': '1504102', 'stuName': '陈思远', 'stuID': '150410228'}, {'major': '计算机科学与技术', 'specialitiesid': '041', 'times': 12, 'stuClassNumber': '1504102', 'stuName': '张楠', 'stuID': '150410224'}]
         if returnKind== 'stuList':
             for stu in resultStu.keys():
                 oneStu = stuBasicInfo[stu]

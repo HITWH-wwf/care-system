@@ -588,34 +588,41 @@ class GetExamResultHandler(BaseHandler):
         self.result=GetExamResult().entry(self)
 
 class EarlyWarningSystemSetHandler(BaseHandler):
+    @getErrorMessage
     def post(self, *args, **kwargs):
-        pass
+        return self.finish(EarlyWarningSystemSet().entry(self))
 class StayVacationHandler(BaseHandler):
+    @getErrorMessage
     def post(self, *args, **kwargs):
-        pass
+        return self.finish(StayVacation().entry(self))
 class SetFocusColorHandler(BaseHandler):
+    @getErrorMessage
     def post(self, *args, **kwargs):
-        pass
+        return self.finish(SetFocusColor().entry(self))
 
 class ChangeSchoolStatusHandler(BaseHandler):
+    @getErrorMessage
     def post(self, *args, **kwargs):
-        pass
+        return self.finish(ChangeSchoolStatus().entry(self))
 class ChangeLiveStatusHandler(BaseHandler):
+    @getErrorMessage
     def post(self, *args, **kwargs):
-        pass
-
+        return self.finish(ChangeLiveStatus().entry(self))
 
 class GetStuWarningHistoryHandler(BaseHandler):
+    @getErrorMessage
     def post(self, *args, **kwargs):
-        pass
+        return self.finish(GetStuWarningHistory().entry(self))
 
 class GetEarlyWarningStuHandler(BaseHandler):
+    @getErrorMessage
     def post(self, *args, **kwargs):
-        pass
+        return self.finish(GetEarlyWarningStu().entry(self))
 
 class ChangeEarlyWarningStateHandler(BaseHandler):
+    @getErrorMessage
     def post(self, *args, **kwargs):
-        pass
+        return self.finish(ChangeEarlyWarningState().entry(self))
 # class testclass():
 #     def entry(self,getrequest):
 #         name=getrequest.get_argument('name')

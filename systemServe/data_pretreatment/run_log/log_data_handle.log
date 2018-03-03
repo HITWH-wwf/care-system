@@ -453,3 +453,498 @@
 [2018-03-02 13:57:21] Main.py INFO :第一次初始化数据统计完成
 [2018-03-02 14:25:02] data_orm.py WARNING :this mysql username is not root
 [2018-03-02 14:25:44] data_orm.py WARNING :this mysql username is not root
+[2018-03-03 13:39:55] data_orm.py WARNING :this mysql username is not root
+[2018-03-03 13:39:57] Main.py INFO :开始第一次初始化数据统计
+[2018-03-03 13:39:57] update_all_count.py INFO :start update all count table
+[2018-03-03 13:39:57] update_all_count.py INFO :start delete data
+[2018-03-03 13:40:35] update_all_count.py INFO :finish delete data
+[2018-03-03 13:40:35] update_stu_sleep_count.py INFO :start update stu_sleep_count
+[2018-03-03 13:42:09] update_stu_sleep_count.py INFO :0
+[2018-03-03 13:42:51] update_stu_sleep_count.py INFO :500
+[2018-03-03 13:44:05] update_stu_sleep_count.py INFO :1000
+[2018-03-03 13:44:39] update_stu_sleep_count.py INFO :1500
+[2018-03-03 13:44:46] update_stu_sleep_count.py INFO :2000
+[2018-03-03 13:44:53] update_stu_sleep_count.py INFO :2500
+[2018-03-03 13:47:53] update_stu_sleep_count.py INFO :3000
+[2018-03-03 13:51:00] update_stu_sleep_count.py INFO :3500
+[2018-03-03 13:53:34] update_stu_sleep_count.py INFO :4000
+[2018-03-03 13:56:30] update_stu_sleep_count.py INFO :4500
+[2018-03-03 13:59:06] update_stu_sleep_count.py INFO :5000
+[2018-03-03 14:02:00] update_stu_sleep_count.py INFO :5500
+[2018-03-03 14:05:20] update_stu_sleep_count.py INFO :6000
+[2018-03-03 14:08:29] update_stu_sleep_count.py INFO :6500
+[2018-03-03 14:11:15] update_stu_sleep_count.py INFO :7000
+[2018-03-03 14:14:20] update_stu_sleep_count.py INFO :7500
+[2018-03-03 14:17:27] update_stu_sleep_count.py INFO :8000
+[2018-03-03 14:20:27] update_stu_sleep_count.py INFO :8500
+[2018-03-03 14:23:32] update_stu_sleep_count.py INFO :9000
+[2018-03-03 14:26:44] update_stu_sleep_count.py INFO :9500
+[2018-03-03 14:30:09] update_stu_sleep_count.py INFO :10000
+[2018-03-03 14:33:24] update_stu_sleep_count.py INFO :10500
+[2018-03-03 14:36:44] update_stu_sleep_count.py INFO :11000
+[2018-03-03 14:40:11] update_stu_sleep_count.py INFO :11500
+[2018-03-03 14:43:37] update_stu_sleep_count.py INFO :12000
+[2018-03-03 14:47:01] update_stu_sleep_count.py INFO :12500
+[2018-03-03 14:50:19] update_stu_sleep_count.py INFO :13000
+[2018-03-03 14:51:15] update_stu_sleep_count.py INFO :13143
+[2018-03-03 14:51:15] update_stu_sleep_count.py INFO :update stu_sleep_count is ok
+[2018-03-03 14:51:15] update_stu_cost_count.py INFO :start update stu_cost_count
+[2018-03-03 14:51:21] update_stu_cost_count.py INFO :0
+[2018-03-03 14:51:46] update_stu_cost_count.py INFO :500
+[2018-03-03 14:52:15] update_stu_cost_count.py INFO :1000
+[2018-03-03 14:52:44] update_stu_cost_count.py INFO :1500
+[2018-03-03 14:53:15] update_stu_cost_count.py INFO :2000
+[2018-03-03 14:53:45] update_stu_cost_count.py INFO :2500
+[2018-03-03 14:54:33] update_stu_cost_count.py INFO :3000
+[2018-03-03 14:55:20] update_stu_cost_count.py INFO :3500
+[2018-03-03 14:56:07] update_stu_cost_count.py INFO :4000
+[2018-03-03 14:57:01] update_stu_cost_count.py INFO :4500
+[2018-03-03 14:58:10] update_stu_cost_count.py INFO :5000
+[2018-03-03 14:59:29] update_stu_cost_count.py INFO :5500
+[2018-03-03 15:00:53] update_stu_cost_count.py INFO :6000
+[2018-03-03 15:02:29] update_stu_cost_count.py INFO :6500
+[2018-03-03 15:04:05] update_stu_cost_count.py INFO :7000
+[2018-03-03 15:05:44] update_stu_cost_count.py INFO :7500
+[2018-03-03 15:07:32] update_stu_cost_count.py INFO :8000
+[2018-03-03 15:09:29] update_stu_cost_count.py INFO :8500
+[2018-03-03 15:11:31] update_stu_cost_count.py INFO :9000
+[2018-03-03 15:13:42] update_stu_cost_count.py INFO :9500
+[2018-03-03 15:15:53] update_stu_cost_count.py INFO :10000
+[2018-03-03 15:18:14] update_stu_cost_count.py INFO :10500
+[2018-03-03 15:20:46] update_stu_cost_count.py INFO :11000
+[2018-03-03 15:23:21] update_stu_cost_count.py INFO :11500
+[2018-03-03 15:25:59] update_stu_cost_count.py INFO :12000
+[2018-03-03 15:28:39] update_stu_cost_count.py INFO :12500
+[2018-03-03 15:31:25] update_stu_cost_count.py INFO :13000
+[2018-03-03 15:32:14] update_stu_cost_count.py INFO :13143
+[2018-03-03 15:32:14] update_stu_cost_count.py INFO :update stu_cost_count is ok
+[2018-03-03 15:32:14] update_stu_score_count.py INFO :start update stu_score_count
+[2018-03-03 15:32:14] update_stu_score_count.py INFO :0
+[2018-03-03 15:32:15] update_stu_score_count.py INFO :1000
+[2018-03-03 15:32:16] update_stu_score_count.py INFO :2000
+[2018-03-03 15:32:17] update_stu_score_count.py INFO :3000
+[2018-03-03 15:32:18] update_stu_score_count.py INFO :4000
+[2018-03-03 15:32:19] update_stu_score_count.py INFO :5000
+[2018-03-03 15:32:20] update_stu_score_count.py INFO :6000
+[2018-03-03 15:32:21] update_stu_score_count.py INFO :7000
+[2018-03-03 15:32:22] update_stu_score_count.py INFO :8000
+[2018-03-03 15:32:23] update_stu_score_count.py INFO :9000
+[2018-03-03 15:32:24] update_stu_score_count.py INFO :10000
+[2018-03-03 15:32:25] update_stu_score_count.py INFO :11000
+[2018-03-03 15:32:26] update_stu_score_count.py INFO :12000
+[2018-03-03 15:32:27] update_stu_score_count.py INFO :13000
+[2018-03-03 15:32:28] update_stu_score_count.py INFO :13143
+[2018-03-03 15:32:28] update_stu_score_count.py INFO :update stu_score_count is ok
+[2018-03-03 15:32:28] update_all_count.py INFO :update stu_some_state fail
+[2018-03-03 15:32:28] update_all_count.py CRITICAL : 	No active exception to reraise
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/logConfig.py--line: 81--errorfunc: errorMessage()--errorsource: raise error 
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/data_handle/update_all_count.py--line: 60--errorfunc: updateAllCount()--errorsource: raise 
+
+[2018-03-03 15:32:28] update_all_count.py INFO :finish update all count table
+[2018-03-03 15:32:28] Main.py INFO :第一次初始化数据统计完成
+[2018-03-03 15:40:07] data_orm.py WARNING :this mysql username is not root
+[2018-03-03 15:40:07] Main.py INFO :开始第一次初始化数据统计
+[2018-03-03 15:40:07] update_all_count.py INFO :start update all count table
+[2018-03-03 15:40:07] update_all_count.py INFO :start delete data
+[2018-03-03 15:40:12] update_all_count.py INFO :finish delete data
+[2018-03-03 15:40:12] update_stu_sleep_count.py INFO :start update stu_sleep_count
+[2018-03-03 15:40:12] update_stu_sleep_count.py INFO :update stu_sleep_count is ok
+[2018-03-03 15:40:12] update_stu_cost_count.py INFO :start update stu_cost_count
+[2018-03-03 15:40:24] update_stu_cost_count.py INFO :0
+[2018-03-03 15:40:56] update_stu_cost_count.py INFO :500
+[2018-03-03 15:42:00] data_orm.py WARNING :this mysql username is not root
+[2018-03-03 15:42:00] Main.py INFO :开始第一次初始化数据统计
+[2018-03-03 15:42:00] update_all_count.py INFO :start update all count table
+[2018-03-03 15:42:00] update_all_count.py INFO :start delete data
+[2018-03-03 15:45:01] data_orm.py WARNING :this mysql username is not root
+[2018-03-03 15:45:02] Main.py INFO :开始第一次初始化数据统计
+[2018-03-03 15:45:02] update_all_count.py INFO :start update all count table
+[2018-03-03 15:45:02] update_all_count.py INFO :start delete data
+[2018-03-03 15:45:53] update_all_count.py CRITICAL : 	(1205, 'Lock wait timeout exceeded; try restarting transaction')
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/logConfig.py--line: 81--errorfunc: errorMessage()--errorsource: raise error 
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/data_handle/update_all_count.py--line: 20--errorfunc: updateAllCount()--errorsource: querySleep.execute() 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 3556--errorfunc: execute()--errorsource: return self.database.rows_affected(self._execute()) 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 2912--errorfunc: _execute()--errorsource: return self.database.execute_sql(sql, params, self.require_commit) 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 3775--errorfunc: execute_sql()--errorsource: self.commit() 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 3598--errorfunc: __exit__()--errorsource: reraise(new_type, new_type(*exc_args), traceback) 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 135--errorfunc: reraise()--errorsource: raise value.with_traceback(tb) 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 3768--errorfunc: execute_sql()--errorsource: cursor.execute(sql, params or ()) 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/cursors.py--line: 165--errorfunc: execute()--errorsource: result = self._query(query) 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/cursors.py--line: 321--errorfunc: _query()--errorsource: conn.query(q) 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/connections.py--line: 860--errorfunc: query()--errorsource: self._affected_rows = self._read_query_result(unbuffered=unbuffered) 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/connections.py--line: 1061--errorfunc: _read_query_result()--errorsource: result.read() 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/connections.py--line: 1349--errorfunc: read()--errorsource: first_packet = self.connection._read_packet() 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/connections.py--line: 1018--errorfunc: _read_packet()--errorsource: packet.check_error() 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/connections.py--line: 384--errorfunc: check_error()--errorsource: err.raise_mysql_exception(self._data) 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/err.py--line: 107--errorfunc: raise_mysql_exception()--errorsource: raise errorclass(errno, errval) 
+
+[2018-03-03 15:45:53] update_stu_sleep_count.py INFO :start update stu_sleep_count
+[2018-03-03 15:45:53] update_stu_sleep_count.py INFO :update stu_sleep_count is ok
+[2018-03-03 15:45:53] update_stu_cost_count.py INFO :start update stu_cost_count
+[2018-03-03 15:45:54] update_stu_cost_count.py INFO :0
+[2018-03-03 15:48:21] data_orm.py WARNING :this mysql username is not root
+[2018-03-03 15:48:21] Main.py INFO :开始第一次初始化数据统计
+[2018-03-03 15:48:21] update_all_count.py INFO :start update all count table
+[2018-03-03 15:48:21] update_all_count.py INFO :start delete data
+[2018-03-03 15:49:12] update_all_count.py CRITICAL : 	(1205, 'Lock wait timeout exceeded; try restarting transaction')
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/logConfig.py--line: 81--errorfunc: errorMessage()--errorsource: raise error 
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/data_handle/update_all_count.py--line: 20--errorfunc: updateAllCount()--errorsource: querySleep.execute() 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 3556--errorfunc: execute()--errorsource: return self.database.rows_affected(self._execute()) 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 2912--errorfunc: _execute()--errorsource: return self.database.execute_sql(sql, params, self.require_commit) 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 3775--errorfunc: execute_sql()--errorsource: self.commit() 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 3598--errorfunc: __exit__()--errorsource: reraise(new_type, new_type(*exc_args), traceback) 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 135--errorfunc: reraise()--errorsource: raise value.with_traceback(tb) 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 3768--errorfunc: execute_sql()--errorsource: cursor.execute(sql, params or ()) 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/cursors.py--line: 165--errorfunc: execute()--errorsource: result = self._query(query) 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/cursors.py--line: 321--errorfunc: _query()--errorsource: conn.query(q) 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/connections.py--line: 860--errorfunc: query()--errorsource: self._affected_rows = self._read_query_result(unbuffered=unbuffered) 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/connections.py--line: 1061--errorfunc: _read_query_result()--errorsource: result.read() 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/connections.py--line: 1349--errorfunc: read()--errorsource: first_packet = self.connection._read_packet() 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/connections.py--line: 1018--errorfunc: _read_packet()--errorsource: packet.check_error() 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/connections.py--line: 384--errorfunc: check_error()--errorsource: err.raise_mysql_exception(self._data) 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/err.py--line: 107--errorfunc: raise_mysql_exception()--errorsource: raise errorclass(errno, errval) 
+
+[2018-03-03 15:49:12] update_stu_sleep_count.py INFO :start update stu_sleep_count
+[2018-03-03 15:49:13] update_stu_sleep_count.py INFO :update stu_sleep_count is ok
+[2018-03-03 15:49:13] update_stu_cost_count.py INFO :start update stu_cost_count
+[2018-03-03 15:49:13] update_stu_cost_count.py INFO :0
+[2018-03-03 15:49:18] update_stu_cost_count.py INFO :500
+[2018-03-03 15:49:28] update_stu_cost_count.py INFO :1000
+[2018-03-03 15:49:37] update_stu_cost_count.py INFO :1500
+[2018-03-03 15:49:42] update_stu_cost_count.py INFO :2000
+[2018-03-03 15:49:49] update_stu_cost_count.py INFO :2500
+[2018-03-03 15:52:19] update_stu_cost_count.py INFO :3000
+[2018-03-03 15:54:50] update_stu_cost_count.py INFO :3500
+[2018-03-03 15:57:13] update_stu_cost_count.py INFO :4000
+[2018-03-03 15:59:43] update_stu_cost_count.py INFO :4500
+[2018-03-03 16:01:53] update_stu_cost_count.py INFO :5000
+[2018-03-03 16:04:27] update_stu_cost_count.py INFO :5500
+[2018-03-03 16:07:09] update_stu_cost_count.py INFO :6000
+[2018-03-03 16:09:52] update_stu_cost_count.py INFO :6500
+[2018-03-03 16:12:22] update_stu_cost_count.py INFO :7000
+[2018-03-03 16:14:57] update_stu_cost_count.py INFO :7500
+[2018-03-03 16:17:30] update_stu_cost_count.py INFO :8000
+[2018-03-03 16:20:07] update_stu_cost_count.py INFO :8500
+[2018-03-03 16:22:44] update_stu_cost_count.py INFO :9000
+[2018-03-03 16:25:21] update_stu_cost_count.py INFO :9500
+[2018-03-03 16:27:59] update_stu_cost_count.py INFO :10000
+[2018-03-03 16:30:37] update_stu_cost_count.py INFO :10500
+[2018-03-03 16:33:19] update_stu_cost_count.py INFO :11000
+[2018-03-03 16:36:03] update_stu_cost_count.py INFO :11500
+[2018-03-03 16:38:46] update_stu_cost_count.py INFO :12000
+[2018-03-03 16:41:28] update_stu_cost_count.py INFO :12500
+[2018-03-03 16:44:10] update_stu_cost_count.py INFO :13000
+[2018-03-03 16:44:57] update_stu_cost_count.py INFO :13143
+[2018-03-03 16:44:57] update_stu_cost_count.py INFO :update stu_cost_count is ok
+[2018-03-03 16:44:57] update_stu_score_count.py INFO :start update stu_score_count
+[2018-03-03 16:44:58] update_stu_score_count.py INFO :update stu_score_count is ok
+[2018-03-03 16:44:58] update_all_count.py INFO :update stu_some_state fail
+[2018-03-03 16:44:58] update_all_count.py CRITICAL : 	invalid literal for int() with base 10: 'a'
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/logConfig.py--line: 81--errorfunc: errorMessage()--errorsource: raise error 
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/data_handle/update_all_count.py--line: 60--errorfunc: updateAllCount()--errorsource: b=int('a') 
+
+[2018-03-03 16:44:58] update_all_count.py INFO :finish update all count table
+[2018-03-03 16:44:58] Main.py INFO :第一次初始化数据统计完成
+[2018-03-03 18:49:36] data_orm.py WARNING :this mysql username is not root
+[2018-03-03 18:49:36] Main.py INFO :开始第一次初始化数据统计
+[2018-03-03 18:49:36] update_all_count.py INFO :start update all count table
+[2018-03-03 18:49:36] update_all_count.py INFO :start delete data
+[2018-03-03 18:49:40] update_all_count.py INFO :finish delete data
+[2018-03-03 18:49:40] update_stu_sleep_count.py INFO :start update stu_sleep_count
+[2018-03-03 18:49:41] update_stu_sleep_count.py INFO :update stu_sleep_count is ok
+[2018-03-03 18:49:41] update_stu_cost_count.py INFO :start update stu_cost_count
+[2018-03-03 18:49:41] update_stu_cost_count.py INFO :update stu_cost_count is ok
+[2018-03-03 18:49:41] update_stu_score_count.py INFO :start update stu_score_count
+[2018-03-03 18:49:42] update_stu_score_count.py INFO :update stu_score_count is ok
+[2018-03-03 18:49:44] update_stu_some_state.py INFO :start update stu_some_state
+[2018-03-03 18:51:40] update_stu_some_state.py INFO :500
+[2018-03-03 18:52:29] update_stu_some_state.py INFO :1000
+[2018-03-03 18:53:17] update_stu_some_state.py INFO :1500
+[2018-03-03 18:54:06] update_stu_some_state.py INFO :2000
+[2018-03-03 18:54:55] update_stu_some_state.py INFO :2500
+[2018-03-03 18:55:38] update_stu_some_state.py INFO :3000
+[2018-03-03 18:56:22] update_stu_some_state.py INFO :3500
+[2018-03-03 18:57:07] update_stu_some_state.py INFO :4000
+[2018-03-03 18:57:48] update_stu_some_state.py INFO :4500
+[2018-03-03 18:58:31] update_stu_some_state.py INFO :5000
+[2018-03-03 18:59:17] update_stu_some_state.py INFO :5500
+[2018-03-03 19:00:01] update_stu_some_state.py INFO :6000
+[2018-03-03 19:00:49] update_stu_some_state.py INFO :6500
+[2018-03-03 19:01:36] update_stu_some_state.py INFO :7000
+[2018-03-03 19:02:27] update_stu_some_state.py INFO :7500
+[2018-03-03 19:03:14] update_stu_some_state.py INFO :8000
+[2018-03-03 19:04:01] update_stu_some_state.py INFO :8500
+[2018-03-03 19:04:46] update_stu_some_state.py INFO :9000
+[2018-03-03 19:05:31] update_stu_some_state.py INFO :9500
+[2018-03-03 19:06:20] update_stu_some_state.py INFO :10000
+[2018-03-03 19:07:06] update_stu_some_state.py INFO :10500
+[2018-03-03 19:07:53] update_stu_some_state.py INFO :11000
+[2018-03-03 19:08:36] update_stu_some_state.py INFO :11500
+[2018-03-03 19:09:26] update_stu_some_state.py INFO :12000
+[2018-03-03 19:10:14] update_stu_some_state.py INFO :12500
+[2018-03-03 19:11:01] update_stu_some_state.py INFO :13000
+[2018-03-03 19:11:15] update_stu_some_state.py INFO :finish update stu_some_state
+[2018-03-03 19:11:15] update_all_count.py INFO :finish update all count table
+[2018-03-03 19:11:15] Main.py INFO :第一次初始化数据统计完成
+[2018-03-03 20:18:27] data_orm.py WARNING :this mysql username is not root
+[2018-03-03 20:18:28] Main.py INFO :开始第一次初始化数据统计
+[2018-03-03 20:18:28] update_all_count.py INFO :start update all count table
+[2018-03-03 20:18:28] update_all_count.py INFO :start delete data
+[2018-03-03 20:18:32] update_all_count.py INFO :finish delete data
+[2018-03-03 20:18:32] update_stu_sleep_count.py INFO :start update stu_sleep_count
+[2018-03-03 20:18:32] update_stu_sleep_count.py INFO :update stu_sleep_count is ok
+[2018-03-03 20:18:32] update_stu_cost_count.py INFO :start update stu_cost_count
+[2018-03-03 20:18:33] update_stu_cost_count.py INFO :update stu_cost_count is ok
+[2018-03-03 20:18:33] update_stu_score_count.py INFO :start update stu_score_count
+[2018-03-03 20:18:33] update_stu_score_count.py INFO :update stu_score_count is ok
+[2018-03-03 20:18:33] update_stu_some_state.py INFO :start initialize stu_some_state
+[2018-03-03 20:18:35] update_stu_some_state.py INFO :finish initialize stu_some_state
+[2018-03-03 20:18:35] update_stu_some_state.py INFO :start update stu_some_state
+[2018-03-03 20:20:13] state_count.py INFO :500
+[2018-03-03 20:20:48] state_count.py INFO :1000
+[2018-03-03 20:21:22] state_count.py INFO :1500
+[2018-03-03 20:21:56] state_count.py INFO :2000
+[2018-03-03 20:22:30] state_count.py INFO :2500
+[2018-03-03 20:23:01] state_count.py INFO :3000
+[2018-03-03 20:23:35] state_count.py INFO :3500
+[2018-03-03 20:24:10] state_count.py INFO :4000
+[2018-03-03 20:24:44] state_count.py INFO :4500
+[2018-03-03 20:25:17] state_count.py INFO :5000
+[2018-03-03 20:25:51] state_count.py INFO :5500
+[2018-03-03 20:26:25] state_count.py INFO :6000
+[2018-03-03 20:27:00] state_count.py INFO :6500
+[2018-03-03 20:27:33] state_count.py INFO :7000
+[2018-03-03 20:28:10] state_count.py INFO :7500
+[2018-03-03 20:28:47] state_count.py INFO :8000
+[2018-03-03 20:29:23] state_count.py INFO :8500
+[2018-03-03 20:30:00] state_count.py INFO :9000
+[2018-03-03 20:30:38] state_count.py INFO :9500
+[2018-03-03 20:31:11] state_count.py INFO :10000
+[2018-03-03 20:31:48] state_count.py INFO :10500
+[2018-03-03 20:32:24] state_count.py INFO :11000
+[2018-03-03 20:33:04] state_count.py INFO :11500
+[2018-03-03 20:33:39] state_count.py INFO :12000
+[2018-03-03 20:34:17] state_count.py INFO :12500
+[2018-03-03 20:34:55] state_count.py INFO :13000
+[2018-03-03 20:35:08] update_all_count.py INFO :update stu_some_state fail
+[2018-03-03 20:35:08] update_all_count.py CRITICAL : 	write() argument must be str, not dict
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/logConfig.py--line: 81--errorfunc: errorMessage()--errorsource: raise error 
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/data_handle/update_all_count.py--line: 63--errorfunc: updateAllCount()--errorsource: updateState() 
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/data_handle/update_stu_some_state.py--line: 69--errorfunc: updateState()--errorsource: setDataInFile(systemConf) 
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/common_func/deal_data_by_file.py--line: 14--errorfunc: setDataInFile()--errorsource: f.write(systemSet) 
+
+[2018-03-03 20:35:08] update_all_count.py INFO :finish update all count table
+[2018-03-03 20:35:08] Main.py INFO :第一次初始化数据统计完成
+[2018-03-03 20:44:42] data_orm.py WARNING :this mysql username is not root
+[2018-03-03 20:44:48] data_orm.py WARNING :this mysql username is not root
+[2018-03-03 20:51:02] data_orm.py WARNING :this mysql username is not root
+[2018-03-03 20:51:02] Main.py INFO :开始第一次初始化数据统计
+[2018-03-03 20:51:02] update_all_count.py INFO :start update all count table
+[2018-03-03 20:51:02] update_all_count.py INFO :start delete data
+[2018-03-03 20:51:06] update_all_count.py INFO :finish delete data
+[2018-03-03 20:51:06] update_stu_sleep_count.py INFO :start update stu_sleep_count
+[2018-03-03 20:51:07] update_stu_sleep_count.py INFO :update stu_sleep_count is ok
+[2018-03-03 20:51:07] update_stu_cost_count.py INFO :start update stu_cost_count
+[2018-03-03 20:51:07] update_stu_cost_count.py INFO :update stu_cost_count is ok
+[2018-03-03 20:51:07] update_stu_score_count.py INFO :start update stu_score_count
+[2018-03-03 20:51:07] update_stu_score_count.py INFO :update stu_score_count is ok
+[2018-03-03 20:51:08] update_stu_some_state.py INFO :start initialize stu_some_state
+[2018-03-03 20:51:12] update_stu_some_state.py INFO :finish initialize stu_some_state
+[2018-03-03 20:51:12] update_stu_some_state.py INFO :start update stu_some_state
+[2018-03-03 20:51:12] update_all_count.py INFO :update stu_some_state fail
+[2018-03-03 20:51:12] update_all_count.py CRITICAL : 	unexpected EOF while parsing (<string>, line 0)
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/logConfig.py--line: 81--errorfunc: errorMessage()--errorsource: raise error 
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/data_handle/update_all_count.py--line: 63--errorfunc: updateAllCount()--errorsource: updateState() 
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/data_handle/update_stu_some_state.py--line: 59--errorfunc: updateState()--errorsource: systemConf=getDictDataFromFile() 
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/common_func/deal_data_by_file.py--line: 9--errorfunc: getDictDataFromFile()--errorsource: systemSet=eval(systemSet) 
+
+[2018-03-03 20:51:12] update_all_count.py INFO :finish update all count table
+[2018-03-03 20:51:12] Main.py INFO :第一次初始化数据统计完成
+[2018-03-03 20:57:00] data_orm.py WARNING :this mysql username is not root
+[2018-03-03 20:57:00] Main.py INFO :开始第一次初始化数据统计
+[2018-03-03 20:57:00] update_all_count.py INFO :start update all count table
+[2018-03-03 20:57:00] update_all_count.py INFO :start delete data
+[2018-03-03 20:57:04] update_all_count.py INFO :finish delete data
+[2018-03-03 20:57:04] update_stu_sleep_count.py INFO :start update stu_sleep_count
+[2018-03-03 20:57:05] update_stu_sleep_count.py INFO :update stu_sleep_count is ok
+[2018-03-03 20:57:05] update_stu_cost_count.py INFO :start update stu_cost_count
+[2018-03-03 20:57:05] update_stu_cost_count.py INFO :update stu_cost_count is ok
+[2018-03-03 20:57:05] update_stu_score_count.py INFO :start update stu_score_count
+[2018-03-03 20:57:06] update_stu_score_count.py INFO :update stu_score_count is ok
+[2018-03-03 20:57:06] update_stu_some_state.py INFO :start initialize stu_some_state
+[2018-03-03 20:57:06] update_all_count.py INFO :update stu_some_state fail
+[2018-03-03 20:57:06] update_all_count.py CRITICAL : 	(1062, "Duplicate entry '110230307' for key 'PRIMARY'")
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/logConfig.py--line: 81--errorfunc: errorMessage()--errorsource: raise error 
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/data_handle/update_all_count.py--line: 62--errorfunc: updateAllCount()--errorsource: initializeTable() 
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/data_handle/update_stu_some_state.py--line: 49--errorfunc: initializeTable()--errorsource: stu_some_state.insert_many(allStuState).execute() 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 3526--errorfunc: execute()--errorsource: cursor = self._execute() 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 2912--errorfunc: _execute()--errorsource: return self.database.execute_sql(sql, params, self.require_commit) 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 3775--errorfunc: execute_sql()--errorsource: self.commit() 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 3598--errorfunc: __exit__()--errorsource: reraise(new_type, new_type(*exc_args), traceback) 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 135--errorfunc: reraise()--errorsource: raise value.with_traceback(tb) 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 3768--errorfunc: execute_sql()--errorsource: cursor.execute(sql, params or ()) 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/cursors.py--line: 165--errorfunc: execute()--errorsource: result = self._query(query) 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/cursors.py--line: 321--errorfunc: _query()--errorsource: conn.query(q) 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/connections.py--line: 860--errorfunc: query()--errorsource: self._affected_rows = self._read_query_result(unbuffered=unbuffered) 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/connections.py--line: 1061--errorfunc: _read_query_result()--errorsource: result.read() 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/connections.py--line: 1349--errorfunc: read()--errorsource: first_packet = self.connection._read_packet() 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/connections.py--line: 1018--errorfunc: _read_packet()--errorsource: packet.check_error() 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/connections.py--line: 384--errorfunc: check_error()--errorsource: err.raise_mysql_exception(self._data) 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/err.py--line: 107--errorfunc: raise_mysql_exception()--errorsource: raise errorclass(errno, errval) 
+
+[2018-03-03 20:57:06] update_all_count.py INFO :finish update all count table
+[2018-03-03 20:57:06] Main.py INFO :第一次初始化数据统计完成
+[2018-03-03 21:02:31] data_orm.py WARNING :this mysql username is not root
+[2018-03-03 21:02:31] Main.py INFO :开始第一次初始化数据统计
+[2018-03-03 21:02:31] update_all_count.py INFO :start update all count table
+[2018-03-03 21:02:31] update_all_count.py INFO :start delete data
+[2018-03-03 21:02:36] update_all_count.py INFO :finish delete data
+[2018-03-03 21:02:36] update_stu_sleep_count.py INFO :start update stu_sleep_count
+[2018-03-03 21:02:36] update_stu_sleep_count.py INFO :update stu_sleep_count is ok
+[2018-03-03 21:02:36] update_stu_cost_count.py INFO :start update stu_cost_count
+[2018-03-03 21:02:36] update_stu_cost_count.py INFO :update stu_cost_count is ok
+[2018-03-03 21:02:36] update_stu_score_count.py INFO :start update stu_score_count
+[2018-03-03 21:02:37] update_stu_score_count.py INFO :update stu_score_count is ok
+[2018-03-03 21:02:37] update_stu_some_state.py INFO :start initialize stu_some_state
+[2018-03-03 21:02:40] update_stu_some_state.py INFO :finish initialize stu_some_state
+[2018-03-03 21:02:40] update_stu_some_state.py INFO :start update stu_some_state
+[2018-03-03 21:03:46] update_all_count.py INFO :update stu_some_state fail
+[2018-03-03 21:03:46] update_all_count.py CRITICAL : 	(1062, "Duplicate entry '110230307' for key 'PRIMARY'")
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/logConfig.py--line: 81--errorfunc: errorMessage()--errorsource: raise error 
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/data_handle/update_all_count.py--line: 63--errorfunc: updateAllCount()--errorsource: updateState() 
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/data_handle/update_stu_some_state.py--line: 72--errorfunc: updateState()--errorsource: startUpdateState() 
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/data_handle/state_count.py--line: 162--errorfunc: startUpdateState()--errorsource: oneStuState.save() 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 5105--errorfunc: save()--errorsource: self.insert(**field_dict).execute() 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 3526--errorfunc: execute()--errorsource: cursor = self._execute() 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 2912--errorfunc: _execute()--errorsource: return self.database.execute_sql(sql, params, self.require_commit) 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 3775--errorfunc: execute_sql()--errorsource: self.commit() 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 3598--errorfunc: __exit__()--errorsource: reraise(new_type, new_type(*exc_args), traceback) 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 135--errorfunc: reraise()--errorsource: raise value.with_traceback(tb) 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 3768--errorfunc: execute_sql()--errorsource: cursor.execute(sql, params or ()) 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/cursors.py--line: 165--errorfunc: execute()--errorsource: result = self._query(query) 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/cursors.py--line: 321--errorfunc: _query()--errorsource: conn.query(q) 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/connections.py--line: 860--errorfunc: query()--errorsource: self._affected_rows = self._read_query_result(unbuffered=unbuffered) 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/connections.py--line: 1061--errorfunc: _read_query_result()--errorsource: result.read() 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/connections.py--line: 1349--errorfunc: read()--errorsource: first_packet = self.connection._read_packet() 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/connections.py--line: 1018--errorfunc: _read_packet()--errorsource: packet.check_error() 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/connections.py--line: 384--errorfunc: check_error()--errorsource: err.raise_mysql_exception(self._data) 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/err.py--line: 107--errorfunc: raise_mysql_exception()--errorsource: raise errorclass(errno, errval) 
+
+[2018-03-03 21:03:46] update_all_count.py INFO :finish update all count table
+[2018-03-03 21:03:46] Main.py INFO :第一次初始化数据统计完成
+[2018-03-03 21:56:41] data_orm.py WARNING :this mysql username is not root
+[2018-03-03 21:56:41] Main.py INFO :开始第一次初始化数据统计
+[2018-03-03 21:56:41] update_all_count.py INFO :start update all count table
+[2018-03-03 21:56:41] update_all_count.py INFO :start delete data
+[2018-03-03 21:56:45] update_all_count.py INFO :finish delete data
+[2018-03-03 21:56:45] update_stu_sleep_count.py INFO :start update stu_sleep_count
+[2018-03-03 21:56:45] update_stu_sleep_count.py INFO :update stu_sleep_count is ok
+[2018-03-03 21:56:46] update_stu_cost_count.py INFO :start update stu_cost_count
+[2018-03-03 21:56:46] update_stu_cost_count.py INFO :update stu_cost_count is ok
+[2018-03-03 21:56:46] update_stu_score_count.py INFO :start update stu_score_count
+[2018-03-03 21:56:46] update_stu_score_count.py INFO :update stu_score_count is ok
+[2018-03-03 21:56:47] update_all_count.py INFO :update stu_some_state fail
+[2018-03-03 21:56:47] update_all_count.py CRITICAL : 	(1054, "Unknown column 't1.id' in 'field list'")
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/logConfig.py--line: 81--errorfunc: errorMessage()--errorsource: raise error 
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/data_handle/update_all_count.py--line: 62--errorfunc: updateAllCount()--errorsource: initializeTable() 
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/data_handle/update_stu_some_state.py--line: 20--errorfunc: initializeTable()--errorsource: allStu=MyBaseModel.returnList(stu_some_state.select()) 
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/data_orm.py--line: 39--errorfunc: applyFunc()--errorsource: return func(cls, *args, **kwargs) 
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/data_orm.py--line: 69--errorfunc: returnList()--errorsource: for con in Model: 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 3240--errorfunc: __iter__()--errorsource: return iter(self.execute()) 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 3233--errorfunc: execute()--errorsource: self._qr = ResultWrapper(model_class, self._execute(), query_meta) 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 2912--errorfunc: _execute()--errorsource: return self.database.execute_sql(sql, params, self.require_commit) 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 3775--errorfunc: execute_sql()--errorsource: self.commit() 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 3598--errorfunc: __exit__()--errorsource: reraise(new_type, new_type(*exc_args), traceback) 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 135--errorfunc: reraise()--errorsource: raise value.with_traceback(tb) 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 3768--errorfunc: execute_sql()--errorsource: cursor.execute(sql, params or ()) 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/cursors.py--line: 165--errorfunc: execute()--errorsource: result = self._query(query) 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/cursors.py--line: 321--errorfunc: _query()--errorsource: conn.query(q) 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/connections.py--line: 860--errorfunc: query()--errorsource: self._affected_rows = self._read_query_result(unbuffered=unbuffered) 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/connections.py--line: 1061--errorfunc: _read_query_result()--errorsource: result.read() 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/connections.py--line: 1349--errorfunc: read()--errorsource: first_packet = self.connection._read_packet() 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/connections.py--line: 1018--errorfunc: _read_packet()--errorsource: packet.check_error() 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/connections.py--line: 384--errorfunc: check_error()--errorsource: err.raise_mysql_exception(self._data) 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/err.py--line: 107--errorfunc: raise_mysql_exception()--errorsource: raise errorclass(errno, errval) 
+
+[2018-03-03 21:56:47] update_all_count.py INFO :finish update all count table
+[2018-03-03 21:56:47] Main.py INFO :第一次初始化数据统计完成
+[2018-03-03 21:58:16] data_orm.py WARNING :this mysql username is not root
+[2018-03-03 21:59:20] data_orm.py WARNING :this mysql username is not root
+[2018-03-03 21:59:21] Main.py INFO :开始第一次初始化数据统计
+[2018-03-03 21:59:21] update_all_count.py INFO :start update all count table
+[2018-03-03 21:59:21] update_all_count.py INFO :start delete data
+[2018-03-03 21:59:25] update_all_count.py INFO :finish delete data
+[2018-03-03 21:59:25] update_stu_sleep_count.py INFO :start update stu_sleep_count
+[2018-03-03 21:59:25] update_stu_sleep_count.py INFO :update stu_sleep_count is ok
+[2018-03-03 21:59:25] update_stu_cost_count.py INFO :start update stu_cost_count
+[2018-03-03 21:59:26] update_stu_cost_count.py INFO :update stu_cost_count is ok
+[2018-03-03 21:59:26] update_stu_score_count.py INFO :start update stu_score_count
+[2018-03-03 21:59:26] update_stu_score_count.py INFO :update stu_score_count is ok
+[2018-03-03 21:59:26] update_all_count.py INFO :update stu_some_state fail
+[2018-03-03 21:59:26] update_all_count.py CRITICAL : 	(1054, "Unknown column 't1.id' in 'field list'")
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/logConfig.py--line: 81--errorfunc: errorMessage()--errorsource: raise error 
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/data_handle/update_all_count.py--line: 62--errorfunc: updateAllCount()--errorsource: initializeTable() 
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/data_handle/update_stu_some_state.py--line: 20--errorfunc: initializeTable()--errorsource: allStu=MyBaseModel.returnList(stu_some_state.select()) 
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/data_orm.py--line: 39--errorfunc: applyFunc()--errorsource: return func(cls, *args, **kwargs) 
+	file: /home/wwf/care-system-master/systemServe/data_pretreatment/data_orm.py--line: 69--errorfunc: returnList()--errorsource: for con in Model: 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 3240--errorfunc: __iter__()--errorsource: return iter(self.execute()) 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 3233--errorfunc: execute()--errorsource: self._qr = ResultWrapper(model_class, self._execute(), query_meta) 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 2912--errorfunc: _execute()--errorsource: return self.database.execute_sql(sql, params, self.require_commit) 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 3775--errorfunc: execute_sql()--errorsource: self.commit() 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 3598--errorfunc: __exit__()--errorsource: reraise(new_type, new_type(*exc_args), traceback) 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 135--errorfunc: reraise()--errorsource: raise value.with_traceback(tb) 
+	file: /usr/local/lib/python3.5/dist-packages/peewee.py--line: 3768--errorfunc: execute_sql()--errorsource: cursor.execute(sql, params or ()) 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/cursors.py--line: 165--errorfunc: execute()--errorsource: result = self._query(query) 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/cursors.py--line: 321--errorfunc: _query()--errorsource: conn.query(q) 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/connections.py--line: 860--errorfunc: query()--errorsource: self._affected_rows = self._read_query_result(unbuffered=unbuffered) 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/connections.py--line: 1061--errorfunc: _read_query_result()--errorsource: result.read() 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/connections.py--line: 1349--errorfunc: read()--errorsource: first_packet = self.connection._read_packet() 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/connections.py--line: 1018--errorfunc: _read_packet()--errorsource: packet.check_error() 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/connections.py--line: 384--errorfunc: check_error()--errorsource: err.raise_mysql_exception(self._data) 
+	file: /home/wwf/.local/lib/python3.5/site-packages/pymysql/err.py--line: 107--errorfunc: raise_mysql_exception()--errorsource: raise errorclass(errno, errval) 
+
+[2018-03-03 21:59:26] update_all_count.py INFO :finish update all count table
+[2018-03-03 21:59:26] Main.py INFO :第一次初始化数据统计完成
+[2018-03-03 22:01:52] data_orm.py WARNING :this mysql username is not root
+[2018-03-03 22:01:52] Main.py INFO :开始第一次初始化数据统计
+[2018-03-03 22:01:52] update_all_count.py INFO :start update all count table
+[2018-03-03 22:01:52] update_all_count.py INFO :start delete data
+[2018-03-03 22:01:57] update_all_count.py INFO :finish delete data
+[2018-03-03 22:01:57] update_stu_sleep_count.py INFO :start update stu_sleep_count
+[2018-03-03 22:01:57] update_stu_sleep_count.py INFO :update stu_sleep_count is ok
+[2018-03-03 22:01:57] update_stu_cost_count.py INFO :start update stu_cost_count
+[2018-03-03 22:01:57] update_stu_cost_count.py INFO :update stu_cost_count is ok
+[2018-03-03 22:01:57] update_stu_score_count.py INFO :start update stu_score_count
+[2018-03-03 22:01:58] update_stu_score_count.py INFO :update stu_score_count is ok
+[2018-03-03 22:01:58] update_stu_some_state.py INFO :start initialize stu_some_state
+[2018-03-03 22:02:03] update_stu_some_state.py INFO :finish initialize stu_some_state
+[2018-03-03 22:02:03] update_stu_some_state.py INFO :start update stu_some_state
+[2018-03-03 22:03:35] state_count.py INFO :500
+[2018-03-03 22:04:04] state_count.py INFO :1000
+[2018-03-03 22:04:39] state_count.py INFO :1500
+[2018-03-03 22:05:06] state_count.py INFO :2000
+[2018-03-03 22:05:36] state_count.py INFO :2500
+[2018-03-03 22:06:05] state_count.py INFO :3000
+[2018-03-03 22:06:32] state_count.py INFO :3500
+[2018-03-03 22:06:56] state_count.py INFO :4000
+[2018-03-03 22:07:19] state_count.py INFO :4500
+[2018-03-03 22:07:48] state_count.py INFO :5000
+[2018-03-03 22:08:10] state_count.py INFO :5500
+[2018-03-03 22:08:38] state_count.py INFO :6000
+[2018-03-03 22:09:07] state_count.py INFO :6500
+[2018-03-03 22:09:36] state_count.py INFO :7000
+[2018-03-03 22:09:59] state_count.py INFO :7500
+[2018-03-03 22:10:25] state_count.py INFO :8000
+[2018-03-03 22:10:52] state_count.py INFO :8500
+[2018-03-03 22:11:20] state_count.py INFO :9000
+[2018-03-03 22:11:47] state_count.py INFO :9500
+[2018-03-03 22:12:12] state_count.py INFO :10000
+[2018-03-03 22:12:40] state_count.py INFO :10500
+[2018-03-03 22:13:10] state_count.py INFO :11000
+[2018-03-03 22:13:38] state_count.py INFO :11500
+[2018-03-03 22:14:07] state_count.py INFO :12000
+[2018-03-03 22:14:39] state_count.py INFO :12500
+[2018-03-03 22:15:08] state_count.py INFO :13000
+[2018-03-03 22:15:15] update_stu_some_state.py INFO :finish update stu_some_state
+[2018-03-03 22:15:15] update_all_count.py INFO :finish update all count table
+[2018-03-03 22:15:15] Main.py INFO :第一次初始化数据统计完成

@@ -25,9 +25,11 @@ def updateStuCostCount():
         lastCountDate=strChangeToDateTime(lastTimeCountDate[0].lastTimeCountDate).date()
         if yesterday.date() != lastCountDate:  # 判断表里的数据不是最新的
             if beforeTowDay.date()== lastCountDate:
-                restart = 2     #是前天的统计信息，只需增加昨天的数据统计
+                restart = 1     #是前天的统计信息，只需增加昨天的数据统计
+                print('I am in this')
             else:
                 restart = 1     #是更早之前的统计信息，需重新更新
+                print('I am in this 1')
 
 # 此部分不用修改，如果出现学生名单更新，直接清空表就好
 # 如果是从头开始，全部进行更新，则预警状态的需改等到全部更新完成后，再进行修改
@@ -48,11 +50,11 @@ def updateStuCostCount():
                         stu_cost_count.insert_many(allstu).execute()
                     allstu=[]
 
-    elif restart==2:
-        for i in range(len(allStuId)):
-            costCountOneDay(allStuId[i].stuID)
-            if i%500 ==0 or i==(len(allStuId)-1):  #len(allStuId)-1
-                logger.info(str(i))
+    # elif restart==2:
+    #     for i in range(len(allStuId)):
+    #         costCountOneDay(allStuId[i].stuID)
+    #         if i%500 ==0 or i==(len(allStuId)-1):  #len(allStuId)-1
+    #             logger.info(str(i))
 
     print('update stu_cost_count is ok')
     logger.info('update stu_cost_count is ok')

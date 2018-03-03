@@ -14,6 +14,12 @@ peewee:  2.10.1
 tornado:  4.5.2
 redis:  2.10.6
 '''
+# from data_pretreatment.data_orm import *
+# with db_data.execution_context():
+#     stu=stu_some_state.select().where(stu_some_state.stuID=='150410218')
+#     stu=stu[0]
+#     stu.scoreWarningLevel=-1
+#     stu.save()
 # from data_pretreatment.data_handle.update_stu_some_state import initializeTable,updateEarlyWarning
 # initializeTable()
 # updateEarlyWarning()
