@@ -6,7 +6,7 @@ from data_pretreatment.common_func.deal_data_by_file import getDictDataFromFile,
 '''
 earlyWarningInfo={'costWarning':1/0,'costColor':blue/orange/yellow/red,'aboveOneWarning':'no/have/costWarning/...',..}
 vacationStayflag='no/summer/winter'
-stayDate=[{'startDate':'2010-01-01','endDate':'2010-01-01'},{}]
+stayDate=[{'from':'2010-01-01','to':'2010-01-01'},{}]
 warningHistory=[{'appearDate':'2010-01-01','warningKind':'costWarning/aboveOneWarning','warningReason':['costFixed1/..',]},{}]
 scoreWarningLevel:0  0/1/2/3/4
 lastTimeCountDate:'2010-01-01'

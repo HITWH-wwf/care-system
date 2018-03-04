@@ -10,6 +10,7 @@ from tornado_serve.common.judge_permission import judgeIfPermiss
 '''
 class SetFocusColor():
     def entry(self,receiveRequest):
+        # self.requestData = receiveRequest
         self.requestData = eval(receiveRequest.request.body)
         userId=self.requestData['userId']
         stuId=self.requestData['stuId']

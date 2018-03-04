@@ -13,6 +13,7 @@ from tornado_serve.common.judge_permission import judgeIfPermiss
 class ChangeLiveStatus():
     def entry(self,receiveRequest):
         self.requestData = eval(receiveRequest.request.body)
+        # self.requestData=receiveRequest
         userId = self.requestData['userId']
         stuId = self.requestData['stuId']
         operation = self.requestData['operation']

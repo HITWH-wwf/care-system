@@ -10,11 +10,12 @@ from tornado_serve.common.judge_permission import judgeIfPermiss
 '''
 class EarlyWarningSystemSet():
     def entry(self,receiveRequest):
+        # self.requestData = receiveRequest
         self.requestData = eval(receiveRequest.request.body)
         userId = self.requestData['userId']
         earlyWarningState = self.requestData['earlyWarningState']
 
-        if judgeIfPermiss(user_id = userId, mode = 1, page = "person") == False:
+        if judgeIfPermiss(user_id = userId, mode = 1, page = "earlyWarningSet") == False:
             return {"status":0, "errorInfo":"用户没有操作此页面的权限"}
 
         systemSetting=getDictDataFromFile()

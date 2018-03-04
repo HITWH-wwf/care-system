@@ -10,6 +10,7 @@ import datetime
 '''
 class ChangeEarlyWarningState():
     def entry(self,receiveRequest):
+        # self.requestData = receiveRequest
         self.requestData = eval(receiveRequest.request.body)
         userId = self.requestData['userId']
         stuId = self.requestData['stuId']
@@ -45,7 +46,7 @@ class ChangeEarlyWarningState():
                  'scoreColor': 'blue',
                  'aboveOneWarning': 'no', 'aboveOneColor': 'blue'})
             thisStu.save()
-            reason='由预警状态：'+appearWarning+'，转入长期关注'
+            reason='由于发生预警状态：'+appearWarning+'，所以转为长期关注'
             stu_focus.create(**{"stuID": stuId, "style": 1, "reason": reason, "level": 3,
                                 "createDate": str(datetime.datetime.now())})
             stu = stu_basic_info.select().where(stu_basic_info.stuID == stuId).get()

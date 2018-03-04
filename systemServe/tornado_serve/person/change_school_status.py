@@ -11,6 +11,7 @@ from tornado_serve.common.judge_permission import judgeIfPermiss
 class ChangeSchoolStatus():
     def entry(self,receiveRequest):
         self.requestData = eval(receiveRequest.request.body)
+        # self.requestData = receiveRequest
         userId = self.requestData['userId']
         stuId = self.requestData['stuId']
         operation=self.requestData['operation']
@@ -27,5 +28,6 @@ class ChangeSchoolStatus():
             thisStu=stu_basic_info.select(stu_basic_info.stuID,stu_basic_info.schoolStatus).where(stu_basic_info.stuID==stuId)
             thisStu=thisStu[0]
             thisStu.schoolStatus=operationKind[operation]
+            thisStu.save()
 
         return {'status':1,'info':'操作成功'}

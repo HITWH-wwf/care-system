@@ -56,7 +56,7 @@ def updateAllCount():
             isUpdateScoreFlagInt=getFlagValueInt('isUpdateScoreFlag')
             sumFlagInt=isUpdateCostFlagInt+isUpdateScoreFlagInt+isUpdateSleepFlagInt
             if sumFlagInt!=0:
-                saveData('isUpdateStateFlag',2)     #前面的数据统计阶段出错，或未完成
+                saveData('isUpdateStateFlag',2)     #前面的数据统计阶段出错，跳过今天的预警统计
                 b=int('a')
             saveData('isUpdateStateFlag',1)   #开始更新
             initializeTable()

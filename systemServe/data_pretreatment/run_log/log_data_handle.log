@@ -948,3 +948,115 @@
 [2018-03-03 22:15:15] update_stu_some_state.py INFO :finish update stu_some_state
 [2018-03-03 22:15:15] update_all_count.py INFO :finish update all count table
 [2018-03-03 22:15:15] Main.py INFO :第一次初始化数据统计完成
+[2018-03-04 10:24:38] data_orm.py WARNING :this mysql username is not root
+[2018-03-04 10:24:42] Main.py INFO :开始第一次初始化数据统计
+[2018-03-04 10:24:42] update_all_count.py INFO :start update all count table
+[2018-03-04 10:24:42] update_all_count.py INFO :start delete data
+[2018-03-04 10:25:22] update_all_count.py INFO :finish delete data
+[2018-03-04 10:25:22] update_stu_sleep_count.py INFO :start update stu_sleep_count
+[2018-03-04 10:26:41] update_stu_sleep_count.py INFO :0
+[2018-03-04 10:27:16] update_stu_sleep_count.py INFO :500
+[2018-03-04 10:28:59] update_stu_sleep_count.py INFO :1000
+[2018-03-04 10:29:28] update_stu_sleep_count.py INFO :1500
+[2018-03-04 10:29:34] update_stu_sleep_count.py INFO :2000
+[2018-03-04 10:29:43] update_stu_sleep_count.py INFO :2500
+[2018-03-04 10:32:37] update_stu_sleep_count.py INFO :3000
+[2018-03-04 10:35:36] update_stu_sleep_count.py INFO :3500
+[2018-03-04 10:38:09] update_stu_sleep_count.py INFO :4000
+[2018-03-04 10:41:03] update_stu_sleep_count.py INFO :4500
+[2018-03-04 10:43:37] update_stu_sleep_count.py INFO :5000
+[2018-03-04 10:46:18] update_stu_sleep_count.py INFO :5500
+[2018-03-04 10:49:25] update_stu_sleep_count.py INFO :6000
+[2018-03-04 10:52:19] update_stu_sleep_count.py INFO :6500
+[2018-03-04 10:55:16] update_stu_sleep_count.py INFO :7000
+[2018-03-04 10:58:13] update_stu_sleep_count.py INFO :7500
+[2018-03-04 11:01:16] update_stu_sleep_count.py INFO :8000
+[2018-03-04 11:03:59] update_stu_sleep_count.py INFO :8500
+[2018-03-04 11:06:57] update_stu_sleep_count.py INFO :9000
+[2018-03-04 11:10:14] update_stu_sleep_count.py INFO :9500
+[2018-03-04 11:13:35] update_stu_sleep_count.py INFO :10000
+[2018-03-04 11:16:56] update_stu_sleep_count.py INFO :10500
+[2018-03-04 11:20:29] update_stu_sleep_count.py INFO :11000
+[2018-03-04 11:24:07] update_stu_sleep_count.py INFO :11500
+[2018-03-04 11:27:44] update_stu_sleep_count.py INFO :12000
+[2018-03-04 11:31:17] update_stu_sleep_count.py INFO :12500
+[2018-03-04 11:34:52] update_stu_sleep_count.py INFO :13000
+[2018-03-04 11:35:46] update_stu_sleep_count.py INFO :13143
+[2018-03-04 11:35:47] update_stu_sleep_count.py INFO :update stu_sleep_count is ok
+[2018-03-04 11:35:47] update_stu_cost_count.py INFO :start update stu_cost_count
+[2018-03-04 11:36:07] update_stu_cost_count.py INFO :0
+[2018-03-04 11:36:41] update_stu_cost_count.py INFO :500
+[2018-03-04 11:37:42] update_stu_cost_count.py INFO :1000
+[2018-03-04 11:37:52] update_stu_cost_count.py INFO :1500
+[2018-03-04 11:37:58] update_stu_cost_count.py INFO :2000
+[2018-03-04 11:38:04] update_stu_cost_count.py INFO :2500
+[2018-03-04 11:40:37] update_stu_cost_count.py INFO :3000
+[2018-03-04 11:43:13] update_stu_cost_count.py INFO :3500
+[2018-03-04 11:45:41] update_stu_cost_count.py INFO :4000
+[2018-03-04 11:48:15] update_stu_cost_count.py INFO :4500
+[2018-03-04 11:50:30] update_stu_cost_count.py INFO :5000
+[2018-03-04 11:53:12] update_stu_cost_count.py INFO :5500
+[2018-03-04 11:56:03] update_stu_cost_count.py INFO :6000
+[2018-03-04 11:58:48] update_stu_cost_count.py INFO :6500
+[2018-03-04 12:01:30] update_stu_cost_count.py INFO :7000
+[2018-03-04 12:04:06] update_stu_cost_count.py INFO :7500
+[2018-03-04 12:06:41] update_stu_cost_count.py INFO :8000
+[2018-03-04 12:09:20] update_stu_cost_count.py INFO :8500
+[2018-03-04 12:11:58] update_stu_cost_count.py INFO :9000
+[2018-03-04 12:14:45] update_stu_cost_count.py INFO :9500
+[2018-03-04 12:17:26] update_stu_cost_count.py INFO :10000
+[2018-03-04 12:20:06] update_stu_cost_count.py INFO :10500
+[2018-03-04 12:22:52] update_stu_cost_count.py INFO :11000
+[2018-03-04 12:25:36] update_stu_cost_count.py INFO :11500
+[2018-03-04 12:28:19] update_stu_cost_count.py INFO :12000
+[2018-03-04 12:31:01] update_stu_cost_count.py INFO :12500
+[2018-03-04 12:33:43] update_stu_cost_count.py INFO :13000
+[2018-03-04 12:34:30] update_stu_cost_count.py INFO :13143
+[2018-03-04 12:34:30] update_stu_cost_count.py INFO :update stu_cost_count is ok
+[2018-03-04 12:34:30] update_stu_score_count.py INFO :start update stu_score_count
+[2018-03-04 12:34:31] update_stu_score_count.py INFO :0
+[2018-03-04 12:34:32] update_stu_score_count.py INFO :1000
+[2018-03-04 12:34:33] update_stu_score_count.py INFO :2000
+[2018-03-04 12:34:34] update_stu_score_count.py INFO :3000
+[2018-03-04 12:34:35] update_stu_score_count.py INFO :4000
+[2018-03-04 12:34:36] update_stu_score_count.py INFO :5000
+[2018-03-04 12:34:36] update_stu_score_count.py INFO :6000
+[2018-03-04 12:34:37] update_stu_score_count.py INFO :7000
+[2018-03-04 12:34:38] update_stu_score_count.py INFO :8000
+[2018-03-04 12:34:39] update_stu_score_count.py INFO :9000
+[2018-03-04 12:34:40] update_stu_score_count.py INFO :10000
+[2018-03-04 12:34:41] update_stu_score_count.py INFO :11000
+[2018-03-04 12:34:42] update_stu_score_count.py INFO :12000
+[2018-03-04 12:34:42] update_stu_score_count.py INFO :13000
+[2018-03-04 12:34:43] update_stu_score_count.py INFO :13143
+[2018-03-04 12:34:43] update_stu_score_count.py INFO :update stu_score_count is ok
+[2018-03-04 12:34:43] update_stu_some_state.py INFO :start update stu_some_state
+[2018-03-04 12:36:13] state_count.py INFO :500
+[2018-03-04 12:36:41] state_count.py INFO :1000
+[2018-03-04 12:37:10] state_count.py INFO :1500
+[2018-03-04 12:37:38] state_count.py INFO :2000
+[2018-03-04 12:38:07] state_count.py INFO :2500
+[2018-03-04 12:38:30] state_count.py INFO :3000
+[2018-03-04 12:38:56] state_count.py INFO :3500
+[2018-03-04 12:39:24] state_count.py INFO :4000
+[2018-03-04 12:39:49] state_count.py INFO :4500
+[2018-03-04 12:40:14] state_count.py INFO :5000
+[2018-03-04 12:40:41] state_count.py INFO :5500
+[2018-03-04 12:41:07] state_count.py INFO :6000
+[2018-03-04 12:41:31] state_count.py INFO :6500
+[2018-03-04 12:41:59] state_count.py INFO :7000
+[2018-03-04 12:42:26] state_count.py INFO :7500
+[2018-03-04 12:42:54] state_count.py INFO :8000
+[2018-03-04 12:43:18] state_count.py INFO :8500
+[2018-03-04 12:43:45] state_count.py INFO :9000
+[2018-03-04 12:44:10] state_count.py INFO :9500
+[2018-03-04 12:44:39] state_count.py INFO :10000
+[2018-03-04 12:45:04] state_count.py INFO :10500
+[2018-03-04 12:45:30] state_count.py INFO :11000
+[2018-03-04 12:45:57] state_count.py INFO :11500
+[2018-03-04 12:46:24] state_count.py INFO :12000
+[2018-03-04 12:46:54] state_count.py INFO :12500
+[2018-03-04 12:47:22] state_count.py INFO :13000
+[2018-03-04 12:47:29] update_stu_some_state.py INFO :finish update stu_some_state
+[2018-03-04 12:47:29] update_all_count.py INFO :finish update all count table
+[2018-03-04 12:47:29] Main.py INFO :第一次初始化数据统计完成

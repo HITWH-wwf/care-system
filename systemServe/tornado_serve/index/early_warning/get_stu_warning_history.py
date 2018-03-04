@@ -34,6 +34,7 @@ class GetStuWarningHistory():
         warningKind = {
             'costWarning': '消费预警', 'sleepWarning': '住宿预警', 'scoreWarning': '学情预警', 'aboveOne': '综合预警'
         }
+        # self.requestData = receiveRequest
         self.requestData = eval(receiveRequest.request.body)
         userId = self.requestData['userId']
         stuId = self.requestData['stuId']
@@ -49,8 +50,9 @@ class GetStuWarningHistory():
             oneRecord={'appearDate':oneHistory['appearDate'],'earlyWarningKind':warningKind[oneHistory['warningKind']],'earlyWarningReason':''}
             thisRecordReasons=oneHistory['warningReason']
             earlyWarningReason=''
-            for i in thisRecordReasons:
-                earlyWarningReason=earlyWarningReason+str(i+1)+'、'+reasons[thisRecordReasons[i]]
+            for i in range(len(thisRecordReasons)):
+                num=i+1
+                earlyWarningReason=earlyWarningReason+str(num)+'、'+reasons[thisRecordReasons[i]]
             oneRecord['earlyWarningReason']=earlyWarningReason
             tableData.append(oneRecord)
         resultData={

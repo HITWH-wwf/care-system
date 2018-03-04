@@ -175,9 +175,9 @@ def judgeIsStaySchool(stuId):   #属于留校期间，返回True，其余情况�
         overdue=[]
         isStaySchoolFlag=0
         for line in stayDate:
-            if strDateTimeChangeToInt(line['startDate'])<=yesterdayToInt and strDateTimeChangeToInt(line['endDate'])>=yesterdayToInt:
+            if strDateTimeChangeToInt(line['from'])<=yesterdayToInt and strDateTimeChangeToInt(line['to'])>=yesterdayToInt:
                 isStaySchoolFlag=1
-            if strDateTimeChangeToInt(line['endDate'])<yesterdayToInt:  #已经不处于留校期间了
+            if strDateTimeChangeToInt(line['to'])<yesterdayToInt:  #已经不处于留校期间了
                 overdue.append(line)
 
         for line in overdue:

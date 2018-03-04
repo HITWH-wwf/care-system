@@ -2,6 +2,7 @@ from tornado_serve.orm import *
 from tornado_serve.common.judge_permission import judgeIfPermiss
 from tornado_serve.common.get_class_or_stu_by_user import getClassOrStuByUser
 import pandas as pd
+from tornado_serve.common.deal_data_by_redis import getFlagValue
 '''
 {
 'sessionId':....,
@@ -28,6 +29,7 @@ import pandas as pd
 
 class GetEarlyWarningStu():
     def entry(self,receiveRequest):
+        # self.requestData = receiveRequest
         self.requestData = eval(receiveRequest.request.body)
         userId = self.requestData['userId']
         if judgeIfPermiss(user_id=userId, mode=1, page="earlyWarning") == False:
@@ -59,6 +61,7 @@ class GetEarlyWarningStu():
         for stuId in self.selectStuIds:
             oneStu=stuBasicInfo[stuId]
             oneStu['countDate']=stuStateInfo[stuId]['lastTimeCountDate']
+            stuStateInfo[stuId]=stuStateInfo[stuId]['earlyWarningInfo']
             oneStu['earlyWarningKind']=warningKind[stuStateInfo[stuId]['aboveOneWarning']]
             colorKey=warningColorKeys[stuStateInfo[stuId]['aboveOneWarning']]
             oneStu['rank']=stuStateInfo[stuId][colorKey]
@@ -68,7 +71,16 @@ class GetEarlyWarningStu():
         tableDataDf=pd.DataFrame(tableData)
         tableDataDf.sort_values(['warningLevel'],ascending=False,inplace=True)
         tableData=tableDataDf.to_dict('record')
-        resultData={
+        if getFlagValue('isUpdateStateFlag')=='2':
+            resultData = {
+                "status": 2,
+                "colName": ['学号', '姓名', '专业', '统计日期', '预警类型'],
+                "propName": ["stuId", "stuName", "major", 'countDate', 'earlyWarningKind'],
+                "tableData": tableData,
+                "info": '最新的预警名单更新失败，请联系管理员'
+            }
+        else:
+            resultData={
                 "status":1,
                 "colName": ['学号','姓名','专业','统计日期','预警类型'],
                 "propName": ["stuId","stuName","major",'countDate','earlyWarningKind'],

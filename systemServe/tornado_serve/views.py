@@ -119,10 +119,12 @@ def judgeIsOpen(func):      #用于检测服务器是否关闭
             return func(self_request)
     return is_open
 
-def judgeIsUpdataFinish(key):   #key:[isDeleteFlag,isUpdataScoreFlag,isUpdataCostFlag,isUpdataSleepFlag]
+def judgeIsUpdataFinish(key):   #key:[isDeleteFlag,isUpdataScoreFlag,isUpdataCostFlag,isUpdataSleepFlag,isUpdateStateFlag]
     def receiveFunc(func):
         def judgeResult(self_request):
             if getFlagValue(key)=='0' and getFlagValue('isDeleteFlag')=='0':      #当前没有在更新
+                return func(self_request)
+            elif getFlagValue(key)=='2':
                 return func(self_request)
             else:
                 return isUpdata(self_request)
@@ -616,6 +618,8 @@ class GetStuWarningHistoryHandler(BaseHandler):
 
 class GetEarlyWarningStuHandler(BaseHandler):
     @getErrorMessage
+    @judgeIsOpen
+    @judgeIsUpdataFinish('isUpdateStateFlag')
     def post(self, *args, **kwargs):
         return self.finish(GetEarlyWarningStu().entry(self))
 
