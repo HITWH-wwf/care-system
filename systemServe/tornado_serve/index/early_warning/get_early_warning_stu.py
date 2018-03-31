@@ -75,7 +75,7 @@ class GetEarlyWarningStu():
             resultData = {
                 "status": 2,
                 "colName": ['学号', '姓名', '专业', '统计日期', '预警类型'],
-                "propName": ["stuId", "stuName", "major", 'countDate', 'earlyWarningKind'],
+                "propName": ["stuID", "stuName", "major", 'countDate', 'earlyWarningKind'],
                 "tableData": tableData,
                 "info": '最新的预警名单更新失败，请联系管理员'
             }
@@ -83,7 +83,7 @@ class GetEarlyWarningStu():
             resultData={
                 "status":1,
                 "colName": ['学号','姓名','专业','统计日期','预警类型'],
-                "propName": ["stuId","stuName","major",'countDate','earlyWarningKind'],
+                "propName": ["stuID","stuName","major",'countDate','earlyWarningKind'],
                 "tableData": tableData,
                 "info":'请求成功'
                 }

@@ -222,6 +222,8 @@ class stu_focus(MyBaseModel):
     reason = TextField(null=True)
     level = IntegerField(null=True)
     createDate = DateTimeField(null=True)
+    #sleepInOrOut=CharField(null=True)
+    #studyWithParent=CharField(null=True)
 
 
 class new_users(MyBaseModel):
@@ -235,7 +237,7 @@ class new_users(MyBaseModel):
 class new_user_role(MyBaseModel):
     userrolename = CharField(null=True)
     description = CharField()
-    permission = CharField(null=True)  # 角色组权限，varchar
+    permission = TextField(null=True)  # 角色组权限，varchar
 
 
 class new_user_team(MyBaseModel):

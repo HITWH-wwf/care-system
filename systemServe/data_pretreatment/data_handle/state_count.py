@@ -131,7 +131,7 @@ def startUpdateState():
                     oneHistory['warningReason'].append(scoreKind)
                     warningFlag=warningFlag+1
                     oneHistory['warningKind'] = 'scoreWarning'
-
+                    oneHistory['appearDate'] = yesterdayToStr
                 if warningFlag>1:
                     oneHistory['warningKind'] = 'aboveOne'
                     if earlyWarningInfo['aboveOneWarning'] == 'have':    #上次就出现综合预警，且未处理
@@ -155,8 +155,8 @@ def startUpdateState():
                         else:
                             earlyWarningInfo['aboveOneWarning']='have'
                             earlyWarningInfo['aboveOneColor'] = 'orange'
-
-                warningHistory.append(oneHistory)
+                if oneHistory['appearDate'] != '':
+                    warningHistory.append(oneHistory)
                 oneStuState.warningHistory = str(warningHistory)
                 oneStuState.earlyWarningInfo = str(earlyWarningInfo)
                 oneStuState.save()
@@ -184,6 +184,7 @@ def judgeIsStaySchool(stuId):   #属于留校期间，返回True，其余情况�
             stayDate.remove(line)
         if len(stayDate)==0:
             thisStu.vacationStayflag='no'
+            thisStu.stayRemarks=''
         thisStu.stayDate=str(stayDate)
         thisStu.save()
         if isStaySchoolFlag==1:

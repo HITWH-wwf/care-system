@@ -3,6 +3,7 @@ from data_pretreatment.data_handle.state_count import startUpdateState
 from data_pretreatment.common_func.deal_dateortime_func import getBeforeDateTime
 from data_pretreatment.common_func.deal_dateortime_func import strChangeToDateTime
 from data_pretreatment.common_func.deal_data_by_file import getDictDataFromFile,setDataInFile
+import pandas as pd
 '''
 earlyWarningInfo={'costWarning':1/0,'costColor':blue/orange/yellow/red,'aboveOneWarning':'no/have/costWarning/...',..}
 vacationStayflag='no/summer/winter'
@@ -39,7 +40,7 @@ def initializeTable():
                                     'sleepColor':'blue','scoreWarning':0,'scoreColor':'blue',
                                     'aboveOneWarning':'no','aboveOneColor':'blue'
                                     },
-                    'lastTimeCountDate':''
+                    'lastTimeCountDate':'','stayRemarks':''
                     }
             allStuState.append(oneStu)
             count=count+1
@@ -49,6 +50,27 @@ def initializeTable():
                         stu_some_state.insert_many(allStuState).execute()
                 allStuState=[]
         logger.info('finish initialize stu_some_state')
+
+def updateFocusColor():
+    allStuStateDf=pd.DataFrame(MyBaseModel.returnList(stu_some_state.select(stu_some_state.stuID,stu_some_state.earlyWarningInfo)))
+    allStuDf=pd.DataFrame(MyBaseModel.returnList(stu_basic_info.select(stu_basic_info.stuID,stu_basic_info.focusColor,stu_basic_info.state)))
+    allStuDf.dropna(axis=1,inplace=True)
+    allStuDf.index=allStuDf['stuID']
+    allStu=allStuDf.to_dict('index')
+    allStuStateDf.dropna(axis=1, inplace=True)
+    allStuStateDf.index=allStuStateDf['stuID']
+    allStuState=allStuStateDf.to_dict('index')
+    for stuId in allStuState.keys():
+        if allStu[stuId]['state']==1:   #学情关注
+            stateInfo=eval(allStuState[stuId]['earlyWarningInfo'])
+            if stateInfo['aboveOneWarning']!='no':
+                with db_data.execution_context():
+                    stu_basic_info.update(**{'focusColor':'red'}).where(stu_basic_info.stuID == stuId).execute()
+        elif allStu[stuId]['state']==3: #长期关注
+            stateInfo = eval(allStuState[stuId]['earlyWarningInfo'])
+            if stateInfo['aboveOneWarning'] == 'have':
+                with db_data.execution_context():
+                    stu_basic_info.update(**{'focusColor':'red'}).where(stu_basic_info.stuID == stuId).execute()
 
 def updateState():
     logger.info('start update stu_some_state')
@@ -70,11 +92,11 @@ def updateState():
 
     if restart==1:
         startUpdateState()
+        updateFocusColor()
         systemConf['lastStateUpdateDate']=nowDateStr
         setDataInFile(str(systemConf))
     logger.info('finish update stu_some_state')
     print('finish update stu_some_state')
-
 
 
 

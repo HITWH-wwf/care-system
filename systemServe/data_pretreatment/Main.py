@@ -4,7 +4,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from data_pretreatment.data_handle.update_all_count import updateAllCount
 from data_pretreatment.update_mysql import updateMysql
 from data_pretreatment.logConfig import logger,errorMessage
-
+#from data_pretreatment.data_handle.data_Clean import *
 if __name__=='__main__':
     try:
         logger.info('开始第一次初始化数据统计')

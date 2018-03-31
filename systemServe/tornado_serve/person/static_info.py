@@ -112,9 +112,9 @@ class StaticInfo(static_info):
             stu_basic_data[index] = one_user
 
         data_res = {
-            "colName": ["学号", "班号", "姓名", "性别", "民族", "政治面貌", "学历", "身份证号", "公寓号", "宿舍号", "毕业高中", "手机号", "家庭地址", "父亲姓名", "父亲工作单位", "父亲手机号", "母亲姓名", "母亲工作单位", "母亲手机号","学籍状态","校外住宿","转专业","转入专业","降级"],
+            "colName": ["学号", "班号", "姓名", "性别", "民族", "政治面貌", "学历", "身份证号", "公寓号", "宿舍号", "毕业高中", "手机号", "家庭地址", "父亲姓名", "父亲工作单位", "父亲手机号", "母亲姓名", "母亲工作单位", "母亲手机号","学籍状态","校外住宿","家长陪读","转专业","转入专业","降级"],
             "propName": ["stuID", "stuClassNumber", "stuName", "sex", "nationality", "politicalLandscape", "stuEducation", "idNumber", "apartmentNumber", "dormitoryNumber", "graduatedHighSchool", "stuMobileNumber", "homeAddress", "fatherName", "fatherWorkUnit", "fatherMobileNumber", "motherName", "motherWorkUnit", "motherMobileNumber","schoolStatus"
-                         ,"sleepInOrOut","turnProfessional","turnInProfessional","downgrade"],
+                         ,"sleepInOrOut","studyWithParent","turnProfessional","turnInProfessional","downgrade"],
             "data":stu_basic_data[0]
         }
         if stu_basic_data[0]['state'] == '正常':

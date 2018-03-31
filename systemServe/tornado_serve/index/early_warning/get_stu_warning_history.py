@@ -55,6 +55,7 @@ class GetStuWarningHistory():
                 earlyWarningReason=earlyWarningReason+str(num)+'、'+reasons[thisRecordReasons[i]]
             oneRecord['earlyWarningReason']=earlyWarningReason
             tableData.append(oneRecord)
+            tableData.reverse()
         resultData={
                 "status":1,
                 "colName": ['发生日期','预警类型','预警原因'],

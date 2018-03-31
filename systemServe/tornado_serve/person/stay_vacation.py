@@ -17,14 +17,15 @@ class StayVacation():
         stuId = self.requestData['stuId']
         vacation = self.requestData['vacation']
         stayDate = self.requestData['stayDate']
+        stayRemarks=self.requestData['stayRemarks']
         if judgeIfPermiss(user_id=userId, mode=1, page="person") == False:
             return {"status": 0, "errorInfo": "用户没有操作此页面的权限"}
         elif judgeIfPermiss(user_id=userId, stuid=stuId, mode=0) == False:
             return {"status": 0, "errorInfo": "用户没有操作该学生的权限"}
         else:
-            return self.stayVacationInfo(stuId,vacation,stayDate)
+            return self.stayVacationInfo(stuId,vacation,stayDate,stayRemarks)
 
-    def stayVacationInfo(self,stuId,vacation,stayDate):
+    def stayVacationInfo(self,stuId,vacation,stayDate,stayRemarks):
         with db.execution_context():
             thisStu=stu_some_state.select().where(stu_some_state.stuID==stuId)
             if len(thisStu)==0:
@@ -32,5 +33,6 @@ class StayVacation():
             thisStu=thisStu[0]
             thisStu.vacationStayflag=vacation
             thisStu.stayDate=str(stayDate)
+            thisStu.stayRemarks=stayRemarks
             thisStu.save()
         return {'status':1,'info':'操作成功'}

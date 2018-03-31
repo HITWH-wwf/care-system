@@ -231,7 +231,7 @@ class new_users(MyBaseModel):
 class new_user_role(MyBaseModel):
     userrolename = CharField(null=True)
     description = CharField()
-    permission = CharField(null=True)  # 角色组权限，varchar
+    permission = TextField(null=True)  # 角色组权限，varchar
 
 
 class new_user_team(MyBaseModel):
@@ -282,12 +282,14 @@ class stu_score_count(MyBaseModel):
     class Meta:
         db_table = 'stu_score_count'
         primary_key = False
+
 class stu_some_state(MyBaseModel):
     stuID = CharField(null=False, primary_key=True)
     lastTimeCountDate = CharField(null=True)
     earlyWarningInfo=TextField(null=True)
     vacationStayflag=CharField(null=True)
     stayDate=TextField(null=True)
+    stayRemarks=CharField(null=True)
     warningHistory = TextField(null=True)
     scoreWarningLevel=IntegerField(null=True)
 

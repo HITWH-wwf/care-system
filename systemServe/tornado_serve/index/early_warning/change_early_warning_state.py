@@ -17,7 +17,7 @@ class ChangeEarlyWarningState():
         operation=self.requestData['operation']
         if judgeIfPermiss(user_id=userId, stuid=stuId, mode=0) == False:
             return {"status": 0, "errorInfo": "用户没有操作该学生的权限"}
-        if operation=='cancle':
+        if operation=='cancel':
             with db.execution_context():
                 thisStu=stu_some_state.select().where(stu_some_state.stuID==stuId)
                 thisStu=thisStu[0]
@@ -51,6 +51,7 @@ class ChangeEarlyWarningState():
                                 "createDate": str(datetime.datetime.now())})
             stu = stu_basic_info.select().where(stu_basic_info.stuID == stuId).get()
             stu.state = 3
+            stu.focusColor='orange'
             stu.save()
         return {'status':1,'info':'操作成功'}
 

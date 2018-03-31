@@ -39,24 +39,25 @@ class ChangeUserPwd(change_user_pwd):
 
     def change(self,user_name,user_oldpwd,user_newpwd1,user_newpwd2):
         try:
-            nowuser=new_users.select().where(new_users.username==user_name)
-            if len(nowuser)>0:
-                if nowuser[0].userpass==user_oldpwd:
-                    #user_roles=getNowUserRole(user_name)
-                    if user_newpwd1==user_newpwd2:
-                        nowuser[0].userpass=user_newpwd1
-                        nowuser[0].save()
-                        logger.info('用户：%s 修改密码成功'%user_name)
-                        return json.dumps({"status":1,'info':'修改密码成功'},ensure_ascii=False)
+            with db.execution_context():
+                nowuser=new_users.select().where(new_users.username==user_name)
+                if len(nowuser)>0:
+                    if nowuser[0].userpass==user_oldpwd:
+                        #user_roles=getNowUserRole(user_name)
+                        if user_newpwd1==user_newpwd2:
+                            nowuser[0].userpass=user_newpwd1
+                            nowuser[0].save()
+                            logger.info('用户：%s 修改密码成功'%user_name)
+                            return json.dumps({"status":1,'info':'修改密码成功'},ensure_ascii=False)
+                        else:
+                            return json.dumps({"status": 0, "errorInfo": "两次输入的新密码不一致"}, ensure_ascii=False)
                     else:
-                        return json.dumps({"status": 0, "errorInfo": "两次输入的新密码不一致"}, ensure_ascii=False)
-                else:
-                    logger.info('用户：%s 修改密码失败，原因：原密码输入错误' % user_name)
-                    return json.dumps({"status": 0, "errorInfo": "原密码不正确"}, ensure_ascii=False)
+                        logger.info('用户：%s 修改密码失败，原因：原密码输入错误' % user_name)
+                        return json.dumps({"status": 0, "errorInfo": "原密码不正确"}, ensure_ascii=False)
 
-            else:
-                logger.info('用户：%s 修改密码失败，原因：该用户不存在' % user_name)
-                return json.dumps({"status": 0,"errorInfo": "修改失败，该用户不存在"},ensure_ascii=False)
+                else:
+                    logger.info('用户：%s 修改密码失败，原因：该用户不存在' % user_name)
+                    return json.dumps({"status": 0,"errorInfo": "修改失败，该用户不存在"},ensure_ascii=False)
         except:
             raise
 

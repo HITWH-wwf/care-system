@@ -1,6 +1,6 @@
 from data_pretreatment.data_orm import *
 
-def cleanStuBasicInfo():
+def cleanStuBasicInfo():    #step1
     print('start')
     with db_data.execution_context():
         allStu=stu_basic_info.select()
@@ -11,7 +11,7 @@ def cleanStuBasicInfo():
             stu.save()
     print('end')
 
-def cleanStuBasicInfoWithStuFocus1():   #规范校外住宿与家长陪读字段
+def cleanStuBasicInfoWithStuFocus1():   #规范校外住宿与家长陪读字段   step3
     print('start')
     focusStu=MyBaseModel.returnList2(stu_focus.select())
     for stu in focusStu:
@@ -32,7 +32,7 @@ def cleanStuBasicInfoWithStuFocus1():   #规范校外住宿与家长陪读字段
 
     print('end')
 
-def cleanStuBasicInfoWithStuFocus2():   #规范关注颜色等级字段，关注等级
+def cleanStuBasicInfoWithStuFocus2():   #规范关注颜色等级字段，关注等级   step4
     print('start')
     with db_data.execution_context():
         allStu = stu_basic_info.select()
@@ -50,7 +50,7 @@ def cleanStuBasicInfoWithStuFocus2():   #规范关注颜色等级字段，关注
     print('end')
 
 
-def cleanStuFocus():    #更新关注等级
+def cleanStuFocus():    #更新关注等级   step2
     print('start')
     with db_data.execution_context():
         focusStu=stu_focus.select()
