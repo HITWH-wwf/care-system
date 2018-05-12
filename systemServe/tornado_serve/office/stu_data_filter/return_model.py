@@ -4,7 +4,7 @@ def sleepModel(returnKind,queryKind,resultData):
     if len(resultData)>3000:
         resultData=resultData[0:3000]
     if returnKind=='stuList':
-        endColName={'laterReturn':'晚归次数','noReturn':'晚归次数','fixed1':'23：30前未归次数',
+        endColName={'laterReturn':'晚归次数','noReturn':'未归次数','fixed1':'23：30前未归次数',
                     'fixed2':'24小时内无出入记录次数','fixed3':'23:30-5：00归寝次数'}
         colName=['学号','姓名','专业']
         colName.append(endColName[queryKind])

@@ -2,13 +2,10 @@
 
 import sys
 sys.path.append("..")
-
 from api_define import update_basic
 from orm import *
 from common.data_clean import DataClean
 import json
-import traceback
-import datetime
 
 class UpdateBasic(update_basic):
     """学生基础信息数据更新"""
@@ -29,15 +26,22 @@ class UpdateBasic(update_basic):
             success_update_count = 0
             with db.execution_context():
                 for data in allData["data"]:
-                    if '' in data.values():
-                        res.append([data["stuID"]])
-                        continue
                     judge = stu_basic_info.select().where(stu_basic_info.stuID == data["stuID"]).aggregate(fn.Count(stu_basic_info.stuID))
                     try:
                         if judge >= 1:
+                            keys=list(data.keys())
+                            for key in keys:
+                                if data[key]=='':
+                                    data.pop(key)
+
+
+                            data.pop('state')
                             stu_basic_info.update(**data).where(stu_basic_info.stuID == data["stuID"]).execute()
                             success_update_count += 1
                         else:
+                            if '' in data.values():
+                                res.append([data["stuID"]])
+                                continue
                             stu_basic_info.create(**data)
                             success_create_count += 1
                     except:

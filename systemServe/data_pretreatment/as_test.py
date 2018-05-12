@@ -1,12 +1,12 @@
 import pandas as pd
 
-print('pandas: ',pd.__version__)
-import peewee
-print('peewee: ',peewee.__version__)
-import tornado
-print('tornado: ',tornado.version)
-import redis
-print('redis: ',redis.__version__)
+# print('pandas: ',pd.__version__)
+# import peewee
+# print('peewee: ',peewee.__version__)
+# import tornado
+# print('tornado: ',tornado.version)
+# import redis
+# print('redis: ',redis.__version__)
 
 '''
 pandas:  0.20.3
@@ -14,6 +14,25 @@ peewee:  2.10.1
 tornado:  4.5.2
 redis:  2.10.6
 '''
+# from data_pretreatment.data_orm import *
+# with db_data.execution_context():
+#     stu=stu_some_state.select().where(stu_some_state.stuID=='150410218')
+#     stu=stu[0]
+#     stu.scoreWarningLevel=-1
+#     stu.save()
+# from data_pretreatment.data_handle.update_stu_some_state import initializeTable,updateEarlyWarning
+# initializeTable()
+# updateEarlyWarning()
+#
+# from data_pretreatment.data_handle.data_Clean import cleanStuBasicInfoWithStuFocus2,cleanStuFocus
+# cleanStuBasicInfoWithStuFocus2()
+# cleanStuFocus()
+
+# a=[{'name':'wwf','age':11},{'name':'zyz','age':12},{'name':'lyh','age':13}]
+# b=pd.DataFrame(a)
+# b.sort_values(['age'],ascending=False,inplace=True)
+# b=b.to_dict('record')
+# print(b)
 
 # s=[{'name':'wwf','id':{'one':{'w':1,'z':2},'two':2,'three':-3}},{'name':'zyz','id':{'one':31,'two':32,'three':33}},{'name':'sss','id':{'one':11,'two':21,'three':13}}]
 # df=pd.DataFrame(s)

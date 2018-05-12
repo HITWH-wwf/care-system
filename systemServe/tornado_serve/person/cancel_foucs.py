@@ -29,7 +29,7 @@ class CancelFocus(cancel_focus):
         """
         try:
             with db.execution_context():
-                data = {"state": 0}
+                data = {"state": 0,'focusColor':'blue'}
                 stu_focus.delete().where(stu_focus.stuID == stu_id).execute()
                 stu_basic_info.update(**data).where(stu_basic_info.stuID == stu_id).execute()
         except:

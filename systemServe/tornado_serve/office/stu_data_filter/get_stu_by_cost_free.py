@@ -109,7 +109,7 @@ class GetStuByCostFree():
                     for line in resultStuDetail[stu]:
                         oneStu=stuBasicInfo[stu].copy()
                         oneStu['date']=intChangeToDateStr(line['today'])
-                        oneStu['todayCostSum']=line['todayCostSum']
+                        oneStu['todayCostSum']=float(line['todayCostSum'])
                         resultData.append(oneStu)
 
 

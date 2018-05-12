@@ -11,7 +11,7 @@ fixed2:24小时内无任何出入记录
 fixed3:23:30-5：00归寝室记录
 '''
 
-countDays=93    #额外多计算一天,保存94天的记录
+countDays=130    #额外多计算一天,保存94天的记录
 freeLaterReturn=230000  #表示23:00:00
 fixedNoReturn=233000    #表示23:30:00
 fixedReturnStart=233000 #表示23:30:00
@@ -120,3 +120,7 @@ def sleepCount(stuId):
 
     return {'stuID': stuId, 'freeQueryCountInfo': freeQueryCount, 'fixedQueryCountInfo': fixedQueryCount,
             'lastTimeCountDate': str(yesterday.date())}
+
+
+def sleepCountOneDay(stuId):
+    pass

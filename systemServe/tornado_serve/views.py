@@ -55,6 +55,15 @@ from tornado_serve.office.stu_data_filter.get_stu_by_cost_fixed import GetStuByC
 from tornado_serve.office.stu_data_filter.get_stu_by_cost_free import GetStuByCostFree
 from tornado_serve.office.stu_data_filter.get_stu_by_score_fixed import GetStuByScoreFixed
 from tornado_serve.office.stu_data_filter.get_stu_by_score_free import GetStuByScoreFree
+from tornado_serve.index.early_warning.change_early_warning_state import ChangeEarlyWarningState
+from tornado_serve.index.early_warning.get_early_warning_stu import GetEarlyWarningStu
+from tornado_serve.index.early_warning.get_stu_warning_history import GetStuWarningHistory
+from tornado_serve.person.change_live_status import ChangeLiveStatus
+from tornado_serve.person.change_school_status import ChangeSchoolStatus
+from tornado_serve.person.stay_vacation import StayVacation
+from tornado_serve.person.set_focus_color import SetFocusColor
+from tornado_serve.system.early_warning_system_set import EarlyWarningSystemSet
+
 
 
 from datetime import datetime
@@ -110,15 +119,18 @@ def judgeIsOpen(func):      #用于检测服务器是否关闭
             return func(self_request)
     return is_open
 
-def judgeIsUpdataFinish(key):   #key:[isDeleteFlag,isUpdataScoreFlag,isUpdataCostFlag,isUpdataSleepFlag]
+def judgeIsUpdataFinish(key):   #key:[isDeleteFlag,isUpdataScoreFlag,isUpdataCostFlag,isUpdataSleepFlag,isUpdateStateFlag]
     def receiveFunc(func):
         def judgeResult(self_request):
             if getFlagValue(key)=='0' and getFlagValue('isDeleteFlag')=='0':      #当前没有在更新
+                return func(self_request)
+            elif getFlagValue(key)=='2':
                 return func(self_request)
             else:
                 return isUpdata(self_request)
         return judgeResult
     return receiveFunc
+
 
 
 class BaseHandler(tornado.web.RequestHandler):
@@ -484,7 +496,7 @@ class GetStuByCostFreeHandler(BaseHandler):
     @run_on_executor
     @getErrorMessage
     @judgeIsOpen
-    @judgeIsUpdataFinish('isUpdataCostFlag')
+    @judgeIsUpdataFinish('isUpdateCostFlag')
     def tempPost(self):
         self.result=GetStuByCostFree().entry(self)
 
@@ -499,7 +511,7 @@ class GetStuByCostFixedHandler(BaseHandler):
     @run_on_executor
     @getErrorMessage
     @judgeIsOpen
-    @judgeIsUpdataFinish('isUpdataCostFlag')
+    @judgeIsUpdataFinish('isUpdateCostFlag')
     def tempPost(self):
         self.result=GetStuByCostFixed().entry(self)
 
@@ -515,7 +527,7 @@ class GetStuBySleepFixedHandler(BaseHandler):
     @run_on_executor
     @getErrorMessage
     @judgeIsOpen
-    @judgeIsUpdataFinish('isUpdataSleepFlag')
+    @judgeIsUpdataFinish('isUpdateSleepFlag')
     def tempPost(self):
         self.result=GetStuBySleepFixed().entry(self)
 
@@ -530,7 +542,7 @@ class GetStuBySleepFreeHandler(BaseHandler):
     @run_on_executor
     @getErrorMessage
     @judgeIsOpen
-    @judgeIsUpdataFinish('isUpdataSleepFlag')
+    @judgeIsUpdataFinish('isUpdateSleepFlag')
     def tempPost(self):
         self.result=GetStuBySleepFree().entry(self)
 
@@ -545,7 +557,7 @@ class GetStuByScoreFixedHandler(BaseHandler):
     @run_on_executor
     @getErrorMessage
     @judgeIsOpen
-    @judgeIsUpdataFinish('isUpdataScoreFlag')
+    @judgeIsUpdataFinish('isUpdateScoreFlag')
     def tempPost(self):
         self.result=GetStuByScoreFixed().entry(self)
 
@@ -560,7 +572,7 @@ class GetStuByScoreFreeHandler(BaseHandler):
     @run_on_executor
     @getErrorMessage
     @judgeIsOpen
-    @judgeIsUpdataFinish('isUpdataScoreFlag')
+    @judgeIsUpdataFinish('isUpdateScoreFlag')
     def tempPost(self):
         self.result=GetStuByScoreFree().entry(self)
 
@@ -577,38 +589,44 @@ class GetExamResultHandler(BaseHandler):
     def tempPost(self):
         self.result=GetExamResult().entry(self)
 
-# class GetStuByCostFreeHandler(BaseHandler):
-#     executor = ThreadPoolExecutor(4)
-#     @gen.coroutine
-#     def post(self, *args, **kwargs):
-#         self.result=None
-#         yield self.sleeptest()
-#         self.finish(self.result)
-#
-#     @run_on_executor
-#     def sleeptest(self):
-#         self.result=GetStuByCostFree().entry(self)
+class EarlyWarningSystemSetHandler(BaseHandler):
+    @getErrorMessage
+    def post(self, *args, **kwargs):
+        return self.finish(EarlyWarningSystemSet().entry(self))
+class StayVacationHandler(BaseHandler):
+    @getErrorMessage
+    def post(self, *args, **kwargs):
+        return self.finish(StayVacation().entry(self))
+class SetFocusColorHandler(BaseHandler):
+    @getErrorMessage
+    def post(self, *args, **kwargs):
+        return self.finish(SetFocusColor().entry(self))
 
+class ChangeSchoolStatusHandler(BaseHandler):
+    @getErrorMessage
+    def post(self, *args, **kwargs):
+        return self.finish(ChangeSchoolStatus().entry(self))
+class ChangeLiveStatusHandler(BaseHandler):
+    @getErrorMessage
+    def post(self, *args, **kwargs):
+        return self.finish(ChangeLiveStatus().entry(self))
 
-# class TestssHandler(BaseHandler):
-#     executor = ThreadPoolExecutor(2)
-#     @gen.coroutine
-#     def post(self, *args, **kwargs):
-#         print('i am receive')
-#         self.result=None
-#         yield self.sleeptest()  #不能带self
-#         self.finish(self.result)
-#
-#
-#     @run_on_executor
-#     @getErrorMessage
-#     @judgeIsOpen
-#     @judgeIsUpdataFinish('isUpdataSleepFlag')
-#     def sleeptest(self):
-#         time.sleep(5)
-#         self.result=testclass().entry(self)
-#
-#
+class GetStuWarningHistoryHandler(BaseHandler):
+    @getErrorMessage
+    def post(self, *args, **kwargs):
+        return self.finish(GetStuWarningHistory().entry(self))
+
+class GetEarlyWarningStuHandler(BaseHandler):
+    @getErrorMessage
+    @judgeIsOpen
+    @judgeIsUpdataFinish('isUpdateStateFlag')
+    def post(self, *args, **kwargs):
+        return self.finish(GetEarlyWarningStu().entry(self))
+
+class ChangeEarlyWarningStateHandler(BaseHandler):
+    @getErrorMessage
+    def post(self, *args, **kwargs):
+        return self.finish(ChangeEarlyWarningState().entry(self))
 # class testclass():
 #     def entry(self,getrequest):
 #         name=getrequest.get_argument('name')

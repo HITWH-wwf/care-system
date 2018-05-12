@@ -17,30 +17,33 @@ class AddFocus(add_focus):
         stu_id = str(body["data"]["stuId"])
         level = str(body["data"]["focusLevel"])
         reason = str(body["data"]["reson"])
-        sleepInOrOut = str(body["data"]["sleepInOrOut"])
-        studyWithParent = str(body["data"]["studyWithParent"])
+        # sleepInOrOut = str(body["data"]["sleepInOrOut"])
+        # studyWithParent = str(body["data"]["studyWithParent"])
 
         if judgeIfPermiss(user_id = user_id, mode = 1, page = "person") == False:
             return {"status":0, "errorInfo":"用户没有页面设置权限"}
         elif judgeIfPermiss(user_id = user_id, stuid = stu_id, mode = 0) == False:
             return {"status":0, "errorInfo":"用户没有用户组权限设置"}
         else:
-            return self.setData(stu_id, reason, level,sleepInOrOut,studyWithParent)
+            return self.setData(stu_id, reason, level)
 
-    def setData(self, stu_id, reason, level,sleepInOrOut,studyWithParent):
+    def setData(self, stu_id, reason, level):
         """
         向数据库中插入数据
         """
         try:
             with db.execution_context():
-                stu_focus.create(**{"stuID": stu_id,"style":1, "reason": reason, "level": int(level), "createDate": str(datetime.datetime.now()),"sleepInOrOut":sleepInOrOut,"studyWithParent":studyWithParent})
+                stu_focus.create(**{"stuID": stu_id,"style":1, "reason": reason, "level": int(level), "createDate": str(datetime.datetime.now())})
 
-                if level == '2':
-                    newstate=2
-                elif level == '1':
-                    newstate=1
+                # if level == '2':
+                #     newstate=2
+                # elif level == '1':
+                #     newstate=1
+
+                newstate=int(level)
                 stu=stu_basic_info.select().where(stu_basic_info.stuID == stu_id).get()
                 stu.state=newstate
+                stu.focusColor='yellow'
                 stu.save()
         except:
             raise

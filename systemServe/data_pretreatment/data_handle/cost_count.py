@@ -1,18 +1,17 @@
 from data_pretreatment.data_orm import *
 from data_pretreatment.common_func.deal_dateortime_func import *
 import pandas as pd
-import numpy as np
 
 '''
-everyDayDetailRecord:{'today':20100101,'everyRecord':[],'todayCostSum':11.3}
-everyDayCount:{'today':20100101,'todayCostSum':11.3,'largerMaxFlag':0/1,'largerMaxRecordId':[111,],'smallerMinFlag':1/0}
+everyDayDetailRecord:[{'today':20100101,'everyRecord':[],'todayCostSum':11.3}]
+everyDayCount:[{'today':20100101,'todayCostSum':11.3,'largerMaxFlag':0/1,'largerMaxRecordId':[111,],'smallerMinFlag':1/0}]
 '''
 maxMoney=50     #超过多少额度
 minMoney=1      #小于多少额度
 continueDays=1  #连续多少天
-countDays=93
+countDays=130
 
-def costCount(stuId):
+def costCountAll(stuId):
     stuCostRecord = MyBaseModel.returnList(
         stu_transaction_record.select(stu_transaction_record.id, stu_transaction_record.turnover,stu_transaction_record.tradingTime).where(
             stu_transaction_record.stuID == stuId))
@@ -57,3 +56,42 @@ def costCount(stuId):
 
         return {'stuID': stuId, 'everyDayDetailRecord':everyDayDetailRecord, 'everyDayCount': everyDayCount,
                     'lastTimeCountDate': str(yesterday.date())}
+
+def costCountOneDay(stuId):
+    oneEveryDayDetailRecord = {'today': dateTimeChangeToInt(datetime.today()), 'everyRecord': [], 'todayCostSum': 0}
+    oneEveryDayCount = {'today': dateTimeChangeToInt(datetime.today()), 'todayCostSum': 0, 'largerMaxFlag': 0,
+                        'largerMaxRecordId': [], 'smallerMinFlag': 1}
+    yesterday=getBeforeDateTime(1)
+    nowDate=getBeforeDateTime(0)
+    stuYesterdayRecord = MyBaseModel.returnList(
+        stu_transaction_record.select(stu_transaction_record.id, stu_transaction_record.turnover,
+                                      stu_transaction_record.tradingTime).where(
+            stu_transaction_record.stuID == stuId,stu_transaction_record.tradingTime >=yesterday,stu_transaction_record.tradingTime<nowDate))
+
+    if len(stuYesterdayRecord) == 0:  # 当天没有消费记录
+        pass
+    else:
+        stuYesterdayRecord=pd.DataFrame(stuYesterdayRecord)
+        oneEveryDayDetailRecord['everyRecord'] = list(stuYesterdayRecord[stuYesterdayRecord['turnover'] > 0]['turnover'])
+        oneEveryDayCount['todayCostSum'] = stuYesterdayRecord[stuYesterdayRecord['turnover'] > 0]['turnover'].sum()
+        oneEveryDayDetailRecord['todayCostSum'] = oneEveryDayCount['todayCostSum']
+        if oneEveryDayCount['todayCostSum'] > minMoney:
+            oneEveryDayCount['smallerMinFlag'] = 0  # 累计消费大于1元
+        largerMaxMoneyRecord = stuYesterdayRecord[stuYesterdayRecord['turnover'] > maxMoney]['id']
+        if len(largerMaxMoneyRecord) > 0:
+            oneEveryDayCount['largerMaxFlag'] = 1
+            oneEveryDayCount['largerMaxRecordId'] = list(largerMaxMoneyRecord)
+    with db_data.execution_context():
+        stu = stu_cost_count.select().where(stu_cost_count.stuID==stuId).get()
+        everyDayDetailRecord=eval(stu.everyDayDetailRecord)
+        everyDayCount=eval(stu.everyDayCount)
+        del everyDayCount[0]
+        del everyDayDetailRecord[0]
+        everyDayCount.append(oneEveryDayCount)
+        everyDayDetailRecord.append(oneEveryDayDetailRecord)
+        stu.everyDayDetailRecord=everyDayDetailRecord
+        stu.everyDayCount=everyDayCount
+        stu.lastTimeCountDate=str(yesterday.date())
+        stu.save()
+
+

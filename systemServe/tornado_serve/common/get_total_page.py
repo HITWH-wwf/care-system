@@ -3,7 +3,9 @@
 # import watch_redis
 import os
 import configparser
-
+#import sys
+#sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+#from tornado_serve.orm import *
 def getTotalPage(mode = 0):
     """
     函数返回当前角色组可能存在权限，即：返回当前系统的所有页面名
@@ -33,3 +35,4 @@ def getTotalPage(mode = 0):
         return page_dict
     else:
         assert ("wrong mode") == 0
+

@@ -161,7 +161,7 @@ class stu_basic_info(MyBaseModel):
     motherName = CharField(null=True)
     motherWorkUnit = CharField(null=True)
     motherMobileNumber = CharField(null=True)
-    state = IntegerField(null=True)
+    state = IntegerField(null=True)     #是否被关注，及关注类型
     ifSingleParent = IntegerField()
     ifPoor = IntegerField()
     updateDate = DateTimeField(null=True)
@@ -171,6 +171,8 @@ class stu_basic_info(MyBaseModel):
     turnProfessional=CharField(null=True)   #转专业
     turnInProfessional=CharField(null=True) #转入专业
     downgrade=CharField(null=True)  #降级
+    studyWithParent = CharField(null=True)  # 是否家长陪读
+    focusColor = CharField(null=True)
 
 
 class stu_scholarship_and_grant(MyBaseModel):
@@ -213,11 +215,9 @@ class entry_and_exit(MyBaseModel):
 class stu_focus(MyBaseModel):
     stuID = CharField()
     style = IntegerField(null=True)
-    reason = CharField(null=True)
+    reason = TextField(null=True)
     level = IntegerField(null=True)
     createDate = DateTimeField(null=True)
-    sleepInOrOut=CharField(null=True)
-    studyWithParent=CharField(null=True)
 
 
 class new_users(MyBaseModel):
@@ -231,7 +231,7 @@ class new_users(MyBaseModel):
 class new_user_role(MyBaseModel):
     userrolename = CharField(null=True)
     description = CharField()
-    permission = CharField(null=True)  # 角色组权限，varchar
+    permission = TextField(null=True)  # 角色组权限，varchar
 
 
 class new_user_team(MyBaseModel):
@@ -250,7 +250,7 @@ class new_feedback(MyBaseModel):
 class new_event_message(MyBaseModel):  # 新建事件表
     createDate = DateTimeField(null=True)
     fromUserId = CharField(null=True)
-    messContent = CharField(null=True)
+    messContent = TextField(null=True)
     messTitle = CharField(null=True)
     stuId = CharField(null=True)
 
@@ -283,5 +283,16 @@ class stu_score_count(MyBaseModel):
         db_table = 'stu_score_count'
         primary_key = False
 
-db.create_tables([exam_results,stu_focus,stu_cost_count,stu_score_count,stu_sleep_count], safe=True)
+class stu_some_state(MyBaseModel):
+    stuID = CharField(null=False, primary_key=True)
+    lastTimeCountDate = CharField(null=True)
+    earlyWarningInfo=TextField(null=True)
+    vacationStayflag=CharField(null=True)
+    stayDate=TextField(null=True)
+    stayRemarks=CharField(null=True)
+    warningHistory = TextField(null=True)
+    scoreWarningLevel=IntegerField(null=True)
+
+
+db.create_tables([stu_some_state,exam_results,stu_focus,stu_cost_count,stu_score_count,stu_sleep_count], safe=True)
 

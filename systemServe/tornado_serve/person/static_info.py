@@ -99,23 +99,26 @@ class StaticInfo(static_info):
             if one_user["state"] == 0:
                 one_user["state"] = "正常"
             elif one_user["state"] == 1:
-                one_user["state"] = "推介关注"
+                one_user["state"] = "学情关注"
             elif one_user["state"] == 2:
-                one_user["state"] = "重点关注"
+                one_user["state"] = "推介关注"
             elif one_user["state"] == 3:
-                one_user["state"] = "毕业"
+                one_user["state"] = "长期关注"
+            elif one_user["state"]==4 :
+                one_user["state"] = "重点关注"
             else:
                 one_user["state"] = "未知状态"
+
             stu_basic_data[index] = one_user
 
         data_res = {
-            "colName": ["学号", "班号", "姓名", "性别", "民族", "政治面貌", "学历", "身份证号", "公寓号", "宿舍号", "毕业高中", "手机号", "家庭地址", "父亲姓名", "父亲工作单位", "父亲手机号", "母亲姓名", "母亲工作单位", "母亲手机号","学籍状态","校外住宿","转专业","转入专业","降级"],
+            "colName": ["学号", "班号", "姓名", "性别", "民族", "政治面貌", "学历", "身份证号", "公寓号", "宿舍号", "毕业高中", "手机号", "家庭地址", "父亲姓名", "父亲工作单位", "父亲手机号", "母亲姓名", "母亲工作单位", "母亲手机号","学籍状态","校外住宿","家长陪读","转专业","转入专业","降级"],
             "propName": ["stuID", "stuClassNumber", "stuName", "sex", "nationality", "politicalLandscape", "stuEducation", "idNumber", "apartmentNumber", "dormitoryNumber", "graduatedHighSchool", "stuMobileNumber", "homeAddress", "fatherName", "fatherWorkUnit", "fatherMobileNumber", "motherName", "motherWorkUnit", "motherMobileNumber","schoolStatus"
-                         ,"sleepInOrOut","turnProfessional","turnInProfessional","downgrade"],
+                         ,"sleepInOrOut","studyWithParent","turnProfessional","turnInProfessional","downgrade"],
             "data":stu_basic_data[0]
         }
-        if stu_basic_data[0]['state'] == '正常' or stu_basic_data[0]['state'] == '毕业':
-            focusInfo = {"focusReason":"", "focusLevel":stu_basic_data[0]['state'] }
+        if stu_basic_data[0]['state'] == '正常':
+            focusInfo = {"focusReason":"无", "focusLevel":stu_basic_data[0]['state'] }
         else:
             try:
                 focusReason = MyBaseModel.returnList(stu_focus.select(stu_focus.reason).where(stu_focus.stuID == stu_id).dicts(), key = "reason")[0]

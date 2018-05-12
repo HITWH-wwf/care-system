@@ -56,7 +56,9 @@ class FocusTable(focus_table):
         ifOk, stu_basic_data = getBasicDataByUserName(user_name)
         if ifOk == False:
             return {"status":0, "errorInfo":stu_basic_data, "data":""}
-
+        stu_basic_dataDf=pd.DataFrame(stu_basic_data)
+        stu_basic_dataDf.sort_values(['state'],ascending=False,inplace=True)
+        stu_basic_data=stu_basic_dataDf.to_dict('record')
         #将专业号和学院号替换为专业名和学院名
         for index,one_user in enumerate(stu_basic_data):
             one_user["specialitiesid"] = self.funToRecognition(mode = 1, id = one_user["specialitiesid"])
@@ -64,13 +66,16 @@ class FocusTable(focus_table):
             if one_user["state"] == 0:
                 one_user["state"] = "正常"
             elif one_user["state"] == 1:
-                one_user["state"] = "推介关注"
+                one_user["state"] = "学情关注"
             elif one_user["state"] == 2:
-                one_user["state"] = "重点关注"
+                one_user["state"] = "推介关注"
             elif one_user["state"] == 3:
-                one_user["state"] = "毕业"
+                one_user["state"] = "长期关注"
+            elif one_user["state"] == 4:
+                one_user["state"] = "重点关注"
             else:
                 one_user["state"] = "未知状态"
+
             stu_basic_data[index] = one_user
         # print(len(stu_basic_data), "in the focus table")
         data_res = {

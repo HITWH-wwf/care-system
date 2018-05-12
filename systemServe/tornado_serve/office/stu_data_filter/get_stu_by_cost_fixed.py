@@ -2,7 +2,7 @@ from tornado_serve.orm import *
 from tornado_serve.common.get_class_or_stu_by_user import getClassOrStuByUser
 import pandas as pd
 from tornado_serve.office.stu_data_filter.return_model import costModel
-from tornado_serve.common.deal_dateortime_func import intChangeToDateStr
+from tornado_serve.common.deal_dateortime_func import intChangeToDateStr,getBeforeDateTime,dateTimeChangeToInt
 from tornado_serve.common.deal_data_by_redis import getValue
 class GetStuByCostFixed():
     def entry(self,receiveRequest):
@@ -31,8 +31,11 @@ class GetStuByCostFixed():
     def getStuResultByCondition(self, returnKind, queryKind):
         resultStu = {}
         recordIdList = []
+        needCountDays=getBeforeDateTime(3)	#固定查询需要统计的天数
+        dateLevel=dateTimeChangeToInt(needCountDays)
         for stu in self.selectStuIds:
             stuCountDf = pd.DataFrame(self.costCountResult[stu])
+            stuCountDf=stuCountDf[stuCountDf['today']>=dateLevel]
             stuCountDf=stuCountDf.round(2)
             if queryKind=='fixed1':
                 stuCountDf = stuCountDf[stuCountDf['smallerMinFlag'] == 1]
@@ -60,7 +63,6 @@ class GetStuByCostFixed():
         self.inRoleStuDf.index = self.inRoleStuDf['stuID']
         stuBasicInfo = self.inRoleStuDf.to_dict('index')
         resultData = []
-        result=[{'major': '计算机科学与技术', 'specialitiesid': '041', 'times': 12, 'stuClassNumber': '1504102', 'stuName': '金宏昱', 'stuID': '150410201'}, {'major': '计算机科学与技术', 'specialitiesid': '041', 'times': 6, 'stuClassNumber': '1504102', 'stuName': '张雪彬', 'stuID': '150410206'}, {'major': '计算机科学与技术', 'specialitiesid': '041', 'times': 19, 'stuClassNumber': '1504102', 'stuName': '许程健', 'stuID': '150410217'}, {'major': '计算机科学与技术', 'specialitiesid': '041', 'times': 13, 'stuClassNumber': '1504102', 'stuName': '陈思远', 'stuID': '150410228'}, {'major': '计算机科学与技术', 'specialitiesid': '041', 'times': 12, 'stuClassNumber': '1504102', 'stuName': '张楠', 'stuID': '150410224'}]
         if returnKind== 'stuList':
             for stu in resultStu.keys():
                 oneStu = stuBasicInfo[stu]

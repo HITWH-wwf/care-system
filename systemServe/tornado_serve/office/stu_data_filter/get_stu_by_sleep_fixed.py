@@ -2,7 +2,7 @@ from tornado_serve.orm import *
 from tornado_serve.common.get_class_or_stu_by_user import getClassOrStuByUser
 import pandas as pd
 from tornado_serve.office.stu_data_filter.return_model import sleepModel
-from tornado_serve.common.deal_dateortime_func import intChangeToDateStr
+from tornado_serve.common.deal_dateortime_func import intChangeToDateStr,getBeforeDateTime,dateTimeChangeToInt
 from tornado_serve.common.deal_data_by_redis import getValue
 class GetStuBySleepFixed():
     def entry(self,receiveRequest):
@@ -32,8 +32,11 @@ class GetStuBySleepFixed():
     def getStuResultByCondition(self,returnKind,queryKind):
         resultStu={}
         recordIdList = []
+        needCountDays=getBeforeDateTime(3)	#固定查询需要统计的天数
+        dateLevel=dateTimeChangeToInt(needCountDays)
         for stu in self.selectStuIds:
             stuCountDf=pd.DataFrame(self.sleepCountResult[stu])
+            stuCountDf=stuCountDf[stuCountDf['today']>=dateLevel]
             stuCountDf=stuCountDf[stuCountDf[queryKind]==1]
             times=sum(stuCountDf[queryKind])
             if len(stuCountDf)==0:
