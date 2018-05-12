@@ -18,7 +18,7 @@ from tornado_serve.common.judge_permission import judgeIfPermiss
             
 
         ],
-    "tableData": [{'appearDate':'2010-01-01','earlyWarningKind':'学情预警','earlyWarningReason':''}],
+    "tableData": [{'appearDate':'2010-01-01','earlyWarningKind':'学业预警','earlyWarningReason':''}],
     "info":'请求成功'
 }
 '''
@@ -32,7 +32,7 @@ class GetStuWarningHistory():
             'scoreFixed4': '不及格科目累计18学分；'
         }
         warningKind = {
-            'costWarning': '消费预警', 'sleepWarning': '住宿预警', 'scoreWarning': '学情预警', 'aboveOne': '综合预警'
+            'costWarning': '消费预警', 'sleepWarning': '住宿预警', 'scoreWarning': '学业预警', 'aboveOne': '综合预警'
         }
         # self.requestData = receiveRequest
         self.requestData = eval(receiveRequest.request.body)

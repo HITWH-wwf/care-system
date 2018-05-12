@@ -53,7 +53,7 @@ class GetEarlyWarningStu():
         for stuId in stuStateInfo.keys():
             stuStateInfo[stuId]['earlyWarningInfo']=eval(stuStateInfo[stuId]['earlyWarningInfo'])
         warningKind = {
-            'costWarning': '消费预警', 'sleepWarning': '住宿预警', 'scoreWarning': '学情预警', 'have': '综合预警','no':'正常'
+            'costWarning': '消费预警', 'sleepWarning': '住宿预警', 'scoreWarning': '学业预警', 'have': '综合预警','no':'正常'
         }
         warningLevel={'costWarning':1, 'sleepWarning':1, 'scoreWarning':1, 'have':2,'no':0}
         warningColorKeys={'costWarning': 'costColor', 'sleepWarning': 'sleepColor', 'scoreWarning': 'scoreColor', 'have': 'aboveOneColor','no':'aboveOneColor'}

@@ -43,6 +43,7 @@ class AddFocus(add_focus):
                 newstate=int(level)
                 stu=stu_basic_info.select().where(stu_basic_info.stuID == stu_id).get()
                 stu.state=newstate
+                stu.focusColor='yellow'
                 stu.save()
         except:
             raise

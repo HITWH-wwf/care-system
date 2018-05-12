@@ -19,7 +19,7 @@ from multiprocessing import Manager, freeze_support
 from logConfig import logger,errorMessage
 port = 8006
 
-def main(first, app, num = 3):
+def main(first, app, num = 10):
     if str(first) == 'duo':
         freeze_support()
         print ("duo")

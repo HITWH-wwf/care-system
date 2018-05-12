@@ -1,6 +1,8 @@
-from data_pretreatment.data_orm import *
 
-def cleanStuBasicInfo():    #step1
+import sys
+sys.path.append('/root/care-system-master/systemServe')
+from data_pretreatment.data_orm import *
+def cleanStuBasicInfo():    #step1	完成
     print('start')
     with db_data.execution_context():
         allStu=stu_basic_info.select()
@@ -11,11 +13,11 @@ def cleanStuBasicInfo():    #step1
             stu.save()
     print('end')
 
-def cleanStuBasicInfoWithStuFocus1():   #规范校外住宿与家长陪读字段   step3
+def cleanStuBasicInfoWithStuFocus1():   #规范校外住宿与家长陪读字段   step3	完成
     print('start')
     focusStu=MyBaseModel.returnList2(stu_focus.select())
     for stu in focusStu:
-        if stu.sleepInOrOut=='校外住宿' or stu.sleepInOrOut=='1':
+        if stu.sleepInOrOut=='1.0' or stu.sleepInOrOut=='1':
             with db_data.execution_context():
                 thisStu=stu_basic_info.select().where(stu_basic_info.stuID==stu.stuID)
                 if len(thisStu)>0:
@@ -32,7 +34,7 @@ def cleanStuBasicInfoWithStuFocus1():   #规范校外住宿与家长陪读字段
 
     print('end')
 
-def cleanStuBasicInfoWithStuFocus2():   #规范关注颜色等级字段，关注等级   step4
+def cleanStuBasicInfoWithStuFocus2():   #规范关注颜色等级字段，关注等级   step4	完成
     print('start')
     with db_data.execution_context():
         allStu = stu_basic_info.select()
@@ -50,7 +52,7 @@ def cleanStuBasicInfoWithStuFocus2():   #规范关注颜色等级字段，关注
     print('end')
 
 
-def cleanStuFocus():    #更新关注等级   step2
+def cleanStuFocus():    #更新关注等级   step2	完成
     print('start')
     with db_data.execution_context():
         focusStu=stu_focus.select()
@@ -63,3 +65,5 @@ def cleanStuFocus():    #更新关注等级   step2
             stu.save()
 
     print('end')
+
+cleanStuBasicInfoWithStuFocus2()

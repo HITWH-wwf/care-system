@@ -295,6 +295,7 @@ class stu_some_state(MyBaseModel):
     earlyWarningInfo=TextField(null=True)
     vacationStayflag=CharField(null=True)
     stayDate=TextField(null=True)
+    stayRemarks=CharField(null=True)
     warningHistory=TextField(null=True)
     scoreWarningLevel = IntegerField(null=True)
 

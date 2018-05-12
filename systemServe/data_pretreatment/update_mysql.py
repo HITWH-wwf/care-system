@@ -10,7 +10,7 @@ def updateMysql():
         nowdate=datetime.today().date()
         while True:
             if nowdate!=datetime.today().date():    #到了新的一天了
-                if int(time.strftime("%H%M%S"))>23000:  #凌晨两点半开始更新
+                if int(time.strftime("%H%M%S"))>63000:  #凌晨两点半开始更新
                     updateAllCount()
                     nowdate=datetime.today().date() #日期更新为今天
             restartFlag=getFlagValue('restartFlag')     #重新统计标识为1时，也要重新更新
