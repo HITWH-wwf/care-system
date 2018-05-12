@@ -4,28 +4,37 @@ from tornado_serve.office.stu_data_filter.return_model import scoreModel
 import pandas as pd
 from tornado_serve.common.deal_data_by_redis import getValue
 class GetStuByScoreFixed():
-    def entry(self,receiveRequest):
-        self.requestData = eval(receiveRequest.request.body)
+    def entry(self,receiveRequest,waitFilteStuId):
+        # self.requestData = eval(receiveRequest.request.body)
         self.failNum=3
         self.failCreditMin=16
         self.failCreditMax=20
         #3,16,20
-        # self.requestData = receiveRequest
+        self.requestData = receiveRequest
+        self.waitFilteStuId = waitFilteStuId
         self.resultDf = None
-        userName=getValue(self.requestData['sessionId'])
-        if userName==None:
-            return {'status':0,'errorInfo':'登陆状态已过期，请重新登录'}
 
-        self.getStuResultByQueryKind(self.requestData['queryKind'])
+        self.getStuResultByQueryKind(self.requestData['score'])
+        if self.waitFilteStuId is not None:
+            if len(self.resultDf)==0:
+                return []
+            else:
+                resultStuId = list(self.resultDf.index)
+                return resultStuId
 
         if len(self.resultDf)==0:
             return {'status': 0, 'errorInfo': '未查询到相关学生'}
         return self.getLastResultByReturnKind(self.requestData['returnKind'],self.requestData['queryKind'])
 
     def getStuResultByQueryKind(self,queryKind):
-        inRoleStu = getClassOrStuByUser(self.requestData['userId'], 1)
-        inRoleStuDf = pd.DataFrame(inRoleStu)
-        inRoleStuId = list(inRoleStuDf['stuID'])
+        if self.waitFilteStuId is not None:
+            inRoleStuDf = []
+            inRoleStuId = self.waitFilteStuId
+        else:
+            inRoleStu = getClassOrStuByUser(self.requestData['userId'], 1)
+            inRoleStuDf = pd.DataFrame(inRoleStu)
+            inRoleStuId = list(inRoleStuDf['stuID'])
+
         scoreCountResult = pd.DataFrame(MyBaseModel.returnList(
             stu_score_count.select(stu_score_count.stuID, stu_score_count.scoreCountInfo).where(
                 stu_score_count.stuID.in_(inRoleStuId))))
@@ -39,7 +48,6 @@ class GetStuByScoreFixed():
             self.resultDf=self.resultDf[(self.resultDf['failCredit']>=self.failCreditMin)&(self.resultDf['failCredit']<=self.failCreditMax)]
         else:
             self.resultDf = self.resultDf[self.resultDf['failCredit']>self.failCreditMax]
-
     def getLastResultByReturnKind(self,returnKind,queryKind):
         if len(self.resultDf) == 0:
             return scoreModel(returnKind, queryKind, [])

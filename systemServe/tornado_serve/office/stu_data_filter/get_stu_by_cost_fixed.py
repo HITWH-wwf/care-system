@@ -3,18 +3,19 @@ from tornado_serve.common.get_class_or_stu_by_user import getClassOrStuByUser
 import pandas as pd
 from tornado_serve.office.stu_data_filter.return_model import costModel
 from tornado_serve.common.deal_dateortime_func import intChangeToDateStr,getBeforeDateTime,dateTimeChangeToInt
-from tornado_serve.common.deal_data_by_redis import getValue
 class GetStuByCostFixed():
-    def entry(self,receiveRequest):
-        self.requestData = eval(receiveRequest.request.body)
-        # self.requestData = receiveRequest
-        userName=getValue(self.requestData['sessionId'])
-        if userName==None:
-            return {'status':0,'errorInfo':'登陆状态已过期，请重新登录'}
+    def entry(self,receiveRequest,waitFilteStuId=None):
+        # self.requestData = eval(receiveRequest.request.body)
+        self.requestData = receiveRequest
+        self.waitFilteStuId=waitFilteStuId
+        if self.waitFilteStuId is not None:
+            self.inRoleStuDf = []
+            self.selectStuIds = self.waitFilteStuId
+        else:
+            inRoleStu = getClassOrStuByUser(self.requestData['userId'], 1)
+            self.inRoleStuDf = pd.DataFrame(inRoleStu)
+            self.selectStuIds = list(self.inRoleStuDf['stuID'])
 
-        inRoleStu = getClassOrStuByUser(self.requestData['userId'], 1)
-        self.inRoleStuDf = pd.DataFrame(inRoleStu)
-        self.selectStuIds = list(self.inRoleStuDf['stuID'])
         self.costCountResult = pd.DataFrame(MyBaseModel.returnList(
             stu_cost_count.select(stu_cost_count.stuID, stu_cost_count.everyDayCount).where(
                 stu_cost_count.stuID.in_(self.selectStuIds))))
@@ -25,7 +26,8 @@ class GetStuByCostFixed():
         for key in self.costCountResult.keys():
             self.costCountResult[key] = eval(self.costCountResult[key])  # {学号：全部记录,....}
 
-        result=self.getStuResultByCondition(self.requestData['returnKind'], self.requestData['queryKind'])
+        result=self.getStuResultByCondition(self.requestData['returnKind'], self.requestData['cost'])
+
         return result
 
     def getStuResultByCondition(self, returnKind, queryKind):
@@ -33,6 +35,7 @@ class GetStuByCostFixed():
         recordIdList = []
         needCountDays=getBeforeDateTime(3)	#固定查询需要统计的天数
         dateLevel=dateTimeChangeToInt(needCountDays)
+        resultStuId=[]
         for stu in self.selectStuIds:
             stuCountDf = pd.DataFrame(self.costCountResult[stu])
             stuCountDf=stuCountDf[stuCountDf['today']>=dateLevel]
@@ -44,6 +47,9 @@ class GetStuByCostFixed():
                 stuCountDf = stuCountDf[stuCountDf['largerMaxFlag'] == 1]
                 times = sum(stuCountDf['largerMaxFlag'])
             if len(stuCountDf)==0:
+                continue
+            if self.waitFilteStuId is not None:
+                resultStuId.append(stu)
                 continue
 
             if returnKind == 'stuRecord':
@@ -59,6 +65,10 @@ class GetStuByCostFixed():
                     resultStu[stu]=times
             else:
                 resultStu[stu] = times
+
+        if self.waitFilteStuId is not None:
+            return resultStuId
+
 
         self.inRoleStuDf.index = self.inRoleStuDf['stuID']
         stuBasicInfo = self.inRoleStuDf.to_dict('index')

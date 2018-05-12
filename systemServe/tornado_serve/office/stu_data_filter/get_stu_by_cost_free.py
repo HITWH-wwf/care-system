@@ -7,45 +7,50 @@ import pandas as pd
 import numpy as np
 
 class GetStuByCostFree():
-    def entry(self,receiveRequest):
-        # self.requestData=receiveRequest
-        self.requestData = eval(receiveRequest.request.body)
+    def entry(self,receiveRequest,waitFilteStuId=None):
+        self.requestData=receiveRequest
+        # self.requestData = eval(receiveRequest.request.body)
         stuRange = self.requestData['stuRange']
-
         dateRange = self.requestData['dateRange']
+        self.waitFilteStuId=waitFilteStuId
         if dateRange=='threeMonth':
             dateRange={}
             start=getBeforeDateTime(93)
             dateRange['startDate']=str(start.date())
             dateRange['endDate']=str(datetime.today().date())
-        moneyRange = self.requestData['moneyRange']
+        moneyRange = self.requestData['cost']['moneyRange']
         self.costCountResult = None
         self.selectStuIds = None
         self.inRoleStuDf = None  # stuRange['rangeData']
         stuFlag = self.getStuResultBystuRange(stuRange['rangeKind'], stuRange['rangeData'])
         if stuFlag['status'] == 0:
             return stuFlag
-        return self.getStuResultByCondition(self.requestData['returnKind'],self.requestData['countKind'],
+
+        return self.getStuResultByCondition(self.requestData['returnKind'],self.requestData['cost']['countKind'],
                     dateRange['startDate'],dateRange['endDate'],moneyRange['minMoney'],moneyRange['maxMoney'])
 
     def getStuResultBystuRange(self,rangeKind,rangeData):
-
-        if rangeKind=='useClassId':
-            inRoleStu = getClassOrStuByUser(self.requestData['userId'], 1,rangeData)
-            self.inRoleStuDf = pd.DataFrame(inRoleStu)
-            self.selectStuIds = list(self.inRoleStuDf['stuID'])
+        if self.waitFilteStuId is not None:
+            self.selectStuIds=self.waitFilteStuId
+            self.inRoleStuDf=[]
         else:
-            inRoleStu = getClassOrStuByUser(self.requestData['userId'], 1)
-            self.inRoleStuDf = pd.DataFrame(inRoleStu)
-            if rangeKind=='useStuId':
-                if len(self.inRoleStuDf[self.inRoleStuDf['stuID'] == rangeData]) > 0:
-                    self.selectStuIds=[rangeData]
-                else:
-                    return {'status': 0, 'errorInfo': '该学生不存在或您无权限查看'}
+            if rangeKind == 'useClassId':
+                inRoleStu = getClassOrStuByUser(self.requestData['userId'], 1, rangeData)
+                self.inRoleStuDf = pd.DataFrame(inRoleStu)
+                self.selectStuIds = list(self.inRoleStuDf['stuID'])
             else:
-                self.selectStuIds = list(self.inRoleStuDf[self.inRoleStuDf['stuName'] == rangeData]['stuID'])
-                if len(self.selectStuIds)==0:
-                    return {'status': 0, 'errorInfo': '该学生不存在或您无权限查看'}
+                inRoleStu = getClassOrStuByUser(self.requestData['userId'], 1)
+                self.inRoleStuDf = pd.DataFrame(inRoleStu)
+                if rangeKind == 'useStuId':
+                    if len(self.inRoleStuDf[self.inRoleStuDf['stuID'] == rangeData]) > 0:
+                        self.selectStuIds = [rangeData]
+                    else:
+                        return {'status': 0, 'errorInfo': '该学生不存在或您无权限查看'}
+                else:
+                    self.selectStuIds = list(self.inRoleStuDf[self.inRoleStuDf['stuName'] == rangeData]['stuID'])
+                    if len(self.selectStuIds) == 0:
+                        return {'status': 0, 'errorInfo': '该学生不存在或您无权限查看'}
+
         self.costCountResult=pd.DataFrame(MyBaseModel.returnList(stu_cost_count.select(stu_cost_count.stuID,stu_cost_count.everyDayDetailRecord).where(
                             stu_cost_count.stuID.in_(self.selectStuIds))))
         self.costCountResult.dropna(axis=1, inplace=True)
@@ -84,33 +89,41 @@ class GetStuByCostFree():
                 resultStuTotalTimes[stu]=totalTimes
                 resultStuDetail[stu]=oneStuRecord
 
-        self.inRoleStuDf.index = self.inRoleStuDf['stuID']
-        stuBasicInfo = self.inRoleStuDf.to_dict('index')
-        if returnKind== 'stuList':
-            resultData=[]
+        if self.waitFilteStuId is not None:
+            resultStuId=[]
             for stu in resultStuTotalTimes.keys():
                 if resultStuTotalTimes[stu]>0:
-                    oneStu=stuBasicInfo[stu]
-                    oneStu['times']=resultStuTotalTimes[stu]
-                    resultData.append(oneStu)
+                    resultStuId.append(stu)
+            return resultStuId
         else:
-            resultData = []
-            if len(resultStuDetail.keys())==0:
-                return costModel(returnKind, countKind, [])
-            if countKind=='single':
-                for stu in resultStuDetail.keys():
-                    for line in resultStuDetail[stu]:
-                        oneStu=stuBasicInfo[stu].copy()
-                        oneStu['date']=intChangeToDateStr(line['today'])
-                        oneStu['times']=line['times']
+            self.inRoleStuDf.index = self.inRoleStuDf['stuID']
+            stuBasicInfo = self.inRoleStuDf.to_dict('index')
+
+            if returnKind == 'stuList':
+                resultData = []
+                for stu in resultStuTotalTimes.keys():
+                    if resultStuTotalTimes[stu] > 0:
+                        oneStu = stuBasicInfo[stu]
+                        oneStu['times'] = resultStuTotalTimes[stu]
                         resultData.append(oneStu)
             else:
-                for stu in resultStuDetail.keys():
-                    for line in resultStuDetail[stu]:
-                        oneStu=stuBasicInfo[stu].copy()
-                        oneStu['date']=intChangeToDateStr(line['today'])
-                        oneStu['todayCostSum']=float(line['todayCostSum'])
-                        resultData.append(oneStu)
+                resultData = []
+                if len(resultStuDetail.keys()) == 0:
+                    return costModel(returnKind, countKind, [])
+                if countKind == 'single':
+                    for stu in resultStuDetail.keys():
+                        for line in resultStuDetail[stu]:
+                            oneStu = stuBasicInfo[stu].copy()
+                            oneStu['date'] = intChangeToDateStr(line['today'])
+                            oneStu['times'] = line['times']
+                            resultData.append(oneStu)
+                else:
+                    for stu in resultStuDetail.keys():
+                        for line in resultStuDetail[stu]:
+                            oneStu = stuBasicInfo[stu].copy()
+                            oneStu['date'] = intChangeToDateStr(line['today'])
+                            oneStu['todayCostSum'] = float(line['todayCostSum'])
+                            resultData.append(oneStu)
 
+            return costModel(returnKind, countKind, resultData)
 
-        return costModel(returnKind,countKind,resultData)

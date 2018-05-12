@@ -3,20 +3,22 @@ from tornado_serve.common.get_class_or_stu_by_user import getClassOrStuByUser
 import pandas as pd
 from tornado_serve.office.stu_data_filter.return_model import sleepModel
 from tornado_serve.common.deal_dateortime_func import intChangeToDateStr,getBeforeDateTime,dateTimeChangeToInt
-from tornado_serve.common.deal_data_by_redis import getValue
 class GetStuBySleepFixed():
-    def entry(self,receiveRequest):
-        self.requestData = eval(receiveRequest.request.body)
-        # self.requestData = receiveRequest
+    def entry(self,receiveRequest,waitFilteStuId=None):
+        # self.requestData = eval(receiveRequest.request.body)
+        self.requestData = receiveRequest
         self.resultDf = None
         self.appearDateDict = {}
-        userName=getValue(self.requestData['sessionId'])
-        if userName==None:
-            return {'status':0,'errorInfo':'登陆状态已过期，请重新登录'}
+        self.waitFilteStuId = waitFilteStuId
 
-        inRoleStu = getClassOrStuByUser(self.requestData['userId'], 1)
-        self.inRoleStuDf = pd.DataFrame(inRoleStu)
-        self.selectStuIds = list(self.inRoleStuDf['stuID'])
+        if self.waitFilteStuId is not None:
+            self.inRoleStuDf = []
+            self.selectStuIds = self.waitFilteStuId
+        else:
+            inRoleStu = getClassOrStuByUser(self.requestData['userId'], 1)
+            self.inRoleStuDf = pd.DataFrame(inRoleStu)
+            self.selectStuIds = list(self.inRoleStuDf['stuID'])
+
         self.sleepCountResult = pd.DataFrame(MyBaseModel.returnList(
             stu_sleep_count.select(stu_sleep_count.stuID, stu_sleep_count.fixedQueryCountInfo).where(
                 stu_sleep_count.stuID.in_(self.selectStuIds))))
@@ -27,12 +29,13 @@ class GetStuBySleepFixed():
         for key in self.sleepCountResult.keys():
             self.sleepCountResult[key] = eval(self.sleepCountResult[key])  # {学号：全部记录,....}
 
-        return self.getStuResultByCondition(self.requestData['returnKind'],self.requestData['queryKind'])
+        return self.getStuResultByCondition(self.requestData['returnKind'],self.requestData['sleep'])
 
     def getStuResultByCondition(self,returnKind,queryKind):
         resultStu={}
         recordIdList = []
         needCountDays=getBeforeDateTime(3)	#固定查询需要统计的天数
+        resultStuId = []
         dateLevel=dateTimeChangeToInt(needCountDays)
         for stu in self.selectStuIds:
             stuCountDf=pd.DataFrame(self.sleepCountResult[stu])
@@ -41,6 +44,12 @@ class GetStuBySleepFixed():
             times=sum(stuCountDf[queryKind])
             if len(stuCountDf)==0:
                 continue
+
+            if self.waitFilteStuId is not None:
+                resultStuId.append(stu)
+                continue
+
+
             if returnKind=='stuRecord':
                 if queryKind=='fixed1':
                     recordList=list(stuCountDf['inMaxId1'])
@@ -60,6 +69,9 @@ class GetStuBySleepFixed():
                     self.appearDateDict[stu]=[intChangeToDateStr(x) for x in appearDateList]
             else:
                 resultStu[stu] = times
+
+        if self.waitFilteStuId is not None:
+            return resultStuId
 
         recordIdList=[x for x in recordIdList if x!='' and x>=0]
         recordIdList=set(recordIdList)

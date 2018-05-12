@@ -116,3 +116,14 @@ def scoreModel(returnKind,queryKind,resultData):
             "info": '请求成功'
         }
         return resultModel
+
+
+def combineModel(resultData):
+    resultModel = {
+        "status": 1,
+        "colName": ['学号', '姓名','班级','专业'],
+        "propName": ['stuID', 'stuName', 'stuClassNumber', 'major'],
+        "tableData": resultData,
+        "info": '请求成功'
+    }
+    return resultModel

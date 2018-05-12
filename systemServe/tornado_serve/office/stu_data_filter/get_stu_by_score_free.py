@@ -3,28 +3,39 @@ from tornado_serve.orm import *
 from tornado_serve.common.get_class_or_stu_by_user import getClassOrStuByUser
 from tornado_serve.office.stu_data_filter.return_model import scoreModel
 class GetStuByScoreFree():
-    def entry(self,receiveRequest):
-        self.requestData = eval(receiveRequest.request.body)
-        # self.requestData=receiveRequest
+    def entry(self,receiveRequest,waitFilteStuId=None):
+        # self.requestData = eval(receiveRequest.request.body)
+        self.requestData=receiveRequest
         stuRange = self.requestData['stuRange']
-        courseRange = self.requestData['courseRange']
-        countRange=self.requestData['countRange']
+        courseRange = self.requestData['score']['courseRange']
+        countRange=self.requestData['score']['countRange']
+        self.waitFilteStuId = waitFilteStuId
         self.resultDf = None
-        if courseRange=='all':
-            stuFlag=self.getResultByStuRange(stuRange['rangeKind'],stuRange['rangeData'])
+        if courseRange=='all':  #没有课程限制
+            stuFlag=self.getResultByStuRange(stuRange['rangeKind'],stuRange['rangeData'])   #学生范围进行一次过滤
             if stuFlag['status']==0:
                 return stuFlag
             else:
-                return self.getLastResultByCountKind(self.requestData['returnKind'],self.requestData['countKind'],countRange['min'],countRange['max'])
+                return self.getLastResultByCountKind(self.requestData['returnKind'],self.requestData['score']['countKind'],countRange['min'],countRange['max'])
 
         else:
             self.getResultByCourseRange(courseRange['rangeKind'],courseRange['rangeData'])
             stuFlag=self.getResultByStuRangeNextCourseRange(stuRange['rangeKind'],stuRange['rangeData'])
+
+            if self.waitFilteStuId is not None: #是属于combine类型，则无需再往下
+                if stuFlag['status'] == 0:
+                    return []
+                else:
+                    resultStuId =list(set(self.resultDf['stuID']))
+                    return resultStuId
+
+
             if stuFlag['status']==0:
                 return stuFlag
+
             return self.getLastResultStuWithCourse(self.requestData['returnKind'])
 
-    def getLastResultByCountKind(self,returnKind,countKind,minNum,maxNum):
+    def getLastResultByCountKind(self,returnKind,countKind,minNum,maxNum):  #依据筛选条件进行过滤
         if countKind=='failCourse':
             self.resultDf=self.resultDf[(self.resultDf['failNum']>=minNum)&(self.resultDf['failNum']<=maxNum)]
         elif countKind=='totalCredit':
@@ -34,6 +45,11 @@ class GetStuByScoreFree():
 
         if len(self.resultDf)==0:
             return {'status': 0, 'errorInfo': '未查询到相关内容'}
+
+        if self.waitFilteStuId is not None:
+            resultStuId = list(self.resultDf.index)
+            return resultStuId
+
 
         if returnKind=='stuRecord':
             if countKind=='totalCredit':
@@ -145,7 +161,7 @@ class GetStuByScoreFree():
 
     def getResultByStuRangeNextCourseRange(self,rangeKind,rangeData):
         if len(self.resultDf)==0:
-            {'status': 0, 'errorInfo': '未查询到相关内容'}
+            return {'status': 0, 'errorInfo': '未查询到相关内容'}
         if rangeKind =='useClassId':
             self.resultDf=self.resultDf[self.resultDf['stuClass'].isin(rangeData)]
         else:
@@ -162,7 +178,8 @@ class GetStuByScoreFree():
                 else:
                     return {'status': 0, 'errorInfo': '该学生不存在或您无权限查看'}
         if len(self.resultDf)==0:
-            {'status': 0, 'errorInfo': '未查询到相关内容'}
+            return {'status': 0, 'errorInfo': '未查询到相关内容'}
+
         return {'status':1}
 
     def getResultByCourseRange(self, rangeKind, rangeData):
