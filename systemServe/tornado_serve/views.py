@@ -49,19 +49,29 @@ from tornado.concurrent import run_on_executor
 import tornado.ioloop
 from data.update_focus import UpdateFocus
 from tornado_serve.office.stu_data_filter.get_exam_result import GetExamResult
-from tornado_serve.office.stu_data_filter.get_stu_by_sleep_fixed import GetStuBySleepFixed
-from tornado_serve.office.stu_data_filter.get_stu_by_sleep_free import GetStuBySleepFree
-from tornado_serve.office.stu_data_filter.get_stu_by_cost_fixed import GetStuByCostFixed
-from tornado_serve.office.stu_data_filter.get_stu_by_cost_free import GetStuByCostFree
-from tornado_serve.office.stu_data_filter.get_stu_by_score_fixed import GetStuByScoreFixed
-from tornado_serve.office.stu_data_filter.get_stu_by_score_free import GetStuByScoreFree
+
+# from tornado_serve.office.stu_data_filter.get_stu_by_sleep_fixed import GetStuBySleepFixed
+# from tornado_serve.office.stu_data_filter.get_stu_by_sleep_free import GetStuBySleepFree
+# from tornado_serve.office.stu_data_filter.get_stu_by_cost_fixed import GetStuByCostFixed
+# from tornado_serve.office.stu_data_filter.get_stu_by_cost_free import GetStuByCostFree
+# from tornado_serve.office.stu_data_filter.get_stu_by_score_fixed import GetStuByScoreFixed
+# from tornado_serve.office.stu_data_filter.get_stu_by_score_free import GetStuByScoreFree
+
+from tornado_serve.office.stu_data_filter.get_stu_by_free import GetStuByFree
+from tornado_serve.office.stu_data_filter.get_stu_by_fixed import GetStuByFixed
+
 from tornado_serve.index.early_warning.change_early_warning_state import ChangeEarlyWarningState
 from tornado_serve.index.early_warning.get_early_warning_stu import GetEarlyWarningStu
 from tornado_serve.index.early_warning.get_stu_warning_history import GetStuWarningHistory
+from tornado_serve.index.get_study_care_table import GetStudyCareTable
+
 from tornado_serve.person.change_live_status import ChangeLiveStatus
 from tornado_serve.person.change_school_status import ChangeSchoolStatus
 from tornado_serve.person.stay_vacation import StayVacation
 from tornado_serve.person.set_focus_color import SetFocusColor
+from tornado_serve.person.person_study_care_info.get_fudaoyuan_action_history import GetFudaoyuanActionHistory
+from tornado_serve.person.person_study_care_info.get_to_examine_history import GetToExamineHistory
+
 from tornado_serve.system.early_warning_system_set import EarlyWarningSystemSet
 
 
@@ -129,6 +139,7 @@ def judgeIsUpdataFinish(key):   #key:[isDeleteFlag,isUpdataScoreFlag,isUpdataCos
             else:
                 return isUpdata(self_request)
         return judgeResult
+
     return receiveFunc
 
 
@@ -485,96 +496,96 @@ class GetManageClassHandler(BaseHandler):
     def post(self, *args, **kwargs):
         self.finish(GetManageClass().entry(self))
 
-class GetStuByCostFreeHandler(BaseHandler):
-    executor = ThreadPoolExecutor(4)
-    @gen.coroutine
-    def post(self, *args, **kwargs):
-        self.result=None
-        yield self.tempPost()  #不能带self
-        self.finish(self.result)
+# class GetStuByCostFreeHandler(BaseHandler):
+#     executor = ThreadPoolExecutor(4)
+#     @gen.coroutine
+#     def post(self, *args, **kwargs):
+#         self.result=None
+#         yield self.tempPost()  #不能带self
+#         self.finish(self.result)
+#
+#     @run_on_executor
+#     @getErrorMessage
+#     @judgeIsOpen
+#     @judgeIsUpdataFinish('isUpdateCostFlag')
+#     def tempPost(self):
+#         self.result=GetStuByCostFree().entry(self)
 
-    @run_on_executor
-    @getErrorMessage
-    @judgeIsOpen
-    @judgeIsUpdataFinish('isUpdateCostFlag')
-    def tempPost(self):
-        self.result=GetStuByCostFree().entry(self)
-
-class GetStuByCostFixedHandler(BaseHandler):
-    executor = ThreadPoolExecutor(4)
-    @gen.coroutine
-    def post(self, *args, **kwargs):
-        self.result=None
-        yield self.tempPost()  #不能带self
-        self.finish(self.result)
-
-    @run_on_executor
-    @getErrorMessage
-    @judgeIsOpen
-    @judgeIsUpdataFinish('isUpdateCostFlag')
-    def tempPost(self):
-        self.result=GetStuByCostFixed().entry(self)
+# class GetStuByCostFixedHandler(BaseHandler):
+#     executor = ThreadPoolExecutor(4)
+#     @gen.coroutine
+#     def post(self, *args, **kwargs):
+#         self.result=None
+#         yield self.tempPost()  #不能带self
+#         self.finish(self.result)
+#
+#     @run_on_executor
+#     @getErrorMessage
+#     @judgeIsOpen
+#     @judgeIsUpdataFinish('isUpdateCostFlag')
+#     def tempPost(self):
+#         self.result=GetStuByCostFixed().entry(self)
 
 
-class GetStuBySleepFixedHandler(BaseHandler):
-    executor = ThreadPoolExecutor(4)
-    @gen.coroutine
-    def post(self, *args, **kwargs):
-        self.result=None
-        yield self.tempPost()  #不能带self
-        self.finish(self.result)
+# class GetStuBySleepFixedHandler(BaseHandler):
+#     executor = ThreadPoolExecutor(4)
+#     @gen.coroutine
+#     def post(self, *args, **kwargs):
+#         self.result=None
+#         yield self.tempPost()  #不能带self
+#         self.finish(self.result)
+#
+#     @run_on_executor
+#     @getErrorMessage
+#     @judgeIsOpen
+#     @judgeIsUpdataFinish('isUpdateSleepFlag')
+#     def tempPost(self):
+#         self.result=GetStuBySleepFixed().entry(self)
 
-    @run_on_executor
-    @getErrorMessage
-    @judgeIsOpen
-    @judgeIsUpdataFinish('isUpdateSleepFlag')
-    def tempPost(self):
-        self.result=GetStuBySleepFixed().entry(self)
+# class GetStuBySleepFreeHandler(BaseHandler):
+#     executor = ThreadPoolExecutor(4)
+#     @gen.coroutine
+#     def post(self, *args, **kwargs):
+#         self.result=None
+#         yield self.tempPost()  #不能带self
+#         self.finish(self.result)
+#
+#     @run_on_executor
+#     @getErrorMessage
+#     @judgeIsOpen
+#     @judgeIsUpdataFinish('isUpdateSleepFlag')
+#     def tempPost(self):
+#         self.result=GetStuBySleepFree().entry(self)
 
-class GetStuBySleepFreeHandler(BaseHandler):
-    executor = ThreadPoolExecutor(4)
-    @gen.coroutine
-    def post(self, *args, **kwargs):
-        self.result=None
-        yield self.tempPost()  #不能带self
-        self.finish(self.result)
+# class GetStuByScoreFixedHandler(BaseHandler):
+#     executor = ThreadPoolExecutor(4)
+#     @gen.coroutine
+#     def post(self, *args, **kwargs):
+#         self.result=None
+#         yield self.tempPost()  #不能带self
+#         self.finish(self.result)
+#
+#     @run_on_executor
+#     @getErrorMessage
+#     @judgeIsOpen
+#     @judgeIsUpdataFinish('isUpdateScoreFlag')
+#     def tempPost(self):
+#         self.result=GetStuByScoreFixed().entry(self)
 
-    @run_on_executor
-    @getErrorMessage
-    @judgeIsOpen
-    @judgeIsUpdataFinish('isUpdateSleepFlag')
-    def tempPost(self):
-        self.result=GetStuBySleepFree().entry(self)
-
-class GetStuByScoreFixedHandler(BaseHandler):
-    executor = ThreadPoolExecutor(4)
-    @gen.coroutine
-    def post(self, *args, **kwargs):
-        self.result=None
-        yield self.tempPost()  #不能带self
-        self.finish(self.result)
-
-    @run_on_executor
-    @getErrorMessage
-    @judgeIsOpen
-    @judgeIsUpdataFinish('isUpdateScoreFlag')
-    def tempPost(self):
-        self.result=GetStuByScoreFixed().entry(self)
-
-class GetStuByScoreFreeHandler(BaseHandler):
-    executor = ThreadPoolExecutor(4)
-    @gen.coroutine
-    def post(self, *args, **kwargs):
-        self.result=None
-        yield self.tempPost()  #不能带self
-        self.finish(self.result)
-
-    @run_on_executor
-    @getErrorMessage
-    @judgeIsOpen
-    @judgeIsUpdataFinish('isUpdateScoreFlag')
-    def tempPost(self):
-        self.result=GetStuByScoreFree().entry(self)
+# class GetStuByScoreFreeHandler(BaseHandler):
+#     executor = ThreadPoolExecutor(4)
+#     @gen.coroutine
+#     def post(self, *args, **kwargs):
+#         self.result=None
+#         yield self.tempPost()  #不能带self
+#         self.finish(self.result)
+#
+#     @run_on_executor
+#     @getErrorMessage
+#     @judgeIsOpen
+#     @judgeIsUpdataFinish('isUpdateScoreFlag')
+#     def tempPost(self):
+#         self.result=GetStuByScoreFree().entry(self)
 
 class GetExamResultHandler(BaseHandler):
     executor = ThreadPoolExecutor(4)
@@ -618,7 +629,6 @@ class GetStuWarningHistoryHandler(BaseHandler):
 
 class GetEarlyWarningStuHandler(BaseHandler):
     @getErrorMessage
-    @judgeIsOpen
     @judgeIsUpdataFinish('isUpdateStateFlag')
     def post(self, *args, **kwargs):
         return self.finish(GetEarlyWarningStu().entry(self))
@@ -631,3 +641,45 @@ class ChangeEarlyWarningStateHandler(BaseHandler):
 #     def entry(self,getrequest):
 #         name=getrequest.get_argument('name')
 #         return {'status':1,'info':'ok'}
+
+class GetStuByFreeHandler(BaseHandler):
+    executor = ThreadPoolExecutor(4)
+    @gen.coroutine
+    def post(self, *args, **kwargs):
+        self.result=None
+        yield self.tempPost()  #不能带self
+        self.finish(self.result)
+
+    @run_on_executor
+    @getErrorMessage
+    def tempPost(self):
+        self.result=GetStuByFree().entry(self)
+
+
+class GetStuByFixedHandler(BaseHandler):
+    executor = ThreadPoolExecutor(4)
+    @gen.coroutine
+    def post(self, *args, **kwargs):
+        self.result=None
+        yield self.tempPost()  #不能带self
+        self.finish(self.result)
+
+    @run_on_executor
+    @getErrorMessage
+    def tempPost(self):
+        self.result=GetStuByFixed().entry(self)
+
+class GetStudyCareTableHandler(BaseHandler):
+    @getErrorMessage
+    def post(self, *args, **kwargs):
+        self.finish(GetStudyCareTable().entry(self))
+
+class GetFudaoyuanActionHistoryHandler(BaseHandler):
+    @getErrorMessage
+    def post(self, *args, **kwargs):
+        self.finish(GetFudaoyuanActionHistory().entry(self))
+
+class GetToExamineHistoryHandler(BaseHandler):
+    @getErrorMessage
+    def post(self, *args, **kwargs):
+        self.finish(GetToExamineHistory().entry(self))

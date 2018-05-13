@@ -307,13 +307,19 @@ class stu_all_aspect_info(MyBaseModel):
     gayInfo=TextField(null=True)    # 同性恋
     familyInfo=TextField(null=True) # 单亲/孤儿
     otherInfo=TextField(null=True)  # 其他问题
-    fudaoyuan=TextField(null=True)
-    fushuji=TextField(null=True)
+    fudaoyuan=TextField(null=True)  #初始化为[]
+    fushuji=TextField(null=True)    #初始化为[]
     stuState=IntegerField(null=True)
     editTime=CharField(null=True)
     class Meta:
         db_table = 'stu_all_aspect_info'
 
-
+'''
+关于stu_all_aspect_info表中stuState字段的值说明
+0：取消关注状态    1：学情关注
+2：修改未提交      3：取消未通过
+4：关注未通过      5：取消待审核
+6：关注待审核
+'''
 db.create_tables([stu_all_aspect_info,stu_some_state,exam_results,stu_focus,stu_cost_count,stu_score_count,stu_sleep_count], safe=True)
 

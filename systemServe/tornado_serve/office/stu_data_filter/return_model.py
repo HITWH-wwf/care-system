@@ -127,3 +127,13 @@ def combineModel(resultData):
         "info": '请求成功'
     }
     return resultModel
+
+def studyInfoModel(resultData):
+    resultModel = {
+        "status": 1,
+        "colName": ['学号', '姓名','班级','专业','出现所选学情个数'],
+        "propName": ['stuID', 'stuName', 'stuClassNumber', 'major','appearKinds'],
+        "tableData": resultData,
+        "info": '请求成功'
+    }
+    return resultModel

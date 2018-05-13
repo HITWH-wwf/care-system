@@ -115,4 +115,13 @@ requestDataFixed={
     'sleep':'fixed2',
     'score':'fixed1',
 }
-print(GetStuByFixed().entry(requestDataFixed))
+# print(GetStuByFixed().entry(requestDataFixed))
+for i in range(3):
+    if i ==2:
+        break
+    else:
+        print(i)
+else:
+    print('end')
+
+print('i am end')

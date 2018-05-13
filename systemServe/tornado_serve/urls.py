@@ -20,6 +20,7 @@ HANDLERS = [
     (r"/index/change-early-warning-state",ChangeEarlyWarningStateHandler),
     (r"/index/get-early-warning-stu",GetEarlyWarningStuHandler),
     (r"/index/get-stu-warning-history",GetStuWarningHistoryHandler),
+    (r"/index/get-studyInfo-stu",GetStudyCareTableHandler),
 
     (r"/person/static-info", StaticInfoHandler),
     (r"/person/trip", TripHandler),
@@ -33,6 +34,8 @@ HANDLERS = [
     (r"/person/change-school-status",ChangeSchoolStatusHandler),
     (r"/person/set-focus-color",SetFocusColorHandler),
     (r"/person/stay-vacation",StayVacationHandler),
+    (r"/person/get-fushuji-history",GetToExamineHistoryHandler),
+    (r"/person/get-fudaoyuan-history",GetFudaoyuanActionHistoryHandler),
 
     (r"/office/export", ExportHandler),
     (r"/office/suggestion", SuggestionHandler),
@@ -64,12 +67,14 @@ HANDLERS = [
     (r"/login/exit-login",ExitLoginHandler),
 
     (r"/office/get-manager-class",GetManageClassHandler),
-    (r"/office/get-stu-by-cost-fixed",GetStuByCostFixedHandler),
-    (r"/office/get-stu-by-cost-free",GetStuByCostFreeHandler),
-    (r"/office/get-stu-by-sleep-fixed",GetStuBySleepFixedHandler),
-    (r"/office/get-stu-by-sleep-free",GetStuBySleepFreeHandler),
-    (r"/office/get-stu-by-score-fixed",GetStuByScoreFixedHandler),
-    (r"/office/get-stu-by-score-free",GetStuByScoreFreeHandler),
+    # (r"/office/get-stu-by-cost-fixed",GetStuByCostFixedHandler),
+    # (r"/office/get-stu-by-cost-free",GetStuByCostFreeHandler),
+    # (r"/office/get-stu-by-sleep-fixed",GetStuBySleepFixedHandler),
+    # (r"/office/get-stu-by-sleep-free",GetStuBySleepFreeHandler),
+    # (r"/office/get-stu-by-score-fixed",GetStuByScoreFixedHandler),
+    # (r"/office/get-stu-by-score-free",GetStuByScoreFreeHandler),
+    (r"/office/get-stu-by-free",GetStuByFreeHandler),
+    (r"/office/get-stu-by-fixed",GetStuByFixedHandler),
     (r"/office/get-exam-result",GetExamResultHandler)
 ]
 
