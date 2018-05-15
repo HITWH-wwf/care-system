@@ -60,3 +60,4 @@ def judgeIfPermiss(user_id = None, stuid = None, page = None, mode = 0):
         return dojob_by_mode_1(user_id, page)
     else:
         raise Exception("wrong mode in judgeIfPermiss")
+    # return True

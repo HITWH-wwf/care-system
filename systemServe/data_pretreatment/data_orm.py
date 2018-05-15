@@ -299,6 +299,26 @@ class stu_some_state(MyBaseModel):
     warningHistory=TextField(null=True)
     scoreWarningLevel = IntegerField(null=True)
 
+class stu_all_aspect_info(MyBaseModel):
+    stuID=CharField(null=False,primary_key=True)
+    studyInfo=TextField(null=True)
+    thoughtInfo=TextField(null=True)
+    economyInfo=TextField(null=True)
+    bodyInfo=TextField(null=True)  # 身体
+    networkInfo=TextField(null=True)  # 网络
+    sleepInfo=TextField(null=True)  # 公寓
+    burstInfo=TextField(null=True)  # 突发
+    peopleInfo=TextField(null=True)  # 人际
+    mentalityInfo=TextField(null=True)  # 心理
+    gayInfo=TextField(null=True)    # 同性恋
+    familyInfo=TextField(null=True) # 单亲/孤儿
+    otherInfo=TextField(null=True)  # 其他问题
+    fudaoyuan=TextField(null=True)  #初始化为[]
+    fushuji=TextField(null=True)    #初始化为[]
+    stuState=IntegerField(null=True)    #初始化为0
+    latelyEditTime=BigIntegerField(null=True)
+    class Meta:
+        db_table = 'stu_all_aspect_info'
 
-db_data.create_tables([stu_some_state,exam_results,stu_focus,stu_cost_count,stu_score_count,stu_sleep_count], safe=True)
+db_data.create_tables([stu_all_aspect_info,stu_some_state,exam_results,stu_focus,stu_cost_count,stu_score_count,stu_sleep_count], safe=True)
 

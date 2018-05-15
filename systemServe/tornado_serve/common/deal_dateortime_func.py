@@ -12,11 +12,6 @@ def strChangeToDateTime(strDate,strTime=None):     #strDate格式：'2010-01-01'
                                   int(timeList[1]),int(timeList[2]))
     return resultDateTime
 
-def dateTimeChangeToInt(inputDateTime):
-    strDate=str(inputDateTime.date())
-    dateList=strDate.split('-')
-    resultInt=int(dateList[0])*10000+int(dateList[1])*100+int(dateList[2])
-    return resultInt
 
 def intChangeToDateTime(inputInt):
     resultDateTime=datetime(inputInt//10000,(inputInt%10000)//100,inputInt%100)
@@ -68,3 +63,20 @@ def compareTime(waitCompareDateTime,intTime):   #只比较时间部分，第一�
         return 1     #大于返回1
     else:
         return 0    #小于返回0
+
+def intChangeToDateTimeStr(inputInt):   #20180910 00:30
+    strInt=str(inputInt).zfill(12)
+    dateTimeStr=strInt[0:4]+'-'+strInt[4:6]+'-'+strInt[6:8]+' '+strInt[8:10]+':'+strInt[10:12]
+    return dateTimeStr
+
+def dateTimeChangeToInt(inputDateTime):
+    strDate=str(inputDateTime.date())
+    dateList=strDate.split('-')
+    resultInt=int(dateList[0])*10000+int(dateList[1])*100+int(dateList[2])
+    return resultInt
+
+def dateTimeChangeToIntWithTime(inputDateTime): #不包含秒
+    dateInt=dateTimeChangeToInt(inputDateTime)
+    timeInt=int(inputDateTime.time().strftime("%H%M"))
+    return int(dateInt*1e4+timeInt)
+

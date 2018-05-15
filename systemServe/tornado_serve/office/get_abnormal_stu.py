@@ -8,6 +8,10 @@ import time
 from datetime import datetime,timedelta
 from common.get_stu_basic_data_by_user_data import getBasicDataByUserName
 
+'''
+此接口已经废弃，不再使用了！！！！！！
+'''
+
 class GetAbnormalStu(get_abnormal_stu):
     def entry(self,response_self):
         try:

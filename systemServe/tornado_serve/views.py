@@ -71,6 +71,10 @@ from tornado_serve.person.stay_vacation import StayVacation
 from tornado_serve.person.set_focus_color import SetFocusColor
 from tornado_serve.person.person_study_care_info.get_fudaoyuan_action_history import GetFudaoyuanActionHistory
 from tornado_serve.person.person_study_care_info.get_to_examine_history import GetToExamineHistory
+from tornado_serve.person.person_study_care_info.get_person_studycare_info import GetPersonStudyCareInfo
+from tornado_serve.person.person_study_care_info.set_person_studycare_info import SetPersonStudyCareInfo
+from tornado_serve.person.person_study_care_info.add_action_or_examine import AddActionOrExamine
+
 
 from tornado_serve.system.early_warning_system_set import EarlyWarningSystemSet
 
@@ -683,3 +687,22 @@ class GetToExamineHistoryHandler(BaseHandler):
     @getErrorMessage
     def post(self, *args, **kwargs):
         self.finish(GetToExamineHistory().entry(self))
+
+class GetPersonStudyCareInfoHandler(BaseHandler):
+    @getErrorMessage
+    def post(self, *args, **kwargs):
+        self.finish(GetPersonStudyCareInfo().entry(self))
+
+
+
+class SetPersonStudyCareInfoHandler(BaseHandler):
+    @getErrorMessage
+    def post(self, *args, **kwargs):
+        self.finish(SetPersonStudyCareInfo().entry(self))
+
+
+
+class AddActionOrExamineHandler(BaseHandler):
+    @getErrorMessage
+    def post(self, *args, **kwargs):
+        self.finish(AddActionOrExamine().entry(self))

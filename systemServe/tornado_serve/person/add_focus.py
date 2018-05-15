@@ -33,18 +33,21 @@ class AddFocus(add_focus):
         """
         try:
             with db.execution_context():
+                stu = stu_basic_info.select().where(stu_basic_info.stuID == stu_id).get()
+                if stu.state!=0:
+                    return {"status":0, "errorInfo":"当前学生已处于关注状态，请勿重复关注"}
+
+                newstate = int(level)
+                stu.state = newstate
+                stu.focusColor = 'yellow'
+                stu.save()
+
                 stu_focus.create(**{"stuID": stu_id,"style":1, "reason": reason, "level": int(level), "createDate": str(datetime.datetime.now())})
 
                 # if level == '2':
                 #     newstate=2
                 # elif level == '1':
                 #     newstate=1
-
-                newstate=int(level)
-                stu=stu_basic_info.select().where(stu_basic_info.stuID == stu_id).get()
-                stu.state=newstate
-                stu.focusColor='yellow'
-                stu.save()
         except:
             raise
             # return {"status":0, "errorInfo":"数据库新增信息失败，请稍候重试"}

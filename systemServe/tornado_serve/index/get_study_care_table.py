@@ -3,6 +3,7 @@ from tornado_serve.orm import stu_all_aspect_info,MyBaseModel
 from tornado_serve.common.judge_permission import judgeIfPermiss
 from tornado_serve.common.deal_data_by_redis import getValue
 from tornado_serve.common.get_class_or_stu_by_user import getClassOrStuByUser
+from tornado_serve.common.deal_dateortime_func import intChangeToDateTimeStr
 import pandas as pd
 '''
 关于stu_all_aspect_info表中stuState字段的值说明
@@ -26,20 +27,21 @@ class GetStudyCareTable(object):
             self.selectStuIds = list(self.inRoleStuDf['stuID'])
             self.inRoleStuDf.index=self.inRoleStuDf['stuID']
             stuBasicInfo=self.inRoleStuDf.to_dict('index')
-            self.resultStu=MyBaseModel.returnList(stu_all_aspect_info.select(stu_all_aspect_info.stuID,stu_all_aspect_info.stuState).where(\
-                    stu_all_aspect_info.stuID.in_(self.selectStuIds) and stu_all_aspect_info.stuState > 0).order_by(stu_all_aspect_info.stuState.desc(),
+            self.resultStu=MyBaseModel.returnList(stu_all_aspect_info.select(stu_all_aspect_info.stuID,stu_all_aspect_info.latelyEditTime,stu_all_aspect_info.stuState).where(\
+                    stu_all_aspect_info.stuID.in_(self.selectStuIds) and stu_all_aspect_info.stuState > 0).order_by(stu_all_aspect_info.stuState.desc(),stu_all_aspect_info.latelyEditTime.desc(),
                                                     stu_all_aspect_info.stuID.asc()))
             tableData=[]
-            stuStateInfo=['学情关注','修改未提交','取消未通过','关注未通过','取消待审核','关注待审核']
+            stuStateInfo=['正常','学情关注','修改未提交','取消未通过','关注未通过','取消待审核','关注待审核']
             for stu in self.resultStu:
                 oneStu=stuBasicInfo[stu['stuID']]
                 oneStu['stuState']=stuStateInfo[stu['stuState']]
+                oneStu['latelyEditTime']=intChangeToDateTimeStr(stu['latelyEditTime'])
                 tableData.append(oneStu)
 
             return {
                     "status": 1,
-                    "colName": ['学号', '姓名','班级','专业','学情状态'],
-                    "propName": ['stuID', 'stuName', 'stuClassNumber', 'major','stuState'],
+                    "colName": ['学号', '姓名','班级','专业','最近编辑时间','学情状态'],
+                    "propName": ['stuID', 'stuName', 'stuClassNumber', 'major','latelyEditTime','stuState'],
                     "tableData": tableData,
                     "info": '请求成功'
                     }

@@ -1,7 +1,7 @@
 # coding=utf8
 
 from peewee import SelectQuery, CharField, IntegerField, fn, Model, FloatField, MySQLDatabase, TextField,\
-    DateTimeField,TextField
+    DateTimeField,TextField,BigIntegerField
 from playhouse.shortcuts import model_to_dict as to_dict
 import playhouse as ph
 from tornado_serve.api_define import users
@@ -16,7 +16,7 @@ for user in users:
       stale_timeout=3600,  # 1 hour
       timeout=0,
       user=user['name'],
-      host='10.245.146.254',
+      host='127.0.0.1',
       passwd=user['pwd'],
       )
       with db.execution_context():
@@ -309,8 +309,8 @@ class stu_all_aspect_info(MyBaseModel):
     otherInfo=TextField(null=True)  # 其他问题
     fudaoyuan=TextField(null=True)  #初始化为[]
     fushuji=TextField(null=True)    #初始化为[]
-    stuState=IntegerField(null=True)
-    editTime=CharField(null=True)
+    stuState=IntegerField(null=True)    #初始化为0
+    latelyEditTime=BigIntegerField(null=True)
     class Meta:
         db_table = 'stu_all_aspect_info'
 

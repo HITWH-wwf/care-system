@@ -1,13 +1,13 @@
 #coding=utf-8
 from tornado_serve.orm import MyBaseModel,stu_all_aspect_info
 from tornado_serve.common.deal_data_by_redis import getValue
-from tornado_serve.common.get_class_or_stu_by_user import getClassOrStuByUser
 from tornado_serve.common.judge_permission import judgeIfPermiss
 
 class GetToExamineHistory(object):
     def entry(self,receiveRequest):
         self.requestData = eval(receiveRequest.request.body)
         userName = getValue(self.requestData['sessionId'])
+        # self.requestData=receiveRequest
         stuId=self.requestData['stuId']
         # userName='wangjianting'
         if userName == None:

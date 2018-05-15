@@ -10,6 +10,12 @@ from tornado_serve.system.early_warning_system_set import EarlyWarningSystemSet
 import pandas as pd
 from tornado_serve.office.stu_data_filter.get_stu_by_free import GetStuByFree
 from tornado_serve.office.stu_data_filter.get_stu_by_fixed import GetStuByFixed
+from tornado_serve.person.person_study_care_info.get_person_studycare_info import GetPersonStudyCareInfo
+from tornado_serve.person.person_study_care_info.set_person_studycare_info import SetPersonStudyCareInfo
+from tornado_serve.person.person_study_care_info.get_fudaoyuan_action_history import GetFudaoyuanActionHistory
+from tornado_serve.person.person_study_care_info.get_to_examine_history import GetToExamineHistory
+from tornado_serve.person.person_study_care_info.add_action_or_examine import AddActionOrExamine
+from tornado_serve.index.get_study_care_table import GetStudyCareTable
 
 def testChangeSchoolStatus():
     requestData={"userId":'wangjianting','stuId':'150410218','operation':'returnSchool'}
@@ -75,6 +81,54 @@ def testSetFocusColor():
     stu=stu[0]
     print(stu.focusColor)
 
+
+def testGetPersonStudyCareInfo():
+    print(GetPersonStudyCareInfo().entry({'stuId':'150410218'}))
+
+def testSetPersonStudyCareInfo():
+    stuCareInfo={
+        'stuId': '150410218', 'operate': 'checkPass',
+        'studyInfo': {'type': ['测试'], 'remarks': '测试'} ,  # 学习,若无数据，则传空字符''，下同
+         'thoughtInfo': {'type': ['宗教信仰'], 'remarks': '测试宗教'},  # 思想
+        'economyInfo': {'type': '一般困难', 'remarks': 'str'},  # 经济
+        'bodyInfo': '',  # 身体
+        'networkInfo':'',  # 网络
+        'sleepInfo': '',  # 公寓
+    'burstInfo':'',  # 突发
+    'peopleInfo':'',  # 人际
+    'mentalityInfo':'',  # 心理
+    'gayInfo':'',  # 同性恋
+    'familyInfo':'',  # 单亲/孤儿
+    'otherInfo': {'type': '无', 'remarks': 'str'}  # 其他问题
+    }
+    print(SetPersonStudyCareInfo().entry(stuCareInfo))
+
+def testGetFudaoyuanActionHistory():
+    print(GetFudaoyuanActionHistory().entry({'stuId':'150410218'}))
+
+def testGetToExamineHistory():
+    print(GetToExamineHistory().entry({'stuId':'150410218'}))
+
+def testAddActionOrExamine():
+    data={'stuId':'150410218', 'role': 'fushuji',   #/ 'fudaoyuan'
+           'editUser':'test', 'content': '测试用例'
+           }
+
+    print(AddActionOrExamine().entry(data))
+
+def testGetStudyCareTable():
+    print(GetStudyCareTable().entry({'userId':'wangjianting'}))
+
+testGetStudyCareTable()
+# testAddActionOrExamine()
+# testGetFudaoyuanActionHistory()
+# testGetToExamineHistory()
+# testGetPersonStudyCareInfo()
+# testSetPersonStudyCareInfo()
+
+
+
+
 # testChangeSchoolStatus()
 # testChangeLiveStatus()
 # testStayVacation()
@@ -116,12 +170,3 @@ requestDataFixed={
     'score':'fixed1',
 }
 # print(GetStuByFixed().entry(requestDataFixed))
-for i in range(3):
-    if i ==2:
-        break
-    else:
-        print(i)
-else:
-    print('end')
-
-print('i am end')
