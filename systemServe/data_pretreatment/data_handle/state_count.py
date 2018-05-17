@@ -61,7 +61,9 @@ def startUpdateState():
         oneHistory={'appearDate':'','warningKind':'','warningReason':[]}
 
         #对消费进行预警判断
-        if oneDayCost['largerMaxFlag']==1:   #一次性消费超过50
+        if systemConf['costWarning']=='close':
+          pass
+        elif oneDayCost['largerMaxFlag']==1:   #一次性消费超过50
             warningFlag=warningFlag+1
             oneHistory['appearDate'] = yesterdayToStr
             oneHistory['warningKind'] = 'costWarning'
@@ -73,7 +75,9 @@ def startUpdateState():
             oneHistory['warningReason'].append('costFixed1')
 
         #对归寝进行预警判断
-        if oneDaySleep['fixed2']==1:    #24小时无刷卡进出宿舍记录
+        if systemConf['sleepWarning']=='close':
+            pass
+        elif oneDaySleep['fixed2']==1:    #24小时无刷卡进出宿舍记录
             warningFlag = warningFlag + 1
             oneHistory['appearDate'] = yesterdayToStr
             oneHistory['warningKind'] = 'sleepWarning'
@@ -85,7 +89,9 @@ def startUpdateState():
             oneHistory['warningReason'].append('sleepFixed1')
 
         #对成绩进行预警判断
-        if oneStuScore['failCredit']>=scoreFixed4 :
+        if systemConf['scoreWarning']=='close':
+            scoreWarningLevel = 0
+        elif oneStuScore['failCredit']>=scoreFixed4 :
             scoreWarningLevel=4
         elif oneStuScore['failCredit']>=scoreFixed3:
             scoreWarningLevel=3
@@ -106,7 +112,7 @@ def startUpdateState():
             if oneStuState.lastTimeCountDate == yesterdayToStr: #该学生最新的预警信息已经统计过
                 continue
             oneStuState.lastTimeCountDate = yesterdayToStr
-            if stu.sleepInOrOut=='是' or stu.studyWithParent=='是':   #对于校外住宿的学生，只关注是否发生学情预警
+            if stu.sleepInOrOut=='是' or stu.studyWithParent=='是':   #对于校外住宿的学生，只关注是否发生学业预警
                 if oneStuState.scoreWarningLevel<scoreWarningLevel:
                     oneHistory['appearDate'] = yesterdayToStr
                     oneHistory['warningKind'] = 'scoreWarning'
@@ -115,7 +121,7 @@ def startUpdateState():
                     oneStuState.scoreWarningLevel=scoreWarningLevel
                     warningHistory.append(oneHistory)
                     earlyWarningInfo['aboveOneWarning']='scoreWarning'
-                    if earlyWarningInfo['scoreWarning']==1:     #上次就出现学籍预警，且未处理
+                    if earlyWarningInfo['scoreWarning']==1:     #上次就出现学业预警，且未处理
                         earlyWarningInfo['scoreColor']='orange'
                     else:
                         earlyWarningInfo['scoreWarning'] = 1
@@ -125,7 +131,7 @@ def startUpdateState():
                     oneStuState.earlyWarningInfo=str(earlyWarningInfo)
                     oneStuState.save()
             else:
-                if scoreWarningLevel > oneStuState.scoreWarningLevel:  # 出现了学情预警
+                if scoreWarningLevel > oneStuState.scoreWarningLevel:  # 出现了学业预警
                     oneStuState.scoreWarningLevel = scoreWarningLevel
                     scoreKind = 'scoreFixed' + str(scoreWarningLevel)
                     oneHistory['warningReason'].append(scoreKind)

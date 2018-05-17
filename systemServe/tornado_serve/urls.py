@@ -54,6 +54,8 @@ HANDLERS = [
     (r"/office/get-stu-by-fixed", GetStuByFixedHandler),
     (r"/office/get-exam-result", GetExamResultHandler),
     (r"/office/get-abnormal-stu", GetAbnormalStuHandler),
+    (r"/office/get-careInfo-count-table",GetCareInfoCountTableHandler),
+    (r"/office/get-careInfo-sort-table",GetCareInfoSortTableHandler),
 
 
     (r"/system/get-total-user-team", GetTotalUserTeamHandler),

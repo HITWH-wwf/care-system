@@ -13,12 +13,19 @@ class EarlyWarningSystemSet():
         # self.requestData = receiveRequest
         self.requestData = eval(receiveRequest.request.body)
         userId = self.requestData['userId']
-        earlyWarningState = self.requestData['earlyWarningState']
-
         if judgeIfPermiss(user_id = userId, mode = 1, page = "earlyWarningSet") == False:
             return {"status":0, "errorInfo":"用户没有操作此页面的权限"}
 
+        earlyWarningState = self.requestData['earlyWarningState']
+        costWarningSetting=self.requestData['costWarning']
+        sleepWarningSetting=self.requestData['sleepWarning']
+        scoreWarningSetting=self.requestData['scoreWarning']
+
         systemSetting=getDictDataFromFile()
         systemSetting['isOpen']=earlyWarningState
+        systemSetting['costWarning']=costWarningSetting
+        systemSetting['sleepWarning']=sleepWarningSetting
+        systemSetting['scoreWarning']=scoreWarningSetting
+
         setDataInFile(str(systemSetting))
         return {'status':1,'info':'操作成功'}

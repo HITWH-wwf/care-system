@@ -59,6 +59,8 @@ from tornado_serve.office.stu_data_filter.get_exam_result import GetExamResult
 
 from tornado_serve.office.stu_data_filter.get_stu_by_free import GetStuByFree
 from tornado_serve.office.stu_data_filter.get_stu_by_fixed import GetStuByFixed
+from tornado_serve.office.export_count_table.get_careInfo_count_table import GetCareInfoCountTable
+from tornado_serve.office.export_count_table.get_careInfo_sort_table import GetCareInfoSortTable
 
 from tornado_serve.index.early_warning.change_early_warning_state import ChangeEarlyWarningState
 from tornado_serve.index.early_warning.get_early_warning_stu import GetEarlyWarningStu
@@ -706,3 +708,14 @@ class AddActionOrExamineHandler(BaseHandler):
     @getErrorMessage
     def post(self, *args, **kwargs):
         self.finish(AddActionOrExamine().entry(self))
+
+class GetCareInfoSortTableHandler(BaseHandler):
+    @getErrorMessage
+    def post(self, *args, **kwargs):
+        self.finish(GetCareInfoSortTable().entry(self))
+
+
+class GetCareInfoCountTableHandler(BaseHandler):
+    @getErrorMessage
+    def post(self, *args, **kwargs):
+        self.finish(GetCareInfoCountTable().entry(self))

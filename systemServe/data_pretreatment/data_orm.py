@@ -1,7 +1,7 @@
 # coding=utf8
 
 from peewee import SelectQuery, CharField, IntegerField, fn, Model, FloatField, MySQLDatabase, TextField, \
-    DateTimeField,TextField
+    DateTimeField,TextField,BigIntegerField
 from playhouse.shortcuts import model_to_dict as to_dict
 from playhouse.pool import PooledMySQLDatabase
 from data_pretreatment.logConfig import logger

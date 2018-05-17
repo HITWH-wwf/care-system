@@ -16,6 +16,7 @@ from tornado_serve.person.person_study_care_info.get_fudaoyuan_action_history im
 from tornado_serve.person.person_study_care_info.get_to_examine_history import GetToExamineHistory
 from tornado_serve.person.person_study_care_info.add_action_or_examine import AddActionOrExamine
 from tornado_serve.index.get_study_care_table import GetStudyCareTable
+from tornado_serve.office.export_count_table.generate_count_df import GenerateCountDf
 
 def testChangeSchoolStatus():
     requestData={"userId":'wangjianting','stuId':'150410218','operation':'returnSchool'}
@@ -119,7 +120,7 @@ def testAddActionOrExamine():
 def testGetStudyCareTable():
     print(GetStudyCareTable().entry({'userId':'wangjianting'}))
 
-testGetStudyCareTable()
+# testGetStudyCareTable()
 # testAddActionOrExamine()
 # testGetFudaoyuanActionHistory()
 # testGetToExamineHistory()

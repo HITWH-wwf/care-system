@@ -80,3 +80,17 @@ def dateTimeChangeToIntWithTime(inputDateTime): #不包含秒
     timeInt=int(inputDateTime.time().strftime("%H%M"))
     return int(dateInt*1e4+timeInt)
 
+def getGradeByYear():   #此处默认9.8号是开学日期
+    dateInt=dateTimeChangeToInt(datetime.now())
+    yearInt=dateInt//10000
+    if (yearInt*10000+908)>dateInt:   #当前时间小于同年的9月8号，认为当年学生还未入学
+        oneGradeYear=yearInt%100-1
+    else:
+        oneGradeYear=yearInt%100
+
+    gradeDict={}
+    for i in range(4):
+        gradeDict[str(oneGradeYear-i)]=i+1
+
+    return gradeDict
+
